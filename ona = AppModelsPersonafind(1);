@@ -1,0 +1,20 @@
+[90m= [39m[34;4mApp\Models\Procedimiento[39;24m {#6020
+    [34mid[39m: [35m2[39m,
+    [34mlegajo_fiscal[39m: "[32mMPF-SJ-28507-2025[39m",
+    [34mcaratula[39m: "[32mC/ BARTOLACCINI FABRICIO GABRIEL S/ HURTO[39m",
+    [34mfecha_procedimiento[39m: "[32m2025-10-22[39m",
+    [34mhora_procedimiento[39m: "[32m14:30:00[39m",
+    [34mufi[39m: "[32mUFI Delitos contra la Propiedad[39m",
+    [34mbrigada_id[39m: [35m1[39m,
+    [34musuario_id[39m: [35m1[39m,
+    [34morden_allanamiento[39m: [35m1[39m,
+    [34morden_secuestro[39m: [35m1[39m,
+    [34morden_detencion[39m: [35m1[39m,
+    [34mresultado_secuestro[39m: "[32mpositivo[39m",
+    [34mresultado_detencion[39m: "[32mpositivo[39m",
+    [34msecuestro_detalle[39m: "[32mPrendas de vestir utilizadas en el hecho[39m",
+    [34mobservaciones[39m: [36mnull[39m,
+    [34mcreated_at[39m: "[32m2025-10-30 16:50:11[39m",
+    [34mupdated_at[39m: "[32m2025-10-30 16:50:11[39m",
+  }
+
