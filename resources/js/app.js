@@ -2,6 +2,13 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+// Exponer Alpine globalmente (una vez)
+window.Alpine = window.Alpine || Alpine;
 
-Alpine.start();
+// Patrón recomendado por Livewire v3: diferir el arranque de Alpine
+// para que Livewire coordine una única inicialización.
+window.deferLoadingAlpine = (alpineInitCallback) => {
+	window.addEventListener('livewire:init', () => {
+		alpineInitCallback(); // Livewire pasará Alpine.start() aquí
+	});
+};

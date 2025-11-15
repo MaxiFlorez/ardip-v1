@@ -3,66 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\Models\Domicilio;
+use App\Models\Provincia; // <--- IMPORTAR EL MODELO PROVINCIA
+use App\Models\Departamento; // <--- IMPORTAR EL MODELO DEPARTAMENTO
 use Illuminate\Http\Request;
+use App\Http\Requests\DomicilioRequest;
 
 class DomicilioController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra el listado de domicilios.
      */
     public function index()
     {
-        // 2. BUSCAR DOMICILIOS (ordenados por departamento)
-        $domicilios = Domicilio::orderBy('departamento')->orderBy('calle')->paginate(15);
+        // Eager loading reducido (solo provincia y departamento)
+        $domicilios = Domicilio::with(['departamento', 'provincia'])
+            ->orderBy('departamento_id')
+            ->orderBy('calle')
+            ->paginate(15);
 
-        // 3. ENVIARLOS A LA VISTA
         return view('domicilios.index', compact('domicilios'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo domicilio.
      */
     public function create()
     {
-        return view('domicilios.create');
+    // 3. PROVINCIAS Y DEPARTAMENTOS PARA SELECTS (sin barrios)
+        $provincias = Provincia::orderBy('nombre')->get();
+        $departamentos = Departamento::orderBy('nombre')->get();
+        // Provincia por defecto: San Juan
+        $provinciaDefaultId = Provincia::where('nombre', 'San Juan')->value('id');
+    return view('domicilios.create', compact('provincias', 'departamentos', 'provinciaDefaultId'));
     }
 
     /**
      * Guarda el nuevo domicilio en la base de datos.
      */
-    public function store(Request $request)
+    public function store(DomicilioRequest $request)
     {
-        // 1. VALIDACIÓN (Basada en la migración de SESION_3.md)
-        $datosValidados = $request->validate([
-            'departamento' => 'required|string|max:100',
-            'provincia' => 'nullable|string|max:100',
-            'calle' => 'nullable|string|max:255',
-            'numero' => 'nullable|string|max:20',
-            'piso' => 'nullable|string|max:10',
-            'depto' => 'nullable|string|max:10',
-            'torre' => 'nullable|string|max:10',
-            'monoblock' => 'nullable|string|max:100',
-            'manzana' => 'nullable|string|max:20',
-            'lote' => 'nullable|string|max:20',
-            'casa' => 'nullable|string|max:20',
-            'barrio' => 'nullable|string|max:100',
-            'sector' => 'nullable|string|max:100',
-            'coordenadas_gps' => 'nullable|string|max:100',
-        ]);
+        // Validación centralizada en DomicilioRequest
+        $datosValidados = $request->validated();
 
-        // 2. GUARDAR
-        // Usamos el modelo Domicilio que ya tiene $guarded = ['id']
+        // Si la provincia seleccionada NO es San Juan, se fuerza departamento_id a null
+        $provinciaSanJuanId = Provincia::where('nombre', 'San Juan')->value('id');
+        if ($datosValidados['provincia_id'] !== $provinciaSanJuanId) {
+            $datosValidados['departamento_id'] = null;
+        }
+
         Domicilio::create($datosValidados);
 
-        // 3. REDIRIGIR
         return redirect()->route('domicilios.index')
                          ->with('success', 'Domicilio agregado exitosamente.');
     }
 
+    /**
+     * Muestra el detalle de un domicilio específico.
+     */
     public function show(Domicilio $domicilio)
     {
-        // Cargamos las relaciones (aunque domicilio aún no tiene, es buena práctica)
-        $domicilio->load('procedimientos'); // Veremos los procedimientos asociados
+        // 5. CARGAMOS LAS RELACIONES (sin barrio relacional)
+    $domicilio->load('procedimientos', 'provincia', 'departamento'); 
         return view('domicilios.show', compact('domicilio'));
     }
 
@@ -71,36 +72,30 @@ class DomicilioController extends Controller
      */
     public function edit(Domicilio $domicilio)
     {
-        return view('domicilios.edit', compact('domicilio'));
+    // 6. PROVINCIAS Y DEPARTAMENTOS (sin barrios)
+        $provincias = Provincia::orderBy('nombre')->get();
+        $departamentos = Departamento::orderBy('nombre')->get();
+        // Provincia por defecto: San Juan (por si el domicilio no tiene provincia asignada)
+        $provinciaDefaultId = Provincia::where('nombre', 'San Juan')->value('id');
+    return view('domicilios.edit', compact('domicilio', 'provincias', 'departamentos', 'provinciaDefaultId'));
     }
 
     /**
      * Actualiza el domicilio en la base de datos.
      */
-    public function update(Request $request, Domicilio $domicilio)
+    public function update(DomicilioRequest $request, Domicilio $domicilio)
     {
-        // 1. VALIDACIÓN (Igual que 'store', pero aflojamos 'provincia')
-        $datosValidados = $request->validate([
-            'departamento' => 'required|string|max:100',
-            'provincia' => 'nullable|string|max:100',
-            'calle' => 'nullable|string|max:255',
-            'numero' => 'nullable|string|max:20',
-            'piso' => 'nullable|string|max:10',
-            'depto' => 'nullable|string|max:10',
-            'torre' => 'nullable|string|max:10',
-            'monoblock' => 'nullable|string|max:100',
-            'manzana' => 'nullable|string|max:20',
-            'lote' => 'nullable|string|max:20',
-            'casa' => 'nullable|string|max:20',
-            'barrio' => 'nullable|string|max:100',
-            'sector' => 'nullable|string|max:100',
-            'coordenadas_gps' => 'nullable|string|max:100',
-        ]);
+        // Validación centralizada en DomicilioRequest
+        $datosValidados = $request->validated();
 
-        // 2. ACTUALIZAR
+        // Si la provincia cambiada NO es San Juan, se limpia departamento_id
+        $provinciaSanJuanId = Provincia::where('nombre', 'San Juan')->value('id');
+        if ($datosValidados['provincia_id'] !== $provinciaSanJuanId) {
+            $datosValidados['departamento_id'] = null;
+        }
+
         $domicilio->update($datosValidados);
 
-        // 3. REDIRIGIR
         return redirect()->route('domicilios.index')
                          ->with('success', 'Domicilio actualizado exitosamente.');
     }
@@ -110,8 +105,6 @@ class DomicilioController extends Controller
      */
     public function destroy(Domicilio $domicilio)
     {
-        // (Podemos agregar lógica de restricción si está vinculado a un procedimiento)
-        
         $domicilio->delete();
 
         return redirect()->route('domicilios.index')

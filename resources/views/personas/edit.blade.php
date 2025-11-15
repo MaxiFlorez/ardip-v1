@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700">Género *</label>
+                            <span class="block text-sm font-medium text-gray-700">Género *</span>
                             <div class="mt-2 space-x-4">
                                 <label class="inline-flex items-center">
                                     <input type="radio" name="genero" value="masculino"
@@ -109,7 +109,7 @@
 
                         @if($persona->foto)
                             <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Foto actual</label>
+                                <span class="block text-sm font-medium text-gray-700 mb-2">Foto actual</span>
                                 <img src="{{ asset('storage/' . $persona->foto) }}"
                                       alt="Foto actual"
                                       class="w-32 h-32 object-cover rounded border-2 border-gray-300">

@@ -33,11 +33,10 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <a class="underline text-sm text-indigo-600 hover:text-indigo-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+               href="mailto:soporte@ardip.local?subject=Recuperar%20acceso%20-%20ARDIP&body=Hola%20Soporte%2C%0D%0A%0D%0ANecesito%20ayuda%20para%20acceder%20a%20mi%20cuenta.%0D%0AUsuario%20(Email)%3A%20%0D%0ADetalles%20adicionales%3A%20%0D%0A%0D%0AGracias.">
+                {{ __('Contactar con soporte') }}
+            </a>
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}

@@ -87,6 +87,17 @@
                         </div>
                     @endif
 
+                    <!-- Domicilio Legal -->
+                    <div class="border-t border-gray-200 pt-6">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-2">Domicilio Legal</h4>
+                        @php $domLeg = optional($persona->domicilio); @endphp
+                        @if($domLeg)
+                            <p class="text-base text-gray-800">{{ $domLeg->direccion_completa }}</p>
+                        @else
+                            <p class="text-sm text-gray-500">Sin domicilio legal registrado.</p>
+                        @endif
+                    </div>
+
                     <!-- Procedimientos asociados -->
                     @if($persona->procedimientos->count() > 0)
                         <div class="border-t border-gray-200 pt-6">

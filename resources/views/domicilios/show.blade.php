@@ -32,14 +32,18 @@
                     <div class="border rounded-lg p-4">
                         <h3 class="text-lg font-semibold mb-4 border-b pb-2">Información del Domicilio</h3>
                         <dl class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-6">
+                            <div class="sm:col-span-3">
+                                <dt class="text-sm font-medium text-gray-500">Dirección Normalizada</dt>
+                                <dd class="mt-1 text-sm text-gray-900 font-bold">{{ $domicilio->direccion_completa }}</dd>
+                            </div>
                             
                             <div class="sm:col-span-1">
                                 <dt class="text-sm font-medium text-gray-500">Departamento</dt>
-                                <dd class="mt-1 text-sm text-gray-900 font-bold">{{ $domicilio->departamento }}</dd>
+                                <dd class="mt-1 text-sm text-gray-900 font-bold">{{ $domicilio->departamento->nombre ?? 'N/A' }}</dd>
                             </div>
                             <div class="sm:col-span-1">
                                 <dt class="text-sm font-medium text-gray-500">Provincia</dt>
-                                <dd class="mt-1 text-sm text-gray-900">{{ $domicilio->provincia }}</dd>
+                                <dd class="mt-1 text-sm text-gray-900">{{ $domicilio->provincia->nombre ?? 'N/A' }}</dd>
                             </div>
                             <div class="sm:col-span-1">
                                 <dt class="text-sm font-medium text-gray-500">Calle y N°</dt>
@@ -48,7 +52,8 @@
 
                             <div class="sm:col-span-1">
                                 <dt class="text-sm font-medium text-gray-500">Barrio</dt>
-                                <dd class="mt-1 text-sm text-gray-900">{{ $domicilio->barrio ?? 'N/A' }}</dd>
+                                {{-- Accedemos al nombre a través de la relación 'barrio' --}}
+                                <dd class="mt-1 text-sm text-gray-900">{{ $domicilio->barrio->nombre ?? 'N/A' }}</dd>
                             </div>
                             <div class="sm:col-span-1">
                                 <dt class="text-sm font-medium text-gray-500">Sector / Zona</dt>

@@ -16,7 +16,7 @@ class DomicilioSeeder extends Seeder
                 'departamento' => 'Capital',
                 'calle' => 'San Martín',
                 'numero' => '1234',
-                'barrio' => 'Centro',
+                // 'barrio' => 'Centro', // Campo eliminado
             ],
             
             // 2. Departamento
@@ -26,7 +26,7 @@ class DomicilioSeeder extends Seeder
                 'numero' => '567',
                 'piso' => '3',
                 'depto' => 'B',
-                'barrio' => 'Centro',
+                // 'barrio' => 'Centro',
             ],
             
             // 3. Monoblock
@@ -36,7 +36,7 @@ class DomicilioSeeder extends Seeder
                 'torre' => 'C',
                 'piso' => '5',
                 'depto' => '8',
-                'barrio' => 'Huarpes',
+                // 'barrio' => 'Huarpes',
             ],
             
             // 4. Lote en barrio
@@ -45,7 +45,7 @@ class DomicilioSeeder extends Seeder
                 'manzana' => '12',
                 'lote' => '7',
                 'casa' => '15',
-                'barrio' => 'Villa Hipódromo',
+                // 'barrio' => 'Villa Hipódromo',
             ],
             
             // 5. Zona rural

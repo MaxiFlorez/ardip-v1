@@ -16,17 +16,67 @@
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Ubicación Principal</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                 <div>
-                                    <label for="departamento" class="block text-sm font-medium text-gray-700">Departamento *</label>
-                                    <input type="text" name="departamento" id="departamento" value="{{ old('departamento', $domicilio->departamento) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                                    @error('departamento')
+                                    <label for="provincia_id" class="block text-sm font-medium text-gray-700">Provincia *</label>
+                                    <select name="provincia_id" id="provincia_id" 
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required
+                                        data-san-juan-id="{{ $provinciaDefaultId }}"
+                                        data-departamento-select="departamento_id"
+                                    >
+                                        <option value="">Selecciona una provincia</option>
+                                        @foreach($provincias as $provincia)
+                                            @php
+                                                // Si el domicilio no tiene provincia, usar San Juan por defecto
+                                                $selectedId = old('provincia_id', $domicilio->provincia_id ?? $provinciaDefaultId);
+                                            @endphp
+                                            <option value="{{ $provincia->id }}" {{ $selectedId == $provincia->id ? 'selected' : '' }}>
+                                                {{ $provincia->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('provincia_id')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            const provinciaSelect = document.getElementById('provincia_id');
+                                            const departamentoSelect = document.getElementById(provinciaSelect.dataset.departamentoSelect);
+                                            const sanJuanId = provinciaSelect.dataset.sanJuanId;
+
+                                            function toggleDepartamento() {
+                                                if (provinciaSelect.value === sanJuanId) {
+                                                    departamentoSelect.removeAttribute('disabled');
+                                                } else {
+                                                    departamentoSelect.value = '';
+                                                    departamentoSelect.setAttribute('disabled', 'disabled');
+                                                }
+                                            }
+
+                                            provinciaSelect.addEventListener('change', toggleDepartamento);
+                                            toggleDepartamento();
+                                        });
+                                    </script>
                                 </div>
                                 <div>
-                                    <label for="provincia" class="block text-sm font-medium text-gray-700">Provincia</label>
-                                    <input type="text" name="provincia" id="provincia" value="{{ old('provincia', $domicilio->provincia) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <label for="departamento_id" class="block text-sm font-medium text-gray-700">Departamento (solo si Provincia = San Juan)</label>
+                                    <select 
+                                        id="departamento_id" 
+                                        name="departamento_id" 
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                                        @disabled(old('provincia_id', $domicilio->provincia_id ?? $provinciaDefaultId) != $provinciaDefaultId)
+                                    >
+                                        <option value="">-- Seleccione un Departamento --</option>
+                                        @foreach($departamentos as $departamento)
+                                            @php
+                                                $selected = old('departamento_id', $domicilio->departamento_id) == $departamento->id;
+                                            @endphp
+                                            <option value="{{ $departamento->id }}" {{ $selected ? 'selected' : '' }}>
+                                                {{ $departamento->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('departamento_id')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -39,22 +89,33 @@
                                 <div>
                                     <label for="calle" class="block text-sm font-medium text-gray-700">Calle</label>
                                     <input type="text" name="calle" id="calle" value="{{ old('calle', $domicilio->calle) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('calle') border-red-500 @enderror">
+                                    @error('calle')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="numero" class="block text-sm font-medium text-gray-700">Número</label>
                                     <input type="text" name="numero" id="numero" value="{{ old('numero', $domicilio->numero) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('numero') border-red-500 @enderror">
+                                    @error('numero')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="barrio" class="block text-sm font-medium text-gray-700">Barrio</label>
-                                    <input type="text" name="barrio" id="barrio" value="{{ old('barrio', $domicilio->barrio) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="barrio" id="barrio" value="{{ old('barrio', $domicilio->barrio) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('barrio') border-red-500 @enderror">
+                                    @error('barrio')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="sector" class="block text-sm font-medium text-gray-700">Sector / Zona</label>
                                     <input type="text" name="sector" id="sector" value="{{ old('sector', $domicilio->sector) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('sector') border-red-500 @enderror">
+                                    @error('sector')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -64,42 +125,56 @@
                              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                                 <div>
                                     <label for="manzana" class="block text-sm font-medium text-gray-700">Manzana</label>
-                                    <input type="text" name="manzana" id="manzana" value="{{ old('manzana', $domicilio->manzana) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="manzana" id="manzana" value="{{ old('manzana', $domicilio->manzana) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('manzana') border-red-500 @enderror">
+                                    @error('manzana')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="lote" class="block text-sm font-medium text-gray-700">Lote</label>
-                                    <input type="text" name="lote" id="lote" value="{{ old('lote', $domicilio->lote) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="lote" id="lote" value="{{ old('lote', $domicilio->lote) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('lote') border-red-500 @enderror">
+                                    @error('lote')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="casa" class="block text-sm font-medium text-gray-700">Casa N°</label>
-                                    <input type="text" name="casa" id="casa" value="{{ old('casa', $domicilio->casa) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="casa" id="casa" value="{{ old('casa', $domicilio->casa) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('casa') border-red-500 @enderror">
+                                    @error('casa')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                                 <div>
                                     <label for="monoblock" class="block text-sm font-medium text-gray-700">Monoblock / Edificio</label>
-                                    <input type="text" name="monoblock" id="monoblock" value="{{ old('monoblock', $domicilio->monoblock) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="monoblock" id="monoblock" value="{{ old('monoblock', $domicilio->monoblock) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('monoblock') border-red-500 @enderror">
+                                    @error('monoblock')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="torre" class="block text-sm font-medium text-gray-700">Torre / Escalera</label>
-                                    <input type="text" name="torre" id="torre" value="{{ old('torre', $domicilio->torre) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="torre" id="torre" value="{{ old('torre', $domicilio->torre) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('torre') border-red-500 @enderror">
+                                    @error('torre')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                                 <div>
                                     <label for="piso" class="block text-sm font-medium text-gray-700">Piso</label>
-                                    <input type="text" name="piso" id="piso" value="{{ old('piso', $domicilio->piso) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="piso" id="piso" value="{{ old('piso', $domicilio->piso) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('piso') border-red-500 @enderror">
+                                    @error('piso')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="depto" class="block text-sm font-medium text-gray-700">Depto</label>
-                                    <input type="text" name="depto" id="depto" value="{{ old('depto', $domicilio->depto) }}"
-                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <input type="text" name="depto" id="depto" value="{{ old('depto', $domicilio->depto) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('depto') border-red-500 @enderror">
+                                    @error('depto')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -107,7 +182,10 @@
                          <div class="mb-4">
                             <label for="coordenadas_gps" class="block text-sm font-medium text-gray-700">Coordenadas GPS (Opcional)</label>
                             <input type="text" name="coordenadas_gps" id="coordenadas_gps" value="{{ old('coordenadas_gps', $domicilio->coordenadas_gps) }}"
-                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm @error('coordenadas_gps') border-red-500 @enderror">
+                            @error('coordenadas_gps')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
 

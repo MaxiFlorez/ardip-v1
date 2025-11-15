@@ -59,3 +59,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Arquitectura V1 Híbrida
+
+En esta rama seguimos la estrategia "V1 Híbrida" para la representación de domicilios y barrios:
+
+- **Provincias y Departamentos normalizados**: conservamos tablas normalizadas para `provincias` y `departamentos`, con sus modelos y seeders. Los formularios usan selects para elegir provincia y (cuando aplique) departamento.
+- **Barrios como campo de texto**: hemos eliminado la lógica relacional/catálogo de barrios (JSON / servicio / autocompletado). En V1 guardamos `barrio` como un campo de texto simple en la tabla `domicilios`.
+- **Domicilio legal en `personas`**: la relación principal entre `personas` y `domicilios` es mediante un `domicilio_id` (belongsTo). La funcionalidad de "domicilios conocidos" mediante el pivote `persona_domicilio` fue removida en esta fase y su tabla se eliminará mediante migración.
+
+Motivación: simplificar la primera versión del sistema manteniendo la consistencia geográfica (provincias/departamentos) y evitando mezclas de paradigmas (autocompletados JSON y pivotes complejos). Esta decisión facilita la adopción y garantiza una base de datos más predecible para V1.

@@ -88,47 +88,6 @@
                             @endforelse
                         </ul>
 
-                        <form action="{{ route('procedimientos.vincularPersona', $procedimiento) }}" method="POST" class="mt-4 border-t pt-4">
-                            @csrf
-                            <h4 class="text-md font-semibold mb-2">Vincular Persona Existente</h4>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                
-                                <div class="md:col-span-1">
-                                    <label for="persona_id" class="block text-sm font-medium text-gray-700">Persona</label>
-                                    <select name="persona_id" id="persona_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                                        <option value="">Seleccione...</option>
-                                        @foreach ($personasDisponibles as $persona)
-                                            <option value="{{ $persona->id }}">
-                                                {{ $persona->apellidos }}, {{ $persona->nombres }} (DNI: {{ $persona->dni }})
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="md:col-span-1">
-                                    <label for="situacion_procesal" class="block text-sm font-medium text-gray-700">Situación Procesal</label>
-                                    <select name="situacion_procesal" id="situacion_procesal" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                                        <option value="detenido">Detenido</option>
-                                        <option value="notificado">Notificado</option>
-                                        <option value="no_hallado">No Hallado</option>
-                                        <option value="contravencion">Contravención</option>
-                                    </select>
-                                </div>
-
-                                <div class="md:col-span-1 flex items-end">
-                                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full">
-                                        Vincular Persona
-                                    </button>
-                                </div>
-
-                                <div class="md:col-span-3">
-                                     <label for="observaciones_vinculo" class="block text-sm font-medium text-gray-700">Observaciones (Opcional)</label>
-                                     <textarea name="observaciones" id="observaciones_vinculo" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
-                                </div>
-
-                            </div>
-                        </form>
                         </div>
 
                     <div class="border rounded-lg p-4">
@@ -136,44 +95,19 @@
                         <ul class="divide-y divide-gray-200">
                             @forelse ($procedimiento->domicilios as $domicilio)
                                 <li class="py-3">
-                                    <p class="text-sm font-medium text-gray-900">
-                                        {{ $domicilio->calle ?? '' }} {{ $domicilio->numero ?? '' }} - {{ $domicilio->departamento }}
-                                    </p>
-                                    <p class="text-sm text-gray-500">
-                                        {{ $domicilio->barrio ?? '' }} {{ $domicilio->monoblock ?? '' }} {{ $domicilio->manzana ?? '' }} {{ $domicilio->lote ?? '' }}
-                                    </p>
+                                    <p class="text-sm font-medium text-gray-900">{{ $domicilio->direccion_completa }}</p>
+                                    @if(optional($domicilio->departamento)->nombre || optional($domicilio->provincia)->nombre)
+                                        <p class="text-xs text-gray-500 mt-1">
+                                            {{ optional($domicilio->departamento)->nombre }}
+                                            @if(optional($domicilio->provincia)->nombre)
+                                                ({{ $domicilio->provincia->nombre }})
+                                            @endif
+                                        </p>
+                                    @endif
                                 </li>
                             @empty
                                 <li class="py-3 text-sm text-gray-500">No hay domicilios vinculados a este procedimiento.</li>
                             @endforelse
-
-                            <form action="{{ route('procedimientos.vincularDomicilio', $procedimiento) }}" method="POST" class="mt-4 border-t pt-4">
-                            @csrf
-                            <h4 class="text-md font-semibold mb-2">Vincular Domicilio Existente</h4>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                
-                                <div class="md:col-span-2">
-                                    <label for="domicilio_id" class="block text-sm font-medium text-gray-700">Domicilio</label>
-                                    <select name="domicilio_id" id="domicilio_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                                        <option value="">Seleccione...</option>
-                            {{-- Iteramos sobre los domicilios que trajimos desde el controlador --}}
-                            @foreach ($domiciliosDisponibles as $domicilio)
-                                <option value="{{ $domicilio->id }}">
-                                    {{-- (Simplificamos la dirección para el desplegable) --}}
-                                    {{ $domicilio->calle ?? '' }} {{ $domicilio->numero ?? '' }} ({{ $domicilio->departamento }})
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                                <div class="md:col-span-1 flex items-end">
-                                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full">
-                                        Vincular Domicilio
-                                    </button>
-                                </div>
-
-                            </div>
-                        </form>
                         </ul>
                     </div>
 

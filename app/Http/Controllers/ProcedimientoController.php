@@ -76,7 +76,13 @@ class ProcedimientoController extends Controller
     {
         // Cargamos las relaciones que definimos en el Modelo
         // para poder usarlas en la vista
-        $procedimiento->load('brigada', 'personas', 'domicilios');
+        $procedimiento->load(
+            'brigada',
+            'personas.domicilio.provincia',
+            'personas.domicilio.departamento',
+            'domicilios.provincia',
+            'domicilios.departamento'
+        );
 
         // 2. ADICIÓN: Buscamos TODAS las personas para el menú desplegable
         $personasDisponibles = Persona::orderBy('apellidos')->get();
@@ -94,11 +100,21 @@ class ProcedimientoController extends Controller
 
     public function edit(Procedimiento $procedimiento)
     {
-        // Cargamos las brigadas para el menú desplegable
+        // Catálogos
         $brigadas = Brigada::orderBy('nombre')->get();
+        $provincias = \App\Models\Provincia::orderBy('nombre')->get();
+        $departamentos = \App\Models\Departamento::orderBy('nombre')->get();
 
-        // Enviamos el procedimiento y las brigadas a la vista
-        return view('procedimientos.edit', compact('procedimiento', 'brigadas'));
+        // Cargar relaciones necesarias para evitar N+1 en vistas y accesores
+        $procedimiento->load(
+            'brigada',
+            'personas.domicilio.provincia',
+            'personas.domicilio.departamento',
+            'domicilios.provincia',
+            'domicilios.departamento'
+        );
+
+        return view('procedimientos.edit', compact('procedimiento', 'brigadas', 'provincias', 'departamentos'));
     }
 
     /**
@@ -106,34 +122,170 @@ class ProcedimientoController extends Controller
      */
     public function update(Request $request, Procedimiento $procedimiento)
     {
-        // 1. VALIDACIÓN (similar a 'store')
-        $request->validate([
+        // Validación de pestaña 1 (Datos Legales)
+        $datosProc = $request->validate([
             'legajo_fiscal' => 'required|string|max:50',
             'caratula' => 'required|string',
             'fecha_procedimiento' => 'required|date',
+            'hora_procedimiento' => 'nullable|date_format:H:i',
             'brigada_id' => 'required|exists:brigadas,id',
-            'orden_secuestro' => 'nullable',
-            'orden_detencion' => 'nullable',
-            // Añadimos validación para los resultados (basado en la migración)
-            'resultado_secuestro' => 'required_if:orden_secuestro,true|in:positivo,negativo,no_aplica',
-            'resultado_detencion' => 'required_if:orden_detencion,true|in:positivo,negativo,no_aplica',
         ]);
 
-        // 2. PREPARAR DATOS
-        $datos = $request->all();
+        // Actualizar procedimiento
+        $procedimiento->update([
+            'legajo_fiscal' => $datosProc['legajo_fiscal'],
+            'caratula' => $datosProc['caratula'],
+            'fecha_procedimiento' => $datosProc['fecha_procedimiento'],
+            'hora_procedimiento' => $datosProc['hora_procedimiento'] ?? null,
+            'brigada_id' => $datosProc['brigada_id'],
+        ]);
 
-        // Convertir checkboxes
-        $datos['orden_secuestro'] = $request->has('orden_secuestro');
-        $datos['orden_detencion'] = $request->has('orden_detencion');
+        // Pestaña 2 (opcional): Persona + Domicilio Legal
+        // Soporta: actualizar persona existente (persona_id) o crear/actualizar por DNI.
+        if ($request->filled('dni') || $request->filled('persona_id')) {
+            $datosPersona = $request->validate([
+                'persona_id' => 'nullable|exists:personas,id',
+                'dni' => 'required|string|size:8',
+                'nombres' => 'required|string|max:100',
+                'apellidos' => 'required|string|max:100',
+                'fecha_nacimiento' => 'required|date',
+                'genero' => 'nullable|in:masculino,femenino,otro',
+                'alias' => 'nullable|string|max:100',
+                'nacionalidad' => 'nullable|string|max:50',
+                'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
+                'foto' => 'nullable|image|max:2048',
+                'observaciones_persona' => 'nullable|string',
+            ]);
 
-        // Lógica de resultados (si se quita la orden, el resultado vuelve a 'no_aplica')
-        $datos['resultado_secuestro'] = $datos['orden_secuestro'] ? $request->input('resultado_secuestro', 'negativo') : 'no_aplica';
-        $datos['resultado_detencion'] = $datos['orden_detencion'] ? $request->input('resultado_detencion', 'negativo') : 'no_aplica';
+            $validatedDom = $request->validate([
+                'domicilio_legal.calle' => 'required|string|max:150',
+                'domicilio_legal.numero' => 'nullable|string|max:20',
+                'domicilio_legal.barrio' => 'nullable|string|max:100',
+                'domicilio_legal.provincia_id' => 'required|exists:provincias,id',
+                'domicilio_legal.departamento_id' => 'nullable|exists:departamentos,id',
+            ]);
 
-        // 3. ACTUALIZAR EL PROCEDIMIENTO
-        $procedimiento->update($datos);
+            if (!empty($datosPersona['persona_id'])) {
+                $persona = Persona::findOrFail($datosPersona['persona_id']);
+            } else {
+                $persona = Persona::firstOrNew(['dni' => $datosPersona['dni']]);
+            }
 
-        // 4. REDIRIGIR A LA VISTA DE DETALLE
+            // Aseguramos defaults para campos opcionales que no deben quedar en NULL por restricciones DB
+            $persona->fill([
+                'dni' => $datosPersona['dni'],
+                'nombres' => $datosPersona['nombres'],
+                'apellidos' => $datosPersona['apellidos'],
+                'fecha_nacimiento' => $datosPersona['fecha_nacimiento'],
+                'genero' => $datosPersona['genero'] ?? $persona->genero ?? null,
+                'alias' => $datosPersona['alias'] ?? $persona->alias ?? '',
+                'nacionalidad' => ($datosPersona['nacionalidad'] ?? $persona->nacionalidad ?? 'SIN DATO'),
+                'estado_civil' => $datosPersona['estado_civil'] ?? $persona->estado_civil ?? '',
+                'observaciones' => $datosPersona['observaciones_persona'] ?? $persona->observaciones ?? '',
+            ]);
+            if ($request->hasFile('foto')) {
+                $path = $request->file('foto')->store('fotos_personas', 'public');
+                $persona->foto = $path;
+            }
+            $persona->save();
+
+            $dl = data_get($validatedDom, 'domicilio_legal', []);
+            $domicilioLegal = Domicilio::create([
+                'calle' => $dl['calle'],
+                'numero' => $dl['numero'] ?? null,
+                'barrio' => $dl['barrio'] ?? null,
+                'provincia_id' => $dl['provincia_id'],
+                'departamento_id' => $dl['departamento_id'] ?? null,
+            ]);
+            $persona->domicilio_id = $domicilioLegal->id;
+            $persona->save();
+
+            if (! $procedimiento->personas()->where('personas.id', $persona->id)->exists()) {
+                $procedimiento->personas()->attach($persona->id, [
+                    'situacion_procesal' => 'notificado',
+                    'observaciones' => null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
+
+        // Pestaña 3: Domicilios allanados (agregar nuevos si se envían)
+        $request->validate([
+            'domicilios_allanados' => 'array',
+            'domicilios_allanados.*.id' => 'nullable|exists:domicilios,id',
+            'domicilios_allanados.*.calle_allanada' => 'nullable|string|max:150',
+            'domicilios_allanados.*.numero_allanada' => 'nullable|string|max:20',
+            'domicilios_allanados.*.provincia_id' => 'nullable|exists:provincias,id',
+            'domicilios_allanados.*.departamento_id' => 'nullable|exists:departamentos,id',
+            'domicilios_allanados.*.monoblock' => 'nullable|alpha_num|max:100',
+            'domicilios_allanados.*.torre' => 'nullable|string|max:10',
+            'domicilios_allanados.*.piso' => 'nullable|string|max:10',
+            'domicilios_allanados.*.depto' => 'nullable|string|max:10',
+            'domicilios_allanados.*.sector' => 'nullable|string|max:100',
+            'domicilios_allanados.*.manzana' => 'nullable|alpha_num|max:20',
+            'domicilios_allanados.*.lote' => 'nullable|alpha_num|max:20',
+            'domicilios_allanados.*.casa' => 'nullable|alpha_num|max:20',
+            'domicilios_allanados.*.latitud' => 'nullable|numeric',
+            'domicilios_allanados.*.longitud' => 'nullable|numeric',
+        ]);
+
+        $attachIds = [];
+        foreach ((array) $request->input('domicilios_allanados', []) as $item) {
+            $calle = $item['calle_allanada'] ?? null;
+            if (!$calle) continue;
+            $coords = (isset($item['latitud'], $item['longitud']) && $item['latitud'] !== '' && $item['longitud'] !== '')
+                ? (trim($item['latitud']).','.trim($item['longitud'])) : null;
+
+            if (!empty($item['id'])) {
+                $dom = $procedimiento->domicilios()->where('domicilios.id', $item['id'])->first();
+                if ($dom) {
+                    $dom->update([
+                        'calle' => $calle,
+                        'numero' => $item['numero_allanada'] ?? null,
+                        'provincia_id' => $item['provincia_id'] ?? null,
+                        'departamento_id' => $item['departamento_id'] ?? null,
+                        'monoblock' => $item['monoblock'] ?? null,
+                        'torre' => $item['torre'] ?? null,
+                        'piso' => $item['piso'] ?? null,
+                        'depto' => $item['depto'] ?? null,
+                        'sector' => $item['sector'] ?? null,
+                        'manzana' => $item['manzana'] ?? null,
+                        'lote' => $item['lote'] ?? null,
+                        'casa' => $item['casa'] ?? null,
+                        'coordenadas_gps' => $coords,
+                    ]);
+                    $attachIds[] = $dom->id;
+                } else {
+                    $dom = Domicilio::find($item['id']);
+                    if ($dom) { $attachIds[] = $dom->id; }
+                }
+            } else {
+                $dom = Domicilio::create([
+                    'calle' => $calle,
+                    'numero' => $item['numero_allanada'] ?? null,
+                    'provincia_id' => $item['provincia_id'] ?? null,
+                    'departamento_id' => $item['departamento_id'] ?? null,
+                    'monoblock' => $item['monoblock'] ?? null,
+                    'torre' => $item['torre'] ?? null,
+                    'piso' => $item['piso'] ?? null,
+                    'depto' => $item['depto'] ?? null,
+                    'sector' => $item['sector'] ?? null,
+                    'manzana' => $item['manzana'] ?? null,
+                    'lote' => $item['lote'] ?? null,
+                    'casa' => $item['casa'] ?? null,
+                    'coordenadas_gps' => $coords,
+                ]);
+                $attachIds[] = $dom->id;
+            }
+        }
+        if ($attachIds) {
+            $now = now();
+            $attachData = [];
+            foreach ($attachIds as $id) { $attachData[$id] = ['created_at' => $now, 'updated_at' => $now]; }
+            $procedimiento->domicilios()->attach($attachData);
+        }
+
         return redirect()->route('procedimientos.show', $procedimiento)
                          ->with('success', 'Procedimiento actualizado exitosamente.');
     }

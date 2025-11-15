@@ -15,11 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Puedes mantener factories aquí si las necesitas
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Llama a los seeders en el orden correcto de dependencia
+        $this->call([
+            // 1. Catálogos que no dependen de nada
+            BrigadaSeeder::class,
+            ProvinciaSeeder::class,
+            DepartamentoSeeder::class,
+            // 2. Usuarios de prueba que dependen de Brigadas
+            TestUsersSeeder::class,
         ]);
     }
 }

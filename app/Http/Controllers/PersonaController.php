@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage; // ← NUEVO
+use Illuminate\Support\Facades\DB;
 
 class PersonaController extends Controller
 {
@@ -65,7 +66,10 @@ class PersonaController extends Controller
     public function show(Persona $persona)
     {
         // Cargar las relaciones
-        $persona->load('procedimientos');
+        $persona->load([
+            'procedimientos',
+            'domicilio',
+        ]);
         
         return view('personas.show', compact('persona'));
     }
@@ -116,6 +120,8 @@ class PersonaController extends Controller
         return redirect()->route('personas.show', $persona)
             ->with('success', 'Persona actualizada exitosamente.');
     }
+
+    // Lógica de "domicilios conocidos" eliminada en V1 Híbrida
 
     /**
      * Elimina una persona de la base de datos
