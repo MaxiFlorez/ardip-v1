@@ -81,10 +81,10 @@
 
                 <!-- Botones -->
                 <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2.5 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 transition mb-3" 
-                        style="background-color: #3b82f6;"
-                        onmouseover="this.style.backgroundColor='#2563eb'"
-                        onmouseout="this.style.backgroundColor='#3b82f6'"
-                        onmousedown="this.style.backgroundColor='#1d4ed8'">Iniciar Sesión</button>
+                        style="background-color: #1e40af;"
+                        onmouseover="this.style.backgroundColor='#1e3a8a'"
+                        onmouseout="this.style.backgroundColor='#1e40af'"
+                        onmousedown="this.style.backgroundColor='#172554'">Iniciar Sesión</button>
                 <a href="mailto:soporte@ardip.local?subject=Ayuda%20-%20ARDIP" class="w-full inline-flex justify-center items-center px-4 py-2.5 font-medium rounded-lg transition" 
                    style="border: 1px solid #cbd5e1; color: #1e293b; background-color: transparent;"
                    onmouseover="this.style.backgroundColor='#f8fafc'"

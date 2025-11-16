@@ -17,3 +17,17 @@ window.deferLoadingAlpine = (alpineInitCallback) => {
 if (!window.Livewire) {
     Alpine.start();
 }
+
+// Limpiar y reinicializar Alpine cuando la página cambia (SPA-like behavior)
+document.addEventListener('DOMContentLoaded', () => {
+	if (window.Alpine) {
+		// Asegurar que Alpine se reinicializa después de cambios de contenido
+		Alpine.nextTick(() => {
+			// Forzar reevaluación de directivas Alpine
+			document.querySelectorAll('[x-data]').forEach(el => {
+				Alpine.clone(el);
+			});
+		});
+	}
+});
+

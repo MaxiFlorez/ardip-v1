@@ -12,7 +12,18 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased" x-data="{ sidebarOpen: true }">
+    <body class="font-sans antialiased" x-data="{ 
+        sidebarOpen: window.innerWidth >= 1024,
+        init() {
+            this.$watch('sidebarOpen', (newVal) => {
+                localStorage.setItem('sidebar-open', newVal);
+            });
+            const saved = localStorage.getItem('sidebar-open');
+            if (saved !== null) {
+                this.sidebarOpen = saved === 'true';
+            }
+        }
+    }" @window:resize.debounce="if(window.innerWidth < 1024) sidebarOpen = false">
         <!-- Top Navigation; left offset responds to sidebar state -->
         @include('layouts.navigation')
 
