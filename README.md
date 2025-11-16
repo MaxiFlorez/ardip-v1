@@ -1,11 +1,6 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ARDIP V1
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyecto basado en Laravel para gestión de procedimientos, personas y domicilios con una Arquitectura V1 Híbrida.
 
 ## About Laravel
 
@@ -66,6 +61,13 @@ En esta rama seguimos la estrategia "V1 Híbrida" para la representación de dom
 
 - **Provincias y Departamentos normalizados**: conservamos tablas normalizadas para `provincias` y `departamentos`, con sus modelos y seeders. Los formularios usan selects para elegir provincia y (cuando aplique) departamento.
 - **Barrios como campo de texto**: hemos eliminado la lógica relacional/catálogo de barrios (JSON / servicio / autocompletado). En V1 guardamos `barrio` como un campo de texto simple en la tabla `domicilios`.
-- **Domicilio legal en `personas`**: la relación principal entre `personas` y `domicilios` es mediante un `domicilio_id` (belongsTo). La funcionalidad de "domicilios conocidos" mediante el pivote `persona_domicilio` fue removida en esta fase y su tabla se eliminará mediante migración.
+- **Domicilio legal en `personas`**: la relación principal entre `personas` y `domicilios` es mediante un `domicilio_id` (belongsTo). La funcionalidad de "domicilios conocidos" mediante el pivote `persona_domicilio` fue removida y su tabla se eliminó mediante migración (`2025_11_15_120000_drop_persona_domicilio_pivot_table`).
 
-Motivación: simplificar la primera versión del sistema manteniendo la consistencia geográfica (provincias/departamentos) y evitando mezclas de paradigmas (autocompletados JSON y pivotes complejos). Esta decisión facilita la adopción y garantiza una base de datos más predecible para V1.
+Motivación: simplificar la primera versión del sistema, manteniendo la consistencia geográfica (provincias/departamentos) y evitando mezclar paradigmas (autocompletados JSON y pivotes complejos). Esta decisión facilita la adopción y garantiza una base de datos más predecible para V1.
+
+Estado actual (resumen):
+
+- Interfaz en español (autenticación y perfil) y mensajes de validación claros.
+- Alpine inicializado sin Livewire; navegación corregida (dropdown y menú móvil).
+- Campo `barrio` tratado como texto libre; provincias/departamentos normalizados en `domicilios`.
+- Pivote `persona_domicilio` eliminado mediante migración aplicada.
