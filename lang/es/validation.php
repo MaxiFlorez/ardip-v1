@@ -1,4 +1,15 @@
 <?php
+/**
+ * Archivo de traducciones de validación (Español)
+ *
+ * Propósito:
+ * - Proveer mensajes de error legibles para las reglas de validación de Laravel.
+ * - Mapear nombres de atributos técnicos a etiquetas amigables para el usuario (sección 'attributes').
+ *
+ * Notas:
+ * - Las claves siguen la convención de Laravel (p.ej., 'required', 'min.string', 'password.mixed').
+ * - Personaliza/añade entradas según nuevas reglas o campos del proyecto.
+ */
 
 return [
     'accepted' => 'Debe aceptar :attribute.',
@@ -31,6 +42,7 @@ return [
     'url' => 'El formato de :attribute no es válido.',
     'lowercase' => ':attribute debe estar en minúsculas.',
 
+    // Reglas específicas de contraseñas
     'password' => [
         'letters' => 'La contraseña debe contener al menos una letra.',
         'mixed' => 'La contraseña debe contener al menos una mayúscula y una minúscula.',
@@ -39,6 +51,7 @@ return [
         'uncompromised' => 'La contraseña dada aparece en una filtración de datos. Por favor elige otra diferente.',
     ],
 
+    // Mapeo de atributos: nombre_campo => etiqueta amigable
     'attributes' => [
         'email' => 'correo electrónico',
         'password' => 'contraseña',

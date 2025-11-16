@@ -1,3 +1,19 @@
+<!--
+    Componente: x-password-input
+    Descripción: Campo de contraseña con botón para mostrar/ocultar el valor.
+    Accesibilidad: Incluye etiqueta aria-label dinámica y mantiene el focus en el input.
+    Uso:
+        <x-password-input id="password" name="password" required autocomplete="new-password" />
+    Props:
+        - id: string | null
+        - name: string (por defecto: "password")
+        - autocomplete: string | null (p.ej. "current-password" | "new-password")
+        - placeholder: string | null
+        - required: bool
+        - disabled: bool
+        - class: string (clases Tailwind adicionales)
+-->
+
 @props([
     'id' => null,
     'name' => 'password',
