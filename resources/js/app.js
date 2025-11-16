@@ -12,3 +12,8 @@ window.deferLoadingAlpine = (alpineInitCallback) => {
 		alpineInitCallback(); // Livewire pasará Alpine.start() aquí
 	});
 };
+
+// Si Livewire no está presente (proyecto sin Livewire), iniciar Alpine inmediatamente
+if (!window.Livewire) {
+    Alpine.start();
+}

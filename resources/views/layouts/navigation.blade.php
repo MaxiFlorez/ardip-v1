@@ -1,6 +1,6 @@
-<nav class="fixed top-0 left-0 right-0 z-40 bg-gray-900 text-gray-100 transition-all duration-300 ease-in-out" :class="sidebarOpen ? 'lg:ml-64' : 'ml-0'">
+<nav class="fixed top-0 left-0 right-0 z-40 bg-gray-900 text-gray-100 transition-all duration-300 ease-in-out" :class="sidebarOpen ? 'lg:ml-64' : 'ml-0'" x-data="{ open: false }">
     <!-- Top Navigation Fixed aligned to sidebar -->
-    <div class="px-4 sm:px-6 lg:px-8" x-data="{ open: false }">
+    <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center gap-2">
                 <!-- Sidebar Toggle (Hamburger) -->
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-gray-900 text-gray-100">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-gray-900 text-gray-100" x-cloak>
         <!-- Responsive Settings Options (solo usuario) -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
