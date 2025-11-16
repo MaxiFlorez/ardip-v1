@@ -30,10 +30,11 @@
             <div class="mt-6">
                 <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
                 <div class="w-3/4">
-                    <x-password-input
+                    <input
                         id="password"
                         name="password"
-                        class="mt-1 block w-full"
+                        type="password"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         placeholder="{{ __('Password') }}"
                     />
                 </div>
