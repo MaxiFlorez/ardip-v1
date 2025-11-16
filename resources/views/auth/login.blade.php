@@ -6,60 +6,56 @@
     <title>Inicio de Sesión - ARDIP V1</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="h-full flex flex-col" style="background-color: #0f172a; color: #1e293b;">
-    <!-- Header Institucional -->
-    <header class="w-full text-center pt-10 px-4">
-        <h1 class="text-2xl md:text-3xl font-bold tracking-wide" style="color: #ffffff;">Policía de San Juan – Dirección D-5</h1>
-        <p class="mt-2 text-lg font-semibold" style="color: #cbd5e1;">ARDIP- v1.0 -</p>
-        <p class="text-sm md:text-base" style="color: #94a3b8;">Archivo y Registro de Datos de Investigaciones y Procedimientos</p>
-    </header>
+<body class="h-full min-h-screen flex flex-col items-center justify-center p-4" style="background-color: #0f172a;">
+    <div class="w-full max-w-md">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold tracking-wide mb-2" style="color: #ffffff;">ARDIP v1.0</h1>
+            <p class="text-sm" style="color: #cbd5e1;">Archivo y Registro de Datos de Investigaciones y Procedimientos</p>
+        </div>
 
-    <!-- Contenedor Principal -->
-    <main class="flex-1 w-full flex items-center justify-center px-4 py-8">
-        <div class="w-full max-w-md rounded-xl shadow-md p-8 space-y-6" style="background-color: #ffffff;">
-            <h2 class="text-xl font-semibold text-center" style="color: #1e293b;">Panel de Acceso</h2>
+        <!-- Panel de Login -->
+        <div class="rounded-lg shadow-xl p-8" style="background-color: #ffffff;">
+            <h2 class="text-2xl font-semibold text-center mb-6" style="color: #1e293b;">Panel de Acceso</h2>
 
             @if(session('status'))
-                <div class="text-sm text-center" style="color: #16a34a;">{{ session('status') }}</div>
+                <div class="text-sm text-center mb-4" style="color: #16a34a;">{{ session('status') }}</div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}" class="space-y-5" novalidate>
+            <form method="POST" action="{{ route('login') }}" novalidate>
                 @csrf
 
                 <!-- Usuario -->
-                <div>
-                    <label for="email" class="block text-sm font-medium mb-1" style="color: #1e293b;">Usuario</label>
-                    <div class="relative" x-data="{}">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium mb-2" style="color: #1e293b;">Usuario</label>
+                    <div class="relative">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style="color: #94a3b8;">
-                            <!-- Ícono usuario -->
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 14c-4.418 0-8 1.79-8 4v1a1 1 0 001 1h14a1 1 0 001-1v-1c0-2.21-3.582-4-8-4z" />
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
                             </svg>
                         </span>
                         <input id="email" name="email" type="text" placeholder="Usuario" value="{{ old('email') }}" autocomplete="username" required autofocus
-                               class="block w-full pl-10 pr-3 py-2 rounded-md border bg-white focus:outline-none focus:ring-2 shadow-sm" 
-                               style="border-color: #cbd5e1; color: #1e293b; --tw-ring-color: #3b82f6;" />
+                               class="block w-full pl-10 pr-4 py-2.5 rounded-lg border focus:outline-none focus:ring-2 transition" 
+                               style="border-color: #cbd5e1; color: #1e293b; background-color: #ffffff; --tw-ring-color: #3b82f6;" />
                     </div>
                     @error('email')<p class="text-xs mt-1" style="color: #dc2626;">{{ $message }}</p>@enderror
                 </div>
 
                 <!-- Contraseña -->
-                <div x-data="{ show:false }">
-                    <label for="password" class="block text-sm font-medium mb-1" style="color: #1e293b;">Contraseña</label>
+                <div class="mb-4" x-data="{ show: false }">
+                    <label for="password" class="block text-sm font-medium mb-2" style="color: #1e293b;">Contraseña</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style="color: #94a3b8;">
-                            <!-- Ícono candado -->
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="4" y="11" width="16" height="9" rx="2" ry="2" />
-                                <path d="M8 11V8a4 4 0 018 0v3" />
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg>
                         </span>
                         <input :type="show ? 'text' : 'password'" id="password" name="password" placeholder="Contraseña" autocomplete="current-password" required
-                               class="block w-full pl-10 pr-10 py-2 rounded-md border bg-white focus:outline-none focus:ring-2 shadow-sm" 
-                               style="border-color: #cbd5e1; color: #1e293b; --tw-ring-color: #3b82f6;" />
-                        <button type="button" @click="show = !show" :aria-label="show ? 'Ocultar contraseña' : 'Mostrar contraseña'"
-                                class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none transition-colors"
+                               class="block w-full pl-10 pr-10 py-2.5 rounded-lg border focus:outline-none focus:ring-2 transition" 
+                               style="border-color: #cbd5e1; color: #1e293b; background-color: #ffffff; --tw-ring-color: #3b82f6;" />
+                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none transition-colors"
                                 style="color: #64748b;"
                                 @mouseenter="$el.style.color='#475569'"
                                 @mouseleave="$el.style.color='#64748b'">
@@ -76,35 +72,32 @@
                 </div>
 
                 <!-- Recordarme -->
-                <div class="flex items-center justify-between">
-                    <label class="inline-flex items-center text-sm select-none" style="color: #64748b;">
-                        <input type="checkbox" name="remember" class="rounded" style="border-color: #cbd5e1; accent-color: #3b82f6;">
+                <div class="mb-6 flex items-center">
+                    <label class="inline-flex items-center text-sm select-none cursor-pointer" style="color: #64748b;">
+                        <input type="checkbox" name="remember" class="rounded" style="border-color: #cbd5e1; accent-color: #3b82f6; width: 18px; height: 18px;">
                         <span class="ms-2">Recordarme</span>
                     </label>
-                    <a href="mailto:soporte@ardip.local?subject=Recuperar%20acceso%20-%20ARDIP" class="text-sm font-medium transition-colors" style="color: #3b82f6;" onmouseover="this.style.color='#2563eb'" onmouseout="this.style.color='#3b82f6'">Soporte</a>
                 </div>
 
                 <!-- Botones -->
-                <div class="space-y-3">
-                    <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 text-white font-semibold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition" 
-                            style="background-color: #3b82f6; --tw-ring-color: #3b82f6;"
-                            onmouseover="this.style.backgroundColor='#2563eb'"
-                            onmouseout="this.style.backgroundColor='#3b82f6'"
-                            onmousedown="this.style.backgroundColor='#1d4ed8'">Iniciar Sesión</button>
-                    <a href="mailto:soporte@ardip.local?subject=Ayuda%20-%20ARDIP" class="w-full inline-flex justify-center items-center px-4 py-2 font-medium rounded-md transition" 
-                       style="border: 1px solid #cbd5e1; color: #1e293b; background-color: transparent;"
-                       onmouseover="this.style.backgroundColor='#f1f5f9'"
-                       onmouseout="this.style.backgroundColor='transparent'">Ayuda / Contacto soporte</a>
-                </div>
+                <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2.5 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 transition mb-3" 
+                        style="background-color: #3b82f6;"
+                        onmouseover="this.style.backgroundColor='#2563eb'"
+                        onmouseout="this.style.backgroundColor='#3b82f6'"
+                        onmousedown="this.style.backgroundColor='#1d4ed8'">Iniciar Sesión</button>
+                <a href="mailto:soporte@ardip.local?subject=Ayuda%20-%20ARDIP" class="w-full inline-flex justify-center items-center px-4 py-2.5 font-medium rounded-lg transition" 
+                   style="border: 1px solid #cbd5e1; color: #1e293b; background-color: transparent;"
+                   onmouseover="this.style.backgroundColor='#f8fafc'"
+                   onmouseout="this.style.backgroundColor='transparent'">Ayuda / Contacto soporte</a>
             </form>
         </div>
-    </main>
 
-    <!-- Footer / Disclaimer -->
-    <footer class="w-full text-center pb-6 px-4 space-y-1" style="color: #64748b; font-size: 0.6875rem;">
-        <p class="leading-tight">Uso exclusivo de personal autorizado de la Policía de San Juan – Dirección D-5.</p>
-        <p class="leading-tight">Datos personales protegidos por Ley N.º 25.326. Difusión no autorizada prohibida.</p>
-        <p class="leading-tight">Actividad monitoreada.</p>
-    </footer>
+        <!-- Footer -->
+        <div class="mt-6 text-center space-y-1" style="color: #64748b; font-size: 0.75rem;">
+            <p class="leading-tight">Uso exclusivo de personal autorizado de la Policía de San Juan – Dirección D-5.</p>
+            <p class="leading-tight">Datos personales protegidos por Ley N.º 25.326. Difusión no autorizada prohibida.</p>
+            <p class="leading-tight">Actividad monitoreada.</p>
+        </div>
+    </div>
 </body>
 </html>
