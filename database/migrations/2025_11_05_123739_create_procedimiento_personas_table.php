@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id();
         $table->foreignId('procedimiento_id')->constrained('procedimientos')->onDelete('cascade');
         $table->foreignId('persona_id')->constrained('personas')->onDelete('cascade');
-        $table->enum('situacion_procesal', ['detenido', 'notificado', 'no_hallado', 'contravencion']);
+        $table->enum('situacion_procesal', ['DETENIDO', 'APREHENDIDO', 'NOTIFICADO', 'NO HALLADO']);
         $table->boolean('pedido_captura')->default(false);
         $table->text('observaciones')->nullable();
         $table->timestamps();

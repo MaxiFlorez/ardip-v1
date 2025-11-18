@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Procedimiento;
+use App\Models\Persona;
 use App\Models\Provincia; // <--- IMPORTAR EL NUEVO MODELO PROVINCIA
 use App\Models\Departamento; // <--- IMPORTAR EL NUEVO MODELO DEPARTAMENTO
 use Illuminate\Database\Eloquent\Model;
@@ -55,6 +56,14 @@ class Domicilio extends Model
         // Usamos la tabla pivote que definimos en Sesión 3 y 4
         return $this->belongsToMany(Procedimiento::class, 'procedimiento_domicilios')
                      ->withTimestamps();
+    }
+
+    /**
+     * Relación: Un domicilio puede ser domicilio principal de muchas personas.
+     */
+    public function personas()
+    {
+        return $this->hasMany(Persona::class);
     }
 
     // ==============================================

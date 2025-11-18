@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Contraseña -->
-                <div class="mb-4" x-data="{ show: false }">
+                <div class="mb-4">
                     <label for="password" class="block text-sm font-medium mb-2" style="color: #1e293b;">Contraseña</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style="color: #94a3b8;">
@@ -52,18 +52,20 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg>
                         </span>
-                        <input :type="show ? 'text' : 'password'" id="password" name="password" placeholder="Contraseña" autocomplete="current-password" required
+                        <input id="password" name="password" type="password" placeholder="Contraseña" autocomplete="current-password" required
                                class="block w-full pl-10 pr-10 py-2.5 rounded-lg border focus:outline-none focus:ring-2 transition" 
                                style="border-color: #cbd5e1; color: #1e293b; background-color: #ffffff; --tw-ring-color: #3b82f6;" />
-                        <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none transition-colors"
+                        <button type="button" id="toggle-password" class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none transition-colors"
                                 style="color: #64748b;"
-                                @mouseenter="$el.style.color='#475569'"
-                                @mouseleave="$el.style.color='#64748b'">
-                            <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                onmouseenter="this.style.color='#475569'"
+                                onmouseleave="this.style.color='#64748b'">
+                            <!-- Icono mostrar (visible cuando password oculto) -->
+                            <svg id="icon-show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
-                            <svg x-show="show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <!-- Icono ocultar (inicialmente hidden) -->
+                            <svg id="icon-hide" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a10.05 10.05 0 012.26-3.955M6.223 6.223A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.956 9.956 0 01-4.28 5.223M15 12a3 3 0 00-3-3m0 0a3 3 0 013 3m-3-3L3 21m9-12L21 3" />
                             </svg>
                         </button>
@@ -100,4 +102,19 @@
         </div>
     </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('toggle-password');
+    if(!btn) return;
+    const input = document.getElementById('password');
+    const iconShow = document.getElementById('icon-show');
+    const iconHide = document.getElementById('icon-hide');
+    btn.addEventListener('click', () => {
+        const isText = input.type === 'text';
+        input.type = isText ? 'password' : 'text';
+        iconShow.classList.toggle('hidden', !isText);
+        iconHide.classList.toggle('hidden', isText);
+    });
+});
+</script>
 </html>

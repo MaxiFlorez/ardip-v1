@@ -31,53 +31,28 @@
                             @enderror
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <label for="fecha_procedimiento" class="block text-sm font-medium text-gray-700">Fecha Procedimiento *</label>
-                                <input type="date" name="fecha_procedimiento" id="fecha_procedimiento" value="{{ old('fecha_procedimiento', date('Y-m-d')) }}"
-                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                                @error('fecha_procedimiento')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div>
-                                <label for="hora_procedimiento" class="block text-sm font-medium text-gray-700">Hora (Opcional)</label>
-                                <input type="time" name="hora_procedimiento" id="hora_procedimiento" value="{{ old('hora_procedimiento') }}"
-                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-                            </div>
-                        </div>
-                        
                         <div class="mb-4">
-                            <label for="brigada_id" class="block text-sm font-medium text-gray-700">Brigada Actuante *</label>
-                            <select name="brigada_id" id="brigada_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                                <option value="">Seleccione una brigada...</option>
-                                @foreach ($brigadas as $brigada)
-                                    <option value="{{ $brigada->id }}" {{ old('brigada_id') == $brigada->id ? 'selected' : '' }}>
-                                        {{ $brigada->nombre }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('brigada_id')
+                            <label for="fecha_procedimiento" class="block text-sm font-medium text-gray-700">Fecha Procedimiento *</label>
+                            <input type="date" name="fecha_procedimiento" id="fecha_procedimiento" value="{{ old('fecha_procedimiento', date('Y-m-d')) }}" max="{{ now()->toDateString() }}"
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                            @error('fecha_procedimiento')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
+
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Órdenes Otorgadas por el Juez</label>
-                            <div class="space-y-2">
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="orden_allanamiento" value="1" class="rounded border-gray-300" checked disabled>
-                                    <span class="ml-2 text-sm text-gray-600">(Allanamiento siempre se otorga)</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="orden_secuestro" value="1" class="rounded border-gray-300" {{ old('orden_secuestro') ? 'checked' : '' }}>
-                                    <span class="ml-2 text-sm text-gray-900">Orden de Secuestro</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="orden_detencion" value="1" class="rounded border-gray-300" {{ old('orden_detencion') ? 'checked' : '' }}>
-                                    <span class="ml-2 text-sm text-gray-900">Orden de Detención</span>
-                                </label>
-                            </div>
+                            <label for="orden_judicial" class="block text-sm font-medium text-gray-700 mb-2">Orden Judicial</label>
+                            <select id="orden_judicial" name="orden_judicial" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                <option value="">Seleccione…</option>
+                                <option value="Detención en caso de secuestro positivo" {{ old('orden_judicial')==='Detención en caso de secuestro positivo' ? 'selected' : '' }}>Detención en caso de secuestro positivo</option>
+                                <option value="Detención directa" {{ old('orden_judicial')==='Detención directa' ? 'selected' : '' }}>Detención directa</option>
+                                <option value="Notificación al acusado" {{ old('orden_judicial')==='Notificación al acusado' ? 'selected' : '' }}>Notificación al acusado</option>
+                                <option value="Secuestro y notificación" {{ old('orden_judicial')==='Secuestro y notificación' ? 'selected' : '' }}>Secuestro y notificación</option>
+                            </select>
+                            @error('orden_judicial')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="flex justify-end space-x-3 mt-8 pt-6 border-t border-gray-200">

@@ -62,8 +62,8 @@ class DomicilioController extends Controller
      */
     public function show(Domicilio $domicilio)
     {
-        // 5. CARGAMOS LAS RELACIONES (sin barrio relacional)
-    $domicilio->load('procedimientos', 'provincia', 'departamento'); 
+        // Cargar relaciones necesarias para la vista
+        $domicilio->load('procedimientos', 'provincia', 'departamento', 'personas');
         return view('domicilios.show', compact('domicilio'));
     }
 

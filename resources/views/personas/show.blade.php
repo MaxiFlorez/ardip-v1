@@ -114,13 +114,17 @@
                                                 </p>
                                             </div>
                                             <div class="text-right">
+                                                @php
+                                                    $sit = strtoupper(trim((string) $proc->pivot->situacion_procesal));
+                                                @endphp
                                                 <span class="inline-block px-3 py-1 text-sm rounded-full
-                                                    @if($proc->pivot->situacion_procesal == 'detenido') bg-red-100 text-red-800
-                                                    @elseif($proc->pivot->situacion_procesal == 'notificado') bg-blue-100 text-blue-800
-                                                    @elseif($proc->pivot->situacion_procesal == 'no_hallado') bg-yellow-100 text-yellow-800
+                                                    @if($sit === 'DETENIDO') bg-red-100 text-red-800
+                                                    @elseif($sit === 'APREHENDIDO') bg-orange-100 text-orange-800
+                                                    @elseif($sit === 'NOTIFICADO') bg-blue-100 text-blue-800
+                                                    @elseif($sit === 'NO HALLADO') bg-yellow-100 text-yellow-800
                                                     @else bg-gray-100 text-gray-800
                                                     @endif">
-                                                    {{ ucfirst(str_replace('_', ' ', $proc->pivot->situacion_procesal)) }}
+                                                    {{ ucwords(strtolower(str_replace('_', ' ', $proc->pivot->situacion_procesal))) }}
                                                 </span>
                                             </div>
                                         </div>

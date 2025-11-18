@@ -73,6 +73,17 @@
                                     </select>
                                     @error('brigada_id')<p class="text-sm text-red-600 mt-1">{{ $message }}</p>@enderror
                                 </div>
+                                <div>
+                                    <label for="orden_judicial" class="block text-sm">Orden Judicial</label>
+                                    <select id="orden_judicial" name="orden_judicial" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                        <option value="">Seleccione…</option>
+                                        <option value="Detención en caso de secuestro positivo" @selected(old('orden_judicial', $procedimiento->orden_judicial)==='Detención en caso de secuestro positivo')>Detención en caso de secuestro positivo</option>
+                                        <option value="Detención directa" @selected(old('orden_judicial', $procedimiento->orden_judicial)==='Detención directa')>Detención directa</option>
+                                        <option value="Notificación al acusado" @selected(old('orden_judicial', $procedimiento->orden_judicial)==='Notificación al acusado')>Notificación al acusado</option>
+                                        <option value="Secuestro y notificación" @selected(old('orden_judicial', $procedimiento->orden_judicial)==='Secuestro y notificación')>Secuestro y notificación</option>
+                                    </select>
+                                    @error('orden_judicial')<p class="text-sm text-red-600 mt-1">{{ $message }}</p>@enderror
+                                </div>
                             </div>
 
                             <div class="flex justify-end mt-6">
@@ -380,6 +391,48 @@
                             </div>
                         </div>
 
+                        <!-- Personas Vinculadas (Edición de datos pivote) -->
+                        <div class="mt-8 border-t pt-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Personas Vinculadas</h3>
+                            @if($procedimiento->personas->count() === 0)
+                                <p class="text-sm text-gray-500">Este procedimiento no tiene personas vinculadas.</p>
+                            @else
+                                <div class="space-y-4">
+                                    @foreach($procedimiento->personas as $p)
+                                        <div class="border rounded-lg p-4">
+                                            <div class="mb-3">
+                                                <p class="text-sm text-gray-600">DNI: <span class="font-semibold text-gray-900">{{ $p->dni }}</span></p>
+                                                <p class="text-sm text-gray-600">Persona: <span class="font-semibold text-gray-900">{{ $p->apellidos }}, {{ $p->nombres }}</span></p>
+                                            </div>
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <div>
+                                                    <label for="pivot_situacion_{{ $p->id }}" class="block text-sm">Situación Procesal</label>
+                                                    @php
+                                                        $opciones = ['NO HALLADO', 'DETENIDO', 'APREHENDIDO', 'NOTIFICADO'];
+                                                        $situacionActual = $p->pivot->situacion_procesal;
+                                                    @endphp
+                                                    <select name="personas[{{ $p->id }}][situacion_procesal]" id="pivot_situacion_{{ $p->id }}" data-persona-id="{{ $p->id }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm pivot-situacion">
+                                                        @foreach ($opciones as $opcion)
+                                                            <option value="{{ $opcion }}" @selected($opcion === $situacionActual)>{{ $opcion }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div id="contenedor_pedido_captura_{{ $p->id }}" class="flex items-center mt-6">
+                                                    <input type="hidden" name="personas[{{ $p->id }}][pedido_captura]" value="0">
+                                                    <input type="checkbox" id="pivot_captura_{{ $p->id }}" name="personas[{{ $p->id }}][pedido_captura]" value="1" class="rounded border-gray-300" @checked($p->pivot->pedido_captura ?? false)>
+                                                    <label for="pivot_captura_{{ $p->id }}" class="ml-2 text-sm">Pedido de Captura</label>
+                                                </div>
+                                                <div class="md:col-span-1 md:col-start-1 md:col-end-4">
+                                                    <label for="pivot_observaciones_{{ $p->id }}" class="block text-sm">Observaciones (Pivote)</label>
+                                                    <textarea name="personas[{{ $p->id }}][observaciones]" id="pivot_observaciones_{{ $p->id }}" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">{{ $p->pivot->observaciones }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -557,5 +610,29 @@
                 }
             }
         }
+    </script>
+
+    <script>
+        // Lógica condicional para mostrar/ocultar Pedido de Captura por persona
+        document.addEventListener('DOMContentLoaded', function () {
+            const selects = document.querySelectorAll('select.pivot-situacion');
+            function setup(select) {
+                const personaId = select.getAttribute('data-persona-id');
+                const contenedor = document.getElementById('contenedor_pedido_captura_' + personaId);
+                if (!contenedor) return;
+                function toggle() {
+                    if (select.value === 'NO HALLADO') {
+                        contenedor.style.display = 'flex';
+                    } else {
+                        contenedor.style.display = 'none';
+                        const cb = contenedor.querySelector('input[type="checkbox"]');
+                        if (cb) cb.checked = false;
+                    }
+                }
+                toggle();
+                select.addEventListener('change', toggle);
+            }
+            selects.forEach(setup);
+        });
     </script>
 </x-app-layout>

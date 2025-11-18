@@ -11,9 +11,6 @@ class Procedimiento extends Model
     protected $casts = [
         'fecha_procedimiento' => 'date',
         'hora_procedimiento' => 'datetime:H:i',
-        'orden_allanamiento' => 'boolean',
-        'orden_secuestro' => 'boolean',
-        'orden_detencion' => 'boolean',
     ];
     
     // Relaciones

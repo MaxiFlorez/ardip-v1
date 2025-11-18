@@ -16,10 +16,11 @@ class ProcedimientoController extends Controller
      */
     public function index()
     {
-        // Usamos 'with' para cargar la relación 'brigada' y evitar N+1 queries
-        $procedimientos = Procedimiento::with('brigada') 
-                                      ->orderBy('fecha_procedimiento', 'desc')
-                                      ->paginate(10); 
+        // Listado ordenado por fecha y hora (descendente) con brigada precargada
+        $procedimientos = Procedimiento::with('brigada')
+            ->latest('fecha_procedimiento')
+            ->latest('hora_procedimiento')
+            ->paginate(10);
 
         return view('procedimientos.index', compact('procedimientos'));
     }
@@ -29,10 +30,8 @@ class ProcedimientoController extends Controller
      */
     public function create()
     {
-        // 3. OBTENER BRIGADAS PARA EL SELECT
-        $brigadas = Brigada::orderBy('nombre')->get();
-        
-        return view('procedimientos.create', compact('brigadas'));
+        // Flujo 3: la brigada se autocompleta desde el usuario autenticado
+        return view('procedimientos.create');
     }
 
     /**
@@ -40,61 +39,40 @@ class ProcedimientoController extends Controller
      */
     public function store(Request $request)
     {
-        // 4. VALIDACIÓN DE DATOS (SIMPLE POR AHORA)
-        $request->validate([
+        // Validación (solo contenedor del legajo)
+        $validated = $request->validate([
             'legajo_fiscal' => 'required|string|max:50',
             'caratula' => 'required|string',
-            'fecha_procedimiento' => 'required|date',
-            'brigada_id' => 'required|exists:brigadas,id',
-            'orden_secuestro' => 'nullable',
-            'orden_detencion' => 'nullable',
+            'fecha_procedimiento' => 'required|date|before_or_equal:today',
+            'orden_judicial' => 'required|in:Detención en caso de secuestro positivo,Detención directa,Notificación al acusado,Secuestro y notificación',
         ]);
 
-        // 5. CREAR PROCEDIMIENTO
-        // Usamos $guarded, así que podemos pasar el request validado
-        $datos = $request->all();
-        
-        // Asignar el usuario que lo está cargando
-        $datos['usuario_id'] = Auth::id(); 
-        
-        // Convertir checkboxes (si no se marcan, no envían valor)
-        $datos['orden_secuestro'] = $request->has('orden_secuestro');
-        $datos['orden_detencion'] = $request->has('orden_detencion');
+        // Crear Procedimiento con autocompletado de usuario y brigada
+        $procedimiento = Procedimiento::create([
+            'legajo_fiscal' => $validated['legajo_fiscal'],
+            'caratula' => $validated['caratula'],
+            'fecha_procedimiento' => $validated['fecha_procedimiento'],
+            'hora_procedimiento' => null,
+            'orden_judicial' => $validated['orden_judicial'],
+            'usuario_id' => Auth::id(),
+            'brigada_id' => optional(Auth::user())->brigada_id,
+        ]);
 
-        // Valores por defecto para 'resultado' según la migración
-        $datos['resultado_secuestro'] = $request->has('orden_secuestro') ? 'negativo' : 'no_aplica';
-        $datos['resultado_detencion'] = $request->has('orden_detencion') ? 'negativo' : 'no_aplica';
-
-
-        $procedimiento = Procedimiento::create($datos);
-
-        // 6. REDIRIGIR (Por ahora al listado, luego al detalle)
-        return redirect()->route('procedimientos.index')
-                         ->with('success', 'Procedimiento creado exitosamente.');
+        // Redirigir al detalle para continuar con vinculaciones
+        return redirect()->route('procedimientos.show', $procedimiento)
+                         ->with('success', 'Procedimiento creado. Ahora puede vincular personas y domicilios.');
     }
     public function show(Procedimiento $procedimiento)
     {
-        // Cargamos las relaciones que definimos en el Modelo
-        // para poder usarlas en la vista
-        $procedimiento->load(
-            'brigada',
-            'personas.domicilio.provincia',
-            'personas.domicilio.departamento',
-            'domicilios.provincia',
-            'domicilios.departamento'
-        );
+        // Cargar relaciones principales para la vista de detalle
+        $procedimiento->load('brigada', 'personas', 'domicilios');
 
-        // 2. ADICIÓN: Buscamos TODAS las personas para el menú desplegable
-        $personasDisponibles = Persona::orderBy('apellidos')->get();
+        // Catálogos para formularios en show (vinculación)
+        $provincias = \App\Models\Provincia::orderBy('nombre')->get();
+        $departamentos = \App\Models\Departamento::orderBy('nombre')->get();
+        $sanJuanId = \App\Models\Provincia::where('nombre', 'San Juan')->value('id');
 
-        //ADICIÓN: Buscamos TODOS los domicilios
-        $domiciliosDisponibles = Domicilio::orderBy('calle')->get(); // Ordenamos por calle
-
-        return view('procedimientos.show', compact(
-            'procedimiento', 
-            'personasDisponibles', 
-            'domiciliosDisponibles' // <-- Añadimos domicilios al compact
-        ));
+        return view('procedimientos.show', compact('procedimiento', 'provincias', 'departamentos', 'sanJuanId'));
 
     }
 
@@ -129,6 +107,7 @@ class ProcedimientoController extends Controller
             'fecha_procedimiento' => 'required|date',
             'hora_procedimiento' => 'nullable|date_format:H:i',
             'brigada_id' => 'required|exists:brigadas,id',
+            'orden_judicial' => 'nullable|in:Detención en caso de secuestro positivo,Detención directa,Notificación al acusado,Secuestro y notificación',
         ]);
 
         // Actualizar procedimiento
@@ -138,6 +117,7 @@ class ProcedimientoController extends Controller
             'fecha_procedimiento' => $datosProc['fecha_procedimiento'],
             'hora_procedimiento' => $datosProc['hora_procedimiento'] ?? null,
             'brigada_id' => $datosProc['brigada_id'],
+            'orden_judicial' => $datosProc['orden_judicial'] ?? null,
         ]);
 
         // Pestaña 2 (opcional): Persona + Domicilio Legal
@@ -202,9 +182,36 @@ class ProcedimientoController extends Controller
 
             if (! $procedimiento->personas()->where('personas.id', $persona->id)->exists()) {
                 $procedimiento->personas()->attach($persona->id, [
-                    'situacion_procesal' => 'notificado',
+                    'situacion_procesal' => 'NOTIFICADO',
                     'observaciones' => null,
                     'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
+
+        // Actualizar datos pivote de personas vinculadas (Fase 15)
+        $personasPivot = (array) $request->input('personas', []);
+        if (!empty($personasPivot)) {
+            $permitidos = ['NO HALLADO', 'DETENIDO', 'APREHENDIDO', 'NOTIFICADO'];
+            foreach ($personasPivot as $personaId => $pivot) {
+                if (! $procedimiento->personas()->where('personas.id', $personaId)->exists()) {
+                    continue;
+                }
+                $situacion = strtoupper(trim((string)($pivot['situacion_procesal'] ?? '')));
+                if (! in_array($situacion, $permitidos, true)) {
+                    continue;
+                }
+                $pedido = isset($pivot['pedido_captura']) && (int)$pivot['pedido_captura'] === 1 ? 1 : 0;
+                if ($situacion !== 'NO HALLADO') {
+                    $pedido = 0; // Regla: solo con NO HALLADO
+                }
+                $obs = isset($pivot['observaciones']) ? trim((string)$pivot['observaciones']) : null;
+
+                $procedimiento->personas()->updateExistingPivot($personaId, [
+                    'situacion_procesal' => $situacion,
+                    'pedido_captura' => $pedido,
+                    'observaciones' => $obs,
                     'updated_at' => now(),
                 ]);
             }
@@ -305,64 +312,168 @@ class ProcedimientoController extends Controller
 
     public function vincularPersona(Request $request, Procedimiento $procedimiento)
     {
-        // 1. Validar los datos del formulario
-        $datosValidados = $request->validate([
-            'persona_id' => 'required|exists:personas,id',
-            'situacion_procesal' => 'required|in:detenido,notificado,no_hallado,contravencion', //
+        // 1) Validación de Persona
+        $datosPersona = $request->validate([
+            'dni' => 'required|numeric|digits:8|unique:personas,dni',
+            'nombres' => 'required|string|max:100',
+            'apellidos' => 'required|string|max:100',
+            'fecha_nacimiento' => 'required|date|before_or_equal:today',
+            'genero' => 'nullable|in:masculino,femenino,otro',
+            'alias' => 'nullable|string|max:100',
+            'nacionalidad' => 'nullable|string|max:50',
+            'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
+            'foto' => 'nullable|image|max:2048',
             'observaciones' => 'nullable|string',
         ]);
 
-        // 2. Verificar si la persona ya está vinculada (para evitar duplicados)
-        $vinculoExistente = $procedimiento->personas()
-                            ->where('persona_id', $datosValidados['persona_id'])
-                            ->exists();
-
-        if ($vinculoExistente) {
-            return redirect()->route('procedimientos.show', $procedimiento)
-                             ->with('error', 'Esta persona ya está vinculada a este procedimiento.');
-        }
-
-        // 3. Vincular la persona usando la relación 'personas()'
-        // El método attach() guarda en la tabla pivote 'procedimiento_personas'
-        $procedimiento->personas()->attach($datosValidados['persona_id'], [
-            'situacion_procesal' => $datosValidados['situacion_procesal'],
-            'observaciones' => $datosValidados['observaciones'],
-            'created_at' => now(), // Aseguramos los timestamps
-            'updated_at' => now(), // Aseguramos los timestamps
+        // 2) Validación de Domicilio
+        $datosDomicilio = $request->validate([
+            'domicilio.calle' => 'required|string|max:150',
+            'domicilio.numero' => 'nullable|integer|min:0',
+            'domicilio.barrio' => 'nullable|string|max:100',
+            'domicilio.provincia_id' => 'required|exists:provincias,id',
+            'domicilio.departamento_id' => 'nullable|exists:departamentos,id',
+            'domicilio.monoblock' => 'nullable|alpha_num|max:100',
+            'domicilio.torre' => 'nullable|string|max:10',
+            'domicilio.piso' => 'nullable|string|max:10',
+            'domicilio.depto' => 'nullable|string|max:10',
+            'domicilio.sector' => 'nullable|string|max:100',
+            'domicilio.manzana' => 'nullable|alpha_num|max:20',
+            'domicilio.lote' => 'nullable|alpha_num|max:20',
+            'domicilio.casa' => 'nullable|alpha_num|max:20',
+            'domicilio.latitud' => 'nullable|numeric',
+            'domicilio.longitud' => 'nullable|numeric',
+            'domicilio.coordenadas_gps' => 'nullable|string',
         ]);
 
-        // 4. Redirigir de vuelta al detalle con mensaje de éxito
+        // 3) Validación de Pivote
+        $datosPivot = $request->validate([
+            'pivot.situacion_procesal' => 'required|in:NO HALLADO,DETENIDO,APREHENDIDO,NOTIFICADO',
+            'pivot.pedido_captura' => 'nullable|boolean',
+            'pivot.observaciones' => 'nullable|string',
+        ]);
+
+        // 4) Crear Domicilio
+        $dom = data_get($datosDomicilio, 'domicilio', []);
+        $coordenadas = null;
+        // Preferir coordenadas_gps (lat,long) si viene en el request
+        if (!empty($dom['coordenadas_gps']) && is_string($dom['coordenadas_gps'])) {
+            $coordenadas = trim($dom['coordenadas_gps']);
+        } elseif (isset($dom['latitud'], $dom['longitud']) && $dom['latitud'] !== null && $dom['longitud'] !== null) {
+            $coordenadas = (trim((string)$dom['latitud']).','.trim((string)$dom['longitud']));
+        }
+        $domicilio = Domicilio::create([
+            'calle' => $dom['calle'],
+            'numero' => $dom['numero'] ?? null,
+            'barrio' => $dom['barrio'] ?? null,
+            'provincia_id' => $dom['provincia_id'],
+            'departamento_id' => $dom['departamento_id'] ?? null,
+            'monoblock' => $dom['monoblock'] ?? null,
+            'torre' => $dom['torre'] ?? null,
+            'piso' => $dom['piso'] ?? null,
+            'depto' => $dom['depto'] ?? null,
+            'sector' => $dom['sector'] ?? null,
+            'manzana' => $dom['manzana'] ?? null,
+            'lote' => $dom['lote'] ?? null,
+            'casa' => $dom['casa'] ?? null,
+            'coordenadas_gps' => $coordenadas,
+        ]);
+
+        // 5) Crear/Actualizar Persona (evitar duplicados por DNI)
+        $persona = Persona::firstOrNew(['dni' => $datosPersona['dni']]);
+        $persona->fill([
+            'nombres' => $datosPersona['nombres'],
+            'apellidos' => $datosPersona['apellidos'],
+            'fecha_nacimiento' => $datosPersona['fecha_nacimiento'],
+            'genero' => $datosPersona['genero'] ?? $persona->genero ?? null,
+            'alias' => $datosPersona['alias'] ?? $persona->alias ?? null,
+            'nacionalidad' => $datosPersona['nacionalidad'] ?? $persona->nacionalidad ?? null,
+            'estado_civil' => $datosPersona['estado_civil'] ?? $persona->estado_civil ?? null,
+            'observaciones' => $datosPersona['observaciones'] ?? $persona->observaciones ?? null,
+        ]);
+        $persona->domicilio_id = $domicilio->id;
+        if ($request->hasFile('foto')) {
+            $path = $request->file('foto')->store('fotos_personas', 'public');
+            $persona->foto = $path;
+        }
+        $persona->save();
+
+        // 6) Vincular en pivote
+        $situacion = strtoupper(trim(data_get($datosPivot, 'pivot.situacion_procesal')));
+        $pedidoCaptura = (int) (data_get($datosPivot, 'pivot.pedido_captura', 0) ? 1 : 0);
+        if ($situacion !== 'NO HALLADO') {
+            $pedidoCaptura = 0; // Regla de negocio
+        }
+        $obsPivot = data_get($datosPivot, 'pivot.observaciones');
+
+        // Evitar duplicar vínculo
+        if (! $procedimiento->personas()->where('personas.id', $persona->id)->exists()) {
+            $procedimiento->personas()->attach($persona->id, [
+                'situacion_procesal' => $situacion,
+                'pedido_captura' => $pedidoCaptura,
+                'observaciones' => $obsPivot,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        // 7) Redirigir
         return redirect()->route('procedimientos.show', $procedimiento)
-                         ->with('success', 'Persona vinculada exitosamente.');
+                         ->with('success', 'Persona vinculada correctamente.')
+                         ->withInput([]);
     }
 
     public function vincularDomicilio(Request $request, Procedimiento $procedimiento)
     {
-        // 1. Validar los datos del formulario
-        $datosValidados = $request->validate([
-            'domicilio_id' => 'required|exists:domicilios,id',
+        // Validación de los campos del domicilio del hecho
+        $hecho = $request->validate([
+            'hecho.provincia_id' => 'required|exists:provincias,id',
+            'hecho.departamento_id' => 'nullable|exists:departamentos,id',
+            'hecho.calle' => 'required|string|max:150',
+            'hecho.numero' => 'nullable|numeric|min:0',
+            'hecho.barrio' => 'nullable|string|max:100',
+            'hecho.monoblock' => 'nullable|alpha_num|max:100',
+            'hecho.torre' => 'nullable|string|max:10',
+            'hecho.piso' => 'nullable|string|max:10',
+            'hecho.depto' => 'nullable|string|max:10',
+            'hecho.sector' => 'nullable|string|max:100',
+            'hecho.manzana' => 'nullable|alpha_num|max:20',
+            'hecho.lote' => 'nullable|alpha_num|max:20',
+            'hecho.casa' => 'nullable|alpha_num|max:20',
+            'hecho.coordenadas_gps' => 'nullable|string',
         ]);
 
-        // 2. Verificar si el domicilio ya está vinculado (para evitar duplicados)
-        $vinculoExistente = $procedimiento->domicilios()
-                            ->where('domicilio_id', $datosValidados['domicilio_id'])
-                            ->exists();
+        $h = data_get($hecho, 'hecho', []);
 
-        if ($vinculoExistente) {
-            return redirect()->route('procedimientos.show', $procedimiento)
-                             ->with('error', 'Este domicilio ya está vinculado a este procedimiento.');
+        // Crear el Domicilio del hecho
+        $nuevo = Domicilio::create([
+            'provincia_id' => $h['provincia_id'],
+            'departamento_id' => $h['departamento_id'] ?? null,
+            'calle' => $h['calle'],
+            'numero' => $h['numero'] ?? null,
+            'barrio' => $h['barrio'] ?? null,
+            'monoblock' => $h['monoblock'] ?? null,
+            'torre' => $h['torre'] ?? null,
+            'piso' => $h['piso'] ?? null,
+            'depto' => $h['depto'] ?? null,
+            'sector' => $h['sector'] ?? null,
+            'manzana' => $h['manzana'] ?? null,
+            'lote' => $h['lote'] ?? null,
+            'casa' => $h['casa'] ?? null,
+            'coordenadas_gps' => $h['coordenadas_gps'] ?? null,
+        ]);
+
+        // Vincular al procedimiento (evitar duplicado por si existiera igual dirección)
+        if (! $procedimiento->domicilios()->where('domicilios.id', $nuevo->id)->exists()) {
+            $procedimiento->domicilios()->attach($nuevo->id, [
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
 
-        // 3. Vincular el domicilio usando la relación 'domicilios()'
-        // El método attach() guarda en la tabla pivote 'procedimiento_domicilios'
-        $procedimiento->domicilios()->attach($datosValidados['domicilio_id'], [
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // 4. Redirigir de vuelta al detalle con mensaje de éxito
         return redirect()->route('procedimientos.show', $procedimiento)
-                         ->with('success', 'Domicilio vinculado exitosamente.');
+                         ->with('success', 'Domicilio del hecho vinculado.')
+                         ->withInput([]);
     }
 
 }
