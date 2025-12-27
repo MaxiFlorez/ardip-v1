@@ -27,7 +27,8 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        // Users without a role default to personas index
+        $response->assertRedirect(route('personas.index', absolute: false));
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
@@ -49,6 +50,51 @@ class AuthenticationTest extends TestCase
         $response = $this->actingAs($user)->post('/logout');
 
         $this->assertGuest();
-        $response->assertRedirect('/');
+        $response->assertRedirect(route('login'));
+    }
+
+    public function test_admin_users_redirect_to_dashboard(): void
+    {
+        $user = User::factory()->create();
+        $adminRole = \App\Models\Role::create(['name' => 'admin', 'label' => 'Administrator']);
+        $user->roles()->attach($adminRole);
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(route('dashboard', absolute: false));
+    }
+
+    public function test_cargador_users_redirect_to_procedimientos_create(): void
+    {
+        $user = User::factory()->create();
+        $cargadorRole = \App\Models\Role::create(['name' => 'cargador', 'label' => 'Cargador']);
+        $user->roles()->attach($cargadorRole);
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(route('procedimientos.create', absolute: false));
+    }
+
+    public function test_consultor_users_redirect_to_personas_index(): void
+    {
+        $user = User::factory()->create();
+        $consultorRole = \App\Models\Role::create(['name' => 'consultor', 'label' => 'Consultor']);
+        $user->roles()->attach($consultorRole);
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(route('personas.index', absolute: false));
     }
 }

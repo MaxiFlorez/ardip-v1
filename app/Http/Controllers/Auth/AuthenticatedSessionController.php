@@ -28,7 +28,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $user = auth()->user();
+        
+        // Determinar la ruta por defecto según el rol del usuario
+        $defaultRoute = match (true) {
+            $user->hasRole('admin') => route('dashboard', absolute: false),
+            $user->hasRole('cargador') => route('procedimientos.create', absolute: false),
+            $user->hasRole('consultor') => route('personas.index', absolute: false),
+            default => route('personas.index', absolute: false),
+        };
+        
+        // Redirigir a la URL prevista o a la ruta por defecto según el rol
+        return redirect()->intended($defaultRoute);
     }
 
     /**
