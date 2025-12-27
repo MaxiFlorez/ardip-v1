@@ -42,6 +42,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        $request->session()->flush();
+
+        return redirect()->route('login')->with('status', 'Sesión cerrada correctamente.');
     }
 }
