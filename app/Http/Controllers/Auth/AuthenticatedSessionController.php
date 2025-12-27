@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;use Illuminate\Support\Facades\Gate;use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -30,16 +29,23 @@ class AuthenticatedSessionController extends Controller
 
         $user = auth()->user();
         
-        // Determinar la ruta por defecto según el rol del usuario
-        $defaultRoute = match (true) {
-            $user->hasRole('admin') => route('dashboard', absolute: false),
-            $user->hasRole('cargador') => route('procedimientos.create', absolute: false),
-            $user->hasRole('consultor') => route('personas.index', absolute: false),
-            default => route('personas.index', absolute: false),
-        };
+        // Admin → Dashboard
+        if ($user->hasRole('admin')) {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
         
-        // Redirigir a la URL prevista o a la ruta por defecto según el rol
-        return redirect()->intended($defaultRoute);
+        // Cargador → Panel de Carga (ver procedimientos)
+        if ($user->hasRole('cargador')) {
+            return redirect()->intended(route('panel.carga', absolute: false));
+        }
+        
+        // Operario → Panel de Consulta (buscar personas)
+        if ($user->hasRole('consultor')) {
+            return redirect()->intended(route('panel.consulta', absolute: false));
+        }
+        
+        // Fallback por si hay un rol desconocido
+        return redirect()->intended(route('personas.index', absolute: false));
     }
 
     /**
@@ -47,14 +53,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Cerrar sesión
         Auth::guard('web')->logout();
 
+        // Invalidar la sesión
         $request->session()->invalidate();
 
+        // Regenerar token CSRF
         $request->session()->regenerateToken();
 
+        // Limpiar todas las cookies
         $request->session()->flush();
 
+        // Redirigir al login con mensaje
         return redirect()->route('login')->with('status', 'Sesión cerrada correctamente.');
     }
 }
