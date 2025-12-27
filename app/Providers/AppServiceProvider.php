@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Puertas (Gates) para RBAC
+        Gate::define('admin-general', function ($user) {
+            return $user->hasRole('admin');
+        });
+
         Gate::define('acceso-total', function ($user) {
             return $user->hasRole('admin');
         });

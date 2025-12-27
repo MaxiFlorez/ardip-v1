@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                        {{ __('Personas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
+                        {{ __('Procedimientos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
+                        {{ __('Domicilios') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -39,12 +48,11 @@
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logout') }}" id="logout-form-desktop">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                    onclick="event.preventDefault(); document.getElementById('logout-form-desktop').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -70,6 +78,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                {{ __('Personas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
+                {{ __('Procedimientos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
+                {{ __('Domicilios') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -85,12 +102,11 @@
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" id="logout-form-mobile">
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                            onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>

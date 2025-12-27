@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Procedimiento;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        // Solo usuarios autenticados y con rol/permiso admin-general
-        $this->middleware(['auth', 'can:admin-general']);
-    }
-
     public function index(Request $request)
     {
+        // Verificar permiso manualmente (después de que Laravel cargue las relaciones)
+        if (! Gate::allows('admin-general')) {
+            abort(403, 'No tienes permiso para acceder al Dashboard.');
+        }
+
         $semanaActual = now()->startOfWeek();
         $semanaFin = now()->endOfWeek();
 
