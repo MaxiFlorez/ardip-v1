@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ProcedimientoController;
 use App\Http\Controllers\DomicilioController;
@@ -15,10 +16,10 @@ Route::get('/', function () {
 // Grupo de rutas protegidas (requieren login)
 Route::middleware(['auth', 'verified'])->group(function () {
     
-    // Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Dashboard (solo admin-general)
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->middleware('can:admin-general')
+        ->name('dashboard');
 
     // Perfil de usuario
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

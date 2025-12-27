@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Procedimiento;
-use App\Models\Persona;
-use App\Models\Domicilio;
-use App\Models\Brigada;
-use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\StoreProcedimientoRequest;
 use App\Http\Requests\UpdateProcedimientoRequest;
+use App\Models\Brigada;
+use App\Models\Domicilio;
+use App\Models\Persona;
+use App\Models\Procedimiento;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProcedimientoController extends Controller
 {
+    /**
+     * Constructor: define permisos de acceso mediante gates
+     */
     public function __construct()
     {
         // Escritura: crear/editar/borrar/vincular
@@ -26,26 +29,22 @@ class ProcedimientoController extends Controller
     }
 
     /**
-     * Index: lista procedimientos con búsqueda opcional
+     * Muestra el listado de procedimientos con búsqueda y paginación
+     * Optimizado con Eager Loading para evitar problema N+1
      */
     public function index(Request $request)
     {
-        // Eager load personas y domicilios para evitar N+1, además de brigada
-        $query = Procedimiento::with(['brigada', 'personas', 'domicilios']);
-
-        // Aplicar scope de búsqueda (parámetro 'search' en la URL)
-        $query = $query->buscar($request->get('search'));
-
-        // Orden por fecha de creación descendente y paginación
-        $procedimientos = $query->orderBy('created_at', 'desc')
-                                ->paginate(10)
-                                ->withQueryString();
+        $procedimientos = Procedimiento::with(['brigada', 'personas', 'domicilios'])
+            ->buscar($request->get('search'))
+            ->orderBy('created_at', 'desc')
+            ->paginate(10)
+            ->withQueryString();
 
         return view('procedimientos.index', compact('procedimientos'));
     }
 
     /**
-     * Formulario para crear
+     * Muestra el formulario para crear un nuevo procedimiento
      */
     public function create()
     {
@@ -54,28 +53,30 @@ class ProcedimientoController extends Controller
     }
 
     /**
-     * Almacena un nuevo procedimiento usando Form Request
+     * Almacena un nuevo procedimiento en la base de datos
+     * Utiliza Form Request para validación
      */
     public function store(StoreProcedimientoRequest $request)
     {
         $validated = $request->validated();
 
-        // Completar datos del contexto
+        // Asignar datos del contexto de autenticación
         $validated['usuario_id'] = Auth::id();
         $validated['brigada_id'] = Auth::user()->brigada_id ?? null;
 
         $procedimiento = Procedimiento::create($validated);
 
-        return redirect()->route('procedimientos.show', $procedimiento)
-                         ->with('success', 'Procedimiento creado correctamente.');
+        return redirect()
+            ->route('procedimientos.show', $procedimiento)
+            ->with('success', 'Procedimiento creado correctamente.');
     }
 
     /**
-     * Show: carga relaciones y muestra
+     * Muestra los detalles de un procedimiento específico
      */
     public function show(Procedimiento $procedimiento)
     {
-        $procedimiento->load('personas', 'domicilios', 'usuario', 'brigada');
+        $procedimiento->load(['personas', 'domicilios', 'usuario', 'brigada']);
 
         $personasDisponibles = Persona::orderBy('apellidos')->get();
         $domiciliosDisponibles = Domicilio::orderBy('calle')->get();
@@ -84,7 +85,7 @@ class ProcedimientoController extends Controller
     }
 
     /**
-     * Formulario de edición
+     * Muestra el formulario para editar un procedimiento existente
      */
     public function edit(Procedimiento $procedimiento)
     {
@@ -93,29 +94,32 @@ class ProcedimientoController extends Controller
     }
 
     /**
-     * Actualiza un procedimiento usando Form Request
+     * Actualiza un procedimiento existente
+     * Utiliza Form Request para validación
      */
     public function update(UpdateProcedimientoRequest $request, Procedimiento $procedimiento)
     {
         $procedimiento->update($request->validated());
 
-        return redirect()->route('procedimientos.show', $procedimiento)
-                         ->with('success', 'Procedimiento actualizado correctamente.');
+        return redirect()
+            ->route('procedimientos.show', $procedimiento)
+            ->with('success', 'Procedimiento actualizado correctamente.');
     }
 
     /**
-     * Destroy: elimina
+     * Elimina un procedimiento de la base de datos
      */
     public function destroy(Procedimiento $procedimiento)
     {
         $procedimiento->delete();
 
-        return redirect()->route('procedimientos.index')
-                         ->with('success', 'Procedimiento eliminado correctamente.');
+        return redirect()
+            ->route('procedimientos.index')
+            ->with('success', 'Procedimiento eliminado correctamente.');
     }
 
     /**
-     * Vincular una persona usando syncWithoutDetaching con datos en pivote
+     * Vincula una persona al procedimiento con datos de pivote
      */
     public function vincularPersona(Request $request, Procedimiento $procedimiento)
     {
@@ -138,12 +142,13 @@ class ProcedimientoController extends Controller
             $datos['persona_id'] => $pivot,
         ]);
 
-        return redirect()->route('procedimientos.show', $procedimiento)
-                         ->with('success', 'Persona vinculada correctamente.');
+        return redirect()
+            ->route('procedimientos.show', $procedimiento)
+            ->with('success', 'Persona vinculada correctamente.');
     }
 
     /**
-     * Vincular un domicilio usando syncWithoutDetaching
+     * Vincula un domicilio al procedimiento
      */
     public function vincularDomicilio(Request $request, Procedimiento $procedimiento)
     {
@@ -152,15 +157,19 @@ class ProcedimientoController extends Controller
         ]);
 
         $procedimiento->domicilios()->syncWithoutDetaching([
-            $datos['domicilio_id'] => ['created_at' => now(), 'updated_at' => now()],
+            $datos['domicilio_id'] => [
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
 
-        return redirect()->route('procedimientos.show', $procedimiento)
-                         ->with('success', 'Domicilio vinculado correctamente.');
+        return redirect()
+            ->route('procedimientos.show', $procedimiento)
+            ->with('success', 'Domicilio vinculado correctamente.');
     }
 
     /**
-     * Genera PDF con la ficha técnica del procedimiento
+     * Genera un PDF con la ficha técnica del procedimiento
      */
     public function generarPdf(Procedimiento $procedimiento)
     {

@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Procedimiento extends \Illuminate\Database\Eloquent\Model implements \OwenIt\Auditing\Contracts\Auditable
+class Procedimiento extends Model implements Auditable
 {
     // Trait de auditoría
     use \OwenIt\Auditing\Auditable;

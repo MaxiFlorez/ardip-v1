@@ -19,11 +19,41 @@ class PersonaController extends Controller
 
     // ... resto del código
     /**
-     * Muestra el listado de todas las personas
+     * Listado con búsqueda inteligente y filtros combinados
      */
-    public function index()
+    public function index(Request $request)
     {
-        $personas = Persona::orderBy('apellidos')->get();
+        $query = Persona::query()->with('alias');
+
+        // Búsqueda por nombres, apellidos o alias
+        if ($request->filled('buscar')) {
+            $buscar = trim((string) $request->buscar);
+            $query->where(function($q) use ($buscar) {
+                $q->where('nombres', 'LIKE', "%{$buscar}%")
+                  ->orWhere('apellidos', 'LIKE', "%{$buscar}%")
+                  ->orWhereHas('alias', function($qa) use ($buscar) {
+                      $qa->where('alias', 'LIKE', "%{$buscar}%");
+                  });
+            });
+        }
+
+        // Filtro por zona (departamento) a través de domicilios
+        if ($request->filled('departamento')) {
+            $query->whereHas('domicilios', function($q) use ($request) {
+                $q->where('departamento', $request->departamento);
+            });
+        }
+
+        // Filtro por rango de edad aproximado
+        if ($request->filled('edad_min') && $request->filled('edad_max')) {
+            $hoy = now();
+            $fechaMax = (clone $hoy)->subYears((int) $request->edad_min);
+            $fechaMin = (clone $hoy)->subYears(((int) $request->edad_max) + 1);
+            $query->whereBetween('fecha_nacimiento', [$fechaMin, $fechaMax]);
+        }
+
+        $personas = $query->orderBy('apellidos')->paginate(20);
+
         return view('personas.index', compact('personas'));
     }
 
