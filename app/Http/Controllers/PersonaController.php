@@ -77,7 +77,9 @@ class PersonaController extends Controller
             'apellidos' => 'required|string|max:100',
             'fecha_nacimiento' => 'required|date',
             'genero' => 'required|in:masculino,femenino,otro',
-            'alias' => 'nullable|string|max:100',
+            // Alias como array
+            'alias' => 'nullable|array',
+            'alias.*' => 'nullable|string|max:100',
             'nacionalidad' => 'nullable|string|max:50',
             'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
             'foto' => 'nullable|image|max:2048', // 2MB máximo
@@ -90,8 +92,21 @@ class PersonaController extends Controller
             $validated['foto'] = $path;
         }
 
+        // Alias del request (se procesan por separado)
+        $aliasInput = $request->input('alias', []);
+        unset($validated['alias']);
+
         // Crear la persona
-        Persona::create($validated);
+        $persona = Persona::create($validated);
+
+        // Guardar alias
+        if (!empty($aliasInput) && is_array($aliasInput)) {
+            foreach ($aliasInput as $alias) {
+                if (!empty(trim((string) $alias))) {
+                    $persona->alias()->create(['alias' => trim((string) $alias)]);
+                }
+            }
+        }
 
         // Redirigir con mensaje de éxito
         return redirect()->route('personas.index')
@@ -129,7 +144,9 @@ class PersonaController extends Controller
             'apellidos' => 'required|string|max:100',
             'fecha_nacimiento' => 'required|date',
             'genero' => 'required|in:masculino,femenino,otro',
-            'alias' => 'nullable|string|max:100',
+            // Alias como array
+            'alias' => 'nullable|array',
+            'alias.*' => 'nullable|string|max:100',
             'nacionalidad' => 'nullable|string|max:50',
             'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
             'foto' => 'nullable|image|max:2048',
@@ -148,8 +165,22 @@ class PersonaController extends Controller
             $validated['foto'] = $path;
         }
 
+        // Alias del request (se procesan por separado)
+        $aliasInput = $request->input('alias', []);
+        unset($validated['alias']);
+
         // Actualizar la persona
         $persona->update($validated);
+
+        // Sincronizar alias (eliminar y recrear)
+        if (is_array($aliasInput)) {
+            $persona->alias()->delete();
+            foreach ($aliasInput as $alias) {
+                if (!empty(trim((string) $alias))) {
+                    $persona->alias()->create(['alias' => trim((string) $alias)]);
+                }
+            }
+        }
 
         // Redirigir con mensaje de éxito
         return redirect()->route('personas.show', $persona)

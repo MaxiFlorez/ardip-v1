@@ -73,12 +73,19 @@
                             @enderror
                         </div>
 
-                        <!-- Alias -->
+                        <!-- Alias múltiples -->
                         <div class="mb-4">
-                            <label for="alias" class="block text-sm font-medium text-gray-700">Alias</label>
-                            <input type="text" name="alias" id="alias" value="{{ old('alias') }}" 
-                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <label class="block text-sm font-medium text-gray-700">Alias/Apodos</label>
+                            <div id="alias-container">
+                                <input type="text" name="alias[]" placeholder="Alias 1" 
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <button type="button" onclick="agregarAlias()" 
+                                    class="mt-2 text-blue-600">+ Agregar otro alias</button>
                             @error('alias')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                            @error('alias.*')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
@@ -142,6 +149,18 @@
                             </button>
                         </div>
                     </form>
+
+                    <script>
+                    function agregarAlias() {
+                        const container = document.getElementById('alias-container');
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.name = 'alias[]';
+                        input.placeholder = 'Alias';
+                        input.className = 'mt-2 block w-full rounded-md border-gray-300';
+                        container.appendChild(input);
+                    }
+                    </script>
                 </div>
             </div>
         </div>
