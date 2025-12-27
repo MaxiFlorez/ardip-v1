@@ -35,6 +35,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/procedimientos/{procedimiento}/vincular-domicilio', [ProcedimientoController::class, 'vincularDomicilio'])
         ->name('procedimientos.vincularDomicilio');
 
+    // PDF del procedimiento
+    Route::get('/procedimientos/{procedimiento}/pdf', [ProcedimientoController::class, 'generarPdf'])
+        ->name('procedimientos.pdf');
+
     // --- MÓDULOS BASE ---
     Route::resource('personas', PersonaController::class);
     Route::resource('domicilios', DomicilioController::class);

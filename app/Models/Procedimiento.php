@@ -4,9 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Procedimiento extends Model
+class Procedimiento extends \Illuminate\Database\Eloquent\Model implements \OwenIt\Auditing\Contracts\Auditable
 {
+    // Trait de auditoría
+    use \OwenIt\Auditing\Auditable;
+
+    /**
+     * Campos protegidos para asignación masiva
+     */
     protected $guarded = ['id'];
+
+    /**
+     * Campos que serán incluidos en el audit log
+     * @var array
+     */
+    protected $auditInclude = [
+        'legajo_fiscal',
+        'caratula',
+        'ufi_interviniente',
+    ];
     
     protected $casts = [
         'fecha_procedimiento' => 'date',
@@ -15,6 +31,23 @@ class Procedimiento extends Model
         'orden_secuestro' => 'boolean',
         'orden_detencion' => 'boolean',
     ];
+
+    /**
+     * Scope para búsqueda por legajo_fiscal o caratula
+     */
+    public function scopeBuscar($query, $texto)
+    {
+        $texto = trim((string) $texto);
+
+        if ($texto === '') {
+            return $query;
+        }
+
+        return $query->where(function ($q) use ($texto) {
+            $q->where('legajo_fiscal', 'like', "%{$texto}%")
+              ->orWhere('caratula', 'like', "%{$texto}%");
+        });
+    }
     
     // Relaciones
     public function brigada()

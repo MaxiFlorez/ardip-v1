@@ -7,6 +7,9 @@ use App\Models\Persona;
 use App\Models\Domicilio;
 use App\Models\Brigada;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Requests\StoreProcedimientoRequest;
+use App\Http\Requests\UpdateProcedimientoRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ProcedimientoController extends Controller
@@ -27,16 +30,14 @@ class ProcedimientoController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Procedimiento::with('brigada');
+        // Eager load personas y domicilios para evitar N+1, además de brigada
+        $query = Procedimiento::with(['brigada', 'personas', 'domicilios']);
 
-        if ($buscar = $request->get('buscar')) {
-            $query->where(function ($q) use ($buscar) {
-                $q->where('legajo_fiscal', 'like', "%{$buscar}%")
-                  ->orWhere('caratula', 'like', "%{$buscar}%");
-            });
-        }
+        // Aplicar scope de búsqueda (parámetro 'search' en la URL)
+        $query = $query->buscar($request->get('search'));
 
-        $procedimientos = $query->orderBy('fecha_procedimiento', 'desc')
+        // Orden por fecha de creación descendente y paginación
+        $procedimientos = $query->orderBy('created_at', 'desc')
                                 ->paginate(10)
                                 ->withQueryString();
 
@@ -53,21 +54,15 @@ class ProcedimientoController extends Controller
     }
 
     /**
-     * Store: valida y guarda
+     * Almacena un nuevo procedimiento usando Form Request
      */
-    public function store(Request $request)
+    public function store(StoreProcedimientoRequest $request)
     {
-        $validated = $request->validate([
-            'legajo_fiscal' => 'required|string|max:255',
-            'caratula' => 'required|string|max:500',
-            'fecha_procedimiento' => 'required|date',
-            'ufi' => 'nullable|string|max:255',
-            'orden_judicial' => 'nullable|string|max:255',
-            'brigada_id' => 'nullable|exists:brigadas,id',
-        ]);
+        $validated = $request->validated();
 
+        // Completar datos del contexto
         $validated['usuario_id'] = Auth::id();
-        $validated['brigada_id'] = $validated['brigada_id'] ?? Auth::user()->brigada_id ?? null;
+        $validated['brigada_id'] = Auth::user()->brigada_id ?? null;
 
         $procedimiento = Procedimiento::create($validated);
 
@@ -98,20 +93,11 @@ class ProcedimientoController extends Controller
     }
 
     /**
-     * Update: valida y actualiza
+     * Actualiza un procedimiento usando Form Request
      */
-    public function update(Request $request, Procedimiento $procedimiento)
+    public function update(UpdateProcedimientoRequest $request, Procedimiento $procedimiento)
     {
-        $validated = $request->validate([
-            'legajo_fiscal' => 'required|string|max:255',
-            'caratula' => 'required|string|max:500',
-            'fecha_procedimiento' => 'required|date',
-            'ufi' => 'nullable|string|max:255',
-            'orden_judicial' => 'nullable|string|max:255',
-            'brigada_id' => 'nullable|exists:brigadas,id',
-        ]);
-
-        $procedimiento->update($validated);
+        $procedimiento->update($request->validated());
 
         return redirect()->route('procedimientos.show', $procedimiento)
                          ->with('success', 'Procedimiento actualizado correctamente.');
@@ -171,5 +157,19 @@ class ProcedimientoController extends Controller
 
         return redirect()->route('procedimientos.show', $procedimiento)
                          ->with('success', 'Domicilio vinculado correctamente.');
+    }
+
+    /**
+     * Genera PDF con la ficha técnica del procedimiento
+     */
+    public function generarPdf(Procedimiento $procedimiento)
+    {
+        $procedimiento->load(['personas', 'domicilios', 'brigada', 'usuario']);
+
+        $pdf = Pdf::loadView('procedimientos.pdf', [
+            'procedimiento' => $procedimiento,
+        ]);
+
+        return $pdf->stream('ficha-tecnica.pdf');
     }
 }
