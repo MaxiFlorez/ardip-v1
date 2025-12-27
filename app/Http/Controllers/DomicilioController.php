@@ -7,33 +7,26 @@ use Illuminate\Http\Request;
 
 class DomicilioController extends Controller
 {
-<<<<<<< HEAD
     public function __construct()
     {
-        // Seguridad: Carga/Admin editan, Todos consultan
+        // Escritura: crear/editar/borrar
         $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy']);
+
+        // Lectura: index y show
         $this->middleware('can:panel-consulta')->only(['index', 'show']);
     }
 
-    public function index()
-    {
-        // Placeholder
-        return view('dashboard');
-=======
     /**
-     * Display a listing of the resource.
+     * Lista domicilios paginados
      */
     public function index()
     {
-        // 2. BUSCAR DOMICILIOS (ordenados por departamento)
         $domicilios = Domicilio::orderBy('departamento')->orderBy('calle')->paginate(15);
-
-        // 3. ENVIARLOS A LA VISTA
         return view('domicilios.index', compact('domicilios'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Formulario de creación
      */
     public function create()
     {
@@ -41,12 +34,11 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Guarda el nuevo domicilio en la base de datos.
+     * Guarda un nuevo domicilio
      */
     public function store(Request $request)
     {
-        // 1. VALIDACIÓN (Basada en la migración de SESION_3.md)
-        $datosValidados = $request->validate([
+        $validated = $request->validate([
             'departamento' => 'required|string|max:100',
             'provincia' => 'nullable|string|max:100',
             'calle' => 'nullable|string|max:255',
@@ -63,24 +55,23 @@ class DomicilioController extends Controller
             'coordenadas_gps' => 'nullable|string|max:100',
         ]);
 
-        // 2. GUARDAR
-        // Usamos el modelo Domicilio que ya tiene $guarded = ['id']
-        Domicilio::create($datosValidados);
+        Domicilio::create($validated);
 
-        // 3. REDIRIGIR
         return redirect()->route('domicilios.index')
                          ->with('success', 'Domicilio agregado exitosamente.');
     }
 
+    /**
+     * Muestra un domicilio (carga relaciones si aplica)
+     */
     public function show(Domicilio $domicilio)
     {
-        // Cargamos las relaciones (aunque domicilio aún no tiene, es buena práctica)
-        $domicilio->load('procedimientos'); // Veremos los procedimientos asociados
+        $domicilio->load('procedimientos');
         return view('domicilios.show', compact('domicilio'));
     }
 
     /**
-     * Muestra el formulario para editar un domicilio.
+     * Formulario de edición
      */
     public function edit(Domicilio $domicilio)
     {
@@ -88,12 +79,11 @@ class DomicilioController extends Controller
     }
 
     /**
-     * Actualiza el domicilio en la base de datos.
+     * Actualiza el domicilio
      */
     public function update(Request $request, Domicilio $domicilio)
     {
-        // 1. VALIDACIÓN (Igual que 'store', pero aflojamos 'provincia')
-        $datosValidados = $request->validate([
+        $validated = $request->validate([
             'departamento' => 'required|string|max:100',
             'provincia' => 'nullable|string|max:100',
             'calle' => 'nullable|string|max:255',
@@ -110,25 +100,20 @@ class DomicilioController extends Controller
             'coordenadas_gps' => 'nullable|string|max:100',
         ]);
 
-        // 2. ACTUALIZAR
-        $domicilio->update($datosValidados);
+        $domicilio->update($validated);
 
-        // 3. REDIRIGIR
         return redirect()->route('domicilios.index')
                          ->with('success', 'Domicilio actualizado exitosamente.');
     }
 
     /**
-     * Elimina el domicilio de la base de datos.
+     * Elimina un domicilio
      */
     public function destroy(Domicilio $domicilio)
     {
-        // (Podemos agregar lógica de restricción si está vinculado a un procedimiento)
-        
         $domicilio->delete();
 
         return redirect()->route('domicilios.index')
                          ->with('success', 'Domicilio eliminado exitosamente.');
->>>>>>> 1be5c15e951f017a99140e5a308014f89bf3fbf1
     }
 }
