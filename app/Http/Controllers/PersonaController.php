@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Storage; // ← NUEVO
 
 class PersonaController extends Controller
 {
+    public function __construct()
+    {
+        // Solo los que tienen permiso de 'panel-carga' pueden CREAR, EDITAR o BORRAR
+        $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy']);
+
+        // Solo los que tienen permiso de 'panel-consulta' pueden VER listas y detalles
+        $this->middleware('can:panel-consulta')->only(['index', 'show']);
+    }
+
     // ... resto del código
     /**
      * Muestra el listado de todas las personas

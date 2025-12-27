@@ -1,0 +1,6347 @@
+[
+  {
+    "nombre": "4 Vientos - Complejo Habitacional (proyectado)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Aimará - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "La Legua"
+  },
+  {
+    "nombre": "Aires de Albardón I - Barrio Privado",
+    "departamento": "Albardón",
+    "localidad": "Villa General San Martín"
+  },
+  {
+    "nombre": "Aires de Albardón II - Barrio Privado",
+    "departamento": "Albardón",
+    "localidad": "Villa General San Martín"
+  },
+  {
+    "nombre": "Aires de Campo - Complejo Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "La Legua"
+  },
+  {
+    "nombre": "Álamos del Este - Complejo Privado (proyectado)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Allegro Art Suites",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Altitud - Complejo Habitacional",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Asentamiento Belgrano",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Asentamiento Calle Corrientes",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Asentamiento Costa Canal",
+    "departamento": "Caucete",
+    "localidad": "Los Médanos"
+  },
+  {
+    "nombre": "Asentamiento Difunta Correa",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Asentamiento El Chilote",
+    "departamento": "Ullum",
+    "localidad": "El Chilote"
+  },
+  {
+    "nombre": "Asentamiento Estación Pedro Echagüe",
+    "departamento": "Santa Lucía",
+    "localidad": "Colonia Gutiérrez"
+  },
+  {
+    "nombre": "Asentamiento José Ignacio Díaz",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Asentamiento Los Médanos",
+    "departamento": "Caucete",
+    "localidad": "Los Médanos"
+  },
+  {
+    "nombre": "Asentamiento Loteo Ferrocarril",
+    "departamento": "Caucete",
+    "localidad": "Pie de Palo"
+  },
+  {
+    "nombre": "Asentamiento Pozo Los Algarrobos",
+    "departamento": "Caucete",
+    "localidad": "Pozo de Los Algarrobos"
+  },
+  {
+    "nombre": "Asentamiento RIM 22",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Asentamiento San Expedito",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Asentamiento Villa Industrial",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Asentamiento Villa La Esperanza",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Asentamiento Villa Molina",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Asentamiento Villa Veintiseis de Febrero",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "AVA - Barrio de Vida",
+    "departamento": "Albardón",
+    "localidad": "Villa General San Martín"
+  },
+  {
+    "nombre": "Ayres Village - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio 11 de Noviembre (Villa 11 de Noviembre)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio 12 de Diciembre",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio 12 de Octubre",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio 12 de Octubre",
+    "departamento": "Caucete",
+    "localidad": "Los Médanos"
+  },
+  {
+    "nombre": "Barrio 15 de Diciembre",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio 15 de Mayo (Natania)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio 17 de Octubre",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio 1° de Noviembre (Barrio Primero de Noviembre - Sindicato de Panaderos)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio 1º de Febrero",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio 2 de Abril (ex Lote Hogar Nº 2)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio 20 de Junio",
+    "departamento": "25 de Mayo",
+    "localidad": "Tupelí"
+  },
+  {
+    "nombre": "Barrio 20 de Junio (Barrio AMPE 20 de Junio - Asociación Mutual del Personal del Estado)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio 20 de Noviembre (UTA)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio 22 de Abril",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio 22 de Junio (Barrio Orlando Marino)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio 23 de Mayo (UDAP)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio 23 de Octubre",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio 24 de Noviembre (ex de los Plásticos) (necesita confirmación)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio 25 de Diciembre (ex Lote Hogar Nº 7)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo Conjunto 5",
+    "departamento": "25 de Mayo",
+    "localidad": "Divisoria"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo Conjunto I (Conjunto 1 - Barrio La Chimbera Oeste)",
+    "departamento": "25 de Mayo",
+    "localidad": "La Chimbera"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo Conjunto II (Barrio Santa Rosa 2)",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo Conjunto III (Conjunto 3) - Sector Norte",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Borjas (Las Casuarinas)"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo Conjunto III (Conjunto 3) - Sector Sur",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Borjas (Las Casuarinas)"
+  },
+  {
+    "nombre": "Barrio 25 de Mayo Conjunto IV (25 de Mayo Conjunto 4)",
+    "departamento": "25 de Mayo",
+    "localidad": "La Chimbera"
+  },
+  {
+    "nombre": "Barrio 27 de Diciembre",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio 5 de Diciembre",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio 5 de Octubre",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio 7 de Septiembre",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio 7 de Septiembre - Lorenzo Miguel (Unión Obrera Metalúrgica - UOM)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio 9 de Julio",
+    "departamento": "Caucete",
+    "localidad": "El Rincón"
+  },
+  {
+    "nombre": "Barrio 9 de Septiembre (ex Lote Hogar Nº 29)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio a denominar (Calingasta Conjunto 4)",
+    "departamento": "Calingasta",
+    "localidad": "La Isla"
+  },
+  {
+    "nombre": "Barrio a denominar (Caucete Conjunto 7)",
+    "departamento": "Caucete",
+    "localidad": "Pie de Palo"
+  },
+  {
+    "nombre": "Barrio a denominar (San Martín Conjunto 2)",
+    "departamento": "San Martín",
+    "localidad": "Villa Dominguito"
+  },
+  {
+    "nombre": "Barrio a denominar (Sarmiento Conjunto 2)",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio a denominar (Sarmiento Conjunto 3)",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio a denominar (Valle Fértil Conjunto 1)",
+    "departamento": "Valle Fértil",
+    "localidad": "Astica"
+  },
+  {
+    "nombre": "Barrio A.R.A. San Juan (ARA San Juan - ex Santa Lucía Conjunto 1)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Aberastain I (Villa Aberastain I)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Barrio Aberastain III (Villa Aberastain III)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Agros",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Agua y Energía (Luz y Fuerza I)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Aires del Oeste (en construcción)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Alameda",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Alameda II",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Alberdi",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Alem",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Algarrobo Verde",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Alto Valle (necesita confirmación)",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Villa Palermo",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Pastor",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Paula Albarracín de Sarmiento",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Pérez Hernández",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Pontoriero",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Posleman",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Pueyrredón",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Rachel",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Ramos",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Rivadavia",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Villa Rizzo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Rodano",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Rodríguez Pinto",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Rodríguez Vila",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Rojas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Ross",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Saiz",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa San Andrés",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa San Cayetano",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa San Ceferino",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Villa San Damián",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa San Francisco",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa San Isidro",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa San José",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa San José",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa San Juan",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa San Martín Sur",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa San Miguel",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa San Pablo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa San Pedro",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa San Roque",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Santa Amalia",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Santa Anita",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Santa Cruz",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa Santa Filomena",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Santa Isabel",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Villa Santa Rita",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Santa Rosa",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Santo Domingo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Santo Tomás",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Villa Sargento Cabral",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Sarmiento",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Sarmiento",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Seminario",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Unión",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Urquiza",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Vallecito",
+    "departamento": "Pocito",
+    "localidad": "Quinto Cuartel"
+  },
+  {
+    "nombre": "Villa Vargas",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa Villicum",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Villa Yornet Funes",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villas de Adelfa Residencial 2",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Villas de Adelfa Residencial 3",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Vista Andina - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Vivace Art Suites",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Medalla Milagrosa",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Medalla Milagrosa",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Medalla Milagrosa (ex Lote Hogar Nº 36)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Médano de Oro",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Barrio Medina Suárez",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Meglioli",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Mendoza",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Mercedario",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Mercedario",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Milagros (Barrio El Milagro) (necesita confirmación)",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Misiones",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Mitre",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Monseñor Orzali",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Moreno",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Municipal",
+    "departamento": "Pocito",
+    "localidad": "Campo de Batalla"
+  },
+  {
+    "nombre": "Barrio Municipal Santa Lucía",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Municipal Sur - Sector 1",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Mutual Banco San Juan",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Natania 74 (proyectado)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Natania III",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Natania IV",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania Residencial (Natania XIV)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Natania Residencial II (Natania XXIX)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania VI (Natania 6 - Hipólito Yrigoyen)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania VII",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Natania XV (Natania 15 - Rivadavia)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania XVI (Natania 16 - Cabañas Residencial)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania XVII (Natania 17 - Rivadavia II)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania XVIII (Natania 18 - Comandante Cabot)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania XX (Natania 20 - Rivadavia III)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Natania XXIV (Natania 24 - Santa Lucía)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Necochea",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Neuquén",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Nicolás Avellaneda",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Niquizanga",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Noreste III",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Norte",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Nuestra Señora de Fátima (Virgen de Fátima)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Nuestra Señora de la Merced",
+    "departamento": "Calingasta",
+    "localidad": "Tamberías"
+  },
+  {
+    "nombre": "Barrio Nuestra Señora del Rosario",
+    "departamento": "9 de Julio",
+    "localidad": "Villa 9 de Julio"
+  },
+  {
+    "nombre": "Barrio Nuevo Cuyo - Sector I",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Nuevo Cuyo - Sector II",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Nuevo del Bono",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Oasis (Barrio Oasis Cordillerano)",
+    "departamento": "Iglesia",
+    "localidad": "Villa Iglesia"
+  },
+  {
+    "nombre": "Barrio Obrero Municipal",
+    "departamento": "Zonda",
+    "localidad": "Zonda Arriba"
+  },
+  {
+    "nombre": "Barrio Obrero Rawson",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Oficiales de Gendarmería",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Olivares de Natania",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Orion I (Orión 1)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Orion II (Orión Cooperativa de Crédito y Vivienda Ltda.)",
+    "departamento": "Jáchal",
+    "localidad": "El Rincón"
+  },
+  {
+    "nombre": "Barrio Pablo Marcó",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Pablo Rojas (Barrio SOEVA 1 - SOEVA I)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Padre Carlos Barbero",
+    "departamento": "San Martín",
+    "localidad": "La Puntilla"
+  },
+  {
+    "nombre": "Barrio Padre Federico Maggio",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Palmares del Cerro",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Palmera",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Pampa Vieja",
+    "departamento": "Jáchal",
+    "localidad": "Pampa Vieja"
+  },
+  {
+    "nombre": "Barrio Pampa Vieja I (Barrio Pampa Vieja 1)",
+    "departamento": "Jáchal",
+    "localidad": "Pampa Vieja"
+  },
+  {
+    "nombre": "Barrio Papa Francisco",
+    "departamento": "Caucete",
+    "localidad": "La Puntilla"
+  },
+  {
+    "nombre": "Barrio Papa Francisco",
+    "departamento": "9 de Julio",
+    "localidad": "Las Chacritas"
+  },
+  {
+    "nombre": "Barrio Parque de Mayo",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Parque Independencia (FAECAPP)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Parque Meglioli (proyectado)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Parque Residencial",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Parque Rivadavia Norte",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Parque Sur",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Parque Universitario",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Pateta",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Patiño",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Patricias Sanjuaninas",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Patricias Sanjuaninas",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Pellegrini",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Peniel - Primera Etapa",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Peniel - Segunda Etapa",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Pie de Palo",
+    "departamento": "San Martín",
+    "localidad": "Villa San Martín"
+  },
+  {
+    "nombre": "Barrio Pie de Palo",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Pituil (Calingasta Conjunto 1)",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Ponce",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Santo Tomás",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Sargento Cabral",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Sarmiento",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Sarmiento Conjunto 1 (Barrio Sarmiento I - Barrio Cochagual Norte)",
+    "departamento": "Sarmiento",
+    "localidad": "Cochagual"
+  },
+  {
+    "nombre": "Barrio Sarmiento Conjunto VI",
+    "departamento": "Sarmiento",
+    "localidad": "Colonia Fiscal"
+  },
+  {
+    "nombre": "Barrio Saturnino Sarassa",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Semiprivado Portalba IV",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Senderos del Oeste",
+    "departamento": "9 de Julio",
+    "localidad": "Villa 9 de Julio"
+  },
+  {
+    "nombre": "Barrio Señora del Rosario de San Nicolás",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Serranías",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Serranías del Sur (Conjunto 10)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Sierras de la Invernada (Barrio Sierras de las Invernadas) (en construcción)",
+    "departamento": "Ullum",
+    "localidad": "Villa Ibáñez"
+  },
+  {
+    "nombre": "Barrio Sierras de Marquesado - Sector Este",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Sierras de Marquesado - Sector Oeste",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Sindicato Químicos",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio SITRAVIAP",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio SMATA",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio SMATA II",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Sociedad Civil Cedro Azul",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio SOEVA II (SOEVA 2 - Sindicato de Obreros y Empleados Vitivinícolas)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Sol de Noviembre",
+    "departamento": "Jáchal",
+    "localidad": "Villa Mercedes"
+  },
+  {
+    "nombre": "Barrio Solares de Don José María",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Solares de Otoño",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Solares de San Juan",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Solares de San Juan II",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Solares de San Juan III",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Solares de San Juan IV",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Solares de Santa Lucía",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Solares del Sur (en construcción)",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Soldado Argentino",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Soldado Argentino",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio STOTAC",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Suboficiales de Gendarmería",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Sur",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio SUTIAGYF",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Tadeo Rojo",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Barrio Tehul",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Borjas (Las Casuarinas)"
+  },
+  {
+    "nombre": "Barrio Thomas Edison (Barrio Tomás Edison)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Tierra del Fuego",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Tierras de Albardón (proyectado)",
+    "departamento": "Albardón",
+    "localidad": "Villa General San Martín"
+  },
+  {
+    "nombre": "Barrio Tontal",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Toranzo",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Trabajadores Viales Nacionales",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Tres Esquinas",
+    "departamento": "Sarmiento",
+    "localidad": "Tres Esquinas"
+  },
+  {
+    "nombre": "Barrio Tupelí Sector II (Tupelí Sector 2)",
+    "departamento": "25 de Mayo",
+    "localidad": "Tupelí"
+  },
+  {
+    "nombre": "Barrio Turf",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Turf",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause"
+  },
+  {
+    "nombre": "Barrio UDAP I",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio UDAP II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio UDAP IV",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Uliarte",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Ulises I",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio Unión Obrera y Empleados Plásticos",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Universidad Católica",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Uruguay",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Usno",
+    "departamento": "Valle Fértil",
+    "localidad": "Usno"
+  },
+  {
+    "nombre": "Barrio UTA Caucete",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio UTA sectores I y II",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio UTEDYC (Unión de Trabajadores de Entidades Deportivas y Civiles)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Valle Norte",
+    "departamento": "Valle Fértil",
+    "localidad": "Villa San Agustín"
+  },
+  {
+    "nombre": "Barrio Valle Norte Ampliación (en construcción)",
+    "departamento": "Valle Fértil",
+    "localidad": "Villa San Agustín"
+  },
+  {
+    "nombre": "Barrio Valle Pintado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Vallecito",
+    "departamento": "Caucete",
+    "localidad": "Vallecito - Paraje Difunta Correa"
+  },
+  {
+    "nombre": "Barrio Vesta",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Vesta II",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Victoria",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Victorino Ortega",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Villa 9 de Julio",
+    "departamento": "9 de Julio",
+    "localidad": "La Majadita"
+  },
+  {
+    "nombre": "Barrio Villa Borjas",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Borjas (Las Casuarinas)"
+  },
+  {
+    "nombre": "Barrio Villa del Parque",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Villa El Salvador",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Barrio Villa Elisa I",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Centinela I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Centinela II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Centinela III",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Centro Empleados de Comercio",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Cerrado La Victoria",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cerrado Loteo del Oeste Residencial (Barrio Privado Oeste Residencial)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cerrado San Ignacio",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Cerrado San Sebastián",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Cerro Blanco",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio César Aguilar",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio CGT Rivadavia",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio CGT Rivadavia VI",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Chacabuco",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Chimbas",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Chimbas Conjunto IX (Conjunto 9)",
+    "departamento": "Chimbas",
+    "localidad": "Villa Paula A. de Sarmiento"
+  },
+  {
+    "nombre": "Barrio Chimbas II",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Cienaguita",
+    "departamento": "Sarmiento",
+    "localidad": "Cienaguita"
+  },
+  {
+    "nombre": "Barrio Cochagual",
+    "departamento": "Sarmiento",
+    "localidad": "Cochagual"
+  },
+  {
+    "nombre": "Barrio Colón Sector Este",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Colón Sector Oeste",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Colonia Zapata",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Coloso",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Comandante Cabot",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Complejo Don Pedro",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Complejo Mirasol",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Comuna San Miguel",
+    "departamento": "Chimbas",
+    "localidad": "El Mogote"
+  },
+  {
+    "nombre": "Barrio Conductores I (Sindicato de Conductores de Taxis de San Juan)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Conjunto 4 Alto Huaco",
+    "departamento": "Jáchal",
+    "localidad": "Alto Huaco"
+  },
+  {
+    "nombre": "Barrio Conjunto 4 Plumerillo",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Barrio Consejo Habitacional Municipalidad de Santa Lucía",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Consorcio 28 de Agosto (Barrio 28 de Agosto)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Convieco",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Cooperarq I (El Portal)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Cooperarq II (Universidad)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cooperarq III (Solares de Graffigna)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Cooperarq IV",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cooperarq V",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cooperarq VIII",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cooperativa Oro Negro",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Cooperativa Pismanta (Pismanta 1)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Cooperativa Pismanta II (Pismanta 2)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Cooperativa Pismanta III (Barrio Pismanta 3)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Cooperativa Villa María",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Córdoba",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Coronel J. Fontana",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause"
+  },
+  {
+    "nombre": "Barrio Corrientes",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Costa Canal",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Costa Canal III (Costa Canal 3)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio CoViSar",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio CRAS (Centro Regional de Aguas Subterráneas)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Cruce de los Andes Sectores I, II y III",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Barrio Cruz del Sur (UPCN)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Cuesta del Viento",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio Cuesta del Viento Ampliación (en construcción)",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio Cura Brochero",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Del Bono",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Del Bono Green",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio del Carmen",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio del Carmen II",
+    "departamento": "Sarmiento",
+    "localidad": "Los Berros"
+  },
+  {
+    "nombre": "Barrio del Prado",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Difunta Correa",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Barrio Docentes Sanjuaninos (UDAP III)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Doctor Elías Amado",
+    "departamento": "9 de Julio",
+    "localidad": "Villa 9 de Julio"
+  },
+  {
+    "nombre": "Barrio Doctor Francisco Velert (Pocito Conjunto 2)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Alto Verde",
+    "departamento": "Calingasta",
+    "localidad": "Villa Calingasta"
+  },
+  {
+    "nombre": "Barrio Altos de Natania I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Alvear y Rodríguez",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Amable Jones",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio AMECOM (Asociación Mutual de Empleados de Comercio)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio América",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio AMESPU",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Ampakama",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Andacollo 6 (Andacollo VI)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Andacollo I",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Andacollo II",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Andacollo II (Andacollo 2)",
+    "departamento": "Albardón",
+    "localidad": "El Rincón"
+  },
+  {
+    "nombre": "Barrio Angaco Conjunto I",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Barrio Ángel de Rojas",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Angualasto II",
+    "departamento": "Iglesia",
+    "localidad": "Angualasto"
+  },
+  {
+    "nombre": "Barrio Ansilta",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Antonino Aberastain",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Antonio Torres",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Aramburu",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Área I",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Área II",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Aromas de la Vid",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Arturo Frondizi",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Arturo Illia",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Asociación Bancaria (Barrio Bancario)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Asociación Civil Jardín Policial - Zona Norte",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Asociación Civil UDA I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Asociación Las Lomitas",
+    "departamento": "Albardón",
+    "localidad": "El Topón"
+  },
+  {
+    "nombre": "Barrio Asunción",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio ATE-API",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Atlético",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Atlético",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio ATSA",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio ATSA IV",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Ayres Libertador",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Balcarce",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Balcón de Ansilta",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Bandera Argentina",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Bardiani",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Basilio Nievas",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Bella Vista (Barrio Bella Vista - Estapa 1)",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio Bella Vista (Bella Vista I)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Bella Vista II",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Bella Vista II (Barrio Bella Vista - Etapa 2)",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio Bella Vista III (Barrio Bella Vista - Estapa 3)",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio Bella Vista IV (Barrio Bella Vista - Estapa 4)",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio Bella Vista V (Barrio Bella Vista - Estapa 5)",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio Bermejito",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Bermejo",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Bernardino Rivadavia",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Bicentenario",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Barrio Bicentenario",
+    "departamento": "Calingasta",
+    "localidad": "Alto Calingasta"
+  },
+  {
+    "nombre": "Barrio Bicentenario 1 (Barrio Jáchal Conjunto 2)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Bicentenario 2 (Barrio Jáchal Conjunto 3)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Bilbao II",
+    "departamento": "9 de Julio",
+    "localidad": "Villa 9 de Julio"
+  },
+  {
+    "nombre": "Barrio Bubica",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Barrio Buenaventura Luna",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Buenos Aires",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Bulevares de Punta de Rieles",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Cabo Principal de la Fuerza Aérea Argentina Suboficial Agustín Hugo Montaño (ex Hualilán Sur)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Cacique Calin",
+    "departamento": "Calingasta",
+    "localidad": "Tamberías"
+  },
+  {
+    "nombre": "Barrio Cadetes Argentinos",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Calívar",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Camino de las Tapias (en construcción)",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio Campodónico (ex Barrio Gobernador Ingeniero David Chávez)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Camus",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Capitán Lazo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Carolina II",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Carolina III",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Casitas Village",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Castro Padín",
+    "departamento": "Pocito",
+    "localidad": "Carpintería"
+  },
+  {
+    "nombre": "Barrio Caucete",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Caucete Conjunto IV (Conjunto 4)",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Cauquenes I (Cauquenes 1)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Ceferino Namuncurá",
+    "departamento": "San Martín",
+    "localidad": "Villa Dominguito"
+  },
+  {
+    "nombre": "Barrio Celeste y Blanco",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Centinela",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Centinela (Barrio Centinela IV)",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Las Pampas",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Barrio Las Piedritas I (Las Piedritas 1)",
+    "departamento": "Pocito",
+    "localidad": "Quinto Cuartel"
+  },
+  {
+    "nombre": "Barrio Las Piedritas II (Las Piedritas 2)",
+    "departamento": "Pocito",
+    "localidad": "Quinto Cuartel"
+  },
+  {
+    "nombre": "Barrio Las Rosas",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Las Totoras",
+    "departamento": "Zonda",
+    "localidad": "Zonda Arriba"
+  },
+  {
+    "nombre": "Barrio Las Viñas",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Lebensohn",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Libertad I",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Libertad III",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Libertador I",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Los Álamos II",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Los Algarrobos",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Los Almendros",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Los Aromos (ProCreAr)",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Los Arrayanes I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Los Arrayanes II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Los Berros",
+    "departamento": "Sarmiento",
+    "localidad": "Los Berros"
+  },
+  {
+    "nombre": "Barrio Los Caracoles",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Los Ceramistas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Los Horcones",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Los Horneros",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Los Médanos",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Los Molinos (Conjunto Habitacional Los Molinos) (en construcción)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Los Nevados",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Los Nogales I",
+    "departamento": "Jáchal",
+    "localidad": "Huaco"
+  },
+  {
+    "nombre": "Barrio Los Nogales II",
+    "departamento": "Jáchal",
+    "localidad": "Huaco"
+  },
+  {
+    "nombre": "Barrio Los Olivos",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Los Paraísos",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Los Penitentes",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Los Plátanos",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Los Sauces",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Los Solares",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Los Surcos (Conjunto Habitacional Los Surcos) (en construcción)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Los Sureños (Barrio Sureño)",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Los Tilos",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Los Trigales (en construcción)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Los Troncos",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Los Troncos",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Los Troperos",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Los Zorzales",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio Lote Hogar Cerro Colorado - Primera Etapa",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Lote Hogar Cerro Colorado - Segunda Etapa",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Lote Hogar Villa Yanello",
+    "departamento": "25 de Mayo",
+    "localidad": "Pozo del Salado"
+  },
+  {
+    "nombre": "Barrio Lozano I",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Lozano II",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Lozano III",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Luis B. Plaza (ex Floresta) (necesita confirmación)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Luis Cattani",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Luis Echeverría",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Luján (Barrio Municipal Villa Luján)",
+    "departamento": "Albardón",
+    "localidad": "El Topón"
+  },
+  {
+    "nombre": "Barrio Malimán",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Malvinas Argentinas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Malvinas Argentinas",
+    "departamento": "Jáchal",
+    "localidad": "Bella Vista"
+  },
+  {
+    "nombre": "Barrio Malvinas Nos Une - Sector 2",
+    "departamento": "Angaco",
+    "localidad": "Las Tapias"
+  },
+  {
+    "nombre": "Barrio Manantial (Los Manantiales)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Manuel Belgrano",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Mar del Plata",
+    "departamento": "Jáchal",
+    "localidad": "Villa Mercedes"
+  },
+  {
+    "nombre": "Barrio Marayes",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Marcó",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Marcó III",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Barrio Margarita Ferrá de Bartol (Valle Fértil Conjunto 2)",
+    "departamento": "Valle Fértil",
+    "localidad": "Villa San Agustín"
+  },
+  {
+    "nombre": "Barrio María Auxiliadora",
+    "departamento": "San Martín",
+    "localidad": "La Puntilla"
+  },
+  {
+    "nombre": "Barrio María Auxiliadora (Asociación Oasis Cordillerano)",
+    "departamento": "Iglesia",
+    "localidad": "Angualasto"
+  },
+  {
+    "nombre": "Barrio Marquesado I (Marquesado 1)",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio Marquesado II (Marquesado 2)",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Marquesado III (Marquesado 3)",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio Martín Fierro",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Martín Miguel de Güemes",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Martín Miguel de Güemes",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Martina Chapanay",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Mattas-Ristol",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Doctor Guillermo Rawson",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Doctor Leopoldo Bravo (ex Lote Hogar Nº 1)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Domingo Faustino Sarmiento",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Don Bosco",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Don José",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Don José (Barrio Municipal Don José)",
+    "departamento": "Albardón",
+    "localidad": "Villa General San Martín"
+  },
+  {
+    "nombre": "Barrio Don Rosendo",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Don Segundo",
+    "departamento": "Jáchal",
+    "localidad": "San Isidro"
+  },
+  {
+    "nombre": "Barrio Dorrego",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Dos Acequias",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio Echeverría",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Edilco",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio El Alcazar",
+    "departamento": "Calingasta",
+    "localidad": "Tamberías"
+  },
+  {
+    "nombre": "Barrio El Algarrobo - Sectores 1 y 2",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio El Arriero (Barrio Los Arrieros)",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio El Bosque",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Barrio El Bosque",
+    "departamento": "Angaco",
+    "localidad": "El Bosque"
+  },
+  {
+    "nombre": "Barrio El Carrizal",
+    "departamento": "Calingasta",
+    "localidad": "Sorocayense"
+  },
+  {
+    "nombre": "Barrio El Ceibo",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio El Ceibo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio El Cerro",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Barrio El Cóndor",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio El Cóndor (Barrio SUTIAGA - Sindicato Único de Trabajadores de la Industria de Aguas Gaseosas y Afines)",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio El Jagual (proyectado)",
+    "departamento": "Pocito",
+    "localidad": "Carpintería"
+  },
+  {
+    "nombre": "Barrio El Jilguero",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio El Mercedario",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio El Milagro",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio El Molle",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio El Puerto (en construcción)",
+    "departamento": "Calingasta",
+    "localidad": "Sorocayense"
+  },
+  {
+    "nombre": "Barrio El Rincón",
+    "departamento": "Albardón",
+    "localidad": "El Rincón"
+  },
+  {
+    "nombre": "Barrio El Vivero",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Elena Frondizi (ex Lote Hogar Nº 19)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Embajador Zaldívar (Pocito Conjunto 1)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Emilio Enoé Mendoza",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Empleados Municipales",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Empresa Mayo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Energía San Juan",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Enfermera Medina",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Enoe Bravo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Entre Aguas - Loteo Residencial",
+    "departamento": "Ullum",
+    "localidad": "Villa Ibáñez"
+  },
+  {
+    "nombre": "Barrio Entre Cauces (Conjunto Habitacional Entre Cauces) (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Entre Ríos",
+    "departamento": "San Martín",
+    "localidad": "La Puntilla"
+  },
+  {
+    "nombre": "Barrio España",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Estación La Rinconada",
+    "departamento": "Pocito",
+    "localidad": "Estación La Rinconada"
+  },
+  {
+    "nombre": "Barrio Estación Wilkinson",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Estado de Israel",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Eva Duarte de Perón",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Evita",
+    "departamento": "Jáchal",
+    "localidad": "Villa Mercedes"
+  },
+  {
+    "nombre": "Barrio Ex Combatientes de Malvinas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Facundo Menem",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Federación de Viñateros (ex Villa Gobernador Chávez) (a confirmar)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Federico Cantoni (Barrio Rodeo IV)",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio Felipe Cobas",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Fermín Rodríguez",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Ferrocarril Sur",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Ferroviario",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio FOEVA",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Formosa",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Formosa",
+    "departamento": "Albardón",
+    "localidad": "Villa San Miguel"
+  },
+  {
+    "nombre": "Barrio Fortabat",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Franklin Rawson",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Fray Justo Santa María de Oro (Complejo Habitacional Pocito Conjunto 1)",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Barrio Fray Mamerto Esquiú",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Fray Santa María de Oro",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Fronteras Argentinas",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Fronteras Argentinas (ex Lote Hogar Nº 45)",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio FUVA",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Gata de Górgora",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio GEMO II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Gendarmería",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio General Acha",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio General Acha II",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio General Acha Sur",
+    "departamento": "Pocito",
+    "localidad": "Colonia Rodas"
+  },
+  {
+    "nombre": "Barrio General Güemes",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Gobernador Camilo Rojo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Gran Libertador",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Guayaguas",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Portal de los Andes",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Portal del Este",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Portal del Médano",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Barrio Pórtico de Alto de Sierra",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Barrio Posta del Ángel",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Presidenta Cristina (Albardón Conjunto III)",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Barrio Presidente Arturo Illia (Barrio PAN) (necesita confirmación)",
+    "departamento": "Valle Fértil",
+    "localidad": "Villa San Agustín"
+  },
+  {
+    "nombre": "Barrio Presidente Néstor Kirchner",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Barrio Presidente Perón",
+    "departamento": "Angaco",
+    "localidad": "Las Tapias"
+  },
+  {
+    "nombre": "Barrio Privado Altos del Solar",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Barrio Privado Angualasto",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Ayres del Este 1º Etapa",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado Ayres del Este 2º Etapa",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado Bello Atardecer",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Privado Consejo Profesional de Ciencias Económicas (CPCE)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Cooperarq V",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Cooperarq VIII (Barrio Cooperarq VIII - Sector Privado)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Costa del Lago (Complejo Costa del Lago)",
+    "departamento": "Ullum",
+    "localidad": "Perilago"
+  },
+  {
+    "nombre": "Barrio Privado Don Luis 2",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Barrio Privado El Cedrón",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado El Sauce",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado Estilo Campo",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Privado La Antigua Destilería",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Las Marías",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Las Mercedes",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Los Aromos",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Los Fresnos",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Nueva Rinconada",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Privado Palmares del Sol",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Portalba I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Portalba II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Portalba III",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Portalba V",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado Portalba VII (proyectado)",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio Privado Posta Chacrita - Casas de Campo",
+    "departamento": "9 de Julio",
+    "localidad": "Las Chacritas"
+  },
+  {
+    "nombre": "Barrio Privado Residencial Felipa I",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Privado Rincón del Este",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado San Cristóbal II",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Barrio Privado Santa Bárbara",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Privado Sauce Viejo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado Sierra Grande",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Barrio Privado Sol del Oeste",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Sol Naciente",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Solares Don Francisco",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Privado Valle de Velázquez",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Privado Viñas del Este",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Privado Vistas del Tontal",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Procesa Sarmiento I (Procesa Sarmiento Sector 1)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Procesa Sarmiento II (Procesa Sarmiento Sector 2)",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Procesa Sarmiento III (Procesa Sarmiento Sector 3)",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Profesional (Barrio Foro de Abogados)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Provincia de la Rioja",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Provincia de San Juan",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Provincia de Tucumán",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Puente Verde",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Barrio Punta del Médano",
+    "departamento": "Sarmiento",
+    "localidad": "Cochagual"
+  },
+  {
+    "nombre": "Barrio Puyuta",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Quintas del Libertador",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Quintián",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Barrio Quinto Cuartel",
+    "departamento": "Pocito",
+    "localidad": "Quinto Cuartel"
+  },
+  {
+    "nombre": "Barrio R. Lara",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Radio Colón",
+    "departamento": "Ullum",
+    "localidad": "Villa Ibáñez"
+  },
+  {
+    "nombre": "Barrio Rawson Conjunto II (Conjunto 2)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Rawson Conjunto IV (Conjunto 4)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Rawson Conjunto VII (Conjunto 7)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Rawson Conjunto X (Conjunto 10)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Real",
+    "departamento": "Iglesia",
+    "localidad": "Villa Iglesia"
+  },
+  {
+    "nombre": "Barrio Recabarren",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Recuerdos de Provincia",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Reina Mora (Sindicato Unión Obrera de Estaciones de Servicio - SUOES)",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio Guayama",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Güell",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Héroes de Malvinas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Héroes del Belgrano (Ex Las Tierritas)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Hidráuilica",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Hipólito Yrigoyen",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio Horizonte Andino",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Hualilán I y II",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Hualilán Sur II",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Huarpes",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Huazihul",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Ignacio de la Roza",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Industrial",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Ingeniero Céspedes",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio INTA",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Intendente Francisco Césped (Angaco Conjunto 2)",
+    "departamento": "Angaco",
+    "localidad": "La Cañada"
+  },
+  {
+    "nombre": "Barrio Intendente Joaquín Uñac (ex Barrio Salvador Sur)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Barrio IPV Jáchal Conjunto 1 Niquivil",
+    "departamento": "Jáchal",
+    "localidad": "Niquivil"
+  },
+  {
+    "nombre": "Barrio Itatí (ex Lote Hogar Nº 10)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Ituzaingó",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio J. B. Alberdi",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio J. Licciardi",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Jáchal Conjunto 5",
+    "departamento": "Jáchal",
+    "localidad": "Villa Mercedes"
+  },
+  {
+    "nombre": "Barrio Jana",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Jardín 2 de Agosto",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Jardín 2 de Agosto",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Jardín de la Bebida (Barrio Jardín La Bebida)",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Jardín del Milagro",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Jardín Municipal",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Jardín Municipal",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Jardín Policial",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Jardín Puertas del Sol",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Jardín Punta Mogotes (proyectado)",
+    "departamento": "Chimbas",
+    "localidad": "El Mogote"
+  },
+  {
+    "nombre": "Barrio Jardín S.M.A.T.A. (SMATA - Sindicato de Mecánicos y Afines del Transporte Automotor)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Jardín S.M.A.T.A. Ampliación (SMATA - Sindicato de Mecánicos y Afines del Transporte Automotor)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Jardín Santa Cecilia",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Jorge Guardia",
+    "departamento": "Rawson",
+    "localidad": "Los Corredores"
+  },
+  {
+    "nombre": "Barrio José Ares",
+    "departamento": "Albardón",
+    "localidad": "El Topón"
+  },
+  {
+    "nombre": "Barrio José Filiberto Jofré - Primera Etapa",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio José Filiberto Jofré - Segunda Etapa",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Barrio José Ignacio de la Roza",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio José María Cortez",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Juan Albarracín",
+    "departamento": "25 de Mayo",
+    "localidad": "El Encón"
+  },
+  {
+    "nombre": "Barrio Juan Jufré",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Juan Pablo II",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Juan Pablo II",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Juan XXIII",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Juana Manso",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Judicial (Unión Judicial San Juan)",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Justo P. Castro I",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Justo P. Castro II",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Justo P. Castro III",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Kennedy",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio L. Bravo",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio La Alameda",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio La Alumbrera",
+    "departamento": "Calingasta",
+    "localidad": "Alto Calingasta"
+  },
+  {
+    "nombre": "Barrio La Cabaña",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio La Cañada",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio La Chimbera I",
+    "departamento": "25 de Mayo",
+    "localidad": "La Chimbera"
+  },
+  {
+    "nombre": "Barrio La Chimbera II",
+    "departamento": "25 de Mayo",
+    "localidad": "La Chimbera"
+  },
+  {
+    "nombre": "Barrio La Chimbera III (Barrio 35 viviendas)",
+    "departamento": "25 de Mayo",
+    "localidad": "La Chimbera"
+  },
+  {
+    "nombre": "Barrio La Esperanza",
+    "departamento": "Caucete",
+    "localidad": "Divisoria"
+  },
+  {
+    "nombre": "Barrio La Estación Sector Norte (ex Villa El Nailon)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio La Estación Sector Sur (ex Villa El Nailon)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio La Jarilla",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio La Majadita (en construcción)",
+    "departamento": "9 de Julio",
+    "localidad": "La Majadita"
+  },
+  {
+    "nombre": "Barrio La Pampa",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio La Plaza",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio La Quebrada",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio La Silvica",
+    "departamento": "Sarmiento",
+    "localidad": "Cochagual"
+  },
+  {
+    "nombre": "Barrio La Superiora (ProCreAr)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause"
+  },
+  {
+    "nombre": "Barrio Lagunas (Barrio Las Lagunas)",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Lagunas del Rosario",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Laprida",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Laprida",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Las Chacritas",
+    "departamento": "9 de Julio",
+    "localidad": "Las Chacritas"
+  },
+  {
+    "nombre": "Barrio Las Cortaderas",
+    "departamento": "Iglesia",
+    "localidad": "Villa Iglesia"
+  },
+  {
+    "nombre": "Barrio Las Lagunas",
+    "departamento": "Sarmiento",
+    "localidad": "Las Lagunas"
+  },
+  {
+    "nombre": "Barrio Las Lilas",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio Las Lomas (en construcción)",
+    "departamento": "Iglesia",
+    "localidad": "Las Flores"
+  },
+  {
+    "nombre": "Barrio Las Moreras",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio República del Líbano",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Residencial",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Residencial Doctor Guillermo Rawson",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Residencial José Ignacio de la Roza",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Residencial Leonor (proyectado)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Residencial Santa Bárbara",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Residencial Tulum",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Residencial Villa Isabel",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Retiro",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Ricardo Balbín",
+    "departamento": "Albardón",
+    "localidad": "Villa General San Martín"
+  },
+  {
+    "nombre": "Barrio Ricardo Colombo",
+    "departamento": "Zonda",
+    "localidad": "Zonda Arriba"
+  },
+  {
+    "nombre": "Barrio RIM 22",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Rincón del Este",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Rincón Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Rinconada II (Barrio La Rinconada)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Río Blanco",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Río Calingasta",
+    "departamento": "Calingasta",
+    "localidad": "Villa Calingasta"
+  },
+  {
+    "nombre": "Barrio Río Negro",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Rivadavia Conjunto 5",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Rivadavia Conjunto 5 Ampliación",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Rivadavia Conjunto 6",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Rivadavia Conjunto 7",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Rivadavia Conjunto 8",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Barrio Rivadavia Conjuntos 1, 2 y 3",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Barrio Rivadavia II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Rivadavia Sur",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio Robledal",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Barrio Roque Sáenz Peña",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Rural 2",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Barrio Ruta 20",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio Ruta 40",
+    "departamento": "Pocito",
+    "localidad": "Carpintería"
+  },
+  {
+    "nombre": "Barrio S. Casú",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Barrio Salomón Gliksberg",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Barrio Salvador María del Carril",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio San Antonio",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio San Carlos",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio San Cayetano",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio San Expedito",
+    "departamento": "Albardón",
+    "localidad": "La Cañada"
+  },
+  {
+    "nombre": "Barrio San Expedito",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio San Isidro Labrador - Sector Norte",
+    "departamento": "San Martín",
+    "localidad": "San Isidro"
+  },
+  {
+    "nombre": "Barrio San Isidro Labrador - Sector Sur",
+    "departamento": "San Martín",
+    "localidad": "San Isidro"
+  },
+  {
+    "nombre": "Barrio San Javier",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio San Jorge",
+    "departamento": "San Martín",
+    "localidad": "La Puntilla"
+  },
+  {
+    "nombre": "Barrio San José I (San José 1)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio San José II (San José 2)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio San Juan III",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio San Lorenzo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio San Luis",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio San Martín",
+    "departamento": "Caucete",
+    "localidad": "Los Médanos"
+  },
+  {
+    "nombre": "Barrio San Martín",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Barrio San Martín",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Barrio San Martín (ex Loteo Báez)",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Barrio San Martín 71 Viviendas",
+    "departamento": "San Martín",
+    "localidad": "San Isidro"
+  },
+  {
+    "nombre": "Barrio San Martín Conjunto 4",
+    "departamento": "San Martín",
+    "localidad": "San Isidro"
+  },
+  {
+    "nombre": "Barrio San Nicolás",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Barrio San Ramón",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio San Raúl",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio San Ricardo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio San Roberto",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Barrio San Roque",
+    "departamento": "Albardón",
+    "localidad": "La Cañada"
+  },
+  {
+    "nombre": "Barrio San Roque I (San Roque 1)",
+    "departamento": "Jáchal",
+    "localidad": "San Roque"
+  },
+  {
+    "nombre": "Barrio Sancassani (ex Lote Hogar Nº 8)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Santa Bárbara de Mogna",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Barrio Santa Clara",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Barrio Santa Clara de Asís",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Santa Cruz",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Santa Isabel (Hortalizas del Paraíso) (necesita confirmación)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Santa Jacinta",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Santa Lucía (ex Lote Hogar Nº 26)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Santa Lucía Conjunto 4",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Santa Lucía Conjunto II La Colonia (Conjunto 2)",
+    "departamento": "Santa Lucía",
+    "localidad": "Colonia Richet Zapata"
+  },
+  {
+    "nombre": "Barrio Santa Lucía Norte",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Barrio Santa Rita",
+    "departamento": "9 de Julio",
+    "localidad": "Villa 9 de Julio"
+  },
+  {
+    "nombre": "Barrio Santa Rita",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Barrio Santa Rosa",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Santa Teresita",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Santo Domingo",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Lote Hogar Nº 5",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Lote Hogar Nº 53",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Lote Hogar Nº 65",
+    "departamento": "Jáchal",
+    "localidad": "Alto Huaco"
+  },
+  {
+    "nombre": "Lote Hogar Nº 9",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Loteo Abelina",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Loteo Abierto Piedras Blancas",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Loteo Abierto Terrazas al Oeste",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Loteo Angelita",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Arustiza",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Loteo Aurelia",
+    "departamento": "San Martín",
+    "localidad": "Dos Acequias"
+  },
+  {
+    "nombre": "Loteo Campos de Sueños",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Casas de Campo El Mercedario",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Loteo Chacras del Este (necesita confirmación)",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Loteo CREAR XVIII",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo Dichiacchio",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Loteo Don Baltazar",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Loteo Don Juan (necesita confirmación)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo El Amparo",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Loteo El Sirah",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Loteo El Trébol",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo Familiar Maimara II",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Graffigna",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Loteo Guarneri",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Loteo La Colmena",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Loteo La Lucinda - Primera Etapa",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Loteo La Lucinda - Segunda Etapa",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Loteo La Paloma",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo La Stanza",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Los Ciruelos",
+    "departamento": "Albardón",
+    "localidad": "Villa San Miguel"
+  },
+  {
+    "nombre": "Loteo Maffezzini",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Maurín Navarro",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo Montilla",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo MuDAP (Barrio MuDAP)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Mulet",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Nuche",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Loteo Pérez Font",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo Perramón (Consorcio Cayampal) (necesita confirmación)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Loteo Privado Barrio La Toscana",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Privado Bosque del Chañar",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Privado La Antonia",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Loteo Público Aires de Florida (Barrio Aires de Florida)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo Público Alta Vista",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Público Altamira (Alta Mira)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Pueblo Nuevo (Echegaray-Bloise)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Recabarren",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Loteo Reconquista",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Residencial Las Palmeras II",
+    "departamento": "Ullum",
+    "localidad": "Villa Ibáñez"
+  },
+  {
+    "nombre": "Loteo Residencial Palmanova",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Loteo Rincón Veneto",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Loteo Salta",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Loteo San José",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Loteo San Lorenzo (Barrio Atlético San Lorenzo)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Loteo Sauzales de Rizzo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Serrano Rincón de Sierra Chica",
+    "departamento": "Zonda",
+    "localidad": "Villa Tacú"
+  },
+  {
+    "nombre": "Loteo Sol del Norte",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Loteo Solares de Elisa",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Loteo Soria",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Loteo Villa Mogote",
+    "departamento": "Chimbas",
+    "localidad": "El Mogote"
+  },
+  {
+    "nombre": "Loteo Villa Sol",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Loteo Widmer",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Natania 46 - Torre Aberastain (Natania XLVI)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Natania 54",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Natania 57 (en construcción)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Natania 77 - Ingreso Norte Ignacio de la Roza (en construcción)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Natania 77 - Ingreso Sur Mitre (en construcción)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Patio de San Ignacio",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Country La Porfiada",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Country San Eduardo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Desarrollo Urbanístico La Nave (Complejo La Nave - ProCreAr II) (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Desarrollo Urbanístico La Ramada (ProCreAr II) (en construcción)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "DM Conjunto Habitacional",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Don Salvador - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Edificio Alameda",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Atlántida 2 (necesita confirmación)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Atlántida IX (Edificio Atlántida 9)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Brant",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Casa Nueva",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Edificio Castilla",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Castro",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 1",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 2",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 3",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 4",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 5",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 6 - Bloque Avenida Libertador",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 6 - Bloque Santiago del Estero",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 7",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Catamarán 8",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Cinema",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Colón Norte (Complejo Colón Norte)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Edificio Derby",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Elizondo",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Grinhauz",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Grynszpan",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Haron Koss",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Huarpes",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Kragjcek",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Levstein",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Mendoza",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Miguel Ángel",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Mitre - Puerta Norte",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Mitre - Puerta Sur",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Muralbo 2 (en construcción)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Edificio Muralbo I (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Orión",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Portezuelo II",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Rapaport",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Reina Victoria",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Rivadavia 3",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Rivadavia Norte",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Rubik",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio SCOP V (SCOP 5)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Sigma",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Tempus (proyectado)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Edificio Torre Belgrano (en construcción)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Torres de Cuyo",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Urbano II (Urbano 2)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Varena",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Edificio Versalles - Torre Norte (Natania XLIII)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Versalles - Torre Sur (Natania XLIII)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Edificio Yanello",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "El Tribal Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Estilo Sur - Barrio Privado",
+    "departamento": "Rawson",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "La Deolinda Barrio Privado",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "La Fontana - Residencia Natural",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "La Horminda Barrio Abierto",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "La Lucía - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "La Santa María - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Los Álamos II - Microbarrios Cerrados (Natania 51)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Lote Hogar Nº 16",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Lote Hogar Nº 18",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Lote Hogar Nº 20",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Lote Hogar Nº 21",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Lote Hogar Nº 22",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Lote Hogar Nº 24",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Lote Hogar Nº 25",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Lote Hogar Nº 3",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Lote Hogar Nº 30",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Lote Hogar Nº 32",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Lote Hogar Nº 34",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Lote Hogar Nº 4",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Lote Hogar Nº 41",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Portal del Arauco - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Providencia Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Rincón del Malbec - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Rincón del Syrah - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Rincones del Médano - Loteo Privado",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Rocas Blancas - Barrio Cerrado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Rukahue - Barrio Privado (Loteo Privado Rukahué)",
+    "departamento": "Pocito",
+    "localidad": "Quinto Cuartel"
+  },
+  {
+    "nombre": "Salón de la Unión Vecinal Villa Las Rosas, Santa Isabel y Sáenz Peña",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "San Carlos - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "San Julián Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "San Luis Complejo Residencial",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terra Nova Conjunto Residencial - Terra I (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terra Nova Conjunto Residencial - Terra II (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terra Nova Conjunto Residencial - Terra III (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terra Nova Conjunto Residencial - Terra IV (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terra Nova Conjunto Residencial - Terra V (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terra Nova Conjunto Residencial - Terra VI (proyectado)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Terrazas al Oeste - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Terreno de la ex Villa Fausto Carrasco",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Terreno de la ex Villa General San Martín (Villa El Chorizo)",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Terreno de la ex Villa Hidráulica",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Terreno de la ex Villa La Paloma",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Terreno de la ex Villa San Francisco",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento David Chávez - Sector entre calles 10 y 11 (Vías del ex Ferrocarril General San Martín)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento David Chávez - Sector entre calles 11 y 12 (Vías del ex Ferrocarril General San Martín)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento David Chávez - Sector entre calles 12 y 13 (Vías del ex Ferrocarril General San Martín)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento Enfermera Medina",
+    "departamento": "25 de Mayo",
+    "localidad": "Villa Santa Rosa"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento Evita",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento La Defensa",
+    "departamento": "Rivadavia",
+    "localidad": "La Bebida"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento Villa Esperanza",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Terreno del ex Asentamiento Villa Hidráulica",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Tierra de Arenas Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Tierra de Leones Lodge (proyectado)",
+    "departamento": "Iglesia",
+    "localidad": "Colola"
+  },
+  {
+    "nombre": "Tierras de Don Cristóbal - Barrio Cerrado",
+    "departamento": "Rawson",
+    "localidad": "El Medanito"
+  },
+  {
+    "nombre": "Tierras de Pocito - Barrio Cerrado",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Torre 9 de Julio (Edificio 9 de Julio - Natania II)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Torre Aconcagua Plaza (Edificio Aconcagua Plaza - Natania IX)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Torre Barcelona (Edificio Barcelona - Natania XI)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Torre Santa Fe (Edificio Santa Fe - Natania I)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Torre Venecia (Natania XII)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Torrentes de Querit - Loteo Abierto (Torrentes del Querit)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Torres España (en construcción)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Torres San José (en construcción)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Valle Parral - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Valles de Arica I",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Vía Aurelia - Barrio Privado",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Villa 12 de Octubre",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa 17 de Agosto",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa 20 de Junio",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Aberastain",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Alba",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Alfonsina Storni",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Almirante Brown",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa América",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Andacollo",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Ángela (Villa Maureira) (necesita confirmación)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Angélica",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Antonia",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Arce",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Ariza II",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Azocar",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Ballester",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Barceló",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Villa Barón",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Beltrán",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Burón Alonso",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Cabildo",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Calandra",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Campo Afuera",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Villa Capdevilla",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Cariño",
+    "departamento": "25 de Mayo",
+    "localidad": "Díaz Vélez"
+  },
+  {
+    "nombre": "Villa Carolina",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa Castro Guzmán de Agurado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Cenobia Bustos",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Centenario",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Chacabuco",
+    "departamento": "Rivadavia",
+    "localidad": "Marquesado"
+  },
+  {
+    "nombre": "Villa Chacarilla",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Congreso (ex Elisa)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Villa Esperanza (Barrio La Esperanza) - Sector A Primera Etapa (Etapa A1)",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Villa Esperanza (Barrio La Esperanza) - Sector A Segunda Etapa  (Etapa A2)",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Villa Esperanza (Barrio La Esperanza) - Sector B",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Villa Iglesia",
+    "departamento": "Iglesia",
+    "localidad": "Villa Iglesia"
+  },
+  {
+    "nombre": "Barrio Villa Media Agua I (Villa Media Agua 1)",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Villa Pituil",
+    "departamento": "Calingasta",
+    "localidad": "Barreal"
+  },
+  {
+    "nombre": "Barrio Villa San Martín",
+    "departamento": "Albardón",
+    "localidad": "Villa San Miguel"
+  },
+  {
+    "nombre": "Barrio Villa Sefair",
+    "departamento": "Angaco",
+    "localidad": "Villa del Salvador"
+  },
+  {
+    "nombre": "Barrio Villicum (en construcción)",
+    "departamento": "Albardón",
+    "localidad": "Campo Afuera"
+  },
+  {
+    "nombre": "Barrio Viñedos del Sur",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Virgen de Andacollo I",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Virgen de Andacollo II (o VII) (necesita confirmación)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Barrio Virgen de la Merced",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Barrio Virgen de Luján II",
+    "departamento": "Sarmiento",
+    "localidad": "Villa Media Agua"
+  },
+  {
+    "nombre": "Barrio Virgen del Rocío",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Virgen del Rosario",
+    "departamento": "San Martín",
+    "localidad": "La Puntilla"
+  },
+  {
+    "nombre": "Barrio Virgen del Socorro",
+    "departamento": "Albardón",
+    "localidad": "Las Lomitas"
+  },
+  {
+    "nombre": "Barrio Walter Melcher",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Barrio Walter Melcher I (Natania X)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Barrio Zonda Conjunto 2 Ampliación",
+    "departamento": "Zonda",
+    "localidad": "Villa Basilio Nievas"
+  },
+  {
+    "nombre": "Barrio Zonda Conjunto I",
+    "departamento": "Zonda",
+    "localidad": "Zonda Arriba"
+  },
+  {
+    "nombre": "Barrio Zonda Conjunto II",
+    "departamento": "Zonda",
+    "localidad": "Zonda Arriba"
+  },
+  {
+    "nombre": "Brisas Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Camino al Puente Viejo - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Campo La Legua",
+    "departamento": "Santa Lucía",
+    "localidad": "La Legua"
+  },
+  {
+    "nombre": "Campo La Rosa I Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Campo La Rosa II Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Campos de la Abadía - Barrio Privado",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Centro de Desarrollo Infantil (CDI) Pocito (proyectado)",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Ciudad Jardín - Barrio Privado",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Club House Aromas de Campo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Colonia Rosales",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Complejo América (en construcción)",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Complejo Aspen I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen III",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen IV",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen V",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen VI Virgen de Lourdes - Ingreso Calle General Espejo",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen VI Virgen de Lourdes - Ingreso Calle Los Tilos",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Aspen VII (en construcción)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Brasil I (Brasil 1)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Complejo Catamarán - Residencias en Altura",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Complejo Caza II",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Complejo Caza III",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Complejo Córdoba (en construcción)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Complejo Habitacional Aguaribay",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Habitacional Aleph (Conjunto Habitacional Aleph) (en construcción)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Complejo Habitacional CREAR 14",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Complejo Habitacional CREAR 16",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Complejo Habitacional CREAR 18",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Complejo Habitacional CREAR 21",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Complejo Habitacional CREAR 27",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Complejo Habitacional CREAR 46",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Habitacional Pismanta V (Barrio Pismanta V - Cooperativa Pismanta)",
+    "departamento": "Jáchal",
+    "localidad": "San José de Jáchal"
+  },
+  {
+    "nombre": "Complejo Habitacional Rosalba II (Rosalba 2)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Habitacional San Miguel (SCOP)",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Habitacional Santo Domingo III (Santo Domingo 3)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Complejo La Valentina",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Complejo Las Moras",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Los Arrayanes",
+    "departamento": "Iglesia",
+    "localidad": "Rodeo"
+  },
+  {
+    "nombre": "Complejo Los Ciruelos",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Complejo Los Teros",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Complejo Luz del Sur",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Complejo María Celeste",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Masare de O'Higgins",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Complejo Miraflores",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Complejo Parque Gran Libertador",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Privado Álamos de Chacritas",
+    "departamento": "9 de Julio",
+    "localidad": "Las Chacritas"
+  },
+  {
+    "nombre": "Complejo Privado El Palmar",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Complejo Privado Palmeras II",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Complejo Privado Palmeras III (Palmeras 3)",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Complejo Privado VillaVerde 1 (Villa Verde I)",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Complejo Privado VillaVerde 3 (Villa Verde III)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Complejo Privado VillaVerde 4 (Villa Verde IV) (proyectado)",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Complejo Privado Zonda II",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Quintas del Carmen",
+    "departamento": "Rawson",
+    "localidad": "Médano de Oro (Villa Bolaños)"
+  },
+  {
+    "nombre": "Complejo Residencial Altos de Meglioli",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Cremades",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain (Ciudad de Pocito)"
+  },
+  {
+    "nombre": "Villa Del Bono",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa del Carmen",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa del Carril",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Villa del Parque",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Villa Dominga Yanello (Villa Yanelo)",
+    "departamento": "25 de Mayo",
+    "localidad": "Pozo del Salado"
+  },
+  {
+    "nombre": "Villa Don Arturo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Don Manuel",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Don Pablo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Don Pedro",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Doncel",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Dorrego",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Dubos",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Echegaray",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa El Pino",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa El Salvador",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa El Tango (Villa La Salud)",
+    "departamento": "25 de Mayo",
+    "localidad": "Pozo del Salado"
+  },
+  {
+    "nombre": "Villa Elena",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Esther",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Estornell",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Etelvina",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Villa Ferla",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Ferrer Yanzi",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Fleury",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Flora",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Ford (Barrio Independencia)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Franca",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Francisco Laprida",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Funes",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Villa Garbini",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa General Acha",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa General Paz",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Villa Giner",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Giuliani",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Gremoliche",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Guzmán",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Hipódromo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Inés",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Italia",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Izoriaga",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa J. F. de Mallea (necesita confirmación)",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa José Dolores",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Juan Jufré",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Juanita",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Villa La Superiora",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Laplagne",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Larrain",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Las Margaritas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Las Rosas",
+    "departamento": "Caucete",
+    "localidad": "Ciudad de Caucete"
+  },
+  {
+    "nombre": "Villa Las Rosas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Lerga",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Libertad",
+    "departamento": "Pocito",
+    "localidad": "Villa Aberastain"
+  },
+  {
+    "nombre": "Villa Libertador",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Libertador",
+    "departamento": "Santa Lucía",
+    "localidad": "Alto de Sierra"
+  },
+  {
+    "nombre": "Villa Lliver",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa López Mansilla",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Los Huarpes",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Los Lirios",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Los Paraísos",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Los Patos - Loteo Público",
+    "departamento": "Albardón",
+    "localidad": "El Topón"
+  },
+  {
+    "nombre": "Villa Lucrecia",
+    "departamento": "Chimbas",
+    "localidad": "Ciudad de Chimbas"
+  },
+  {
+    "nombre": "Villa Luz del Mundo",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Mallea",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Manuelita",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Manzini",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Margarita",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Villa María",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Marini",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Mascarell",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Maturano",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Villa Mirarchi",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Muñoz",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Villa Nicolás Avellaneda",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Novoa",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Nuestra Señora de Lourdes",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Villa Nueva",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Villa Nueva Esperanza",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Nuevo Palermo",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Villa Palacio",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Villa Palacios (Villa Palacio)",
+    "departamento": "Caucete",
+    "localidad": "Divisoria"
+  },
+  {
+    "nombre": "Complejo Residencial Capri Oeste",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Residencial Casanova",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Residencial Cosenza (en construcción)",
+    "departamento": "Santa Lucía",
+    "localidad": "Ciudad de Santa Lucía"
+  },
+  {
+    "nombre": "Complejo Residencial Pórtico de Rivadavia",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Residencial San Pietro",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Residencial Único Ruta 40",
+    "departamento": "Pocito",
+    "localidad": "La Rinconada"
+  },
+  {
+    "nombre": "Complejo Residencial y Comercial La Delfina",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Complejo Turístico Pampas del Cura - Pueblo Termal - Casas de Campo",
+    "departamento": "Iglesia",
+    "localidad": "Las Flores"
+  },
+  {
+    "nombre": "Complejo Valencia I (proyectado)",
+    "departamento": "Rawson",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Complejo Wanda María I",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Conjunto Habitacional Las Garzas",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Conjunto Habitacional NECO I (NECO 1)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Conjunto Habitacional Parque Norte (proyectado)",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Conjunto Loft 7",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio ADICUS",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Antigua Bodega",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcio Atlántida III (Atlántida 3)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Atlántida VII (Atlántida 7)",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio ATSA",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio ATSA (necesita confirmación)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Catalina I",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Centro Empleados de Comercio",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Consorcio Cerrado Villicum",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcio Cerratti",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Clemente Sarmiento",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Consorcio Del Pilar I",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Del Pilar II - Torre Este",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Del Pilar II - Torre Oeste",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Del Rosario",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Doctor Guillermo Rawson",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Consorcio Edificio Ángel",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio El Cerrillo",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Consorcio El Nogal",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcio Facultad (Barrio Facultad)",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio General Paz",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Gill Telles",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Guadalupe II",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Herminia",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Jardines 9 de Julio - Acceso Calle 9 de Julio",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Jardines 9 de Julio - Acceso Calle Brasil",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Jardines del Libertador",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Libertador",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Los Olivos",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Lourdes",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Luján",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio María Auxiliadora",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio María Auxiliadora - Ingreso Cocheras",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio María Auxiliadora II",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio María Victoria",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Mariano Moreno",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Mecánico Mella",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Consorcio Medalla Milagrosa",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Milagros",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcio Nuestra Villa",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Patricias I",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Patricias II",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Privado Jardín de mi Madre",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Consorcio Privado Libertad",
+    "departamento": "Rawson",
+    "localidad": "Villa Krause (Ciudad de Rawson)"
+  },
+  {
+    "nombre": "Consorcio San Agustín I",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio San Agustin II",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio San Andrés",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio San Antonio",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio San Francisco",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio San Gabriel",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio San Jorge",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio San Jorge",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Consorcio San Lorenzo",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio San Martín",
+    "departamento": "Capital",
+    "localidad": "Concepción"
+  },
+  {
+    "nombre": "Consorcio San Miguel",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio San Nicolás",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio San Patricio",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio San Pedro",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio San Rafael",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcio Sant' Angelo I (Sant' Angelo 1)",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Sant' Angelo II",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Sant' Angelo III",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Sant' Angelo IV",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcio Santa Bárbara",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Santa Inés",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Consorcio Santa María",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Santiago",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Santo Domingo",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Santo Tomás",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio SCOP",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Tambolar",
+    "departamento": "Capital",
+    "localidad": "San Juan"
+  },
+  {
+    "nombre": "Consorcio Trinidad",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio UVT",
+    "departamento": "Capital",
+    "localidad": "Trinidad"
+  },
+  {
+    "nombre": "Consorcio Villa Los Cerros",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Consorcios Del Valle I y Del Valle II",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Country Casa Grande",
+    "departamento": "Capital",
+    "localidad": "Desamparados"
+  },
+  {
+    "nombre": "Country Club El Ceibo",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  },
+  {
+    "nombre": "Country El Huarpe",
+    "departamento": "Rivadavia",
+    "localidad": "Ciudad de Rivadavia"
+  }
+]
