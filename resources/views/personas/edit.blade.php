@@ -10,6 +10,7 @@
             <div class="bg-white overflow-visible shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
+                    {{-- IMPORTANTE: enctype="multipart/form-data" --}}
                     <form action="{{ route('personas.update', $persona) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')  <div class="mb-4">
@@ -141,6 +142,12 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                             <p class="mt-1 text-xs text-gray-500">Dejar vacío para mantener la foto actual</p>
+
+                            <!-- Preview nueva imagen -->
+                            <div class="mt-2 mb-2">
+                                <img id="preview-foto" src="#" alt="Preview" class="hidden w-32 h-32 object-cover rounded-lg border-2 border-green-500">
+                                <p id="preview-label" class="hidden text-sm text-green-600 font-medium mt-1">✅ Nueva foto seleccionada</p>
+                            </div>
                         </div>
 
                         <div class="mb-6">
@@ -173,6 +180,24 @@
                         input.placeholder = 'Alias';
                         input.className = 'mt-2 block w-full rounded-md border-gray-300';
                         container.appendChild(input);
+                    }
+                    function previewImage(event) {
+                        const input = event.target;
+                        const preview = document.getElementById('preview-foto');
+                        const label = document.getElementById('preview-label');
+                        if (input.files && input.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                preview.src = e.target.result;
+                                preview.classList.remove('hidden');
+                                label.classList.remove('hidden');
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        } else {
+                            preview.src = '#';
+                            preview.classList.add('hidden');
+                            label.classList.add('hidden');
+                        }
                     }
                     </script>
                 </div>

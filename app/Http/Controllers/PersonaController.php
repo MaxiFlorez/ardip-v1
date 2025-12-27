@@ -70,29 +70,29 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos
+        // Validaciones (incluye mimes y fecha antes de hoy)
         $validated = $request->validate([
-            'dni' => 'required|string|size:8|unique:personas,dni',
+            'dni' => 'required|string|max:8|unique:personas,dni',
             'nombres' => 'required|string|max:100',
             'apellidos' => 'required|string|max:100',
-            'fecha_nacimiento' => 'required|date',
+            'fecha_nacimiento' => 'required|date|before:today',
             'genero' => 'required|in:masculino,femenino,otro',
-            // Alias como array
+            // Alias como array de strings
             'alias' => 'nullable|array',
             'alias.*' => 'nullable|string|max:100',
             'nacionalidad' => 'nullable|string|max:50',
             'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
-            'foto' => 'nullable|image|max:2048', // 2MB máximo
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'observaciones' => 'nullable|string',
         ]);
 
-        // Manejar la foto si existe
+        // Procesar foto si existe (storage/app/public/fotos_personas)
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('fotos_personas', 'public');
             $validated['foto'] = $path;
         }
 
-        // Alias del request (se procesan por separado)
+        // Alias del request (se procesan por separado para no persistir en personas)
         $aliasInput = $request->input('alias', []);
         unset($validated['alias']);
 
@@ -108,9 +108,10 @@ class PersonaController extends Controller
             }
         }
 
-        // Redirigir con mensaje de éxito
-        return redirect()->route('personas.index')
-            ->with('success', 'Persona creada exitosamente.');
+        // Redirigir al detalle con mensaje de éxito
+        return redirect()
+            ->route('personas.show', $persona)
+            ->with('success', '✅ Persona creada correctamente con foto.');
     }
 
     /**
@@ -139,17 +140,17 @@ class PersonaController extends Controller
     {
         // Validar los datos (DNI único excepto el actual)
         $validated = $request->validate([
-            'dni' => 'required|string|size:8|unique:personas,dni,' . $persona->id,
+            'dni' => 'required|string|max:8|unique:personas,dni,' . $persona->id,
             'nombres' => 'required|string|max:100',
             'apellidos' => 'required|string|max:100',
-            'fecha_nacimiento' => 'required|date',
+            'fecha_nacimiento' => 'required|date|before:today',
             'genero' => 'required|in:masculino,femenino,otro',
             // Alias como array
             'alias' => 'nullable|array',
             'alias.*' => 'nullable|string|max:100',
             'nacionalidad' => 'nullable|string|max:50',
             'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
-            'foto' => 'nullable|image|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'observaciones' => 'nullable|string',
         ]);
 
@@ -184,7 +185,7 @@ class PersonaController extends Controller
 
         // Redirigir con mensaje de éxito
         return redirect()->route('personas.show', $persona)
-            ->with('success', 'Persona actualizada exitosamente.');
+            ->with('success', '✅ Persona actualizada correctamente.');
     }
 
     /**

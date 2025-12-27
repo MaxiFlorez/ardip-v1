@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Nueva Persona') }}
+            {{ __('Agregar Nueva Persona') }}
         </h2>
     </x-slot>
 
@@ -10,68 +10,77 @@
             <div class="bg-white overflow-visible shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     
+                    {{-- IMPORTANTE: Agregar enctype="multipart/form-data" para archivos --}}
                     <form action="{{ route('personas.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
-                        <!-- DNI -->
-                        <div class="mb-4">
-                            <label for="dni" class="block text-sm font-medium text-gray-700">DNI *</label>
-                            <input type="text" name="dni" id="dni" value="{{ old('dni') }}" maxlength="8" 
-                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
-                            @error('dni')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <!-- Nombres -->
-                        <div class="mb-4">
-                            <label for="nombres" class="block text-sm font-medium text-gray-700">Nombres *</label>
-                            <input type="text" name="nombres" id="nombres" value="{{ old('nombres') }}" 
-                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
-                            @error('nombres')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <!-- Apellidos -->
-                        <div class="mb-4">
-                            <label for="apellidos" class="block text-sm font-medium text-gray-700">Apellidos *</label>
-                            <input type="text" name="apellidos" id="apellidos" value="{{ old('apellidos') }}" 
-                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
-                            @error('apellidos')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div><!-- Fecha de Nacimiento -->
-                        <div class="mb-4">
-                            <label for="fecha_nacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento *</label>
-                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" 
-                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
-                            @error('fecha_nacimiento')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <!-- Género -->
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700">Género *</label>
-                            <div class="mt-2 space-x-4">
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="genero" value="masculino" {{ old('genero') == 'masculino' ? 'checked' : '' }} required>
-                                    <span class="ml-2">Masculino</span>
-                                </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="genero" value="femenino" {{ old('genero') == 'femenino' ? 'checked' : '' }}>
-                                    <span class="ml-2">Femenino</span>
-                                </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="genero" value="otro" {{ old('genero') == 'otro' ? 'checked' : '' }}>
-                                    <span class="ml-2">Otro</span>
-                                </label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- DNI -->
+                            <div class="mb-4">
+                                <label for="dni" class="block text-sm font-medium text-gray-700">DNI *</label>
+                                <input type="text" name="dni" id="dni" value="{{ old('dni') }}" required maxlength="8"
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @error('dni')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
-                            @error('genero')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
+
+                            <!-- Nombres -->
+                            <div class="mb-4">
+                                <label for="nombres" class="block text-sm font-medium text-gray-700">Nombres *</label>
+                                <input type="text" name="nombres" id="nombres" value="{{ old('nombres') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @error('nombres')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Apellidos -->
+                            <div class="mb-4">
+                                <label for="apellidos" class="block text-sm font-medium text-gray-700">Apellidos *</label>
+                                <input type="text" name="apellidos" id="apellidos" value="{{ old('apellidos') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @error('apellidos')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Fecha de Nacimiento -->
+                            <div class="mb-4">
+                                <label for="fecha_nacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento *</label>
+                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @error('fecha_nacimiento')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Género -->
+                            <div class="mb-4 md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Género *</label>
+                                <div class="flex gap-4">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="genero" value="masculino" 
+                                               {{ old('genero') === 'masculino' ? 'checked' : '' }}
+                                               class="form-radio" required>
+                                        <span class="ml-2">Masculino</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="genero" value="femenino" 
+                                               {{ old('genero') === 'femenino' ? 'checked' : '' }}
+                                               class="form-radio">
+                                        <span class="ml-2">Femenino</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="genero" value="otro" 
+                                               {{ old('genero') === 'otro' ? 'checked' : '' }}
+                                               class="form-radio">
+                                        <span class="ml-2">Otro</span>
+                                    </label>
+                                </div>
+                                @error('genero')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                         <!-- Alias múltiples -->
                         <div class="mb-4">
@@ -117,18 +126,26 @@
                             @enderror
                         </div>
 
-                        <!-- Foto -->
-                        <div class="mb-4">
-                            <label for="foto" class="block text-sm font-medium text-gray-700">Foto</label>
-                            <input type="file" name="foto" id="foto" accept="image/*" 
-                                   class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                        {{-- FOTO con preview --}}
+                        <div class="mb-4 md:col-span-2">
+                            <label for="foto" class="block text-sm font-medium text-gray-700 mb-2">📸 Foto de la Persona</label>
+
+                            <div class="mt-2 mb-4">
+                                <img id="preview-foto" src="#" alt="Preview" class="hidden w-32 h-32 object-cover rounded-lg border-2 border-gray-300">
+                            </div>
+
+                            <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/jpg"
+                                   onchange="previewImage(event)"
+                                   class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                            <p class="mt-1 text-xs text-gray-500">Formatos: JPG, PNG | Tamaño máximo: 2MB</p>
                             @error('foto')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <!-- Observaciones -->
-                        <div class="mb-6">
+                        <div class="mb-6 md:col-span-2">
                             <label for="observaciones" class="block text-sm font-medium text-gray-700">Observaciones</label>
                             <textarea name="observaciones" id="observaciones" rows="3" 
                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('observaciones') }}</textarea>
@@ -138,15 +155,9 @@
                         </div>
 
                         <!-- Botones -->
-                        <div class="flex justify-end space-x-3 mt-8 pt-6 border-t border-gray-200">
-                            <a href="{{ route('personas.index') }}" 
-                               class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
-                                Cancelar
-                            </a>
-                            <button type="submit" 
-                                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Guardar
-                            </button>
+                        <div class="flex items-center justify-end mt-6 gap-2">
+                            <a href="{{ route('personas.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancelar</a>
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">💾 Guardar Persona</button>
                         </div>
                     </form>
 
@@ -159,6 +170,22 @@
                         input.placeholder = 'Alias';
                         input.className = 'mt-2 block w-full rounded-md border-gray-300';
                         container.appendChild(input);
+                    }
+
+                    function previewImage(event) {
+                        const input = event.target;
+                        const preview = document.getElementById('preview-foto');
+                        if (input.files && input.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                preview.src = e.target.result;
+                                preview.classList.remove('hidden');
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        } else {
+                            preview.src = '#';
+                            preview.classList.add('hidden');
+                        }
                     }
                     </script>
                 </div>

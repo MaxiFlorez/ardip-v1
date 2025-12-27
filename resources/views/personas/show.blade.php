@@ -23,11 +23,11 @@
                         <div class="flex-shrink-0">
                             @if($persona->foto)
                                 <img src="{{ asset('storage/' . $persona->foto) }}" 
-                                     alt="Foto de {{ $persona->nombres }}"
-                                     class="w-40 h-40 object-cover rounded-lg border-2 border-gray-300">
+                                     alt="{{ $persona->nombre_completo }}"
+                                     class="w-48 h-48 object-cover rounded-lg border-2 border-gray-300 shadow-lg">
                             @else
-                                <div class="w-40 h-40 bg-gray-200 rounded-lg flex items-center justify-center border-2 border-gray-300">
-                                    <svg class="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <div class="w-48 h-48 bg-gray-200 rounded-lg flex items-center justify-center border-2 border-gray-300">
+                                    <svg class="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                                     </svg>
                                 </div>
