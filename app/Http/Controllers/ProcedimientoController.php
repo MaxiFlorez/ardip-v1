@@ -34,7 +34,7 @@ class ProcedimientoController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('ver-procedimientos');
+        $this->authorize('panel-consulta');
         $procedimientos = Procedimiento::with(['brigada', 'personas', 'domicilios'])
             ->buscar($request->get('search'))
             ->orderBy('created_at', 'desc')
@@ -49,7 +49,7 @@ class ProcedimientoController extends Controller
      */
     public function create()
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $brigadas = Brigada::orderBy('nombre')->get();
         return view('procedimientos.create', compact('brigadas'));
     }
@@ -60,7 +60,7 @@ class ProcedimientoController extends Controller
      */
     public function store(StoreProcedimientoRequest $request)
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $validated = $request->validated();
 
         // Asignar datos del contexto de autenticación
@@ -79,7 +79,7 @@ class ProcedimientoController extends Controller
      */
     public function show(Procedimiento $procedimiento)
     {
-        $this->authorize('ver-procedimientos');
+        $this->authorize('panel-consulta');
         $procedimiento->load(['personas', 'domicilios', 'usuario', 'brigada']);
 
         $personasDisponibles = Persona::orderBy('apellidos')->get();
@@ -93,7 +93,7 @@ class ProcedimientoController extends Controller
      */
     public function edit(Procedimiento $procedimiento)
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $brigadas = Brigada::orderBy('nombre')->get();
         return view('procedimientos.edit', compact('procedimiento', 'brigadas'));
     }
@@ -104,7 +104,7 @@ class ProcedimientoController extends Controller
      */
     public function update(UpdateProcedimientoRequest $request, Procedimiento $procedimiento)
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $procedimiento->update($request->validated());
 
         return redirect()
@@ -117,7 +117,7 @@ class ProcedimientoController extends Controller
      */
     public function destroy(Procedimiento $procedimiento)
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $procedimiento->delete();
 
         return redirect()
@@ -130,7 +130,7 @@ class ProcedimientoController extends Controller
      */
     public function vincularPersona(Request $request, Procedimiento $procedimiento)
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $datos = $request->validate([
             'persona_id' => 'required|exists:personas,id',
             'situacion_procesal' => 'required|in:detenido,notificado,no_hallado,contravencion',
@@ -160,7 +160,7 @@ class ProcedimientoController extends Controller
      */
     public function vincularDomicilio(Request $request, Procedimiento $procedimiento)
     {
-        $this->authorize('gestionar-procedimientos');
+        $this->authorize('panel-carga');
         $datos = $request->validate([
             'domicilio_id' => 'required|exists:domicilios,id',
         ]);
@@ -182,7 +182,7 @@ class ProcedimientoController extends Controller
      */
     public function generarPdf(Procedimiento $procedimiento)
     {
-        $this->authorize('ver-procedimientos');
+        $this->authorize('panel-consulta');
         $procedimiento->load(['personas', 'domicilios', 'brigada', 'usuario']);
 
         $pdf = Pdf::loadView('procedimientos.pdf', [

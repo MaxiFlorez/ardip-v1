@@ -14,22 +14,31 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @can('admin-general')
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
+                            📊 {{ __('Dashboard') }}
                         </x-nav-link>
                     @endcan
-                    @can('ver-personas')
+                    
+                    @can('panel-consulta')
                         <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
-                            {{ __('Personas') }}
+                            👤 {{ __('Personas') }}
                         </x-nav-link>
                     @endcan
-                    @can('ver-procedimientos')
+                    
+                    @can('panel-consulta')
                         <x-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
-                            {{ __('Procedimientos') }}
+                            📋 {{ __('Procedimientos') }}
                         </x-nav-link>
                     @endcan
-                    @can('ver-domicilios')
+                    
+                    @can('panel-consulta')
                         <x-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
-                            {{ __('Domicilios') }}
+                            🏠 {{ __('Domicilios') }}
+                        </x-nav-link>
+                    @endcan
+                    
+                    @can('panel-consulta')
+                        <x-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.*')">
+                            📚 {{ __('Documentos') }}
                         </x-nav-link>
                     @endcan
                 </div>
@@ -85,22 +94,31 @@
         <div class="pt-2 pb-3 space-y-1">
             @can('admin-general')
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                    📊 {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @endcan
-            @can('ver-personas')
+            
+            @can('panel-consulta')
                 <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
-                    {{ __('Personas') }}
+                    👤 {{ __('Personas') }}
                 </x-responsive-nav-link>
             @endcan
-            @can('ver-procedimientos')
+            
+            @can('panel-consulta')
                 <x-responsive-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
-                    {{ __('Procedimientos') }}
+                    📋 {{ __('Procedimientos') }}
                 </x-responsive-nav-link>
             @endcan
-            @can('ver-domicilios')
+            
+            @can('panel-consulta')
                 <x-responsive-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
-                    {{ __('Domicilios') }}
+                    🏠 {{ __('Domicilios') }}
+                </x-responsive-nav-link>
+            @endcan
+            
+            @can('panel-consulta')
+                <x-responsive-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.*')">
+                    📚 {{ __('Documentos') }}
                 </x-responsive-nav-link>
             @endcan
         </div>

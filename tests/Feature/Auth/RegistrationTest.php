@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -26,6 +28,25 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        // Obtener el usuario recién creado
+        $user = User::where('email', 'test@example.com')->first();
+
+        // Crear el rol consultor si no existe
+        $consultorRole = Role::firstOrCreate(
+            ['name' => 'consultor'],
+            ['label' => 'Consultor']
+        );
+
+        // Asignar rol consultor al nuevo usuario
+        $user->roles()->attach($consultorRole);
+
+        // Recargar la relación roles para reflejar el attach en memoria
+        $user->load('roles');
+
+        // Verificar que tiene el rol
+        $this->assertTrue($user->hasRole('consultor'));
+
+        // Los usuarios sin rol van a personas (después de registro)
+        $response->assertRedirect(route('personas.index', absolute: false));
     }
 }

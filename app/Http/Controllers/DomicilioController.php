@@ -21,7 +21,7 @@ class DomicilioController extends Controller
      */
     public function index()
     {
-        $this->authorize('ver-domicilios');
+        $this->authorize('panel-consulta');
         $domicilios = Domicilio::orderBy('departamento')->orderBy('calle')->paginate(15);
         return view('domicilios.index', compact('domicilios'));
     }
@@ -31,7 +31,7 @@ class DomicilioController extends Controller
      */
     public function create()
     {
-        $this->authorize('gestionar-domicilios');
+        $this->authorize('panel-carga');
         return view('domicilios.create');
     }
 
@@ -40,7 +40,7 @@ class DomicilioController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('gestionar-domicilios');
+        $this->authorize('panel-carga');
         $validated = $request->validate([
             'departamento' => 'required|string|max:100',
             'provincia' => 'nullable|string|max:100',
@@ -69,7 +69,7 @@ class DomicilioController extends Controller
      */
     public function show(Domicilio $domicilio)
     {
-        $this->authorize('ver-domicilios');
+        $this->authorize('panel-consulta');
         $domicilio->load('procedimientos');
         return view('domicilios.show', compact('domicilio'));
     }
@@ -79,7 +79,7 @@ class DomicilioController extends Controller
      */
     public function edit(Domicilio $domicilio)
     {
-        $this->authorize('gestionar-domicilios');
+        $this->authorize('panel-carga');
         return view('domicilios.edit', compact('domicilio'));
     }
 
@@ -88,7 +88,7 @@ class DomicilioController extends Controller
      */
     public function update(Request $request, Domicilio $domicilio)
     {
-        $this->authorize('gestionar-domicilios');
+        $this->authorize('panel-carga');
         $validated = $request->validate([
             'departamento' => 'required|string|max:100',
             'provincia' => 'nullable|string|max:100',
@@ -117,7 +117,7 @@ class DomicilioController extends Controller
      */
     public function destroy(Domicilio $domicilio)
     {
-        $this->authorize('gestionar-domicilios');
+        $this->authorize('panel-carga');
         $domicilio->delete();
 
         return redirect()->route('domicilios.index')

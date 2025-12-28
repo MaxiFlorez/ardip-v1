@@ -20,10 +20,12 @@
                 <div class="p-6 text-gray-900">
 
                     <div class="flex justify-end mb-4">
-                        <a href="{{ route('domicilios.create') }}"
-                           class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Agregar Domicilio
-                        </a>
+                        @can('panel-carga')
+                            <a href="{{ route('domicilios.create') }}"
+                               class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Agregar Domicilio
+                            </a>
+                        @endcan
                     </div>
 
                     <div class="overflow-x-auto">
@@ -68,15 +70,19 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <a href="{{ route('domicilios.show', $domicilio) }}" class="text-indigo-600 hover:text-indigo-900">Ver</a>
 
-                                            <a href="{{ route('domicilios.edit', $domicilio) }}" class="text-indigo-600 hover:text-indigo-900 ml-4">Editar</a>
+                                            @can('panel-carga')
+                                                <a href="{{ route('domicilios.edit', $domicilio) }}" class="text-indigo-600 hover:text-indigo-900 ml-4">Editar</a>
+                                            @endcan
 
-                                            <form action="{{ route('domicilios.destroy', $domicilio) }}" method="POST" class="inline-block ml-4" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este domicilio?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="text-red-600 hover:text-red-900">
-                                                    Eliminar
-                                                </button>
-                                            </form>
+                                            @can('panel-carga')
+                                                <form action="{{ route('domicilios.destroy', $domicilio) }}" method="POST" class="inline-block ml-4" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este domicilio?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-red-600 hover:text-red-900">
+                                                        Eliminar
+                                                    </button>
+                                                </form>
+                                            @endcan
                                     </td>
                                     </tr>
                                 @empty

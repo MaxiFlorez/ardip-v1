@@ -80,7 +80,7 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('procedimientos.create', absolute: false));
+        $response->assertRedirect(route('panel.carga', absolute: false));
     }
 
     public function test_consultor_users_redirect_to_personas_index(): void
@@ -95,6 +95,6 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('personas.index', absolute: false));
+        $response->assertRedirect(route('panel.consulta', absolute: false));
     }
 }
