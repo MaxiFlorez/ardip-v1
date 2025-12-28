@@ -23,15 +23,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->middleware('can:admin-general')
         ->name('dashboard');
 
-    // Panel de Carga (para cargadores)
+    // Panel de Carga (solo admin y cargador)
     Route::get('/panel-carga', function () {
-        // Redirigir al listado de procedimientos
+        if (! Gate::allows('panel-carga')) {
+            abort(403, 'No tienes permiso para acceder al panel de carga.');
+        }
         return redirect()->route('procedimientos.index');
     })->name('panel.carga');
 
-    // Panel de Consulta (para operarios)
+    // Panel de Consulta (todos los roles autenticados con permiso de consulta)
     Route::get('/panel-consulta', function () {
-        // Redirigir al buscador de personas
+        if (! Gate::allows('panel-consulta')) {
+            abort(403, 'No tienes permiso para acceder al panel de consulta.');
+        }
         return redirect()->route('personas.index');
     })->name('panel.consulta');
 
