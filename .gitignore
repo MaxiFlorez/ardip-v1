@@ -33,11 +33,18 @@ storage/framework/cache/*
 storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/*
-"" 
-"# Cach‚s y temporales" 
-".composer/" 
-".config/" 
-".npm/" 
-".lesshst" 
-"*. pyc" 
-"__pycache__/" 
+
+# CachÃ©s y temporales locales
+.composer/
+.config/
+.npm/
+.lesshst
+*.pyc
+__pycache__/
+.DS_Store
+
+# Logs adicionales
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
