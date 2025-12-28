@@ -23,6 +23,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->middleware('can:admin-general')
         ->name('dashboard');
 
+    // Dashboard para consultores
+    Route::get('/dashboard-consultor', function () {
+        return view('dashboard-consultor');
+    })->middleware('can:panel-consulta')->name('dashboard.consultor');
+
     // Panel de Carga (solo admin y cargador)
     Route::get('/panel-carga', function () {
         if (! Gate::allows('panel-carga')) {

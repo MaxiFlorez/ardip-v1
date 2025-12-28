@@ -75,7 +75,7 @@ class User extends Authenticatable
         return match (true) {
             $this->hasRole('admin') => route('dashboard', absolute: false),
             $this->hasRole('cargador') => route('procedimientos.index', absolute: false),
-            $this->hasRole('consultor') => route('personas.index', absolute: false),
+            $this->hasRole('consultor') => route('dashboard.consultor', absolute: false),
             default => route('personas.index', absolute: false),
         };
     }
