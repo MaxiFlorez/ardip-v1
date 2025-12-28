@@ -66,4 +66,17 @@ class User extends Authenticatable
     {
         return $this->roles->pluck('name')->contains($roleName);
     }
+
+    /**
+     * Ruta por defecto según el rol del usuario
+     */
+    public function getDefaultRoute(): string
+    {
+        return match (true) {
+            $this->hasRole('admin') => route('dashboard', absolute: false),
+            $this->hasRole('cargador') => route('panel.carga', absolute: false),
+            $this->hasRole('consultor') => route('panel.consulta', absolute: false),
+            default => route('personas.index', absolute: false),
+        };
+    }
 }

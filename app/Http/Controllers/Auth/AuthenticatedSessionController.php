@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
-use App\Support\RoleRedirector;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -31,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
-        return redirect()->intended(RoleRedirector::intendedRouteFor($user));
+        return redirect()->intended($user->getDefaultRoute());
     }
 
     /**

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use App\Support\RoleRedirector;
 
 class ConfirmablePasswordController extends Controller
 {
@@ -36,6 +35,6 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(RoleRedirector::intendedRouteFor($request->user()));
+        return redirect()->intended($request->user()->getDefaultRoute());
     }
 }

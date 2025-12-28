@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use App\Support\RoleRedirector;
 
 class RegisteredUserController extends Controller
 {
@@ -46,6 +45,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RoleRedirector::intendedRouteFor($user));
+        return redirect($user->getDefaultRoute());
     }
 }
