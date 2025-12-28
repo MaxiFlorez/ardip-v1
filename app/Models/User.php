@@ -34,6 +34,11 @@ class User extends Authenticatable
     ];
 
     /**
+     * Always eager-load roles to avoid extra queries in hasRole()
+     */
+    protected $with = ['roles'];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -59,6 +64,6 @@ class User extends Authenticatable
      */
     public function hasRole($roleName)
     {
-        return $this->roles()->where('name', $roleName)->exists();
+        return $this->roles->pluck('name')->contains($roleName);
     }
 }
