@@ -22,7 +22,6 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        $this->authorize('panel-consulta');
         $documentos = Documento::orderBy('created_at', 'desc')->paginate(10);
         return view('documentos.index', compact('documentos'));
     }
@@ -32,7 +31,6 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        $this->authorize('panel-carga');
         return view('documentos.create');
     }
 
@@ -41,7 +39,6 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('panel-carga');
         $validated = $request->validate([
             'titulo' => 'required|string|max:255',
             'archivo' => 'required|file|mimes:pdf,doc,docx|max:10240', // Máx 10MB
@@ -70,7 +67,6 @@ class DocumentoController extends Controller
      */
     public function download(Documento $documento)
     {
-        $this->authorize('panel-consulta');
         // 1. Verificar si el archivo físico existe
         if (!Storage::disk('public')->exists($documento->archivo_path)) {
             return back()->with('error', 'El archivo físico no se encuentra en el servidor.');
@@ -90,7 +86,6 @@ class DocumentoController extends Controller
      */
     public function destroy(Documento $documento)
     {
-        $this->authorize('panel-carga');
         // Borrar el archivo físico si existe
         if (Storage::disk('public')->exists($documento->archivo_path)) {
             Storage::disk('public')->delete($documento->archivo_path);
