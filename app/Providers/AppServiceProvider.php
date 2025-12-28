@@ -34,5 +34,15 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
         });
 
+        // Procedimientos: gestión (CRUD) solo admin y cargador
+        Gate::define('gestionar-procedimientos', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador');
+        });
+
+        // Procedimientos: ver (lectura) admin, cargador y consultor
+        Gate::define('ver-procedimientos', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
+        });
+
     }
 }
