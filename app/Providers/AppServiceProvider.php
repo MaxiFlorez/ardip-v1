@@ -25,9 +25,6 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
         });
 
-        Gate::define('acceso-total', function ($user) {
-            return $user->hasRole('admin');
-        });
 
         Gate::define('panel-carga', function ($user) {
             return $user->hasRole('admin') || $user->hasRole('cargador');
@@ -37,8 +34,5 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
         });
 
-        Gate::define('gestion-usuarios', function ($user) {
-            return $user->hasRole('admin');
-        });
     }
 }
