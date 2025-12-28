@@ -33,3 +33,11 @@ storage/framework/cache/*
 storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/*
+"" 
+"# Cach‚s y temporales" 
+".composer/" 
+".config/" 
+".npm/" 
+".lesshst" 
+"*. pyc" 
+"__pycache__/" 
