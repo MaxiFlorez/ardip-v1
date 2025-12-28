@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
+use App\Support\RoleRedirector;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,25 +30,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $user = auth()->user();
-        
-        // Admin → Dashboard
-        if ($user->hasRole('admin')) {
-            return redirect()->intended(route('dashboard', absolute: false));
-        }
-        
-        // Cargador → Panel de Carga (ver procedimientos)
-        if ($user->hasRole('cargador')) {
-            return redirect()->intended(route('panel.carga', absolute: false));
-        }
-        
-        // Operario → Panel de Consulta (buscar personas)
-        if ($user->hasRole('consultor')) {
-            return redirect()->intended(route('panel.consulta', absolute: false));
-        }
-        
-        // Fallback por si hay un rol desconocido
-        return redirect()->intended(route('personas.index', absolute: false));
+        $user = $request->user();
+        return redirect()->intended(RoleRedirector::intendedRouteFor($user));
     }
 
     /**

@@ -20,6 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard (solo admin-general)
     // Nota: La verificación del gate se hace en el controller después de cargar relaciones
     Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->middleware('can:admin-general')
         ->name('dashboard');
 
     // Panel de Carga (para cargadores)
