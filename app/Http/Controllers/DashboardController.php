@@ -10,10 +10,14 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        $validated = $request->validate([
+            'brigada_id' => 'nullable|integer|exists:brigadas,id',
+        ]);
+
         $semanaActual = now()->startOfWeek();
         $semanaFin = now()->endOfWeek();
 
-        $brigada_id = $request->get('brigada_id');
+        $brigada_id = $validated['brigada_id'] ?? null;
 
         $query = Procedimiento::whereBetween('fecha_procedimiento', [$semanaActual, $semanaFin]);
 

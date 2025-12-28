@@ -47,9 +47,6 @@ class AuthenticatedSessionController extends Controller
         // Regenerar token CSRF
         $request->session()->regenerateToken();
 
-        // Limpiar todas las cookies
-        $request->session()->flush();
-
         // Redirigir al login con mensaje
         return redirect()->route('login')->with('status', 'Sesión cerrada correctamente.');
     }
