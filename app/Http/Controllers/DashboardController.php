@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Procedimiento;
-use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
