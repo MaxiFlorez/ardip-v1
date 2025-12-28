@@ -10,11 +10,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // Verificar permiso manualmente (después de que Laravel cargue las relaciones)
-        if (! Gate::allows('admin-general')) {
-            abort(403, 'No tienes permiso para acceder al Dashboard.');
-        }
-
         $semanaActual = now()->startOfWeek();
         $semanaFin = now()->endOfWeek();
 

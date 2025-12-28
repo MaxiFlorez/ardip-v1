@@ -25,22 +25,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Panel de Carga (para cargadores)
     Route::get('/panel-carga', function () {
-        // Verificar que tenga permiso
-        if (! Gate::allows('panel-carga')) {
-            abort(403);
-        }
-        
         // Redirigir al listado de procedimientos
         return redirect()->route('procedimientos.index');
     })->name('panel.carga');
 
     // Panel de Consulta (para operarios)
     Route::get('/panel-consulta', function () {
-        // Verificar que tenga permiso
-        if (! Gate::allows('panel-consulta')) {
-            abort(403);
-        }
-        
         // Redirigir al buscador de personas
         return redirect()->route('personas.index');
     })->name('panel.consulta');
