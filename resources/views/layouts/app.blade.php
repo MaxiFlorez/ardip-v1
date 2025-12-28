@@ -18,9 +18,6 @@
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-        <div class="flex">
-            @include('layouts.sidebar')
-
             <div class="flex-1">
                 <!-- Page Heading -->
                 @isset($header)
