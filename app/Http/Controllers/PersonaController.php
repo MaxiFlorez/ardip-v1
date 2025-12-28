@@ -23,6 +23,7 @@ class PersonaController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('ver-personas');
         $query = Persona::query()->with('alias');
 
         // Búsqueda por nombres, apellidos o alias
@@ -62,6 +63,7 @@ class PersonaController extends Controller
      */
     public function create()
     {
+        $this->authorize('gestionar-personas');
         return view('personas.create');
     }
 
@@ -70,6 +72,7 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('gestionar-personas');
         // Validaciones (incluye mimes y fecha antes de hoy)
         $validated = $request->validate([
             'dni' => 'required|string|max:8|unique:personas,dni',
@@ -119,6 +122,7 @@ class PersonaController extends Controller
      */
     public function show(Persona $persona)
     {
+        $this->authorize('ver-personas');
         // Cargar las relaciones
         $persona->load('procedimientos');
         
@@ -130,6 +134,7 @@ class PersonaController extends Controller
      */
     public function edit(Persona $persona)
     {
+        $this->authorize('gestionar-personas');
         return view('personas.edit', compact('persona'));
     }
 
@@ -138,6 +143,7 @@ class PersonaController extends Controller
      */
     public function update(Request $request, Persona $persona)
     {
+        $this->authorize('gestionar-personas');
         // Validar los datos (DNI único excepto el actual)
         $validated = $request->validate([
             'dni' => 'required|string|max:8|unique:personas,dni,' . $persona->id,
@@ -193,6 +199,7 @@ class PersonaController extends Controller
      */
     public function destroy(Persona $persona)
     {
+        $this->authorize('gestionar-personas');
         // Eliminar foto si existe
         if ($persona->foto) {
             if (Storage::disk('public')->exists($persona->foto)) {

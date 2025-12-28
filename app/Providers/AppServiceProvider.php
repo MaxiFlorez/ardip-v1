@@ -44,5 +44,35 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
         });
 
+        // Personas: gestión (CRUD) admin y cargador
+        Gate::define('gestionar-personas', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador');
+        });
+
+        // Personas: ver (lectura) admin, cargador y consultor
+        Gate::define('ver-personas', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
+        });
+
+        // Domicilios: gestión (CRUD) admin y cargador
+        Gate::define('gestionar-domicilios', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador');
+        });
+
+        // Domicilios: ver (lectura) admin, cargador y consultor
+        Gate::define('ver-domicilios', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
+        });
+
+        // Documentos: gestión (subir/borrar) admin y cargador
+        Gate::define('gestionar-documentos', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador');
+        });
+
+        // Documentos: ver/descargar admin, cargador y consultor
+        Gate::define('ver-documentos', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('cargador') || $user->hasRole('consultor');
+        });
+
     }
 }

@@ -17,15 +17,21 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     @endcan
-                    <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
-                        {{ __('Personas') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
-                        {{ __('Procedimientos') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
-                        {{ __('Domicilios') }}
-                    </x-nav-link>
+                    @can('ver-personas')
+                        <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                            {{ __('Personas') }}
+                        </x-nav-link>
+                    @endcan
+                    @can('ver-procedimientos')
+                        <x-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
+                            {{ __('Procedimientos') }}
+                        </x-nav-link>
+                    @endcan
+                    @can('ver-domicilios')
+                        <x-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
+                            {{ __('Domicilios') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -82,15 +88,21 @@
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @endcan
-            <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
-                {{ __('Personas') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
-                {{ __('Procedimientos') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
-                {{ __('Domicilios') }}
-            </x-responsive-nav-link>
+            @can('ver-personas')
+                <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                    {{ __('Personas') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('ver-procedimientos')
+                <x-responsive-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
+                    {{ __('Procedimientos') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('ver-domicilios')
+                <x-responsive-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
+                    {{ __('Domicilios') }}
+                </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
