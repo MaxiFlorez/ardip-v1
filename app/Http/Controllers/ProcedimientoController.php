@@ -8,6 +8,7 @@ use App\Models\Brigada;
 use App\Models\Domicilio;
 use App\Models\Persona;
 use App\Models\Procedimiento;
+use App\Models\Ufi; // Importar el nuevo modelo
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,13 +35,27 @@ class ProcedimientoController extends Controller
      */
     public function index(Request $request)
     {
-        $procedimientos = Procedimiento::with(['brigada', 'personas', 'domicilios'])
-            ->buscar($request->get('search'))
-            ->orderBy('created_at', 'desc')
-            ->paginate(10)
-            ->withQueryString();
+        // 1. Obtén las listas para los selects del formulario de filtrado.
+        $ufis = Ufi::orderBy('nombre')->get();
+        $brigadas = Brigada::orderBy('nombre')->get();
 
-        return view('procedimientos.index', compact('procedimientos'));
+        $procedimientos = null;
+
+        // 3. Implementa la lógica condicional.
+        // Comprueba si hay filtros activos, ignorando el parámetro de paginación 'page'.
+        $filtrosActivos = array_filter($request->except('page'));
+
+        if (!empty($filtrosActivos)) {
+            // Si HAY filtros, ejecuta la consulta.
+            $procedimientos = Procedimiento::filtrar($request->all())
+                ->with(['ufi', 'brigada']) // Eager Loading.
+                ->orderBy('fecha_procedimiento', 'desc') // Ordena por fecha descendente.
+                ->paginate(10) // Pagina de a 10 resultados.
+                ->withQueryString(); // Mantiene los filtros en los enlaces de paginación.
+        }
+
+        // 4. Retorna la vista con todas las variables.
+        return view('procedimientos.index', compact('procedimientos', 'ufis', 'brigadas'));
     }
 
     /**
@@ -49,7 +64,8 @@ class ProcedimientoController extends Controller
     public function create()
     {
         $brigadas = Brigada::orderBy('nombre')->get();
-        return view('procedimientos.create', compact('brigadas'));
+        $ufis = Ufi::orderBy('nombre')->get(); // <-- Obtener UFIs
+        return view('procedimientos.create', compact('brigadas', 'ufis')); // <-- Pasar UFIs a la vista
     }
 
     /**
@@ -76,7 +92,7 @@ class ProcedimientoController extends Controller
      */
     public function show(Procedimiento $procedimiento)
     {
-        $procedimiento->load(['personas', 'domicilios', 'usuario', 'brigada']);
+        $procedimiento->load(['personas', 'domicilios', 'usuario', 'brigada', 'ufi']); // <-- ufi añadido
 
         $personasDisponibles = Persona::orderBy('apellidos')->get();
         $domiciliosDisponibles = Domicilio::orderBy('calle')->get();
@@ -90,7 +106,8 @@ class ProcedimientoController extends Controller
     public function edit(Procedimiento $procedimiento)
     {
         $brigadas = Brigada::orderBy('nombre')->get();
-        return view('procedimientos.edit', compact('procedimiento', 'brigadas'));
+        $ufis = Ufi::orderBy('nombre')->get(); // <-- Obtener UFIs
+        return view('procedimientos.edit', compact('procedimiento', 'brigadas', 'ufis')); // <-- Pasar UFIs a la vista
     }
 
     /**
@@ -173,7 +190,7 @@ class ProcedimientoController extends Controller
      */
     public function generarPdf(Procedimiento $procedimiento)
     {
-        $procedimiento->load(['personas', 'domicilios', 'brigada', 'usuario']);
+        $procedimiento->load(['personas', 'domicilios', 'brigada', 'usuario', 'ufi']); // <-- ufi añadido
 
         $pdf = Pdf::loadView('procedimientos.pdf', [
             'procedimiento' => $procedimiento,

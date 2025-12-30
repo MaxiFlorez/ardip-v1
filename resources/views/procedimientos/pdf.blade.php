@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <th>UFI</th>
-                <td colspan="3">{{ $procedimiento->ufi_interviniente ?? 'N/D' }}</td>
+                <td colspan="3">{{ $procedimiento->ufi->nombre ?? 'N/D' }}</td>
             </tr>
             <tr>
                 <th>Brigada</th>

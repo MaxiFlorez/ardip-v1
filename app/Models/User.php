@@ -37,6 +37,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'brigada_id',
     ];
 
     /**
@@ -73,6 +74,14 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Brigada relationship
+     */
+    public function brigada()
+    {
+        return $this->belongsTo(Brigada::class);
     }
 
     /**

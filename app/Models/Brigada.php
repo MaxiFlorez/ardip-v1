@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Brigada extends Model
 {
     protected $fillable = ['nombre'];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

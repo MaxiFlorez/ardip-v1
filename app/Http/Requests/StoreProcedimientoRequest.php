@@ -26,7 +26,7 @@ class StoreProcedimientoRequest extends FormRequest
             'legajo_fiscal' => 'required|string|max:255|unique:procedimientos,legajo_fiscal',
             'caratula' => 'required|string|max:255',
             'fecha_hecho' => 'required|date',
-            'ufi_interviniente' => 'nullable|string|max:255',
+            'ufi_id' => ['required', 'exists:ufis,id'],
         ];
     }
 }

@@ -32,7 +32,7 @@ class UpdateProcedimientoRequest extends FormRequest
             ],
             'caratula' => 'required|string|max:255',
             'fecha_hecho' => 'required|date',
-            'ufi_interviniente' => 'nullable|string|max:255',
+            'ufi_id' => ['required', 'exists:ufis,id'],
         ];
     }
 }

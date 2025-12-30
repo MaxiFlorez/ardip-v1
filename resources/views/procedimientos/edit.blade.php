@@ -59,6 +59,21 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <label for="ufi_id" class="block text-sm font-medium text-gray-700">UFI Interviniente *</label>
+                            <select name="ufi_id" id="ufi_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                                <option value="">Seleccione una UFI...</option>
+                                @foreach ($ufis as $ufi)
+                                    <option value="{{ $ufi->id }}" {{ old('ufi_id', $procedimiento->ufi_id) == $ufi->id ? 'selected' : '' }}>
+                                        {{ $ufi->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('ufi_id')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Órdenes Otorgadas por el Juez</label>
                             <div class="space-y-2">
