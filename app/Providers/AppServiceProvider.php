@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -20,26 +21,32 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // ═══════════════════════════════════════════════════════════
-        // Sistema de permisos RBAC simplificado (3 gates)
-        // ═══════════════════════════════════════════════════════════
-        
-        // Admin:  acceso completo al dashboard y gestión del sistema
-        Gate::define('admin-general', function ($user) {
+        /**
+         * Gate para administradores.
+         * Solo los usuarios con el rol 'admin' pueden pasar.
+         */
+        Gate::define('admin', function (User $user) {
             return $user->hasRole('admin');
         });
 
-        // Panel de carga: admin y cargadores pueden crear/editar/eliminar
-        Gate::define('panel-carga', function ($user) {
-            return $user->hasRole('admin') || $user->hasRole('cargador');
+        /**
+         * Gate para el panel de carga.
+         * ÚNICAMENTE los usuarios con el rol 'panel-carga' pueden pasar.
+         * El rol 'admin' está explícitamente excluido de esta puerta.
+         */
+        Gate::define('panel-carga', function (User $user) {
+            return $user->hasRole('panel-carga');
         });
 
-        // Panel de consulta:  todos los roles pueden ver información (lectura)
-        Gate::define('panel-consulta', function ($user) {
-            return $user->hasRole('admin') 
-                || $user->hasRole('cargador') 
-                || $user->hasRole('consultor');
+        /**
+         * Gate para el panel de consulta.
+         * Los usuarios con los roles 'panel-consulta', 'panel-carga' o 'admin' pueden pasar.
+         */
+        Gate::define('panel-consulta', function (User $user) {
+            return $user->hasRole('panel-consulta')
+                || $user->hasRole('panel-carga')
+                || $user->hasRole('admin');
         });
-
     }
 }
+

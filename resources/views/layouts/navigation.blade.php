@@ -12,33 +12,33 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    @can('admin-general')
+                    @can('admin')
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            📊 {{ __('Dashboard') }}
+                            {{ __('Dashboard') }}
                         </x-nav-link>
                     @endcan
-                    
-                    @can('panel-consulta')
-                        <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
-                            👤 {{ __('Personas') }}
-                        </x-nav-link>
-                    @endcan
-                    
+
                     @can('panel-consulta')
                         <x-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
-                            📋 {{ __('Procedimientos') }}
+                            {{ __('Procedimientos') }}
                         </x-nav-link>
                     @endcan
-                    
+
                     @can('panel-consulta')
-                        <x-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
-                            🏠 {{ __('Domicilios') }}
+                        <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                            {{ __('Personas') }}
                         </x-nav-link>
                     @endcan
-                    
-                    @can('panel-consulta')
+
+                    @auth
                         <x-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.*')">
-                            📚 {{ __('Documentos') }}
+                            {{ __('Biblioteca Digital') }}
+                        </x-nav-link>
+                    @endauth
+
+                    @can('admin')
+                        <x-nav-link href="#" :active="false">
+                            {{ __('Gestión Usuarios') }}
                         </x-nav-link>
                     @endcan
                 </div>
@@ -92,33 +92,33 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            @can('admin-general')
+            @can('admin')
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    📊 {{ __('Dashboard') }}
+                    {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @endcan
-            
-            @can('panel-consulta')
-                <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
-                    👤 {{ __('Personas') }}
-                </x-responsive-nav-link>
-            @endcan
-            
+
             @can('panel-consulta')
                 <x-responsive-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
-                    📋 {{ __('Procedimientos') }}
+                    {{ __('Procedimientos') }}
                 </x-responsive-nav-link>
             @endcan
-            
+
             @can('panel-consulta')
-                <x-responsive-nav-link :href="route('domicilios.index')" :active="request()->routeIs('domicilios.*')">
-                    🏠 {{ __('Domicilios') }}
+                <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                    {{ __('Personas') }}
                 </x-responsive-nav-link>
             @endcan
-            
-            @can('panel-consulta')
+
+            @auth
                 <x-responsive-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.*')">
-                    📚 {{ __('Documentos') }}
+                    {{ __('Biblioteca Digital') }}
+                </x-responsive-nav-link>
+            @endauth
+
+            @can('admin')
+                <x-responsive-nav-link href="#" :active="false">
+                    {{ __('Gestión Usuarios') }}
                 </x-responsive-nav-link>
             @endcan
         </div>
