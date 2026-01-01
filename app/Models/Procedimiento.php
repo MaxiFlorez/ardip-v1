@@ -20,7 +20,7 @@ class Procedimiento extends Model implements Auditable
         'legajo_fiscal',
         'caratula',
         'es_positivo',
-        'ufi_id', // Reemplaza a ufi_interviniente
+        'ufi_id', 
         'fecha_procedimiento',
         'hora_procedimiento',
         'orden_allanamiento',
@@ -36,7 +36,7 @@ class Procedimiento extends Model implements Auditable
     protected $auditInclude = [
         'legajo_fiscal',
         'caratula',
-        'ufi_id', // Reemplaza a ufi_interviniente
+        'ufi_id', 
     ];
     
     protected $casts = [

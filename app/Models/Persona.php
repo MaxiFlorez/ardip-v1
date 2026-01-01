@@ -32,7 +32,7 @@ class Persona extends Model
     }
 
     // Relación con alias
-    public function alias()
+    public function aliases()
     {
         return $this->hasMany(Alias::class);
     }

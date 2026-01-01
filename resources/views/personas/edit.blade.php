@@ -78,7 +78,7 @@
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-700">Alias/Apodos</label>
                             <div id="alias-container">
-                                @php($aliases = old('alias', $persona->alias->pluck('alias')->toArray()))
+                                @php($aliases = old('alias', $persona->aliases->pluck('alias')->toArray()))
                                 @if(!empty($aliases))
                                     @foreach($aliases as $i => $al)
                                         <input type="text" name="alias[]" value="{{ $al }}" placeholder="Alias {{ $i+1 }}"

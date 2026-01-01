@@ -39,8 +39,10 @@
                             <h3 class="text-2xl font-bold text-gray-900">
                                 {{ $persona->apellidos }}, {{ $persona->nombres }}
                             </h3>
-                            @if($persona->alias)
-                                <p class="text-lg text-gray-600 italic">"{{ $persona->alias }}"</p>
+                            @if($persona->aliases->isNotEmpty())
+                                <p class="text-lg text-gray-600 italic">
+                                    Alias: {{ $persona->aliases->pluck('alias')->join(', ') }}
+                                </p>
                             @endif
                             <div class="mt-4 grid grid-cols-2 gap-4">
                                 <div>

@@ -23,7 +23,7 @@ class PersonaController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Persona::query()->with('alias');
+        $query = Persona::query()->with('aliases');
 
         // Búsqueda por nombres, apellidos o alias
         if ($request->filled('buscar')) {
@@ -31,7 +31,7 @@ class PersonaController extends Controller
             $query->where(function($q) use ($buscar) {
                 $q->where('nombres', 'LIKE', "%{$buscar}%")
                   ->orWhere('apellidos', 'LIKE', "%{$buscar}%")
-                  ->orWhereHas('alias', function($qa) use ($buscar) {
+                  ->orWhereHas('aliases', function($qa) use ($buscar) {
                       $qa->where('alias', 'LIKE', "%{$buscar}%");
                   });
             });
@@ -103,7 +103,7 @@ class PersonaController extends Controller
         if (!empty($aliasInput) && is_array($aliasInput)) {
             foreach ($aliasInput as $alias) {
                 if (!empty(trim((string) $alias))) {
-                    $persona->alias()->create(['alias' => trim((string) $alias)]);
+                    $persona->aliases()->create(['alias' => trim((string) $alias)]);
                 }
             }
         }
@@ -175,10 +175,10 @@ class PersonaController extends Controller
 
         // Sincronizar alias (eliminar y recrear)
         if (is_array($aliasInput)) {
-            $persona->alias()->delete();
+            $persona->aliases()->delete();
             foreach ($aliasInput as $alias) {
                 if (!empty(trim((string) $alias))) {
-                    $persona->alias()->create(['alias' => trim((string) $alias)]);
+                    $persona->aliases()->create(['alias' => trim((string) $alias)]);
                 }
             }
         }

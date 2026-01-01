@@ -78,9 +78,9 @@
                                         <h3 class="text-lg font-bold">{{ $persona->nombre_completo }}</h3>
                                         <p class="text-sm text-gray-600">DNI: {{ $persona->dni }} • Edad: {{ $persona->edad }} años</p>
 
-                                        @if($persona->alias->isNotEmpty())
+                                        @if($persona->aliases->isNotEmpty())
                                             <p class="text-xs text-gray-500 italic">
-                                                Alias: {{ $persona->alias->pluck('alias')->join(', ') }}
+                                                Alias: {{ $persona->aliases->pluck('alias')->join(', ') }}
                                             </p>
                                         @endif
 
