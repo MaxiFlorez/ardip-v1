@@ -21,67 +21,29 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        /**
-         * Gate para Super Administrador (TÉCNICO + AUDITORÍA).
-         * ACCESO EXCLUSIVO A: Gestión de Usuarios, Brigadas, UFIs, Logs.
-         * NEGADO EXPLÍCITAMENTE: Operaciones, Procedimientos, Personas, Documentos.
-         */
-        Gate::define('super-admin', function (User $user) {
-            return $user->hasRole('super_admin');
-        });
+        // Helper: verificar si usuario es super_admin puro (sin otros roles)
+        $isSuperAdminOnly = fn(User $user) => $user->hasRole('super_admin') && $user->roles()->count() === 1;
 
-        /**
-         * Gate para Administrador.
-         * Usuarios con rol 'admin' tienen acceso administrativo (pero NO super-admin).
-         */
-        Gate::define('admin', function (User $user) {
-            return $user->hasRole('admin');
-        });
+        Gate::define('super-admin', fn(User $user) => $user->hasRole('super_admin'));
+        Gate::define('admin', fn(User $user) => $user->hasRole('admin'));
 
-        /**
-         * Gate OPERATIVO: Acceso a Procedimientos, Personas, Documentos.
-         * RETORNA FALSE EXPLÍCITAMENTE si el usuario es super_admin puro (sin otro rol).
-         * Permite: admin, cargador, consultor.
-         */
-        Gate::define('acceso-operativo', function (User $user) {
-            // Si es super_admin PURO (sin otros roles), deniega acceso operativo
-            if ($user->hasRole('super_admin') && $user->roles()->count() === 1) {
-                return false;
-            }
-            
-            // Permite acceso a: admin, cargador, consultor
-            return $user->hasRole('admin')
+        Gate::define('acceso-operativo', function (User $user) use ($isSuperAdminOnly) {
+            return !$isSuperAdminOnly($user) && (
+                $user->hasRole('admin')
                 || $user->hasRole('panel-carga')
-                || $user->hasRole('panel-consulta');
+                || $user->hasRole('panel-consulta')
+            );
         });
 
-        /**
-         * Gate para el panel de carga.
-         * ÚNICAMENTE los usuarios con el rol 'panel-carga' pueden pasar.
-         * Super admin puro está EXCLUIDO.
-         */
-        Gate::define('panel-carga', function (User $user) {
-            // Denegar si es super_admin puro
-            if ($user->hasRole('super_admin') && $user->roles()->count() === 1) {
-                return false;
-            }
-            
-            return $user->hasRole('panel-carga');
+        Gate::define('panel-carga', function (User $user) use ($isSuperAdminOnly) {
+            return !$isSuperAdminOnly($user) && $user->hasRole('panel-carga');
         });
 
-        /**
-         * Gate para el panel de consulta.
-         * Permite a: cargador, consultor.
-         * Super admin puro está EXCLUIDO.
-         */
-        Gate::define('panel-consulta', function (User $user) {
-            // Denegar si es super_admin puro
-            if ($user->hasRole('super_admin') && $user->roles()->count() === 1) {
-                return false;
-            }
-            
-            return $user->hasRole('panel-consulta')
-                || $user->hasRole('panel-carga');
+        Gate::define('panel-consulta', function (User $user) use ($isSuperAdminOnly) {
+            return !$isSuperAdminOnly($user) && (
+                $user->hasRole('panel-consulta')
+                || $user->hasRole('panel-carga')
+            );
         });
     }
 }

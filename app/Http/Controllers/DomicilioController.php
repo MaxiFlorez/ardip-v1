@@ -9,10 +9,7 @@ class DomicilioController extends Controller
 {
     public function __construct()
     {
-        // Escritura: crear/editar/borrar
         $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy']);
-
-        // Lectura: index y show
         $this->middleware('can:panel-consulta')->only(['index', 'show']);
     }
 

@@ -1,6 +1,6 @@
-# 🚀 ARDIP - Sistema de Gestión Policial
+# 🚀 ARDIP v1.0 - Sistema Integral de Gestión e Inteligencia Policial
 
-Sistema web profesional para la gestión de procedimientos policiales, brigadas, UFIs y personal administrativo.
+Sistema web profesional, seguro y completamente en español para la gestión integrada de procedimientos policiales, recursos humanos, brigadas y portales operativos.
 
 ---
 
@@ -8,46 +8,108 @@ Sistema web profesional para la gestión de procedimientos policiales, brigadas,
 
 ```bash
 # Instalar dependencias
-composer install
-npm install
+composer install && npm install
 
-# Configurar entorno
+# Configurar
 cp .env.example .env
 php artisan key:generate
 
-# Migrar base de datos
+# Base de datos
 php artisan migrate
 php artisan db:seed
 
-# Compilar assets
+# Compilar y ejecutar
 npm run dev
-
-# Iniciar servidor
 php artisan serve
+```
+
+**Acceso:** http://localhost:8000
+
+---
+
+## 📋 Roles y Permisos
+
+| Rol | Acceso | Módulos |
+|-----|--------|---------|
+| **Super Admin** | Gestión usuarios, brigadas, UFIs, auditoría | 🔒 Administrativo |
+| **Admin** | Dashboard, todos módulos operativos | 📊 Completo |
+| **Cargador** | Crear/editar procedimientos, personas, documentos | ✍️ Operativo |
+| **Consultor** | Ver procedimientos, personas, documentos | 👁️ Lectura |
+
+---
+
+## 🎯 Funcionalidades Principales
+
+- ✅ **Autenticación**: Login/registro completamente en español
+- ✅ **Gestión de Usuarios**: Auditoría completa de acciones
+- ✅ **Procedimientos**: CRUD con vinculación de personas/domicilios
+- ✅ **Biblioteca Digital**: Almacenamiento seguro de documentos
+- ✅ **Catálogos**: Brigadas y UFIs
+- ✅ **Dashboard**: Estadísticas e indicadores
+- ✅ **Auditoría**: Logs de acciones administrativas
+- ✅ **Responsive**: 100% mobile-first (320px - 2560px)
+- ✅ **Localizaciones**: Mensajes de error y validaciones en español
+- ✅ **Dark Mode**: Soporte nativo
+
+---
+
+## 🔐 Seguridad
+
+- Middleware de autenticación en todas las rutas
+- Gates de autorización granulares
+- Auditoría de acciones super admin
+- Protección CSRF
+- Rate limiting
+- Sanitización de inputs
+
+---
+
+## 📖 Documentación Técnica
+
+- **[README_SISTEMA.md](README_SISTEMA.md)** - Documentación completa
+- **[MODULO_GESTION_USUARIOS.md](MODULO_GESTION_USUARIOS.md)** - Gestión usuarios
+- **[SEGREGACION_FUNCIONES.md](SEGREGACION_FUNCIONES.md)** - Matriz de permisos
+- **[PLAN_PRUEBAS_SEGREGACION.md](PLAN_PRUEBAS_SEGREGACION.md)** - Testing
+
+---
+
+## 🛠️ Stack Tecnológico
+
+- **Framework**: Laravel 11 · **Frontend**: Blade + Tailwind CSS 3
+- **BD**: MySQL/PostgreSQL · **Autenticación**: Sanctum
+- **Roles**: Spatie Roles/Permissions · **Reportes**: DomPDF
+
+---
+
+## 🔧 Configuración
+
+### Super Admin
+```bash
+php artisan tinker
+>>> User::first()->assignRole('super_admin');
+```
+
+### Variables de Entorno
+```
+APP_LOCALE=es
+DB_CONNECTION=mysql
+MAIL_FROM_ADDRESS=soporte@ardip.gob.ar
 ```
 
 ---
 
-## 📚 Documentación
+## 📞 Soporte
 
-- **[README_SISTEMA.md](README_SISTEMA.md)** - Documentación completa del sistema
-- **[INICIO_RAPIDO_USUARIOS.md](INICIO_RAPIDO_USUARIOS.md)** - Guía rápida módulo usuarios
-- **[MODULO_GESTION_USUARIOS.md](MODULO_GESTION_USUARIOS.md)** - Gestión de usuarios detallada
-- **[SUPER_ADMIN_SETUP.md](SUPER_ADMIN_SETUP.md)** - Configuración super admin
+**Email**: soporte@ardip.gob.ar  
+**Documentación**: Ver archivos `.md` en raíz
 
 ---
 
-## ✨ Características Principales
+## ✅ Estado
 
-- ✅ Sistema de roles jerárquico (Super Admin, Admin, Carga, Consulta)
-- ✅ Gestión completa de usuarios con auditoría
-- ✅ Catálogos administrativos (Brigadas, UFIs)
-- ✅ Módulo de procedimientos policiales
-- ✅ Sistema de auditoría avanzado
-- ✅ Diseño 100% responsive (mobile-first)
-- ✅ Biblioteca digital integrada
+✅ Español completo · ✅ UI Estandarizado · ✅ Código limpio · ✅ Listo para producción
 
----
+**Versión**: 1.0 | **Actualizado**: 6 enero 2026 | **Licencia**: Privada ARDIP
 
 ## 🔐 Acceso por Defecto
 

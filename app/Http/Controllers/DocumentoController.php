@@ -12,7 +12,6 @@ class DocumentoController extends Controller
 {
     public function __construct()
     {
-        // Define permisos: Solo Carga/Admin puede subir y borrar. Consulta puede ver y bajar.
         $this->middleware('can:panel-carga')->only(['create', 'store', 'destroy']);
         $this->middleware('can:panel-consulta')->only(['index', 'download']);
     }

@@ -15,17 +15,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ProcedimientoController extends Controller
 {
-    /**
-     * Constructor: define permisos de acceso mediante gates
-     */
     public function __construct()
     {
-        // Escritura: crear/editar/borrar/vincular
-        $this->middleware('can:panel-carga')->only([
-            'create', 'store', 'edit', 'update', 'destroy', 'vincularPersona', 'vincularDomicilio'
-        ]);
-
-        // Lectura: index y show
+        $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy', 'vincularPersona', 'vincularDomicilio']);
         $this->middleware('can:panel-consulta')->only(['index', 'show']);
     }
 
