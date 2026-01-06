@@ -12,7 +12,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        return $this->user()?->can('super-admin') ?? false;
     }
 
     /**

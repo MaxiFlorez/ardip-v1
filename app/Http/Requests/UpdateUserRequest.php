@@ -11,7 +11,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('admin') ?? false;
+        return $this->user()?->can('super-admin') ?? false;
     }
 
     /**
@@ -21,7 +21,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $userId = $this->route('user'); // ID del usuario en la ruta
+        $userId = $this->route('user')->id; // ID del usuario en la ruta
 
         return [
             'name' => ['required', 'string', 'max:255'],
