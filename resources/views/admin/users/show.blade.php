@@ -20,7 +20,7 @@
                         
                         {{-- Avatar --}}
                         <div class="flex-shrink-0">
-                            <div class="h-24 w-24 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-4xl">
+                            <div class="h-24 w-24 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-4xl">
                                 {{ strtoupper(substr($user->name, 0, 1)) }}
                             </div>
                         </div>
@@ -35,10 +35,10 @@
                                     <span class="font-medium text-gray-700 dark:text-gray-300">Rol:</span>
                                     @php
                                         $roleColors = [
-                                            'super_admin' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-                                            'admin' => 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-                                            'cargador' => 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-                                            'consultor' => 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+                                            'super_admin' => 'bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200',
+                                            'admin' => 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+                                            'cargador' => 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+                                            'consultor' => 'bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200',
                                         ];
                                         $roleName = $user->roles->first()?->name ?? 'sin-rol';
                                         $roleColor = $roleColors[$roleName] ?? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
@@ -51,11 +51,11 @@
                                 <div>
                                     <span class="font-medium text-gray-700 dark:text-gray-300">Estado:</span>
                                     @if ($user->active)
-                                        <span class="ml-2 px-2 py-1 inline-flex text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                        <span class="ml-2 px-2 py-1 inline-flex text-xs font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
                                             ✓ Activo
                                         </span>
                                     @else
-                                        <span class="ml-2 px-2 py-1 inline-flex text-xs font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                                        <span class="ml-2 px-2 py-1 inline-flex text-xs font-semibold rounded-full bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200">
                                             ✗ Inactivo
                                         </span>
                                     @endif
@@ -79,10 +79,10 @@
 
                             {{-- Acciones Rápidas --}}
                             <div class="mt-6 flex gap-3 flex-wrap">
-                                <a href="{{ route('admin.users.edit', $user) }}" class="px-4 py-2 bg-yellow-600 text-white text-sm rounded hover:bg-yellow-700 transition">
+                                <a href="{{ route('admin.users.edit', $user) }}" class="px-4 py-2 bg-warning-600 text-white text-sm rounded hover:bg-warning-700 transition">
                                     ✏️ Editar
                                 </a>
-                                <a href="{{ route('admin.users.history', $user) }}" class="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition">
+                                <a href="{{ route('admin.users.history', $user) }}" class="px-4 py-2 bg-secondary-600 text-white text-sm rounded hover:bg-secondary-700 transition">
                                     📊 Ver Historial Completo
                                 </a>
                             </div>
@@ -138,9 +138,9 @@
                                             <td class="px-4 py-3 whitespace-nowrap">
                                                 @php
                                                     $severityColors = [
-                                                        'critical' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-                                                        'warning' => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-                                                        'info' => 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+                                                        'critical' => 'bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200',
+                                                        'warning' => 'bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200',
+                                                        'info' => 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
                                                     ];
                                                     $color = $severityColors[$log->severity] ?? 'bg-gray-100 text-gray-800';
                                                 @endphp
@@ -171,3 +171,10 @@
         </div>
     </div>
 </x-app-layout>
+
+
+
+
+
+
+

@@ -22,23 +22,30 @@ Route::get('/', function () {
     /** @var \App\Models\User $user */
     $user = Auth::user();
 
+    // Super Admin redirige a Gestión de Usuarios
+    if ($user->hasRole('super_admin')) {
+        return redirect()->route('admin.users.index');
+    }
+
+    // Admin redirige al Dashboard
     if ($user->hasRole('admin')) {
         return redirect()->route('dashboard');
     }
 
+    // Cargador/Consultor redirige a Procedimientos
     if ($user->hasRole('panel-carga') || $user->hasRole('panel-consulta')) {
         return redirect()->route('procedimientos.index');
     }
 
     // Fallback para cualquier otro rol autenticado
-    return redirect()->route('dashboard');
+    return redirect()->route('admin.users.index');
 });
 
 
 // Grupo de rutas protegidas (requieren login)
 Route::middleware(['auth', 'verified'])->group(function () {
     
-    // Dashboard (solo admin)
+    // Dashboard (solo admin, EXCLUIDO super_admin puro)
     // Nota: La verificación del gate se hace en el controller después de cargar relaciones
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware('can:admin')
@@ -54,39 +61,49 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // --- MÓDULO DE PROCEDIMIENTOS ---
-    Route::resource('procedimientos', ProcedimientoController::class);
+    // --- MÓDULO DE PROCEDIMIENTOS (OPERATIVO: Cargador, Consultor, Admin) ---
+    // EXCLUIDO: Super Admin puro
+    Route::middleware('can:acceso-operativo')->group(function () {
+        Route::resource('procedimientos', ProcedimientoController::class);
+        
+        // Vinculaciones (Personas y Domicilios a un Procedimiento)
+        Route::post('/procedimientos/{procedimiento}/vincular-persona', [ProcedimientoController::class, 'vincularPersona'])
+            ->name('procedimientos.vincularPersona');
+
+        Route::post('/procedimientos/{procedimiento}/vincular-domicilio', [ProcedimientoController::class, 'vincularDomicilio'])
+            ->name('procedimientos.vincularDomicilio');
+
+        // PDF del procedimiento
+        Route::get('/procedimientos/{procedimiento}/pdf', [ProcedimientoController::class, 'generarPdf'])
+            ->name('procedimientos.pdf');
+    });
     
-    // Vinculaciones (Personas y Domicilios a un Procedimiento)
-    Route::post('/procedimientos/{procedimiento}/vincular-persona', [ProcedimientoController::class, 'vincularPersona'])
-        ->name('procedimientos.vincularPersona');
+    // --- MÓDULOS BASE (OPERATIVO: Cargador, Consultor, Admin) ---
+    // EXCLUIDO: Super Admin puro
+    Route::middleware('can:acceso-operativo')->group(function () {
+        Route::resource('personas', PersonaController::class);
+        Route::resource('domicilios', DomicilioController::class);
+    });
 
-    Route::post('/procedimientos/{procedimiento}/vincular-domicilio', [ProcedimientoController::class, 'vincularDomicilio'])
-        ->name('procedimientos.vincularDomicilio');
-
-    // PDF del procedimiento
-    Route::get('/procedimientos/{procedimiento}/pdf', [ProcedimientoController::class, 'generarPdf'])
-        ->name('procedimientos.pdf');
-
-    // --- MÓDULOS BASE ---
-    Route::resource('personas', PersonaController::class);
-    Route::resource('domicilios', DomicilioController::class);
-
-    // --- BIBLIOTECA DIGITAL ---
-    Route::resource('documentos', DocumentoController::class);
-    Route::get('/documentos/{documento}/download', [DocumentoController::class, 'download'])
-        ->name('documentos.download');
+    // --- BIBLIOTECA DIGITAL (OPERATIVO: Cargador, Consultor, Admin) ---
+    // EXCLUIDO: Super Admin puro
+    Route::middleware('can:acceso-operativo')->group(function () {
+        Route::resource('documentos', DocumentoController::class);
+        Route::get('/documentos/{documento}/download', [DocumentoController::class, 'download'])
+            ->name('documentos.download');
+    });
 
     // --- PANEL DE ADMINISTRACIÓN ---
-    Route::prefix('admin')->name('admin.')->middleware(['can:admin'])->group(function () {
-        // Gestión de Usuarios (Admin + Super Admin con auditoría)
-        Route::middleware('super.admin.activity')->group(function () {
-            Route::resource('users', UserController::class);
-            Route::get('/users/{user}/history', [UserController::class, 'history'])->name('users.history');
-        });
-
-        // Catálogos (Solo Super Admin)
+    Route::prefix('admin')->name('admin.')->group(function () {
+        // Catálogos y Gestión de Usuarios (Solo Super Admin)
         Route::middleware('can:super-admin')->group(function () {
+            // Gestión de Usuarios (Solo Super Admin con auditoría)
+            Route::middleware('super.admin.activity')->group(function () {
+                Route::resource('users', UserController::class);
+                Route::get('/users/{user}/history', [UserController::class, 'history'])->name('users.history');
+            });
+
+            // Catálogos (Solo Super Admin)
             Route::resource('brigadas', BrigadaController::class)->except(['show']);
             Route::resource('ufis', UfiController::class)->except(['show']);
         });

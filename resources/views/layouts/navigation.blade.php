@@ -12,42 +12,51 @@
 
                 <!-- Navigation Links - Desktop -->
                 <div class="hidden md:flex md:space-x-1">
+                    {{-- Dashboard: Solo admin (excluido super_admin puro) --}}
                     @can('admin')
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
+                        @if(!Auth::user()->isSuperAdmin() || Auth::user()->roles()->count() > 1)
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        @endif
                     @endcan
 
-                    @can('panel-consulta')
+                    {{-- Procedimientos: Solo operativo (excluido super_admin puro) --}}
+                    @can('acceso-operativo')
                         <x-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
                             {{ __('Procedimientos') }}
                         </x-nav-link>
                     @endcan
 
-                    @can('panel-consulta')
+                    {{-- Personas: Solo operativo (excluido super_admin puro) --}}
+                    @can('acceso-operativo')
                         <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
                             {{ __('Personas') }}
                         </x-nav-link>
                     @endcan
 
-                    @auth
+                    {{-- Documentos: Solo operativo (excluido super_admin puro) --}}
+                    @can('acceso-operativo')
                         <x-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.*')">
                             {{ __('Biblioteca Digital') }}
                         </x-nav-link>
-                    @endauth
+                    @endcan
 
-                    @can('admin')
+                    {{-- Gestión Usuarios: Solo super_admin --}}
+                    @can('super-admin')
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                             {{ __('Gestión Usuarios') }}
                         </x-nav-link>
                     @endcan
 
+                    {{-- Brigadas: Solo super_admin --}}
                     @can('super-admin')
                         <x-nav-link :href="route('admin.brigadas.index')" :active="request()->routeIs('admin.brigadas.*')">
                             {{ __('Brigadas') }}
                         </x-nav-link>
                     @endcan
 
+                    {{-- UFIs: Solo super_admin --}}
                     @can('super-admin')
                         <x-nav-link :href="route('admin.ufis.index')" :active="request()->routeIs('admin.ufis.*')">
                             {{ __('UFIs') }}
@@ -102,42 +111,51 @@
     <!-- Responsive Navigation Menu - Mobile -->
     <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden bg-white border-t border-gray-100 transition-all duration-300 ease-in-out" x-show="open" @click.away="open = false">
         <div class="px-2 pt-2 pb-3 space-y-1">
+            {{-- Dashboard: Solo admin (excluido super_admin puro) --}}
             @can('admin')
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-responsive-nav-link>
+                @if(!Auth::user()->isSuperAdmin() || Auth::user()->roles()->count() > 1)
+                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-responsive-nav-link>
+                @endif
             @endcan
 
-            @can('panel-consulta')
+            {{-- Procedimientos: Solo operativo (excluido super_admin puro) --}}
+            @can('acceso-operativo')
                 <x-responsive-nav-link :href="route('procedimientos.index')" :active="request()->routeIs('procedimientos.*')">
                     {{ __('Procedimientos') }}
                 </x-responsive-nav-link>
             @endcan
 
-            @can('panel-consulta')
+            {{-- Personas: Solo operativo (excluido super_admin puro) --}}
+            @can('acceso-operativo')
                 <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
                     {{ __('Personas') }}
                 </x-responsive-nav-link>
             @endcan
 
-            @auth
+            {{-- Documentos: Solo operativo (excluido super_admin puro) --}}
+            @can('acceso-operativo')
                 <x-responsive-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.*')">
                     {{ __('Biblioteca Digital') }}
                 </x-responsive-nav-link>
-            @endauth
+            @endcan
 
-            @can('admin')
+            {{-- Gestión Usuarios: Solo super_admin --}}
+            @can('super-admin')
                 <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                     {{ __('Gestión Usuarios') }}
                 </x-responsive-nav-link>
             @endcan
 
+            {{-- Brigadas: Solo super_admin --}}
             @can('super-admin')
                 <x-responsive-nav-link :href="route('admin.brigadas.index')" :active="request()->routeIs('admin.brigadas.*')">
                     {{ __('Brigadas') }}
                 </x-responsive-nav-link>
             @endcan
 
+            {{-- UFIs: Solo super_admin --}}
             @can('super-admin')
                 <x-responsive-nav-link :href="route('admin.ufis.index')" :active="request()->routeIs('admin.ufis.*')">
                     {{ __('UFIs') }}

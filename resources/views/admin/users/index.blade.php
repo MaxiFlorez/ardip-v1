@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl md:text-2xl text-gray-800 dark:text-gray-200 leading-tight">
                 👥 Gestión de Usuarios
             </h2>
-            <a href="{{ route('admin.users.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+            <a href="{{ route('admin.users.create') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
                 ➕ Nuevo Usuario
             </a>
         </div>
@@ -15,14 +15,14 @@
             
             {{-- Alertas --}}
             @if (session('success'))
-                <div class="mb-6 bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                    <p class="text-green-700">✅ {{ session('success') }}</p>
+                <div class="mb-6 bg-success-50 border-l-4 border-success-500 p-4 rounded">
+                    <p class="text-success-700">✅ {{ session('success') }}</p>
                 </div>
             @endif
 
             @if (session('error'))
-                <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
-                    <p class="text-red-700">❌ {{ session('error') }}</p>
+                <div class="mb-6 bg-danger-50 border-l-4 border-danger-500 p-4 rounded">
+                    <p class="text-danger-700">❌ {{ session('error') }}</p>
                 </div>
             @endif
 
@@ -40,14 +40,14 @@
                                 id="search" 
                                 value="{{ request('search') }}"
                                 placeholder="Nombre o email..."
-                                class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 text-sm"
+                                class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 text-sm"
                             >
                         </div>
 
                         {{-- Filtro por Rol --}}
                         <div>
                             <label for="role_id" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-1">Rol</label>
-                            <select name="role_id" id="role_id" class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 text-sm">
+                            <select name="role_id" id="role_id" class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 text-sm">
                                 <option value="">Todos los roles</option>
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}" @selected(request('role_id') == $role->id)>
@@ -60,7 +60,7 @@
                         {{-- Filtro por Estado --}}
                         <div>
                             <label for="active" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-1">Estado</label>
-                            <select name="active" id="active" class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 text-sm">
+                            <select name="active" id="active" class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 text-sm">
                                 <option value="">Todos</option>
                                 <option value="1" @selected(request('active') === '1')>Activos</option>
                                 <option value="0" @selected(request('active') === '0')>Inactivos</option>
@@ -69,7 +69,7 @@
 
                         {{-- Botones --}}
                         <div class="md:col-span-3 flex items-center gap-2 flex-wrap">
-                            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-150 text-sm font-medium">
+                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition duration-150 text-sm font-medium">
                                 🔍 Filtrar
                             </button>
                             <a href="{{ route('admin.users.index') }}" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition duration-150 text-sm">
@@ -114,7 +114,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
-                                                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold">
+                                                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold">
                                                     {{ strtoupper(substr($user->name, 0, 1)) }}
                                                 </div>
                                             </div>
@@ -131,10 +131,10 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @php
                                             $roleColors = [
-                                                'super_admin' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-                                                'admin' => 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-                                                'cargador' => 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-                                                'consultor' => 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+                                                'super_admin' => 'bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200',
+                                                'admin' => 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+                                                'cargador' => 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
+                                                'consultor' => 'bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200',
                                             ];
                                             $roleName = $user->roles->first()?->name ?? 'sin-rol';
                                             $roleColor = $roleColors[$roleName] ?? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
@@ -148,11 +148,11 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @if ($user->active)
-                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
                                                 ✓ Activo
                                             </span>
                                         @else
-                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200">
                                                 ✗ Inactivo
                                             </span>
                                         @endif
@@ -161,19 +161,19 @@
                                         {{ $user->last_login_at ? $user->last_login_at->diffForHumans() : 'Nunca' }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                                        <a href="{{ route('admin.users.history', $user) }}" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300" title="Ver Historial">
+                                        <a href="{{ route('admin.users.history', $user) }}" class="text-secondary-600 hover:text-blue-900 dark:text-secondary-400 dark:hover:text-blue-300" title="Ver Historial">
                                             📊
                                         </a>
-                                        <a href="{{ route('admin.users.show', $user) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300" title="Ver Detalles">
+                                        <a href="{{ route('admin.users.show', $user) }}" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300" title="Ver Detalles">
                                             👁️
                                         </a>
-                                        <a href="{{ route('admin.users.edit', $user) }}" class="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300" title="Editar">
+                                        <a href="{{ route('admin.users.edit', $user) }}" class="text-warning-600 hover:text-warning-900 dark:text-warning-400 dark:hover:text-warning-300" title="Editar">
                                             ✏️
                                         </a>
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300" title="Eliminar">
+                                            <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300" title="Eliminar">
                                                 🗑️
                                             </button>
                                         </form>
@@ -196,7 +196,7 @@
                         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
                             <div class="flex items-start justify-between mb-3">
                                 <div class="flex items-center">
-                                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
+                                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-lg">
                                         {{ strtoupper(substr($user->name, 0, 1)) }}
                                     </div>
                                     <div class="ml-3">
@@ -211,10 +211,10 @@
                                     <span class="text-gray-500 dark:text-gray-400">Rol:</span>
                                     @php
                                         $roleColors = [
-                                            'super_admin' => 'bg-red-100 text-red-800',
-                                            'admin' => 'bg-purple-100 text-purple-800',
-                                            'cargador' => 'bg-blue-100 text-blue-800',
-                                            'consultor' => 'bg-green-100 text-green-800',
+                                            'super_admin' => 'bg-danger-100 text-danger-800',
+                                            'admin' => 'bg-secondary-100 text-secondary-800',
+                                            'cargador' => 'bg-secondary-100 text-secondary-800',
+                                            'consultor' => 'bg-success-100 text-success-800',
                                         ];
                                         $roleName = $user->roles->first()?->name ?? 'sin-rol';
                                         $roleColor = $roleColors[$roleName] ?? 'bg-gray-100 text-gray-800';
@@ -226,11 +226,11 @@
                                 <div>
                                     <span class="text-gray-500 dark:text-gray-400">Estado:</span>
                                     @if ($user->active)
-                                        <span class="ml-1 px-2 py-0.5 inline-flex text-xs font-semibold rounded bg-green-100 text-green-800">
+                                        <span class="ml-1 px-2 py-0.5 inline-flex text-xs font-semibold rounded bg-success-100 text-success-800">
                                             Activo
                                         </span>
                                     @else
-                                        <span class="ml-1 px-2 py-0.5 inline-flex text-xs font-semibold rounded bg-red-100 text-red-800">
+                                        <span class="ml-1 px-2 py-0.5 inline-flex text-xs font-semibold rounded bg-danger-100 text-danger-800">
                                             Inactivo
                                         </span>
                                     @endif
@@ -246,19 +246,19 @@
                             </div>
 
                             <div class="flex gap-2 flex-wrap">
-                                <a href="{{ route('admin.users.history', $user) }}" class="flex-1 text-center px-3 py-2 bg-blue-600 text-white text-xs rounded hover:bg-blue-700 transition">
+                                <a href="{{ route('admin.users.history', $user) }}" class="flex-1 text-center px-3 py-2 bg-secondary-600 text-white text-xs rounded hover:bg-secondary-700 transition">
                                     📊 Historial
                                 </a>
-                                <a href="{{ route('admin.users.show', $user) }}" class="flex-1 text-center px-3 py-2 bg-indigo-600 text-white text-xs rounded hover:bg-indigo-700 transition">
+                                <a href="{{ route('admin.users.show', $user) }}" class="flex-1 text-center px-3 py-2 bg-primary-600 text-white text-xs rounded hover:bg-primary-700 transition">
                                     👁️ Ver
                                 </a>
-                                <a href="{{ route('admin.users.edit', $user) }}" class="flex-1 text-center px-3 py-2 bg-yellow-600 text-white text-xs rounded hover:bg-yellow-700 transition">
+                                <a href="{{ route('admin.users.edit', $user) }}" class="flex-1 text-center px-3 py-2 bg-warning-600 text-white text-xs rounded hover:bg-warning-700 transition">
                                     ✏️ Editar
                                 </a>
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Eliminar usuario?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="w-full px-3 py-2 bg-red-600 text-white text-xs rounded hover:bg-red-700 transition">
+                                    <button type="submit" class="w-full px-3 py-2 bg-danger-600 text-white text-xs rounded hover:bg-danger-700 transition">
                                         🗑️
                                     </button>
                                 </form>
@@ -280,3 +280,10 @@
         </div>
     </div>
 </x-app-layout>
+
+
+
+
+
+
+

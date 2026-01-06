@@ -17,7 +17,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-4 md:p-6">
                     <div class="flex items-center gap-4">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
+                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center text-white font-bold text-lg">
                             {{ strtoupper(substr($user->name, 0, 1)) }}
                         </div>
                         <div>
@@ -85,9 +85,9 @@
                                             <td class="px-4 py-3 whitespace-nowrap text-center">
                                                 @php
                                                     $severityColors = [
-                                                        'critical' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-                                                        'warning' => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-                                                        'info' => 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+                                                        'critical' => 'bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200',
+                                                        'warning' => 'bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200',
+                                                        'info' => 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-200',
                                                     ];
                                                     $color = $severityColors[$log->severity] ?? 'bg-gray-100 text-gray-800';
                                                 @endphp
@@ -111,9 +111,9 @@
                                         </div>
                                         @php
                                             $severityColors = [
-                                                'critical' => 'bg-red-100 text-red-800',
-                                                'warning' => 'bg-yellow-100 text-yellow-800',
-                                                'info' => 'bg-blue-100 text-blue-800',
+                                                'critical' => 'bg-danger-100 text-danger-800',
+                                                'warning' => 'bg-warning-100 text-warning-800',
+                                                'info' => 'bg-secondary-100 text-secondary-800',
                                             ];
                                             $color = $severityColors[$log->severity] ?? 'bg-gray-100 text-gray-800';
                                         @endphp
@@ -152,3 +152,10 @@
         </div>
     </div>
 </x-app-layout>
+
+
+
+
+
+
+

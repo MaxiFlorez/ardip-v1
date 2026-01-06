@@ -30,7 +30,31 @@ class DashboardController extends Controller
         $totalDetenidos = $query->clone()->withCount('personas')->get()->sum('personas_count');
         $totalPositivos = $query->clone()->positivos()->count();
 
-        // 5. Retornar la vista pasando los datos para los filtros y los KPIs.
+        // 6. Datos para gráficos
+        // Procedimientos por Brigada
+        $procPorBrigada = $query->clone()
+            ->selectRaw('brigadas.nombre, COUNT(*) as total')
+            ->join('brigadas', 'procedimientos.brigada_id', '=', 'brigadas.id')
+            ->groupBy('brigadas.id', 'brigadas.nombre')
+            ->pluck('total', 'nombre');
+
+        // Procedimientos por UFI
+        $procPorUfi = $query->clone()
+            ->selectRaw('ufis.nombre, COUNT(*) as total')
+            ->join('ufis', 'procedimientos.ufi_id', '=', 'ufis.id')
+            ->groupBy('ufis.id', 'ufis.nombre')
+            ->orderByDesc('total')
+            ->limit(10)
+            ->pluck('total', 'nombre');
+
+        // Últimos 5 procedimientos
+        $ultimosProcedimientos = $query->clone()
+            ->with(['brigada', 'ufi'])
+            ->orderByDesc('fecha_procedimiento')
+            ->limit(5)
+            ->get();
+
+        // 7. Retornar la vista pasando los datos para los filtros, KPIs y gráficos.
         return view('dashboard', [
             'totalProcedimientos' => $totalProcedimientos,
             'totalDetenidos' => $totalDetenidos,
@@ -38,6 +62,9 @@ class DashboardController extends Controller
             'brigadas' => $brigadas,
             'periodoActual' => $periodoActual,
             'brigadaActual' => $brigadaActual,
+            'procPorBrigada' => $procPorBrigada,
+            'procPorUfi' => $procPorUfi,
+            'ultimosProcedimientos' => $ultimosProcedimientos,
         ]);
     }
 }

@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 📋 Gestión de Brigadas
             </h2>
-            <a href="{{ route('admin.brigadas.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('admin.brigadas.create') }}" class="bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded">
                 ➕ Nueva Brigada
             </a>
         </div>
@@ -14,13 +14,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Alertas -->
             @if (session('success'))
-                <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <div class="mb-4 bg-success-100 border border-success-400 text-success-700 px-4 py-3 rounded relative" role="alert">
                     <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
             @endif
 
             @if (session('error'))
-                <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <div class="mb-4 bg-danger-100 border border-danger-400 text-danger-700 px-4 py-3 rounded relative" role="alert">
                     <span class="block sm:inline">{{ session('error') }}</span>
                 </div>
             @endif
@@ -30,7 +30,7 @@
                     @if ($brigadas->isEmpty())
                         <div class="text-center py-8">
                             <p class="text-gray-500 text-lg">No hay brigadas registradas.</p>
-                            <a href="{{ route('admin.brigadas.create') }}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{ route('admin.brigadas.create') }}" class="mt-4 inline-block bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded">
                                 ➕ Crear Primera Brigada
                             </a>
                         </div>
@@ -66,18 +66,18 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-secondary-100 text-secondary-800">
                                                     {{ $brigada->users_count }} usuario(s)
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                                <a href="{{ route('admin.brigadas.edit', $brigada) }}" class="text-indigo-600 hover:text-indigo-900">
+                                                <a href="{{ route('admin.brigadas.edit', $brigada) }}" class="text-primary-600 hover:text-primary-900">
                                                     ✏️ Editar
                                                 </a>
                                                 <form action="{{ route('admin.brigadas.destroy', $brigada) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar la brigada {{ $brigada->nombre }}?');">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="text-red-600 hover:text-red-900">
+                                                    <button type="submit" class="text-danger-600 hover:text-danger-900">
                                                         🗑️ Eliminar
                                                     </button>
                                                 </form>
@@ -97,18 +97,18 @@
                                             <h3 class="text-lg font-semibold text-gray-900">{{ $brigada->nombre }}</h3>
                                             <p class="text-sm text-gray-500">ID: {{ $brigada->id }}</p>
                                         </div>
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-secondary-100 text-secondary-800">
                                             {{ $brigada->users_count }} usuario(s)
                                         </span>
                                     </div>
                                     <div class="flex space-x-2 mt-3">
-                                        <a href="{{ route('admin.brigadas.edit', $brigada) }}" class="flex-1 bg-indigo-500 hover:bg-indigo-700 text-white text-center py-2 px-3 rounded text-sm">
+                                        <a href="{{ route('admin.brigadas.edit', $brigada) }}" class="flex-1 bg-primary-500 hover:bg-primary-700 text-white text-center py-2 px-3 rounded text-sm">
                                             ✏️ Editar
                                         </a>
                                         <form action="{{ route('admin.brigadas.destroy', $brigada) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Eliminar {{ $brigada->nombre }}?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="w-full bg-red-500 hover:bg-red-700 text-white py-2 px-3 rounded text-sm">
+                                            <button type="submit" class="w-full bg-danger-500 hover:bg-danger-700 text-white py-2 px-3 rounded text-sm">
                                                 🗑️ Eliminar
                                             </button>
                                         </form>
@@ -127,3 +127,10 @@
         </div>
     </div>
 </x-app-layout>
+
+
+
+
+
+
+
