@@ -30,7 +30,23 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
-        return redirect()->intended($user->getDefaultRoute());
+        if ($user->hasRole('super_admin')) {
+            return redirect()->route('admin.users.index');
+        }
+
+        if ($user->hasRole('admin')) {
+            return redirect()->route('dashboard');
+        }
+
+        if ($user->hasRole('panel-carga')) {
+            return redirect()->route('procedimientos.index');
+        }
+
+        if ($user->hasRole('panel-consulta')) {
+            return redirect()->route('personas.index');
+        }
+
+        return redirect()->route('login');
     }
 
     /**

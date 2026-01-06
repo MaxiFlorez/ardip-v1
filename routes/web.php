@@ -22,23 +22,23 @@ Route::get('/', function () {
     /** @var \App\Models\User $user */
     $user = Auth::user();
 
-    // Super Admin redirige a Gestión de Usuarios
     if ($user->hasRole('super_admin')) {
         return redirect()->route('admin.users.index');
     }
 
-    // Admin redirige al Dashboard
     if ($user->hasRole('admin')) {
         return redirect()->route('dashboard');
     }
 
-    // Cargador/Consultor redirige a Procedimientos
-    if ($user->hasRole('panel-carga') || $user->hasRole('panel-consulta')) {
+    if ($user->hasRole('panel-carga')) {
         return redirect()->route('procedimientos.index');
     }
 
-    // Fallback para cualquier otro rol autenticado
-    return redirect()->route('admin.users.index');
+    if ($user->hasRole('panel-consulta')) {
+        return redirect()->route('personas.index');
+    }
+
+    return redirect()->route('login');
 });
 
 
