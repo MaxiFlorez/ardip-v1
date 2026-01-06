@@ -2,69 +2,85 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brigada;
 use App\Models\Procedimiento;
+use App\Models\Brigada;
+use App\Models\Ufi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // 1. Obtener $brigadas para el filtro de la vista.
-        $brigadas = Brigada::all();
+        // 1. Verificar Acceso
+        if (Gate::denies('admin')) {
+            abort(403, 'Acceso exclusivo para Jefes Operativos.');
+        }
 
-        // 2. Crear una consulta base.
-        $query = Procedimiento::query();
+        // 2. Filtros
+        $periodo = $request->get('periodo', 'mes');
+        $brigadaId = $request->get('brigada_id');
 
-        // 3. Aplicar los filtros usando los scopes del modelo.
-        $periodoActual = $request->input('periodo', 'mes');
-        $brigadaActual = $request->input('brigada_id');
+        $queryBase = Procedimiento::query()
+            ->rangoFecha($periodo)
+            ->deBrigada($brigadaId);
 
-        $query->rangoFecha($periodoActual)
-              ->deBrigada($brigadaActual);
-
-        // 4. Calcular las 3 Estadísticas (KPIs) sobre la consulta filtrada.
+        // 3. Calcular Datos (Ingredientes para la Vista)
+        $totalProcedimientos = (clone $queryBase)->count();
         
-        // Se clona la query para cada cálculo para evitar que los cálculos se afecten entre sí.
-        $totalProcedimientos = $query->clone()->count();
-        $totalDetenidos = $query->clone()->withCount('personas')->get()->sum('personas_count');
-        $totalPositivos = $query->clone()->positivos()->count();
+        $totalDetenidos = (clone $queryBase)
+            ->withCount('personas')
+            ->get()
+            ->sum('personas_count');
 
-        // 6. Datos para gráficos
-        // Procedimientos por Brigada
-        $procPorBrigada = $query->clone()
-            ->selectRaw('brigadas.nombre, COUNT(*) as total')
-            ->join('brigadas', 'procedimientos.brigada_id', '=', 'brigadas.id')
-            ->groupBy('brigadas.id', 'brigadas.nombre')
-            ->pluck('total', 'nombre');
+        $totalPositivos = (clone $queryBase)
+            ->positivos()
+            ->count();
 
-        // Procedimientos por UFI
-        $procPorUfi = $query->clone()
-            ->selectRaw('ufis.nombre, COUNT(*) as total')
-            ->join('ufis', 'procedimientos.ufi_id', '=', 'ufis.id')
-            ->groupBy('ufis.id', 'ufis.nombre')
+        // Datos para Gráficos
+        $procPorBrigada = (clone $queryBase)
+            ->selectRaw('count(*) as total, brigada_id')
+            ->whereNotNull('brigada_id')
+            ->groupBy('brigada_id')
+            ->with('brigada')
+            ->get()
+            ->mapWithKeys(function ($item) {
+                $nombre = $item->brigada ? $item->brigada->nombre : 'Desconocida';
+                return [$nombre => $item->total];
+            });
+
+        $procPorUfi = (clone $queryBase)
+            ->selectRaw('count(*) as total, ufi_id')
+            ->whereNotNull('ufi_id')
+            ->groupBy('ufi_id')
             ->orderByDesc('total')
             ->limit(10)
-            ->pluck('total', 'nombre');
+            ->with('ufi')
+            ->get()
+            ->mapWithKeys(function ($item) {
+                $nombre = $item->ufi ? $item->ufi->nombre : 'Desconocida';
+                return [$nombre => $item->total];
+            });
 
-        // Últimos 5 procedimientos
-        $ultimosProcedimientos = $query->clone()
+        $ultimosProcedimientos = (clone $queryBase)
             ->with(['brigada', 'ufi'])
-            ->orderByDesc('fecha_procedimiento')
-            ->limit(5)
+            ->latest('fecha_procedimiento')
+            ->take(5)
             ->get();
 
-        // 7. Retornar la vista pasando los datos para los filtros, KPIs y gráficos.
+        $brigadas = Brigada::orderBy('nombre')->get();
+
+        // 4. Enviar todo a la vista
         return view('dashboard', [
             'totalProcedimientos' => $totalProcedimientos,
             'totalDetenidos' => $totalDetenidos,
             'totalPositivos' => $totalPositivos,
-            'brigadas' => $brigadas,
-            'periodoActual' => $periodoActual,
-            'brigadaActual' => $brigadaActual,
             'procPorBrigada' => $procPorBrigada,
             'procPorUfi' => $procPorUfi,
             'ultimosProcedimientos' => $ultimosProcedimientos,
+            'brigadas' => $brigadas,
+            'periodoActual' => $periodo,
+            'brigadaActual' => $brigadaId,
         ]);
     }
 }

@@ -24,6 +24,7 @@ class UpdateUserRequest extends FormRequest
         $userId = $this->route('user')->id; // ID del usuario en la ruta
 
         return [
+            'jerarquia' => ['nullable', 'string', 'max:100'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $userId],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
@@ -39,11 +40,12 @@ class UpdateUserRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'jerarquia' => 'jerarquía',
             'name' => 'nombre',
             'email' => 'correo electrónico',
             'password' => 'contraseña',
             'role_id' => 'rol',
-            'brigada_id' => 'brigada',
+            'brigada_id' => 'destino',
             'active' => 'estado de cuenta',
         ];
     }

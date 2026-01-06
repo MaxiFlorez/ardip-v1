@@ -31,12 +31,12 @@
                         </div>
 
                         <div class="flex items-center justify-between">
-                            <a href="{{ route('admin.ufis.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <x-secondary-button onclick="window.history.back()">
                                 ← Volver
-                            </a>
-                            <button type="submit" class="bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded">
+                            </x-secondary-button>
+                            <x-primary-button type="submit">
                                 💾 Crear UFI
-                            </button>
+                            </x-primary-button>
                         </div>
                     </form>
                 </div>

@@ -23,6 +23,7 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'jerarquia' => ['nullable', 'string', 'max:100'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -38,11 +39,12 @@ class StoreUserRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'jerarquia' => 'jerarquía',
             'name' => 'nombre',
             'email' => 'correo electrónico',
             'password' => 'contraseña',
             'role_id' => 'rol',
-            'brigada_id' => 'brigada',
+            'brigada_id' => 'destino',
             'active' => 'estado de cuenta',
         ];
     }

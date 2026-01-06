@@ -5,8 +5,11 @@
                 {{ __('Listado de Personas') }}
             </h2>
             @can('panel-carga')
-                <a href="{{ route('personas.create') }}" class="bg-blue-500 hover:bg-blue-700 active:bg-blue-800 text-white font-bold py-2 px-4 rounded text-sm md:text-base transition duration-200 inline-block">
-                    ➕ Agregar Persona
+                <a href="{{ route('personas.create') }}">
+                    <x-primary-button>
+                        <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        Agregar Persona
+                    </x-primary-button>
                 </a>
             @endcan
         </div>
@@ -55,11 +58,14 @@
                     </div>
 
                     <div class="flex flex-col md:flex-row gap-2">
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold px-4 md:px-6 py-2 rounded text-sm transition duration-200 flex items-center justify-center gap-2">
-                            🔍 Buscar
-                        </button>
-                        <a href="{{ route('personas.index') }}" class="text-center md:text-left text-gray-600 hover:text-gray-900 text-sm font-medium transition duration-150 px-4 py-2 border border-gray-300 rounded md:border-0 md:p-0">
-                            Limpiar filtros
+                        <x-primary-button type="submit">
+                            <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            Buscar
+                        </x-primary-button>
+                        <a href="{{ route('personas.index') }}">
+                            <x-secondary-button type="button">
+                                Limpiar filtros
+                            </x-secondary-button>
                         </a>
                     </div>
                 </div>
@@ -113,9 +119,10 @@
 
                                     <!-- Acciones -->
                                     <div class="flex-shrink-0 w-full md:w-auto">
-                                        <a href="{{ route('personas.show', $persona) }}" 
-                                        class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white px-4 md:px-6 py-2 rounded text-sm font-medium transition duration-200 inline-block text-center">
-                                            Ver Detalle →
+                                        <a href="{{ route('personas.show', $persona) }}">
+                                            <x-primary-button class="w-full">
+                                                Ver Detalle →
+                                            </x-primary-button>
                                         </a>
                                     </div>
                                 </div>
@@ -125,8 +132,11 @@
                         <div class="text-center py-12">
                             <p class="text-gray-500 text-base">No hay personas registradas.</p>
                             @can('panel-carga')
-                                <a href="{{ route('personas.create') }}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition duration-200">
-                                    ➕ Crear Primera Persona
+                                <a href="{{ route('personas.create') }}">
+                                    <x-primary-button class="mt-4">
+                                        <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                        Crear Primera Persona
+                                    </x-primary-button>
                                 </a>
                             @endcan
                         </div>

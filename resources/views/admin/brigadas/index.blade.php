@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 📋 Gestión de Brigadas
             </h2>
-            <a href="{{ route('admin.brigadas.create') }}" class="bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('admin.brigadas.create') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
                 ➕ Nueva Brigada
             </a>
         </div>
@@ -30,7 +30,7 @@
                     @if ($brigadas->isEmpty())
                         <div class="text-center py-8">
                             <p class="text-gray-500 text-lg">No hay brigadas registradas.</p>
-                            <a href="{{ route('admin.brigadas.create') }}" class="mt-4 inline-block bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{ route('admin.brigadas.create') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                 ➕ Crear Primera Brigada
                             </a>
                         </div>
@@ -40,9 +40,6 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            ID
-                                        </th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Nombre
                                         </th>
@@ -57,9 +54,6 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach ($brigadas as $brigada)
                                         <tr class="hover:bg-gray-50">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $brigada->id }}
-                                            </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $brigada->nombre }}

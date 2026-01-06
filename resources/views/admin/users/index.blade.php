@@ -95,7 +95,7 @@
                                     Rol
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                    Brigada
+                                    Destino
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                                     Estado
@@ -120,6 +120,9 @@
                                             </div>
                                             <div class="ml-4">
                                                 <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                                                    @if($user->jerarquia)
+                                                        <span class="text-warning-600 dark:text-warning-400 font-semibold">{{ $user->jerarquia }}</span>
+                                                    @endif
                                                     {{ $user->name }}
                                                 </div>
                                                 <div class="text-sm text-gray-500 dark:text-gray-400">
@@ -200,13 +203,24 @@
                                         {{ strtoupper(substr($user->name, 0, 1)) }}
                                     </div>
                                     <div class="ml-3">
-                                        <div class="font-medium text-gray-900 dark:text-gray-100">{{ $user->name }}</div>
+                                        <div class="font-medium text-gray-900 dark:text-gray-100">
+                                            @if($user->jerarquia)
+                                                <span class="text-warning-600 dark:text-warning-400 font-semibold text-xs">{{ $user->jerarquia }}</span>
+                                            @endif
+                                            {{ $user->name }}
+                                        </div>
                                         <div class="text-sm text-gray-600 dark:text-gray-400">{{ $user->email }}</div>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                                @if($user->jerarquia)
+                                <div class="col-span-2">
+                                    <span class="text-gray-500 dark:text-gray-400">Jerarquía:</span>
+                                    <span class="ml-1 text-gray-900 dark:text-gray-100 font-semibold">{{ $user->jerarquia }}</span>
+                                </div>
+                                @endif
                                 <div>
                                     <span class="text-gray-500 dark:text-gray-400">Rol:</span>
                                     @php
@@ -236,7 +250,7 @@
                                     @endif
                                 </div>
                                 <div class="col-span-2">
-                                    <span class="text-gray-500 dark:text-gray-400">Brigada:</span>
+                                    <span class="text-gray-500 dark:text-gray-400">Destino:</span>
                                     <span class="ml-1 text-gray-900 dark:text-gray-100">{{ $user->brigada?->nombre ?? '-' }}</span>
                                 </div>
                                 <div class="col-span-2">

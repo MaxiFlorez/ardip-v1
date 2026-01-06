@@ -62,8 +62,13 @@
                                 </div>
                                 
                                 <div>
-                                    <span class="font-medium text-gray-700 dark:text-gray-300">Brigada:</span>
-                                    <span class="ml-2 text-gray-900 dark:text-gray-100">{{ $user->brigada?->nombre ?? 'Sin brigada' }}</span>
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Jerarquía:</span>
+                                    <span class="ml-2 text-gray-900 dark:text-gray-100">{{ $user->jerarquia ?? 'Sin asignar' }}</span>
+                                </div>
+
+                                <div>
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Destino:</span>
+                                    <span class="ml-2 text-gray-900 dark:text-gray-100">{{ $user->brigada?->nombre ?? 'Sin destino' }}</span>
                                 </div>
                                 
                                 <div>

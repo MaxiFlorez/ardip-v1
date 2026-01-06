@@ -31,6 +31,21 @@
                     <form method="POST" action="{{ route('admin.users.store') }}" class="space-y-6">
                         @csrf
 
+                        {{-- Jerarquía --}}
+                        <div>
+                            <label for="jerarquia" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-2">
+                                Jerarquía (Opcional)
+                            </label>
+                            <input 
+                                type="text" 
+                                name="jerarquia" 
+                                id="jerarquia" 
+                                value="{{ old('jerarquia') }}"
+                                class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600"
+                                placeholder="Ej: Inspector, Oficial, Cabo, Sargento..."
+                            >
+                        </div>
+
                         {{-- Nombre --}}
                         <div>
                             <label for="name" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-2">
@@ -144,17 +159,17 @@
                             </select>
                         </div>
 
-                        {{-- Brigada --}}
+                        {{-- Destino --}}
                         <div>
                             <label for="brigada_id" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-2">
-                                Brigada (Opcional)
+                                Destino (Opcional)
                             </label>
                             <select 
                                 name="brigada_id" 
                                 id="brigada_id" 
                                 class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600"
                             >
-                                <option value="">Sin brigada asignada</option>
+                                <option value="">Sin destino asignado</option>
                                 @foreach ($brigadas as $brigada)
                                     <option value="{{ $brigada->id }}" @selected(old('brigada_id') == $brigada->id)>
                                         {{ $brigada->nombre }}
@@ -180,12 +195,12 @@
 
                         {{-- Botones --}}
                         <div class="flex items-center gap-4 pt-4">
-                            <button type="submit" class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition duration-150 font-medium">
-                                💾 Crear Usuario
-                            </button>
-                            <a href="{{ route('admin.users.index') }}" class="px-6 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition duration-150">
+                            <x-primary-button type="submit">
+                                ✔️ Crear Usuario
+                            </x-primary-button>
+                            <x-secondary-button onclick="window.history.back()">
                                 Cancelar
-                            </a>
+                            </x-secondary-button>
                         </div>
                     </form>
 

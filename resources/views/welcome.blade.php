@@ -4,11 +4,91 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>ARDIP - Sistema Integral de Gestión e Inteligencia Policial</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Styles / Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="antialiased bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+        <div class="w-full max-w-md px-6">
+            <!-- Tarjeta Central -->
+            <div class="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8 text-center">
+                <!-- Logo/Escudo -->
+                <div class="flex justify-center mb-6">
+                    <x-application-logo class="h-20 w-20 fill-current text-gray-800 dark:text-gray-200" />
+                </div>
+
+                <!-- Título -->
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    ARDIP v1.0
+                </h1>
+
+                <!-- Subtítulo -->
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-8">
+                    Sistema Integral de Gestión<br>e Inteligencia Policial
+                </p>
+
+                <!-- Botones de Acción -->
+                <div class="space-y-3">
+                    @auth
+                        <!-- Usuario ya autenticado -->
+                        <a href="{{ route('home') }}" class="block">
+                            <x-primary-button class="w-full justify-center py-3">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                                Ir al Panel de Control
+                            </x-primary-button>
+                        </a>
+                    @else
+                        <!-- Usuario sin autenticar -->
+                        <a href="{{ route('login') }}" class="block">
+                            <x-primary-button class="w-full justify-center py-3">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                                </svg>
+                                Iniciar Sesión
+                            </x-primary-button>
+                        </a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="block">
+                                <x-secondary-button class="w-full justify-center py-3">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                                    </svg>
+                                    Registrarse
+                                </x-secondary-button>
+                            </a>
+                        @endif
+                    @endauth
+                </div>
+            </div>
+
+            <!-- Pie de Página con advertencia de seguridad -->
+            <div class="mt-8 text-center">
+                <div class="inline-flex items-center px-4 py-2 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+                    <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <p class="text-xs text-yellow-800 dark:text-yellow-300">
+                        <span class="font-semibold">Acceso restringido a personal autorizado.</span><br>
+                        Su IP está siendo registrada.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer institucional -->
+            <div class="mt-6 text-center text-xs text-gray-500 dark:text-gray-400">
+                © {{ date('Y') }} ARDIP - Todos los derechos reservados
+            </div>
+        </div>
+    </body>
+</html>
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

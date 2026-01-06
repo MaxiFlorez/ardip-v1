@@ -39,7 +39,7 @@ Route::get('/', function () {
     }
 
     return redirect()->route('login');
-});
+})->name('home');
 
 
 // Grupo de rutas protegidas (requieren login)

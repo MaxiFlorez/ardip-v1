@@ -21,9 +21,11 @@
 
                     <div class="flex justify-end mb-4">
                         @can('panel-carga')
-                            <a href="{{ route('domicilios.create') }}"
-                               class="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold py-2 px-4 rounded text-sm md:text-base transition duration-200">
-                                ➕ Agregar Domicilio
+                            <a href="{{ route('domicilios.create') }}">
+                                <x-primary-button>
+                                    <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                    Agregar Domicilio
+                                </x-primary-button>
                             </a>
                         @endcan
                     </div>

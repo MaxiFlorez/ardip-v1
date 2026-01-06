@@ -156,8 +156,14 @@
 
                         <!-- Botones -->
                         <div class="flex items-center justify-end mt-6 gap-2">
-                            <a href="{{ route('personas.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancelar</a>
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">💾 Guardar Persona</button>
+                            <a href="{{ route('personas.index') }}">
+                                <x-secondary-button type="button">
+                                    Cancelar
+                                </x-secondary-button>
+                            </a>
+                            <x-primary-button type="submit">
+                                Guardar Persona
+                            </x-primary-button>
                         </div>
                     </form>
 
