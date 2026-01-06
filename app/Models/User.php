@@ -17,11 +17,17 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
+ * @property bool $active
+ * @property \Illuminate\Support\Carbon|null $last_login_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read Notifiable|null $notifications
  * @property-read Collection|Role[] $roles
+ * @property-read Collection|ActivityLog[] $activityLogs
  * @method bool hasRole(string $roleName)
+ * @method bool hasAnyRole(array $roles)
+ * @method bool isSuperAdmin()
+ * @method bool isAdmin()
  */
 class User extends Authenticatable
 {
@@ -38,6 +44,7 @@ class User extends Authenticatable
         'email',
         'password',
         'brigada_id',
+        'active',
     ];
 
     /**
@@ -65,6 +72,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login_at' => 'datetime',
+            'active' => 'boolean',
         ];
     }
 
@@ -93,11 +102,44 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if the user is a super admin
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole('super_admin');
+    }
+
+    /**
+     * Check if the user is admin or super admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin') || $this->isSuperAdmin();
+    }
+
+    /**
+     * Check if user has any of the given roles
+     */
+    public function hasAnyRole(array $roles): bool
+    {
+        return $this->roles->pluck('name')->intersect($roles)->isNotEmpty();
+    }
+
+    /**
+     * Relación con logs de actividad
+     */
+    public function activityLogs()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+
+    /**
      * Ruta por defecto según el rol del usuario
      */
     public function getDefaultRoute(): string
     {
         return match (true) {
+            $this->hasRole('super_admin') => route('dashboard', absolute: false),
             $this->hasRole('admin') => route('dashboard', absolute: false),
             $this->hasRole('cargador') => route('procedimientos.index', absolute: false),
             $this->hasRole('consultor') => route('dashboard.consultor', absolute: false),

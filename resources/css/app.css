@@ -1,3 +1,273 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ====== Custom Responsive Styles ====== */
+
+/* Smooth scrolling */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply antialiased;
+    }
+
+    /* Improve touch target sizes for mobile */
+    @media (max-width: 768px) {
+        button, a[role="button"], .btn {
+            @apply min-h-[44px] min-w-[44px] py-2 px-3;
+        }
+    }
+
+    /* Better input focus on mobile */
+    input, select, textarea {
+        @apply focus:ring-2 focus:ring-offset-0 transition-colors duration-200;
+    }
+}
+
+/* ====== Responsive Table Wrapper ====== */
+@layer components {
+    .table-responsive {
+        @apply w-full overflow-x-auto;
+    }
+
+    .table-responsive table {
+        @apply min-w-full divide-y divide-gray-200;
+    }
+
+    .table-responsive tbody tr {
+        @apply hover:bg-gray-50 transition-colors duration-150;
+    }
+
+    /* Responsive Cards */
+    .card-responsive {
+        @apply bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200;
+    }
+
+    .card-responsive-header {
+        @apply px-4 md:px-6 py-4 md:py-6 border-b border-gray-200;
+    }
+
+    .card-responsive-body {
+        @apply px-4 md:px-6 py-4 md:py-6;
+    }
+
+    .card-responsive-footer {
+        @apply px-4 md:px-6 py-3 md:py-4 bg-gray-50 border-t border-gray-200;
+    }
+
+    /* Responsive Grid */
+    .grid-responsive {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6;
+    }
+
+    .grid-responsive-2 {
+        @apply grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6;
+    }
+
+    /* Responsive Flex */
+    .flex-responsive {
+        @apply flex flex-col md:flex-row gap-4 md:gap-6;
+    }
+
+    /* Button Utilities */
+    .btn-responsive {
+        @apply w-full md:w-auto inline-flex items-center justify-center;
+    }
+
+    .btn-primary {
+        @apply bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold py-2 px-4 rounded transition-colors duration-200;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-200 hover:bg-gray-300 active:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded transition-colors duration-200;
+    }
+
+    .btn-success {
+        @apply bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-semibold py-2 px-4 rounded transition-colors duration-200;
+    }
+
+    .btn-danger {
+        @apply bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-semibold py-2 px-4 rounded transition-colors duration-200;
+    }
+
+    /* Form Groups */
+    .form-group {
+        @apply mb-4;
+    }
+
+    .form-label {
+        @apply block text-sm font-semibold text-gray-700 mb-1;
+    }
+
+    .form-input {
+        @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200;
+    }
+
+    .form-select {
+        @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200;
+    }
+
+    /* Badge Utilities */
+    .badge {
+        @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+    }
+
+    .badge-primary {
+        @apply bg-indigo-100 text-indigo-800;
+    }
+
+    .badge-success {
+        @apply bg-green-100 text-green-800;
+    }
+
+    .badge-warning {
+        @apply bg-yellow-100 text-yellow-800;
+    }
+
+    .badge-danger {
+        @apply bg-red-100 text-red-800;
+    }
+
+    /* Alert Boxes */
+    .alert {
+        @apply px-4 py-3 rounded-lg border text-sm;
+    }
+
+    .alert-info {
+        @apply bg-blue-50 border-blue-200 text-blue-700;
+    }
+
+    .alert-success {
+        @apply bg-green-50 border-green-200 text-green-700;
+    }
+
+    .alert-warning {
+        @apply bg-yellow-50 border-yellow-200 text-yellow-700;
+    }
+
+    .alert-danger {
+        @apply bg-red-50 border-red-200 text-red-700;
+    }
+}
+
+/* ====== Animations ====== */
+@layer utilities {
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            transform: translateY(10px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-fadeIn {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .animate-slideInUp {
+        animation: slideInUp 0.3s ease-in-out;
+    }
+}
+
+/* ====== Dark Mode Specific ====== */
+@layer components {
+    .dark .card-responsive {
+        @apply bg-gray-800 border-gray-700 hover:border-gray-600;
+    }
+
+    .dark .form-input,
+    .dark .form-select {
+        @apply bg-gray-900 border-gray-700 text-gray-100;
+    }
+
+    .dark .badge-primary {
+        @apply bg-indigo-900 text-indigo-200;
+    }
+
+    .dark .badge-success {
+        @apply bg-green-900 text-green-200;
+    }
+
+    .dark .badge-warning {
+        @apply bg-yellow-900 text-yellow-200;
+    }
+
+    .dark .badge-danger {
+        @apply bg-red-900 text-red-200;
+    }
+}
+
+/* ====== Accessibility Improvements ====== */
+@layer utilities {
+    /* Focus visible only on keyboard navigation */
+    .focus-visible\:ring-2:focus-visible {
+        @apply ring-2 ring-offset-2 ring-indigo-500;
+    }
+
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            @apply !transition-none !animate-none;
+        }
+    }
+
+    /* Print styles */
+    @media print {
+        .no-print {
+            @apply hidden;
+        }
+
+        body {
+            @apply bg-white;
+        }
+    }
+}
+
+/* ====== Responsive Utilities ====== */
+@layer utilities {
+    /* Truncate and text-overflow for long text */
+    .truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .truncate-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Responsive display utilities */
+    @screen xs {
+        .xs\:block {
+            @apply block;
+        }
+
+        .xs\:hidden {
+            @apply hidden;
+        }
+
+        .xs\:flex {
+            @apply flex;
+        }
+    }
+}
+

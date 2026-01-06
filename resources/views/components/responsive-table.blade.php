@@ -1,0 +1,26 @@
+@props(['headers' => [], 'rows' => [], 'mobileFields' => []])
+
+<div class="overflow-hidden bg-white rounded-lg shadow-sm">
+    <!-- Desktop Table View -->
+    <div class="hidden md:block overflow-x-auto">
+        <table class="w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    @foreach($headers as $header)
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{ $header }}
+                        </th>
+                    @endforeach
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                {{ $slot }}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="md:hidden space-y-3 p-4">
+        {{ $mobile ?? '' }}
+    </div>
+</div>

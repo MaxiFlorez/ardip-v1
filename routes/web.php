@@ -6,6 +6,9 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ProcedimientoController;
 use App\Http\Controllers\DomicilioController;
 use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BrigadaController;
+use App\Http\Controllers\Admin\UfiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
@@ -16,6 +19,7 @@ Route::get('/', function () {
         return redirect()->route('login');
     }
 
+    /** @var \App\Models\User $user */
     $user = Auth::user();
 
     if ($user->hasRole('admin')) {
@@ -72,6 +76,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('documentos', DocumentoController::class);
     Route::get('/documentos/{documento}/download', [DocumentoController::class, 'download'])
         ->name('documentos.download');
+
+    // --- PANEL DE ADMINISTRACIÓN ---
+    Route::prefix('admin')->name('admin.')->middleware(['can:admin'])->group(function () {
+        // Gestión de Usuarios (Admin + Super Admin con auditoría)
+        Route::middleware('super.admin.activity')->group(function () {
+            Route::resource('users', UserController::class);
+            Route::get('/users/{user}/history', [UserController::class, 'history'])->name('users.history');
+        });
+
+        // Catálogos (Solo Super Admin)
+        Route::middleware('can:super-admin')->group(function () {
+            Route::resource('brigadas', BrigadaController::class)->except(['show']);
+            Route::resource('ufis', UfiController::class)->except(['show']);
+        });
+    });
 });
 
 require __DIR__.'/auth.php';

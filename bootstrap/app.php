@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // 👇 Middleware para auditoría de Super Admin
+        $middleware->alias([
+            'super.admin.activity' => \App\Http\Middleware\SuperAdminActivity::class,
+        ]);
+
         $middleware->web(append: [
             PreventBackHistory::class,
         ]);
