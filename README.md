@@ -23,7 +23,7 @@ npm run dev
 php artisan serve
 ```
 
-**Acceso:** http://localhost:8000
+**Acceso:** <http://localhost:8000>
 
 ---
 
@@ -84,12 +84,14 @@ php artisan serve
 ## 🔧 Configuración
 
 ### Super Admin
+
 ```bash
 php artisan tinker
 >>> User::first()->assignRole('super_admin');
 ```
 
 ### Variables de Entorno
+
 ```
 APP_LOCALE=es
 DB_CONNECTION=mysql
@@ -100,7 +102,7 @@ MAIL_FROM_ADDRESS=soporte@ardip.gob.ar
 
 ## 📞 Soporte
 
-**Email**: soporte@ardip.gob.ar  
+**Email**: <soporte@ardip.gob.ar>  
 **Documentación**: Ver archivos `.md` en raíz
 
 ---

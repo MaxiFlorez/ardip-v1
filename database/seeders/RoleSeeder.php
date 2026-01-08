@@ -19,8 +19,8 @@ class RoleSeeder extends Seeder
         $roles = [
             ['name' => 'super_admin', 'label' => 'Super Administrador'],
             ['name' => 'admin', 'label' => 'Administrador del Sistema'],
-            ['name' => 'cargador', 'label' => 'Operador de Carga'],
-            ['name' => 'consultor', 'label' => 'Visor de Consultas'],
+            ['name' => 'panel-carga', 'label' => 'Operador de Carga'],
+            ['name' => 'panel-consulta', 'label' => 'Visor de Consultas'],
         ];
 
         foreach ($roles as $r) {
@@ -29,7 +29,7 @@ class RoleSeeder extends Seeder
 
         $firstUser = User::first();
         $adminRole = Role::where('name', 'admin')->first();
-        $cargadorRole = Role::where('name', 'cargador')->first();
+        $cargadorRole = Role::where('name', 'panel-carga')->first();
 
         if ($firstUser && $adminRole) {
             $firstUser->roles()->syncWithoutDetaching([$adminRole->id]);

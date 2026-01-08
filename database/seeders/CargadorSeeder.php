@@ -15,7 +15,7 @@ class CargadorSeeder extends Seeder
      */
     public function run(): void
     {
-        $role = Role::whereIn('name', ['cargador', 'panel-carga'])->firstOrFail();
+        $role = Role::where('name', 'panel-carga')->firstOrFail();
 
         $user = User::firstOrCreate(
             ['email' => 'cargador@gmail.com'],
