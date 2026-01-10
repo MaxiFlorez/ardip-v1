@@ -11,8 +11,7 @@ class StoreProcedimientoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // Puedes habilitar gate: return $this->user()?->can('panel-carga') ?? false;
-        return true;
+        return $this->user()?->can('panel-carga') ?? false;
     }
 
     /**
@@ -25,8 +24,24 @@ class StoreProcedimientoRequest extends FormRequest
         return [
             'legajo_fiscal' => 'required|string|max:255|unique:procedimientos,legajo_fiscal',
             'caratula' => 'required|string|max:255',
-            'fecha_hecho' => 'required|date',
+            'fecha_procedimiento' => 'required|date',
             'ufi_id' => ['required', 'exists:ufis,id'],
+        ];
+    }
+
+    /**
+     * Get custom messages for validation errors.
+     */
+    public function messages(): array
+    {
+        return [
+            'legajo_fiscal.required' => 'El legajo fiscal es obligatorio.',
+            'legajo_fiscal.unique' => 'Este legajo fiscal ya existe en el sistema.',
+            'caratula.required' => 'La carátula es obligatoria.',
+            'fecha_procedimiento.required' => 'La fecha del procedimiento es obligatoria.',
+            'fecha_procedimiento.date' => 'La fecha debe ser una fecha válida.',
+            'ufi_id.required' => 'Debe seleccionar una UFI.',
+            'ufi_id.exists' => 'La UFI seleccionada no existe.',
         ];
     }
 }

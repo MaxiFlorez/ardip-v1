@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProcedimientoRequest;
 use App\Http\Requests\UpdateProcedimientoRequest;
+use App\Http\Requests\VincularPersonaRequest;
 use App\Models\Brigada;
 use App\Models\Domicilio;
 use App\Models\Persona;
@@ -27,26 +28,19 @@ class ProcedimientoController extends Controller
      */
     public function index(Request $request)
     {
-        // 1. Obtén las listas para los selects del formulario de filtrado.
+        // Obtén las listas para los selects del formulario de filtrado
         $ufis = Ufi::orderBy('nombre')->get();
         $brigadas = Brigada::orderBy('nombre')->get();
 
-        $procedimientos = null;
+        // Aplica el Scope filtrar (que ignora campos nulos/vacíos automáticamente)
+        // y devuelve un paginador incluso si está vacío
+        $procedimientos = Procedimiento::filtrar($request->all())
+            ->with(['ufi', 'brigada']) // Eager Loading para evitar problema N+1
+            ->orderBy('fecha_procedimiento', 'desc') // Ordena por fecha descendente
+            ->paginate(10) // Pagina de a 10 resultados
+            ->withQueryString(); // Mantiene los filtros en los enlaces de paginación
 
-        // 3. Implementa la lógica condicional.
-        // Comprueba si hay filtros activos, ignorando el parámetro de paginación 'page'.
-        $filtrosActivos = array_filter($request->except('page'));
-
-        if (!empty($filtrosActivos)) {
-            // Si HAY filtros, ejecuta la consulta.
-            $procedimientos = Procedimiento::filtrar($request->all())
-                ->with(['ufi', 'brigada']) // Eager Loading.
-                ->orderBy('fecha_procedimiento', 'desc') // Ordena por fecha descendente.
-                ->paginate(10) // Pagina de a 10 resultados.
-                ->withQueryString(); // Mantiene los filtros en los enlaces de paginación.
-        }
-
-        // 4. Retorna la vista con todas las variables.
+        // Retorna la vista con todas las variables
         return view('procedimientos.index', compact('procedimientos', 'ufis', 'brigadas'));
     }
 
@@ -130,25 +124,22 @@ class ProcedimientoController extends Controller
     /**
      * Vincula una persona al procedimiento con datos de pivote
      */
-    public function vincularPersona(Request $request, Procedimiento $procedimiento)
+    public function vincularPersona(VincularPersonaRequest $request, Procedimiento $procedimiento)
     {
-        $datos = $request->validate([
-            'persona_id' => 'required|exists:personas,id',
-            'situacion_procesal' => 'required|in:detenido,notificado,no_hallado,contravencion',
-            'pedido_captura' => 'sometimes|boolean',
-            'observaciones' => 'nullable|string',
-        ]);
+        $validated = $request->validated();
 
+        // Prepara los datos del pivote para la relación
         $pivot = [
-            'situacion_procesal' => $datos['situacion_procesal'],
-            'pedido_captura' => (bool) ($datos['pedido_captura'] ?? false),
-            'observaciones' => $datos['observaciones'] ?? null,
+            'situacion_procesal' => $validated['situacion_procesal'],
+            'pedido_captura' => $request->boolean('pedido_captura'),
+            'observaciones' => $validated['observaciones'] ?? null,
             'created_at' => now(),
             'updated_at' => now(),
         ];
 
+        // Vincula la persona al procedimiento con los datos del pivote
         $procedimiento->personas()->syncWithoutDetaching([
-            $datos['persona_id'] => $pivot,
+            $validated['persona_id'] => $pivot,
         ]);
 
         return redirect()

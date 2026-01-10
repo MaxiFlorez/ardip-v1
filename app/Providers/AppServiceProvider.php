@@ -21,30 +21,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Helper: verificar si usuario es super_admin puro (sin otros roles)
-        $isSuperAdminOnly = fn(User $user) => $user->hasRole('super_admin') && $user->roles()->count() === 1;
-
+        // Gates simples y directos basados en roles
         Gate::define('super-admin', fn(User $user) => $user->hasRole('super_admin'));
         Gate::define('admin', fn(User $user) => $user->hasRole('admin'));
-
-        Gate::define('acceso-operativo', function (User $user) use ($isSuperAdminOnly) {
-            return !$isSuperAdminOnly($user) && (
-                $user->hasRole('admin')
-                || $user->hasRole('panel-carga')
-                || $user->hasRole('panel-consulta')
-            );
-        });
-
-        Gate::define('panel-carga', function (User $user) use ($isSuperAdminOnly) {
-            return !$isSuperAdminOnly($user) && $user->hasRole('panel-carga');
-        });
-
-        Gate::define('panel-consulta', function (User $user) use ($isSuperAdminOnly) {
-            return !$isSuperAdminOnly($user) && (
-                $user->hasRole('panel-consulta')
-                || $user->hasRole('panel-carga')
-            );
-        });
+        
+        Gate::define('panel-carga', fn(User $user) => $user->hasRole('panel-carga'));
+        
+        // panel-consulta puede ver lo que ven los cargadores (panel-carga)
+        Gate::define('panel-consulta', fn(User $user) => 
+            $user->hasRole('panel-consulta') || $user->hasRole('panel-carga')
+        );
+        
+        // acceso-operativo para cualquier rol no super_admin puro
+        Gate::define('acceso-operativo', fn(User $user) => 
+            $user->hasRole('admin') 
+            || $user->hasRole('panel-carga') 
+            || $user->hasRole('panel-consulta')
+        );
     }
 }
 
