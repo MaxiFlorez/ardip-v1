@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persona;
+use App\Http\Requests\StorePersonaRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage; // ← NUEVO
+use Illuminate\Support\Storage;
 
 class PersonaController extends Controller
 {
@@ -14,7 +15,6 @@ class PersonaController extends Controller
         $this->middleware('can:panel-consulta')->only(['index', 'show']);
     }
 
-    // ... resto del código
     /**
      * Listado con búsqueda inteligente y filtros combinados
      */
@@ -65,23 +65,9 @@ class PersonaController extends Controller
     /**
      * Guarda una nueva persona en la base de datos
      */
-    public function store(Request $request)
+    public function store(StorePersonaRequest $request)
     {
-        // Validaciones (incluye mimes y fecha antes de hoy)
-        $validated = $request->validate([
-            'dni' => 'required|string|max:8|unique:personas,dni',
-            'nombres' => 'required|string|max:100',
-            'apellidos' => 'required|string|max:100',
-            'fecha_nacimiento' => 'required|date|before:today',
-            'genero' => 'required|in:masculino,femenino,otro',
-            // Alias como array de strings
-            'alias' => 'nullable|array',
-            'alias.*' => 'nullable|string|max:100',
-            'nacionalidad' => 'nullable|string|max:50',
-            'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'observaciones' => 'nullable|string',
-        ]);
+        $validated = $request->validated();
 
         // Procesar foto si existe (storage/app/public/fotos_personas)
         if ($request->hasFile('foto')) {

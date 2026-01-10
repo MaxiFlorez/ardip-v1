@@ -6,18 +6,12 @@ use App\Models\Procedimiento;
 use App\Models\Brigada;
 use App\Models\Ufi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // 1. Verificar Acceso
-        if (Gate::denies('admin')) {
-            abort(403, 'Acceso exclusivo para Jefes Operativos.');
-        }
-
-        // 2. Filtros
+        // 1. Filtros
         $periodo = $request->get('periodo', 'mes');
         $brigadaId = $request->get('brigada_id');
 

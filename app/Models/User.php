@@ -96,9 +96,9 @@ class User extends Authenticatable
     /**
      * Check if the user has a given role by name
      */
-    public function hasRole($roleName)
+    public function hasRole($roleName): bool
     {
-        return $this->roles->pluck('name')->contains($roleName);
+        return $this->roles?->pluck('name')->contains($roleName) ?? false;
     }
 
     /**
@@ -122,7 +122,7 @@ class User extends Authenticatable
      */
     public function hasAnyRole(array $roles): bool
     {
-        return $this->roles->pluck('name')->intersect($roles)->isNotEmpty();
+        return $this->roles?->pluck('name')->intersect($roles)->isNotEmpty() ?? false;
     }
 
     /**
