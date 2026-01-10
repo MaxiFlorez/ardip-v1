@@ -9,7 +9,7 @@ class StoreDomicilioRequest extends FormRequest
     public function authorize(): bool
     {
         // Crear/editar domicilios requiere permiso de carga
-        return $this->user()?->can('panel-carga') ?? false;
+        return $this->user()?->can('operativo-escritura') ?? false;
     }
 
     public function rules(): array

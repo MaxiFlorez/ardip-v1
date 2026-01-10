@@ -13,8 +13,8 @@ class PersonaController extends Controller
     use HandlesFileUploads;
     public function __construct()
     {
-        $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy']);
-        $this->middleware('can:panel-consulta')->only(['index', 'show']);
+        $this->middleware('can:operativo-escritura')->only(['create', 'store', 'edit', 'update', 'destroy']);
+        $this->middleware('can:acceso-operativo')->only(['index', 'show']);
     }
 
     /**

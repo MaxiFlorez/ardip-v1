@@ -1,12 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl md:text-2xl text-primary-800 dark:text-primary-200 leading-tight">
-                📊 Tablero de Comando
+            <h2 class="font-semibold text-xl md:text-2xl text-gray-800 leading-tight">
+                📊 Panel de Supervisión Estadístico
             </h2>
-            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-xs font-semibold">
-                🔒 Administrativo
-            </span>
         </div>
     </x-slot>
 
@@ -16,298 +13,201 @@
     <div class="py-6 md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             
-            {{-- Barra de Filtros --}}
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-primary-200 dark:border-primary-700">
-                <div class="p-4 md:p-6 text-gray-900 dark:text-gray-100">
-                    <h3 class="text-sm font-semibold text-primary-700 dark:text-primary-300 mb-4">🔍 Filtros</h3>
-                    <form method="GET" action="{{ route('dashboard') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        
-                        {{-- Select de Periodo --}}
-                        <div>
-                            <label for="periodo" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-2">Período</label>
-                            <select name="periodo" id="periodo" class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 text-sm">
-                                <option value="semana" @selected($periodoActual == 'semana')>Semana</option>
-                                <option value="mes" @selected($periodoActual == 'mes')>Mes</option>
-                                <option value="anio" @selected($periodoActual == 'anio')>Año</option>
-                            </select>
-                        </div>
-
-                        {{-- Select de Brigada --}}
-                        <div>
-                            <label for="brigada_id" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-2">Brigada</label>
-                            <select name="brigada_id" id="brigada_id" class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 text-sm">
-                                <option value="">Todas</option>
-                                @if ($brigadas && $brigadas->isNotEmpty())
-                                    @foreach ($brigadas as $brigada)
-                                        <option value="{{ $brigada->id }}" @selected($brigadaActual == $brigada->id)>
-                                            {{ $brigada->nombre }}
-                                        </option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                        
-                        {{-- Botones --}}
-                        <div class="flex items-end gap-2 col-span-1 md:col-span-2">
-                            <button type="submit" class="flex-1 px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition duration-150 text-sm font-medium">
-                                🔍 Filtrar
-                            </button>
-                            <a href="{{ route('dashboard') }}" class="flex-1 px-4 py-2 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900 rounded-md transition duration-150 text-sm font-medium text-center">
-                                ↺ Limpiar
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            {{-- KPIs Cards --}}
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {{-- 1. GRID DE MÉTRICAS (KPIs) --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 {{-- Card: Total Procedimientos --}}
-                <div class="bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800 overflow-hidden shadow-md rounded-lg border-l-4 border-primary-600">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h3 class="text-sm font-medium text-primary-700 dark:text-primary-300">Total Procedimientos</h3>
-                                <p class="mt-3 text-4xl font-bold text-primary-900 dark:text-primary-100">{{ $totalProcedimientos ?? 0 }}</p>
-                                <p class="mt-2 text-xs text-primary-600 dark:text-primary-400">Período: <strong>{{ ucfirst($periodoActual ?? 'mes') }}</strong></p>
-                            </div>
-                            <div class="text-4xl">📋</div>
-                        </div>
-                    </div>
-                </div>
+                <x-stat-card 
+                    title="Procedimientos" 
+                    :value="$totalProcedimientos ?? 0"
+                    subtitle="Total Registrados"
+                    color="blue"
+                >
+                    <x-slot name="icon">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </x-slot>
+                </x-stat-card>
 
-                {{-- Card: Total Detenidos --}}
-                <div class="bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900 dark:to-secondary-800 overflow-hidden shadow-md rounded-lg border-l-4 border-secondary-600">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h3 class="text-sm font-medium text-secondary-700 dark:text-secondary-300">Total Detenidos</h3>
-                                <p class="mt-3 text-4xl font-bold text-secondary-900 dark:text-secondary-100">{{ $totalDetenidos ?? 0 }}</p>
-                                <p class="mt-2 text-xs text-secondary-600 dark:text-secondary-400">Período: <strong>{{ ucfirst($periodoActual ?? 'mes') }}</strong></p>
-                            </div>
-                            <div class="text-4xl">👥</div>
-                        </div>
-                    </div>
-                </div>
+                {{-- Card: Total Personas --}}
+                <x-stat-card 
+                    title="Personas" 
+                    :value="$totalPersonas ?? 0"
+                    subtitle="Base de Datos"
+                    color="green"
+                >
+                    <x-slot name="icon">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </x-slot>
+                </x-stat-card>
 
-                {{-- Card: Allanamientos Positivos --}}
-                <div class="bg-gradient-to-br from-success-50 to-success-100 dark:from-success-900 dark:to-success-800 overflow-hidden shadow-md rounded-lg border-l-4 border-success-600">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h3 class="text-sm font-medium text-success-700 dark:text-success-300">✓ Positivos</h3>
-                                <p class="mt-3 text-4xl font-bold text-success-900 dark:text-success-100">{{ $totalPositivos ?? 0 }}</p>
-                                <p class="mt-2 text-xs text-success-600 dark:text-success-400">Período: <strong>{{ ucfirst($periodoActual ?? 'mes') }}</strong></p>
-                            </div>
-                            <div class="text-4xl">✅</div>
-                        </div>
-                    </div>
-                </div>
+                {{-- Card: Total Documentos --}}
+                <x-stat-card 
+                    title="Documentos" 
+                    :value="$totalDocumentos ?? 0"
+                    subtitle="Archivos Adjuntos"
+                    color="purple"
+                >
+                    <x-slot name="icon">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </x-slot>
+                </x-stat-card>
 
+                {{-- Card: Brigadas Activas --}}
+                <x-stat-card 
+                    title="Brigadas Activas" 
+                    :value="$brigadasActivas ?? 0"
+                    subtitle="Con Movimientos"
+                    color="orange"
+                >
+                    <x-slot name="icon">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </x-slot>
+                </x-stat-card>
             </div>
 
-            {{-- Gráficos --}}
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {{-- 2. SECCIÓN PRINCIPAL: GRÁFICO Y TABLA --}}
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                {{-- Gráfico Torta: Por Brigada --}}
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border border-primary-200 dark:border-primary-700 p-6">
-                    <h3 class="text-lg font-semibold text-primary-900 dark:text-primary-100 mb-4">📋 Procedimientos por Brigada</h3>
-                    <div class="relative h-80">
-                        <canvas id="chartBrigada"></canvas>
+                {{-- GRÁFICO DE DONA (UFIs) --}}
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg lg:col-span-1 border border-gray-200">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+                            </svg>
+                            Distribución por UFI
+                        </h3>
+                        <div class="relative h-64 w-full">
+                            <canvas id="chartUfi"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                {{-- Gráfico Barras: Por UFI --}}
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border border-primary-200 dark:border-primary-700 p-6">
-                    <h3 class="text-lg font-semibold text-primary-900 dark:text-primary-100 mb-4">🏛️ Procedimientos por UFI (Top 10)</h3>
-                    <div class="relative h-80">
-                        <canvas id="chartUfi"></canvas>
-                    </div>
-                </div>
-
-            </div>
-
-            {{-- Tabla: Últimos Procedimientos --}}
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border border-primary-200 dark:border-primary-700">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold text-primary-900 dark:text-primary-100 mb-4">🕐 Últimos 5 Procedimientos</h3>
-                    
-                    {{-- Tabla Desktop --}}
-                    <div class="hidden md:block overflow-x-auto">
-                        <table class="w-full text-sm">
-                            <thead class="bg-primary-50 dark:bg-primary-900 border-b border-primary-200 dark:border-primary-700">
-                                <tr>
-                                    <th class="px-6 py-3 text-left font-semibold text-primary-900 dark:text-primary-100">Legajo</th>
-                                    <th class="px-6 py-3 text-left font-semibold text-primary-900 dark:text-primary-100">Carátula</th>
-                                    <th class="px-6 py-3 text-left font-semibold text-primary-900 dark:text-primary-100">Brigada</th>
-                                    <th class="px-6 py-3 text-left font-semibold text-primary-900 dark:text-primary-100">UFI</th>
-                                    <th class="px-6 py-3 text-left font-semibold text-primary-900 dark:text-primary-100">Fecha</th>
-                                    <th class="px-6 py-3 text-left font-semibold text-primary-900 dark:text-primary-100">Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-primary-200 dark:divide-primary-700">
-                                @forelse ($ultimosProcedimientos ?? [] as $proc)
-                                    <tr class="hover:bg-primary-50 dark:hover:bg-primary-900 transition">
-                                        <td class="px-6 py-4 text-gray-900 dark:text-gray-100">
-                                            <span class="font-mono text-xs bg-primary-100 dark:bg-primary-800 px-2 py-1 rounded">{{ $proc->legajo_fiscal }}</span>
-                                        </td>
-                                        <td class="px-6 py-4 text-gray-900 dark:text-gray-100">{{ $proc->caratula }}</td>
-                                        <td class="px-6 py-4 text-gray-900 dark:text-gray-100">{{ $proc->brigada?->nombre ?? '-' }}</td>
-                                        <td class="px-6 py-4 text-gray-900 dark:text-gray-100">{{ $proc->ufi?->nombre ?? '-' }}</td>
-                                        <td class="px-6 py-4 text-gray-600 dark:text-gray-400 text-sm">{{ $proc->fecha_procedimiento?->format('d/m/Y') ?? '-' }}</td>
-                                        <td class="px-6 py-4">
-                                            @if ($proc->es_positivo)
-                                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
-                                                    ✓ Positivo
-                                                </span>
-                                            @else
-                                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200">
-                                                    ✗ Negativo
-                                                </span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @empty
+                {{-- TABLA DE ÚLTIMOS MOVIMIENTOS --}}
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg lg:col-span-2 border border-gray-200">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Últimas Cargas en el Sistema
+                        </h3>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
                                     <tr>
-                                        <td colspan="6" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
-                                            No hay procedimientos para mostrar
-                                        </td>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Carátula / UFI</th>
+                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+                                        <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acción</th>
                                     </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-
-                    {{-- Cards Mobile --}}
-                    <div class="md:hidden space-y-4">
-                        @forelse ($ultimosProcedimientos ?? [] as $proc)
-                            <div class="bg-primary-50 dark:bg-primary-900 rounded-lg p-4 border border-primary-200 dark:border-primary-700">
-                                <div class="flex justify-between items-start mb-3">
-                                    <div>
-                                        <span class="font-mono text-xs bg-primary-200 dark:bg-primary-800 px-2 py-1 rounded">{{ $proc->legajo_fiscal }}</span>
-                                        <p class="font-medium text-gray-900 dark:text-gray-100 mt-2">{{ $proc->caratula }}</p>
-                                    </div>
-                                    @if ($proc->es_positivo)
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
-                                            ✓ Positivo
-                                        </span>
-                                    @else
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200">
-                                            ✗ Negativo
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                    <div><strong>Brigada:</strong> {{ $proc->brigada?->nombre ?? '-' }}</div>
-                                    <div><strong>UFI:</strong> {{ $proc->ufi?->nombre ?? '-' }}</div>
-                                    <div class="col-span-2"><strong>Fecha:</strong> {{ $proc->fecha_procedimiento?->format('d/m/Y') ?? '-' }}</div>
-                                </div>
-                            </div>
-                        @empty
-                            <p class="text-center text-gray-500 dark:text-gray-400 py-8">No hay procedimientos para mostrar</p>
-                        @endforelse
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @forelse($ultimosProcedimientos as $proc)
+                                        <tr class="hover:bg-gray-50 transition-colors">
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-mono text-gray-500">#{{ $proc->id }}</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                                {{ $proc->created_at->format('d/m/Y') }}
+                                            </td>
+                                            <td class="px-4 py-3 text-sm text-gray-900">
+                                                <div class="font-medium truncate max-w-xs" title="{{ $proc->caratula }}">{{ $proc->caratula }}</div>
+                                                <div class="text-xs text-gray-500">{{ $proc->ufi->nombre ?? 'Sin UFI' }}</div>
+                                            </td>
+                                            <td class="px-4 py-3 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                                    {{ $proc->estado === 'FINALIZADO' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                                    {{ $proc->estado ?? 'PENDIENTE' }}
+                                                </span>
+                                            </td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                                <a href="{{ route('procedimientos.show', $proc) }}" class="text-blue-600 hover:text-blue-900 flex items-center justify-end gap-1">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                                    Ver
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="px-4 py-8 text-center text-gray-500">
+                                                <p>No hay movimientos recientes para mostrar.</p>
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    {{-- Variables globales para gráficos --}}
+    {{-- CHART.JS LOGIC --}}
+    @push('scripts')
     <script>
-        window.dataBrigada = @json($procPorBrigada ?? []);
-        window.dataUfi = @json($procPorUfi ?? []);
-    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartCanvas = document.getElementById('chartUfi');
+            if (!chartCanvas) return;
 
-    {{-- Script para inicializar gráficos con Chart.js --}}
-    <script>
-        // Colores semánticos
-        const colors = {
-            primary: '#475569',
-            secondary: '#0284c7',
-            success: '#059669',
-            danger: '#dc2626',
-            warning: '#d97706',
-        };
+            const ctx = chartCanvas.getContext('2d');
+            const data = @json($procedimientosPorUfi ?? []); 
 
-        // Gráfico Torta: Por Brigada
-        if (Object.keys(window.dataBrigada).length > 0) {
-            const ctxBrigada = document.getElementById('chartBrigada').getContext('2d');
-            new Chart(ctxBrigada, {
+            if (data.length === 0) {
+                // Mostrar mensaje si no hay datos
+                chartCanvas.parentElement.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-full text-gray-400">
+                        <svg class="w-12 h-12 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+                        <span class="text-sm">Sin datos estadísticos</span>
+                    </div>`;
+                return;
+            }
+
+            const labels = data.map(item => item.nombre_ufi);
+            const values = data.map(item => item.total);
+            const colors = [
+                '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', 
+                '#EC4899', '#6366F1', '#14B8A6', '#F97316', '#64748B'
+            ];
+
+            new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: Object.keys(window.dataBrigada),
+                    labels: labels,
                     datasets: [{
-                        data: Object.values(window.dataBrigada),
-                        backgroundColor: [
-                            colors.primary,
-                            colors.secondary,
-                            colors.success,
-                            colors.warning,
-                            colors.danger,
-                            '#6366f1',
-                            '#ec4899',
-                            '#f59e0b',
-                            '#14b8a6',
-                            '#8b5cf6',
-                        ],
-                        borderColor: '#ffffff',
-                        borderWidth: 2,
+                        data: values,
+                        backgroundColor: colors,
+                        borderWidth: 0,
+                        hoverOffset: 4
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    cutout: '70%',
                     plugins: {
                         legend: {
-                            position: 'bottom',
-                            labels: { padding: 15, usePointStyle: true }
+                            position: 'right',
+                            labels: { 
+                                boxWidth: 10,
+                                font: { size: 11, family: "'Inter', sans-serif" },
+                                color: '#374151' // text-gray-700
+                            }
                         }
                     }
                 }
             });
-        } else {
-            document.getElementById('chartBrigada').parentElement.innerHTML = '<p class="text-center text-gray-500 dark:text-gray-400 py-12">Sin datos disponibles</p>';
-        }
-
-        // Gráfico Barras: Por UFI
-        if (Object.keys(window.dataUfi).length > 0) {
-            const ctxUfi = document.getElementById('chartUfi').getContext('2d');
-            const ufiValues = Object.values(window.dataUfi);
-            const maxValue = Math.max(...ufiValues) + 2;
-            
-            new Chart(ctxUfi, {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(window.dataUfi),
-                    datasets: [{
-                        label: 'Procedimientos',
-                        data: ufiValues,
-                        backgroundColor: colors.secondary,
-                        borderColor: colors.primary,
-                        borderWidth: 1,
-                        borderRadius: 5,
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        x: { 
-                            beginAtZero: true, 
-                            max: maxValue
-                        }
-                    }
-                }
-            });
-        } else {
-            document.getElementById('chartUfi').parentElement.innerHTML = '<p class="text-center text-gray-500 dark:text-gray-400 py-12">Sin datos disponibles</p>';
-        }
+        });
     </script>
-
+    @endpush
 </x-app-layout>

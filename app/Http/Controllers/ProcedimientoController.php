@@ -20,8 +20,8 @@ class ProcedimientoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy', 'vincularPersona', 'vincularDomicilio']);
-        $this->middleware('can:panel-consulta')->only(['index', 'show']);
+        $this->middleware('can:operativo-escritura')->only(['create', 'store', 'edit', 'update', 'destroy', 'vincularPersona', 'vincularDomicilio']);
+        $this->middleware('can:acceso-operativo')->only(['index', 'show']);
     }
 
     /**

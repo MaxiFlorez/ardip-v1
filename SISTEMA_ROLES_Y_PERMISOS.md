@@ -67,6 +67,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 **Propósito:** Gestión completa del sistema, usuarios, brigadas y UFIs.
 
 **Características:**
+
 - Acceso exclusivo al panel administrativo
 - Puede crear, editar y eliminar usuarios
 - Gestiona brigadas y UFIs
@@ -74,6 +75,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 - Puede combinarse con otros roles para acceso mixto
 
 **Seeder:**
+
 ```php
 // Usuario: superadmin@ardip.gob.ar / password
 ```
@@ -85,13 +87,16 @@ Gate::define('acceso-operativo', fn(User $user) =>
 **Propósito:** Supervisión operativa y acceso al dashboard analítico.
 
 **Características:**
-- Acceso completo a módulos operativos
+
+- Acceso de **SOLO LECTURA** a módulos operativos
 - Dashboard con estadísticas y KPIs
-- Puede ver, crear y editar procedimientos, personas, documentos
+- Puede **VER** procedimientos, personas, documentos
+- **NO** puede crear, editar ni eliminar datos operativos
 - **NO** puede gestionar usuarios, brigadas ni UFIs
-- Rol orientado a jefes de brigada o coordinadores
+- Rol orientado a jefes de brigada o coordinadores con supervisión
 
 **Seeder:**
+
 ```php
 // Usuario: admin@ardip.gob.ar / password
 ```
@@ -103,6 +108,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 **Propósito:** Personal de carga de información policial.
 
 **Características:**
+
 - Puede crear, editar y eliminar:
   - Procedimientos
   - Personas
@@ -114,6 +120,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 - **NO** accede a dashboard admin ni gestión de usuarios
 
 **Seeder:**
+
 ```php
 // Usuario: cargador@ardip.gob.ar / password
 ```
@@ -125,6 +132,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 **Propósito:** Personal de consulta sin permisos de escritura.
 
 **Características:**
+
 - Solo lectura en todos los módulos operativos:
   - Ver lista y detalle de procedimientos
   - Ver lista y detalle de personas
@@ -135,6 +143,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 - Búsquedas y filtros avanzados
 
 **Seeder:**
+
 ```php
 // Usuario: consultor@ardip.gob.ar / password
 ```
@@ -151,14 +160,14 @@ Gate::define('acceso-operativo', fn(User $user) =>
 | **Gestión Brigadas**      | ✅          | ❌    | ❌          | ❌             |
 | **Gestión UFIs**          | ✅          | ❌    | ❌          | ❌             |
 | **Procedimientos (Ver)**  | ❌*         | ✅    | ✅          | ✅             |
-| **Procedimientos (CRUD)** | ❌*         | ✅    | ✅          | ❌             |
+| **Procedimientos (CRUD)** | ❌*         | ❌    | ✅          | ❌             |
 | **Personas (Ver)**        | ❌*         | ✅    | ✅          | ✅             |
-| **Personas (CRUD)**       | ❌*         | ✅    | ✅          | ❌             |
+| **Personas (CRUD)**       | ❌*         | ❌    | ✅          | ❌             |
 | **Domicilios (Ver)**      | ❌*         | ✅    | ✅          | ✅             |
-| **Domicilios (CRUD)**     | ❌*         | ✅    | ✅          | ❌             |
+| **Domicilios (CRUD)**     | ❌*         | ❌    | ✅          | ❌             |
 | **Documentos (Ver)**      | ❌*         | ✅    | ✅          | ✅             |
-| **Documentos (Subir)**    | ❌*         | ✅    | ✅          | ❌             |
-| **Documentos (Eliminar)** | ❌*         | ✅    | ✅          | ❌             |
+| **Documentos (Subir)**    | ❌*         | ❌    | ✅          | ❌             |
+| **Documentos (Eliminar)** | ❌*         | ❌    | ✅          | ❌             |
 | **Perfil (Editar)**       | ✅          | ✅    | ✅          | ✅             |
 
 **\* Nota:** super_admin **puro** (sin otros roles) NO tiene acceso operativo. Si se le asigna admin u otro rol operativo, hereda esos permisos.
@@ -186,12 +195,14 @@ graph TD
 **Ruta Inicial:** `/admin/users` → Panel de Gestión de Usuarios
 
 **Navegación Disponible:**
+
 - 🧑‍💼 Gestión Usuarios
 - 🛡️ Brigadas
 - 🏛️ UFIs
 - 👤 Perfil
 
 **Sin Acceso:**
+
 - ❌ Dashboard Admin
 - ❌ Procedimientos
 - ❌ Personas
@@ -211,24 +222,27 @@ graph TD
     D --> G[Procedimientos Recientes]
     D --> H[Actividad de Brigadas]
     G --> I[Módulo Procedimientos]
-    I --> J[CRUD Completo]
-    I --> K[Vincular Personas/Domicilios]
+    I --> J[Solo Lectura]
+    I --> K[Ver Personas/Domicilios Vinculados]
     I --> L[Generar PDF]
 ```
 
 **Ruta Inicial:** `/dashboard` → Dashboard Analítico
 
 **Navegación Disponible:**
+
 - 📊 Dashboard
-- 📁 Procedimientos (CRUD)
-- 👥 Personas (CRUD)
-- 📚 Biblioteca Digital (CRUD)
+- 📁 Procedimientos (👁️ Solo Lectura)
+- 👥 Personas (👁️ Solo Lectura)
+- 📚 Biblioteca Digital (👁️ Solo Lectura)
 - 👤 Perfil
 
 **Sin Acceso:**
+
 - ❌ Gestión de Usuarios
 - ❌ Brigadas
 - ❌ UFIs
+- ❌ Crear/Editar/Eliminar Datos Operativos
 
 ---
 
@@ -253,12 +267,14 @@ graph TD
 **Ruta Inicial:** `/procedimientos` → Listado de Procedimientos
 
 **Navegación Disponible:**
+
 - 📁 Procedimientos (CRUD + Vincular)
 - 👥 Personas (CRUD)
 - 📚 Biblioteca Digital (Subir/Eliminar)
 - 👤 Perfil
 
 **Acciones Típicas:**
+
 1. Crear nuevo procedimiento
 2. Asignar brigada y UFI
 3. Vincular personas involucradas
@@ -267,6 +283,7 @@ graph TD
 6. Generar informe PDF
 
 **Sin Acceso:**
+
 - ❌ Dashboard
 - ❌ Gestión Admin
 
@@ -292,6 +309,7 @@ graph TD
 **Ruta Inicial:** `/personas` → Listado de Personas
 
 **Navegación Disponible:**
+
 - 👥 Personas (Solo Lectura)
 - 📁 Procedimientos (Solo Lectura)
 - 📚 Biblioteca Digital (Solo Descarga)
@@ -299,6 +317,7 @@ graph TD
 - 👤 Perfil
 
 **Acciones Típicas:**
+
 1. Buscar personas por DNI/Alias
 2. Ver historial de procedimientos
 3. Consultar domicilios asociados
@@ -306,6 +325,7 @@ graph TD
 5. Filtrar procedimientos por brigada/UFI
 
 **Sin Acceso:**
+
 - ❌ Crear/Editar/Eliminar cualquier dato
 - ❌ Dashboard Admin
 - ❌ Gestión Admin
@@ -360,41 +380,43 @@ graph TD
 
 | Ruta                                              | Middleware                 | Acción                    | Roles Permitidos         |
 |---------------------------------------------------|----------------------------|---------------------------|--------------------------|
-| `/procedimientos`                                 | `can:panel-consulta`       | Lista                     | admin, carga, consulta   |
-| `/procedimientos/create`                          | `can:panel-carga`          | Crear                     | admin, carga             |
-| `/procedimientos/{procedimiento}`                 | `can:panel-consulta`       | Ver detalle               | admin, carga, consulta   |
-| `/procedimientos/{procedimiento}/edit`            | `can:panel-carga`          | Editar                    | admin, carga             |
-| `/procedimientos/{procedimiento}`                 | `can:panel-carga`          | Eliminar                  | admin, carga             |
-| `/procedimientos/{procedimiento}/vincular-persona`| `can:panel-carga`          | Vincular persona          | admin, carga             |
-| `/procedimientos/{procedimiento}/vincular-domicilio`| `can:panel-carga`        | Vincular domicilio        | admin, carga             |
+| `/procedimientos`                                 | `can:acceso-operativo`     | Lista                     | admin, carga, consulta   |
+| `/procedimientos/create`                          | `can:operativo-escritura`  | Crear                     | panel-carga              |
+| `/procedimientos/{procedimiento}`                 | `can:acceso-operativo`     | Ver detalle               | admin, carga, consulta   |
+| `/procedimientos/{procedimiento}/edit`            | `can:operativo-escritura`  | Editar                    | panel-carga              |
+| `/procedimientos/{procedimiento}`                 | `can:operativo-escritura`  | Eliminar                  | panel-carga              |
+| `/procedimientos/{procedimiento}/vincular-persona`| `can:operativo-escritura`  | Vincular persona          | panel-carga              |
+| `/procedimientos/{procedimiento}/vincular-domicilio`| `can:operativo-escritura`| Vincular domicilio        | panel-carga              |
 | `/procedimientos/{procedimiento}/pdf`             | `can:acceso-operativo`     | Generar PDF               | admin, carga, consulta   |
 
 **Controlador:** `ProcedimientoController`
 
 **Middleware en Controlador:**
+
 ```php
-$this->middleware('can:panel-carga')->only([
+$this->middleware('can:operativo-escritura')->only([
     'create', 'store', 'edit', 'update', 'destroy', 
     'vincularPersona', 'vincularDomicilio'
 ]);
-$this->middleware('can:panel-consulta')->only(['index', 'show']);
+$this->middleware('can:acceso-operativo')->only(['index', 'show']);
 ```
 
 ---
 
 #### 👥 Personas
 
-| Ruta                          | Middleware           | Acción         | Roles Permitidos       |
-|-------------------------------|----------------------|----------------|------------------------|
-| `/personas`                   | `can:panel-consulta` | Lista          | admin, carga, consulta |
-| `/personas/create`            | `can:panel-carga`    | Crear          | admin, carga           |
-| `/personas/{persona}`         | `can:panel-consulta` | Ver detalle    | admin, carga, consulta |
-| `/personas/{persona}/edit`    | `can:panel-carga`    | Editar         | admin, carga           |
-| `/personas/{persona}`         | `can:panel-carga`    | Eliminar       | admin, carga           |
+| Ruta                          | Middleware               | Acción         | Roles Permitidos       |
+|-------------------------------|--------------------------|----------------|------------------------|
+| `/personas`                   | `can:acceso-operativo`   | Lista          | admin, carga, consulta |
+| `/personas/create`            | `can:operativo-escritura`| Crear          | panel-carga            |
+| `/personas/{persona}`         | `can:acceso-operativo`   | Ver detalle    | admin, carga, consulta |
+| `/personas/{persona}/edit`    | `can:operativo-escritura`| Editar         | panel-carga            |
+| `/personas/{persona}`         | `can:operativo-escritura`| Eliminar       | panel-carga            |
 
 **Controlador:** `PersonaController`
 
 **Características:**
+
 - Búsqueda inteligente (nombres, apellidos, alias)
 - Filtros por departamento y edad
 - Gestión de alias (array anidado)
@@ -404,17 +426,18 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 
 #### 🏠 Domicilios
 
-| Ruta                           | Middleware           | Acción         | Roles Permitidos       |
-|--------------------------------|----------------------|----------------|------------------------|
-| `/domicilios`                  | `can:panel-consulta` | Lista          | admin, carga, consulta |
-| `/domicilios/create`           | `can:panel-carga`    | Crear          | admin, carga           |
-| `/domicilios/{domicilio}`      | `can:panel-consulta` | Ver detalle    | admin, carga, consulta |
-| `/domicilios/{domicilio}/edit` | `can:panel-carga`    | Editar         | admin, carga           |
-| `/domicilios/{domicilio}`      | `can:panel-carga`    | Eliminar       | admin, carga           |
+| Ruta                           | Middleware               | Acción         | Roles Permitidos       |
+|--------------------------------|--------------------------||----------------|------------------------|
+| `/domicilios`                  | `can:acceso-operativo`   | Lista          | admin, carga, consulta |
+| `/domicilios/create`           | `can:operativo-escritura`| Crear          | panel-carga            |
+| `/domicilios/{domicilio}`      | `can:acceso-operativo`   | Ver detalle    | admin, carga, consulta |
+| `/domicilios/{domicilio}/edit` | `can:operativo-escritura`| Editar         | panel-carga            |
+| `/domicilios/{domicilio}`      | `can:operativo-escritura`| Eliminar       | panel-carga            |
 
 **Controlador:** `DomicilioController`
 
 **Campos:**
+
 - departamento, provincia, calle, numero
 - piso, depto, torre, monoblock
 - manzana, lote, casa
@@ -424,16 +447,17 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 
 #### 📚 Biblioteca Digital (Documentos)
 
-| Ruta                              | Middleware           | Acción         | Roles Permitidos       |
-|-----------------------------------|----------------------|----------------|------------------------|
-| `/documentos`                     | `can:panel-consulta` | Lista          | admin, carga, consulta |
-| `/documentos/create`              | `can:panel-carga`    | Subir          | admin, carga           |
-| `/documentos/{documento}`         | `can:panel-carga`    | Eliminar       | admin, carga           |
-| `/documentos/{documento}/download`| `can:panel-consulta` | Descargar      | admin, carga, consulta |
+| Ruta                              | Middleware               | Acción         | Roles Permitidos       |
+|-----------------------------------|--------------------------|----------------|------------------------|
+| `/documentos`                     | `can:acceso-operativo`   | Lista          | admin, carga, consulta |
+| `/documentos/create`              | `can:operativo-escritura`| Subir          | panel-carga            |
+| `/documentos/{documento}`         | `can:operativo-escritura`| Eliminar       | panel-carga            |
+| `/documentos/{documento}/download`| `can:acceso-operativo`   | Descargar      | admin, carga, consulta |
 
 **Controlador:** `DocumentoController`
 
 **Características:**
+
 - Validación estricta de MIME types (PDF, DOC, IMG)
 - Control de acceso por brigada (solo descarga sus documentos)
 - Trait `HandlesFileUploads` para gestión de archivos
@@ -459,6 +483,7 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 **Archivo:** `resources/views/layouts/navigation.blade.php`
 
 #### Super Administrador (super_admin)
+
 ```
 ┌─────────────────────────────────────────┐
 │  🏠 Logo                    👤 Username ▼│
@@ -469,12 +494,14 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 ```
 
 **Dropdown Usuario:**
+
 - Perfil
 - Cerrar Sesión
 
 ---
 
 #### Administrador (admin)
+
 ```
 ┌─────────────────────────────────────────┐
 │  🏠 Logo                    👤 Username ▼│
@@ -488,6 +515,7 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 ---
 
 #### Operador de Carga (panel-carga)
+
 ```
 ┌─────────────────────────────────────────┐
 │  🏠 Logo                    👤 Username ▼│
@@ -500,6 +528,7 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 ---
 
 #### Visor de Consultas (panel-consulta)
+
 ```
 ┌─────────────────────────────────────────┐
 │  🏠 Logo                    👤 Username ▼│
@@ -547,53 +576,57 @@ $this->middleware('can:panel-consulta')->only(['index', 'show']);
 ### Middleware en Controladores
 
 #### PersonaController
+
 ```php
 public function __construct()
 {
-    $this->middleware('can:panel-carga')->only([
+    $this->middleware('can:operativo-escritura')->only([
         'create', 'store', 'edit', 'update', 'destroy'
     ]);
-    $this->middleware('can:panel-consulta')->only([
+    $this->middleware('can:acceso-operativo')->only([
         'index', 'show'
     ]);
 }
 ```
 
 #### ProcedimientoController
+
 ```php
 public function __construct()
 {
-    $this->middleware('can:panel-carga')->only([
+    $this->middleware('can:operativo-escritura')->only([
         'create', 'store', 'edit', 'update', 'destroy',
         'vincularPersona', 'vincularDomicilio'
     ]);
-    $this->middleware('can:panel-consulta')->only([
+    $this->middleware('can:acceso-operativo')->only([
         'index', 'show'
     ]);
 }
 ```
 
 #### DocumentoController
+
 ```php
 public function __construct()
 {
-    $this->middleware('can:panel-carga')->only([
+    $this->middleware('can:operativo-escritura')->only([
         'create', 'store', 'destroy'
     ]);
-    $this->middleware('can:panel-consulta')->only([
+    $this->middleware('can:acceso-operativo')->only([
         'index', 'download'
     ]);
 }
 ```
 
 #### DomicilioController
+
 ```php
 public function __construct()
 {
-    $this->middleware('can:panel-carga')->only([
+    $this->middleware('can:operativo-escritura')->only([
         'create', 'store', 'edit', 'update', 'destroy'
     ]);
-    $this->middleware('can:panel-consulta')->only([
+    $this->middleware('can:acceso-operativo')->only([
         'index', 'show'
     ]);
 }
@@ -605,23 +638,15 @@ Todos los Form Requests implementan `authorize()` validando el gate correspondie
 
 ```php
 // StorePersonaRequest, UpdatePersonaRequest
-public function authorize(): bool
-{
-    return $this->user()?->can('panel-carga') ?? false;
-}
-
+// StoreProcedimientoRequest, UpdateProcedimientoRequest
 // StoreDomicilioRequest, UpdateDomicilioRequest
+// StoreDocumentoRequest
 public function authorize(): bool
 {
-    return $this->user()?->can('panel-carga') ?? false;
+    return $this->user()?->can('operativo-escritura') ?? false;
 }
 
 // StoreUfiRequest, UpdateUfiRequest
-public function authorize(): bool
-{
-    return $this->user()?->can('admin') ?? false;
-}
-
 // StoreBrigadaRequest, UpdateBrigadaRequest
 public function authorize(): bool
 {
@@ -660,6 +685,18 @@ Gate::define('acceso-operativo', fn(User $user) =>
     $user->hasRole('panel-carga') || 
     $user->hasRole('panel-consulta')
 );
+
+Gate::define('operativo-escritura', fn(User $user) => 
+    $user->hasRole('panel-carga')
+);
+```
+
+Gate::define('acceso-operativo', fn(User $user) =>
+    $user->hasRole('admin') ||
+    $user->hasRole('panel-carga') ||
+    $user->hasRole('panel-consulta')
+);
+
 ```
 
 ### Herencia de Permisos
@@ -667,6 +704,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 **panel-carga** → Hereda acceso de **panel-consulta**
 
 ```
+
 ┌──────────────────┐
 │  panel-consulta  │ ← Base (Solo Lectura)
 └────────┬─────────┘
@@ -675,6 +713,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 ┌──────────────────┐
 │   panel-carga    │ ← Extensión (Lectura + Escritura)
 └──────────────────┘
+
 ```
 
 ---
@@ -728,8 +767,9 @@ const can = (ability) => {
 ```
 
 **Uso:**
+
 ```vue
-<ActionButton permission="panel-carga" @click="createProcedimiento">
+<ActionButton permission="operativo-escritura" @click="createProcedimiento">
   ➕ Nuevo Procedimiento
 </ActionButton>
 ```
@@ -762,6 +802,7 @@ const getRoleLabel = (role) => {
 ```
 
 **CSS Sugerido:**
+
 ```css
 .role-badge {
   &.super-admin { background: #ef4444; }
@@ -777,10 +818,11 @@ const getRoleLabel = (role) => {
 
 #### Vista Procedimiento
 
-**Admin/Carga (Edición):**
+**Panel-Carga (Edición):**
+
 ```vue
 <template>
-  <div v-if="can('panel-carga')">
+  <div v-if="can('operativo-escritura')">
     <EditForm :procedimiento="procedimiento" />
     <ActionButtons>
       <button @click="save">💾 Guardar</button>
@@ -790,10 +832,11 @@ const getRoleLabel = (role) => {
 </template>
 ```
 
-**Consulta (Solo Lectura):**
+**Admin/Consulta (Solo Lectura):**
+
 ```vue
 <template>
-  <div v-else-if="can('panel-consulta')">
+  <div v-else-if="can('acceso-operativo')">
     <ReadOnlyView :procedimiento="procedimiento" />
     <ActionButtons>
       <button @click="downloadPDF">📥 Descargar PDF</button>
@@ -872,8 +915,7 @@ export const useAuthStore = defineStore('auth', {
     },
     
     canWrite: (state) => {
-      return state.roles.includes('admin') || 
-             state.roles.includes('panel-carga')
+      return state.roles.includes('panel-carga')
     }
   },
   
@@ -935,8 +977,7 @@ export function usePermissions() {
   })
   
   const canDelete = computed(() => {
-    return authStore.hasRole('admin') || 
-           authStore.hasRole('panel-carga')
+    return authStore.hasRole('panel-carga')
   })
   
   return {
@@ -949,6 +990,7 @@ export function usePermissions() {
 ```
 
 **Uso en Componentes:**
+
 ```vue
 <script setup>
 import { usePermissions } from '@/composables/usePermissions'
@@ -1089,9 +1131,10 @@ app.directive('can', vCan)
 ```
 
 **Uso:**
+
 ```vue
 <template>
-  <button v-can="'panel-carga'" @click="create">
+  <button v-can="'operativo-escritura'" @click="create">
     ➕ Crear Procedimiento
   </button>
 </template>
@@ -1102,30 +1145,35 @@ app.directive('can', vCan)
 ## 📝 Checklist de Implementación Frontend
 
 ### Fase 1: Setup Inicial
+
 - [ ] Instalar Pinia/Vuex para gestión de estado
 - [ ] Crear store de autenticación con permisos
 - [ ] Implementar composable `usePermissions`
 - [ ] Configurar interceptores Axios para manejar 403/401
 
 ### Fase 2: Componentes Base
+
 - [ ] Componente `<RoleBasedMenu>`
 - [ ] Componente `<ActionButton>` con permisos
 - [ ] Componente `<RoleBadge>`
 - [ ] Componente `<ReadOnlyView>` para consultas
 
 ### Fase 3: Rutas y Navegación
+
 - [ ] Configurar guards de navegación
 - [ ] Implementar redirección dinámica por rol
 - [ ] Crear páginas 401/403 personalizadas
 - [ ] Validar acceso en cada ruta
 
 ### Fase 4: Vistas por Rol
+
 - [ ] Dashboard Admin (solo admin)
 - [ ] Dashboard Consultor (panel-consulta)
 - [ ] Formularios de creación (panel-carga)
 - [ ] Vistas de solo lectura (panel-consulta)
 
 ### Fase 5: Testing
+
 - [ ] Tests unitarios de permisos
 - [ ] Tests de integración de rutas
 - [ ] Tests E2E por flujo de rol
@@ -1151,6 +1199,7 @@ roles: ['super_admin', 'admin']
 ```
 
 **Recomendación Frontend:**
+
 ```javascript
 const showOperativeModules = computed(() => {
   return authStore.hasRole('admin') ||
@@ -1171,6 +1220,7 @@ panel-carga: Lectura + Escritura
 ```
 
 **Validación en Gates:**
+
 ```php
 Gate::define('panel-consulta', fn(User $user) => 
     $user->hasRole('panel-consulta') || $user->hasRole('panel-carga')
@@ -1191,6 +1241,7 @@ if ($documento->brigada_id !== Auth::user()->brigada_id) {
 ```
 
 **Recomendación Frontend:**
+
 - Filtrar listas por `brigada_id` del usuario
 - Deshabilitar acciones cross-brigade
 - Mostrar advertencia si intenta acceder recurso de otra brigada
@@ -1209,6 +1260,7 @@ public function authorize(): bool
 ```
 
 **Implicación Frontend:**
+
 - Si envías datos sin permiso → 403 Forbidden
 - Validar en frontend ANTES de enviar form
 - Mostrar mensaje claro: "No tienes permisos para esta acción"
@@ -1218,11 +1270,13 @@ public function authorize(): bool
 ### 5. **Registro Público Desactivado**
 
 ⚠️ **Sistema Cerrado:**
+
 - `/register` → 404 Not Found
 - No hay botón "Registrarse" en UI
 - Solo super_admin puede crear usuarios
 
 **Frontend:**
+
 - Eliminar cualquier referencia a `/register`
 - Bloquear intentos de acceso a rutas de registro
 - Mostrar mensaje: "Contactar al administrador para solicitar acceso"
@@ -1274,19 +1328,29 @@ public function authorize(): bool
 El sistema ARDIP implementa un modelo de roles robusto y granular con 4 roles principales:
 
 1. **super_admin**: Gestión total de usuarios y configuración
-2. **admin**: Supervisión operativa y dashboard
-3. **panel-carga**: Operadores de entrada de datos
+2. **admin**: Supervisión operativa (SOLO LECTURA) y dashboard
+3. **panel-carga**: Operadores de entrada de datos (CRUD completo)
 4. **panel-consulta**: Consultores de solo lectura
 
 **Características clave:**
+
 - ✅ Sistema cerrado (sin registro público)
 - ✅ Herencia de permisos (carga → consulta)
+- ✅ **Separación clara entre lectura y escritura**
+- ✅ **Admin tiene acceso de SOLO LECTURA a módulos operativos**
+- ✅ **Solo panel-carga puede crear, editar y eliminar datos operativos**
 - ✅ Validación en múltiples capas (Gates, Middleware, Form Requests)
 - ✅ Control por brigada en recursos sensibles
 - ✅ Navegación dinámica por rol
 - ✅ Form Requests con autorización integrada
 
+**Gates Importantes:**
+
+- `acceso-operativo`: Lectura en módulos operativos (admin, panel-carga, panel-consulta)
+- `operativo-escritura`: Escritura en módulos operativos (SOLO panel-carga)
+
 **Próximos Pasos:**
+
 1. Implementar store de permisos en frontend
 2. Crear componentes role-based reutilizables
 3. Configurar guards de navegación

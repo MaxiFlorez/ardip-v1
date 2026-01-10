@@ -11,7 +11,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+// Hash ya no es necesario porque el modelo User castea 'password' => 'hashed'
 
 class UserController extends Controller
 {
@@ -76,7 +76,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            // El modelo User aplica cast 'hashed', no usar Hash::make aquí
+            'password' => $request->password,
             'brigada_id' => $request->brigada_id,
             'active' => $request->has('active') ? (bool) $request->active : true,
             'email_verified_at' => now(), // Auto-verificar
@@ -172,7 +173,8 @@ class UserController extends Controller
 
         // Actualizar contraseña solo si se proporcionó
         if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
+            // El modelo User aplica cast 'hashed', no usar Hash::make aquí
+            $user->password = $request->password;
             $changes['password'] = 'actualizada';
         }
 

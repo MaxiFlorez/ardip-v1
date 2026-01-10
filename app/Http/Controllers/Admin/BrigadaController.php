@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brigada;
 use App\Models\ActivityLog;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\StoreBrigadaRequest;
+use App\Http\Requests\UpdateBrigadaRequest;
 
 class BrigadaController extends Controller
 {
@@ -26,15 +26,9 @@ class BrigadaController extends Controller
         return view('admin.brigadas.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreBrigadaRequest $request)
     {
-        $validated = $request->validate([
-            'nombre' => 'required|string|max:255|unique:brigadas,nombre',
-        ], [
-            'nombre.required' => 'El nombre de la brigada es obligatorio.',
-            'nombre.unique' => 'Ya existe una brigada con ese nombre.',
-            'nombre.max' => 'El nombre no puede exceder 255 caracteres.',
-        ]);
+        $validated = $request->validated();
 
         $brigada = Brigada::create($validated);
 
@@ -59,20 +53,9 @@ class BrigadaController extends Controller
         return view('admin.brigadas.edit', compact('brigada'));
     }
 
-    public function update(Request $request, Brigada $brigada)
+    public function update(UpdateBrigadaRequest $request, Brigada $brigada)
     {
-        $validated = $request->validate([
-            'nombre' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('brigadas', 'nombre')->ignore($brigada->id),
-            ],
-        ], [
-            'nombre.required' => 'El nombre de la brigada es obligatorio.',
-            'nombre.unique' => 'Ya existe una brigada con ese nombre.',
-            'nombre.max' => 'El nombre no puede exceder 255 caracteres.',
-        ]);
+        $validated = $request->validated();
 
         $original = $brigada->getOriginal();
         $brigada->update($validated);

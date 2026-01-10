@@ -1,24 +1,6 @@
-@props(['title' => '', 'subtitle' => '', 'value' => '', 'color' => 'gray', 'icon' => '📊'])
+@props(['title' => '', 'subtitle' => '', 'value' => ''])
 
-@php
-    $colorClasses = [
-        'gray' => 'bg-white border-gray-200 text-gray-900',
-        'green' => 'bg-white border-green-500 text-green-600 border-l-4',
-        'blue' => 'bg-white border-blue-500 text-blue-600 border-l-4',
-        'red' => 'bg-white border-red-500 text-red-600 border-l-4',
-        'indigo' => 'bg-white border-indigo-500 text-indigo-600 border-l-4',
-    ];
-    
-    $bgColor = match($color) {
-        'green' => 'bg-green-50',
-        'blue' => 'bg-blue-50',
-        'red' => 'bg-red-50',
-        'indigo' => 'bg-indigo-50',
-        default => 'bg-gray-50'
-    };
-@endphp
-
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-gray-300 transition duration-200 overflow-hidden">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition duration-200 overflow-hidden">
     <div class="p-4 md:p-6">
         <div class="flex items-start justify-between">
             <div class="flex-grow">
@@ -34,8 +16,8 @@
                     </p>
                 @endif
             </div>
-            <div class="text-3xl md:text-4xl">
-                {{ $icon }}
+            <div class="ml-4">
+                {{ $icon ?? '' }}
             </div>
         </div>
     </div>

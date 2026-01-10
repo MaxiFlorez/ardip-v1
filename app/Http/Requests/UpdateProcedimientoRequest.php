@@ -12,7 +12,7 @@ class UpdateProcedimientoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('panel-carga') ?? false;
+        return $this->user()?->can('operativo-escritura') ?? false;
     }
 
     /**

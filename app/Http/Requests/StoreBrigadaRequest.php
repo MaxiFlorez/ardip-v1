@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreBrigadaRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        // Gestión de brigadas accesible para 'admin'
+        return $this->user()?->can('admin') ?? false;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'nombre' => 'required|string|max:255|unique:brigadas,nombre',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'nombre.required' => 'El nombre de la brigada es obligatorio.',
+            'nombre.unique' => 'Ya existe una brigada con ese nombre.',
+            'nombre.max' => 'El nombre no puede exceder 255 caracteres.',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'nombre' => 'nombre de la brigada',
+        ];
+    }
+}

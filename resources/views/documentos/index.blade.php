@@ -1,14 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Biblioteca Digital</h2>
-    </x-slot>
-
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div class="bg-white shadow sm:rounded-lg p-6">
-            <div class="flex items-center justify-between">
-                <div></div>
-
-                @can('panel-carga')
+        <x-section-header title="Biblioteca Digital">
+            <x-slot name="actions">
+                @can('operativo-escritura')
                     <a href="{{ route('documentos.create') }}">
                         <x-primary-button>
                             <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
@@ -16,9 +10,13 @@
                         </x-primary-button>
                     </a>
                 @endcan
-            </div>
+            </x-slot>
+        </x-section-header>
 
-            <div class="mt-6">
+        <div class="bg-white shadow sm:rounded-lg p-6">
+            <div class="flex items-center justify-between">
+                <div></div>
+
                 @if($documentos->count() === 0)
                     <p class="text-gray-500">No hay documentos disponibles.</p>
                 @else

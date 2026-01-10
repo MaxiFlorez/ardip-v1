@@ -57,10 +57,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * Always eager-load roles to avoid extra queries in hasRole()
-     */
-    protected $with = ['roles'];
+    // Eager loading global de 'roles' removido para evitar cargas innecesarias.
 
     /**
      * Get the attributes that should be cast.

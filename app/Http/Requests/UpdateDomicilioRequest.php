@@ -9,7 +9,7 @@ class UpdateDomicilioRequest extends FormRequest
     public function authorize(): bool
     {
         // Actualizar domicilios requiere permiso de carga
-        return $this->user()?->can('panel-carga') ?? false;
+        return $this->user()?->can('operativo-escritura') ?? false;
     }
 
     public function rules(): array

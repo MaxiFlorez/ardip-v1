@@ -14,8 +14,8 @@ class DocumentoController extends Controller
     use HandlesFileUploads;
     public function __construct()
     {
-        $this->middleware('can:panel-carga')->only(['create', 'store', 'destroy']);
-        $this->middleware('can:panel-consulta')->only(['index', 'download']);
+        $this->middleware('can:operativo-escritura')->only(['create', 'store', 'destroy']);
+        $this->middleware('can:acceso-operativo')->only(['index', 'download']);
     }
 
     /**

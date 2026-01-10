@@ -32,11 +32,16 @@ class AppServiceProvider extends ServiceProvider
             $user->hasRole('panel-consulta') || $user->hasRole('panel-carga')
         );
         
-        // acceso-operativo para cualquier rol no super_admin puro
+        // acceso-operativo: Lectura en módulos operativos (admin, panel-carga, panel-consulta)
         Gate::define('acceso-operativo', fn(User $user) => 
             $user->hasRole('admin') 
             || $user->hasRole('panel-carga') 
             || $user->hasRole('panel-consulta')
+        );
+        
+        // operativo-escritura: CRUD en módulos operativos (SOLO panel-carga, NO admin)
+        Gate::define('operativo-escritura', fn(User $user) => 
+            $user->hasRole('panel-carga')
         );
     }
 }
