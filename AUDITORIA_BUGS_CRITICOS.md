@@ -13,6 +13,7 @@
 **Severidad:** 🔴 CRÍTICO
 
 **Problema:**
+
 ```php
 $isSuperAdminOnly = fn(User $user) => $user->hasRole('super_admin') && $user->roles()->count() === 1;
 
@@ -33,6 +34,7 @@ Los gates niegan acceso a usuarios super_admin que **intentan usar roles secunda
 **Severidad:** 🔴 CRÍTICO - Seguridad
 
 **Problema:**
+
 ```php
 public function authorize(): bool
 {
@@ -86,6 +88,7 @@ Gate::define('panel-consulta', fn(User $user) =>
 
 **Antes:** `return true;`  
 **Después:**
+
 ```php
 public function authorize(): bool
 {
@@ -122,4 +125,3 @@ Todos los Requests ahora incluyen `messages()` con errores en español.
 - [x] Los gates usan lógica simple y clara
 - [x] Middleware protege rutas sensibles
 - [x] Tests validan permisos y acceso
-

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProcedimientoRequest;
 use App\Http\Requests\UpdateProcedimientoRequest;
 use App\Http\Requests\VincularPersonaRequest;
+use App\Http\Requests\VincularDomicilioRequest;
 use App\Models\Brigada;
 use App\Models\Domicilio;
 use App\Models\Persona;
@@ -64,7 +65,14 @@ class ProcedimientoController extends Controller
 
         // Asignar datos del contexto de autenticación
         $validated['usuario_id'] = Auth::id();
-        $validated['brigada_id'] = Auth::user()->brigada_id ?? null;
+        
+        // CRÍTICO: brigada_id es NOT NULL en BD
+        // Fallar explícitamente si el usuario no tiene brigada asignada
+        $brigada_id = Auth::user()->brigada_id;
+        if ($brigada_id === null) {
+            abort(403, 'No puedes crear procedimientos: tu usuario no tiene brigada asignada. Contacta al administrador.');
+        }
+        $validated['brigada_id'] = $brigada_id;
 
         $procedimiento = Procedimiento::create($validated);
 
@@ -150,14 +158,12 @@ class ProcedimientoController extends Controller
     /**
      * Vincula un domicilio al procedimiento
      */
-    public function vincularDomicilio(Request $request, Procedimiento $procedimiento)
+    public function vincularDomicilio(VincularDomicilioRequest $request, Procedimiento $procedimiento)
     {
-        $datos = $request->validate([
-            'domicilio_id' => 'required|exists:domicilios,id',
-        ]);
+        $validated = $request->validated();
 
         $procedimiento->domicilios()->syncWithoutDetaching([
-            $datos['domicilio_id'] => [
+            $validated['domicilio_id'] => [
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
