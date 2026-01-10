@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Ufi;
 use App\Models\ActivityLog;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+// use Illuminate\Http\Request; // No se usa directamente
+// use Illuminate\Validation\Rule; // Regla trasladada al Form Request
+use App\Http\Requests\StoreUfiRequest;
+use App\Http\Requests\UpdateUfiRequest;
 
 class UfiController extends Controller
 {
@@ -26,15 +28,9 @@ class UfiController extends Controller
         return view('admin.ufis.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUfiRequest $request)
     {
-        $validated = $request->validate([
-            'nombre' => 'required|string|max:255|unique:ufis,nombre',
-        ], [
-            'nombre.required' => 'El nombre de la UFI es obligatorio.',
-            'nombre.unique' => 'Ya existe una UFI con ese nombre.',
-            'nombre.max' => 'El nombre no puede exceder 255 caracteres.',
-        ]);
+        $validated = $request->validated();
 
         $ufi = Ufi::create($validated);
 
@@ -59,20 +55,9 @@ class UfiController extends Controller
         return view('admin.ufis.edit', compact('ufi'));
     }
 
-    public function update(Request $request, Ufi $ufi)
+    public function update(UpdateUfiRequest $request, Ufi $ufi)
     {
-        $validated = $request->validate([
-            'nombre' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('ufis', 'nombre')->ignore($ufi->id),
-            ],
-        ], [
-            'nombre.required' => 'El nombre de la UFI es obligatorio.',
-            'nombre.unique' => 'Ya existe una UFI con ese nombre.',
-            'nombre.max' => 'El nombre no puede exceder 255 caracteres.',
-        ]);
+        $validated = $request->validated();
 
         $original = $ufi->nombre;
         $ufi->update($validated);

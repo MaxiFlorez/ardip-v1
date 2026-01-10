@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Domicilio;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDomicilioRequest;
+use App\Http\Requests\UpdateDomicilioRequest;
 
 class DomicilioController extends Controller
 {
@@ -33,24 +35,9 @@ class DomicilioController extends Controller
     /**
      * Guarda un nuevo domicilio
      */
-    public function store(Request $request)
+    public function store(StoreDomicilioRequest $request)
     {
-        $validated = $request->validate([
-            'departamento' => 'required|string|max:100',
-            'provincia' => 'nullable|string|max:100',
-            'calle' => 'nullable|string|max:255',
-            'numero' => 'nullable|string|max:20',
-            'piso' => 'nullable|string|max:10',
-            'depto' => 'nullable|string|max:10',
-            'torre' => 'nullable|string|max:10',
-            'monoblock' => 'nullable|string|max:100',
-            'manzana' => 'nullable|string|max:20',
-            'lote' => 'nullable|string|max:20',
-            'casa' => 'nullable|string|max:20',
-            'barrio' => 'nullable|string|max:100',
-            'sector' => 'nullable|string|max:100',
-            'coordenadas_gps' => 'nullable|string|max:100',
-        ]);
+        $validated = $request->validated();
 
         Domicilio::create($validated);
 
@@ -78,24 +65,9 @@ class DomicilioController extends Controller
     /**
      * Actualiza el domicilio
      */
-    public function update(Request $request, Domicilio $domicilio)
+    public function update(UpdateDomicilioRequest $request, Domicilio $domicilio)
     {
-        $validated = $request->validate([
-            'departamento' => 'required|string|max:100',
-            'provincia' => 'nullable|string|max:100',
-            'calle' => 'nullable|string|max:255',
-            'numero' => 'nullable|string|max:20',
-            'piso' => 'nullable|string|max:10',
-            'depto' => 'nullable|string|max:10',
-            'torre' => 'nullable|string|max:10',
-            'monoblock' => 'nullable|string|max:100',
-            'manzana' => 'nullable|string|max:20',
-            'lote' => 'nullable|string|max:20',
-            'casa' => 'nullable|string|max:20',
-            'barrio' => 'nullable|string|max:100',
-            'sector' => 'nullable|string|max:100',
-            'coordenadas_gps' => 'nullable|string|max:100',
-        ]);
+        $validated = $request->validated();
 
         $domicilio->update($validated);
 
