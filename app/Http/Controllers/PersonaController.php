@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Persona;
 use App\Http\Requests\StorePersonaRequest;
+use App\Http\Requests\UpdatePersonaRequest;
 use App\Traits\HandlesFileUploads;
 use Illuminate\Http\Request;
 
@@ -119,23 +120,9 @@ class PersonaController extends Controller
     /**
      * Actualiza los datos de una persona en la base de datos
      */
-    public function update(Request $request, Persona $persona)
+    public function update(UpdatePersonaRequest $request, Persona $persona)
     {
-        // Validar los datos (DNI único excepto el actual)
-        $validated = $request->validate([
-            'dni' => 'required|string|max:8|unique:personas,dni,' . $persona->id,
-            'nombres' => 'required|string|max:100',
-            'apellidos' => 'required|string|max:100',
-            'fecha_nacimiento' => 'required|date|before:today',
-            'genero' => 'required|in:masculino,femenino,otro',
-            // Alias como array
-            'alias' => 'nullable|array',
-            'alias.*' => 'nullable|string|max:100',
-            'nacionalidad' => 'nullable|string|max:50',
-            'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'observaciones' => 'nullable|string',
-        ]);
+        $validated = $request->validated();
 
         // Manejar la foto si existe usando el trait
         if ($request->hasFile('foto')) {
