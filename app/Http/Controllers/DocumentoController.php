@@ -40,7 +40,8 @@ class DocumentoController extends Controller
     {
         $validated = $request->validate([
             'titulo' => 'required|string|max:255',
-            'archivo' => 'required|file|mimes:pdf,doc,docx|max:10240', // Máx 10MB
+            // Permitimos hasta 20 MB para alinearnos con la configuración PHP
+            'archivo' => 'required|file|mimes:pdf,doc,docx|max:20480',
             'descripcion' => 'nullable|string',
         ]);
 
