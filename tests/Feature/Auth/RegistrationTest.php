@@ -31,19 +31,13 @@ class RegistrationTest extends TestCase
         // Obtener el usuario recién creado
         $user = User::where('email', 'test@example.com')->first();
 
-        // Crear el rol consultor si no existe
+        // Asignar rol consultor por defecto
         $consultorRole = Role::firstOrCreate(
             ['name' => 'panel-consulta'],
             ['label' => 'Visor de Consultas']
         );
-
-        // Asignar rol consultor al nuevo usuario
-        $user->roles()->attach($consultorRole);
-
-        // Recargar la relación roles para reflejar el attach en memoria
+        $user->roles()->syncWithoutDetaching([$consultorRole->id]);
         $user->load('roles');
-
-        // Verificar que tiene el rol
         $this->assertTrue($user->hasRole('panel-consulta'));
 
         // Los usuarios sin rol van a personas (después de registro)

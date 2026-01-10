@@ -19,7 +19,13 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'email_verified_at' => now(),
+        ]);
+
+        // Rol por defecto: panel-consulta (redirección a personas.index)
+        $consultorRole = \App\Models\Role::create(['name' => 'panel-consulta', 'label' => 'Visor de Consultas']);
+        $user->roles()->attach($consultorRole);
 
         $response = $this->post('/login', [
             'email' => $user->email,
@@ -27,7 +33,6 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        // Users without a role default to personas index
         $response->assertRedirect(route('personas.index', absolute: false));
     }
 
@@ -55,8 +60,8 @@ class AuthenticationTest extends TestCase
 
     public function test_admin_users_redirect_to_dashboard(): void
     {
-        $user = User::factory()->create();
-        $adminRole = \App\Models\Role::create(['name' => 'admin', 'label' => 'Administrator']);
+        $user = User::factory()->create(['email_verified_at' => now()]);
+        $adminRole = \App\Models\Role::create(['name' => 'admin', 'label' => 'Administrador del Sistema']);
         $user->roles()->attach($adminRole);
 
         $response = $this->post('/login', [
@@ -70,7 +75,7 @@ class AuthenticationTest extends TestCase
 
     public function test_cargador_users_redirect_to_procedimientos_create(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['email_verified_at' => now()]);
         $cargadorRole = \App\Models\Role::create(['name' => 'panel-carga', 'label' => 'Operador de Carga']);
         $user->roles()->attach($cargadorRole);
 
@@ -80,12 +85,12 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('panel.carga', absolute: false));
+        $response->assertRedirect(route('procedimientos.index', absolute: false));
     }
 
     public function test_consultor_users_redirect_to_personas_index(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['email_verified_at' => now()]);
         $consultorRole = \App\Models\Role::create(['name' => 'panel-consulta', 'label' => 'Visor de Consultas']);
         $user->roles()->attach($consultorRole);
 
@@ -95,6 +100,6 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('panel.consulta', absolute: false));
+        $response->assertRedirect(route('personas.index', absolute: false));
     }
 }

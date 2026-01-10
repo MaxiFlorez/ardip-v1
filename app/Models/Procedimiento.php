@@ -3,18 +3,20 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
 class Procedimiento extends Model implements Auditable
 {
+    use HasFactory; // enables factory() helper in tests
     use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'legajo_fiscal', 'caratula', 'es_positivo', 'ufi_id', 
+        'legajo_fiscal', 'caratula', 'es_positivo', 'ufi_id', 'usuario_id',
         'fecha_procedimiento', 'hora_procedimiento',
         'orden_allanamiento', 'orden_secuestro', 'orden_detencion',
-        'brigada_id',
+        'brigada_id', 'resultado_secuestro', 'resultado_detencion', 'secuestro_detalle', 'observaciones',
     ];
 
     protected $auditInclude = ['legajo_fiscal', 'caratula', 'ufi_id'];

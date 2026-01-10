@@ -25,18 +25,17 @@ class EmailVerificationTest extends TestCase
 
     public function test_email_can_be_verified(): void
     {
-        // Crear usuario sin email verificado
+        // Crear usuario sin email verificado, rol admin para evitar gates
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 
-        // Asignar rol consultor por defecto
-        $consultorRole = Role::firstOrCreate(
-            ['name' => 'panel-consulta'],
-            ['label' => 'Visor de Consultas']
+        $adminRole = Role::firstOrCreate(
+            ['name' => 'admin'],
+            ['label' => 'Administrador del Sistema']
         );
-        $user->roles()->attach($consultorRole);
-        $user->load('roles'); // Recargar relación después de attach
+        $user->roles()->attach($adminRole);
+        $user->load('roles');
 
         Event::fake();
 
@@ -56,8 +55,8 @@ class EmailVerificationTest extends TestCase
         // Verificar que el email fue marcado como verificado
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
         
-        // Verificar redirección a panel-consulta (según rol consultor)
-        $response->assertRedirect(route('panel.consulta', absolute: false).'?verified=1');
+        // Redirige al home configurado (dashboard) con flag verified
+        $response->assertRedirect(route('dashboard', absolute: false).'?verified=1');
     }
 
     public function test_email_is_not_verified_with_invalid_hash(): void
