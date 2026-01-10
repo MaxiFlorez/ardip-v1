@@ -33,8 +33,8 @@ class RegistrationTest extends TestCase
 
         // Crear el rol consultor si no existe
         $consultorRole = Role::firstOrCreate(
-            ['name' => 'consultor'],
-            ['label' => 'Consultor']
+            ['name' => 'panel-consulta'],
+            ['label' => 'Visor de Consultas']
         );
 
         // Asignar rol consultor al nuevo usuario
@@ -44,7 +44,7 @@ class RegistrationTest extends TestCase
         $user->load('roles');
 
         // Verificar que tiene el rol
-        $this->assertTrue($user->hasRole('consultor'));
+        $this->assertTrue($user->hasRole('panel-consulta'));
 
         // Los usuarios sin rol van a personas (después de registro)
         $response->assertRedirect(route('personas.index', absolute: false));

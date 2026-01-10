@@ -32,8 +32,8 @@ class EmailVerificationTest extends TestCase
 
         // Asignar rol consultor por defecto
         $consultorRole = Role::firstOrCreate(
-            ['name' => 'consultor'],
-            ['label' => 'Consultor']
+            ['name' => 'panel-consulta'],
+            ['label' => 'Visor de Consultas']
         );
         $user->roles()->attach($consultorRole);
         $user->load('roles'); // Recargar relación después de attach

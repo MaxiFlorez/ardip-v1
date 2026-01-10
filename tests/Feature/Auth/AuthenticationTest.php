@@ -71,7 +71,7 @@ class AuthenticationTest extends TestCase
     public function test_cargador_users_redirect_to_procedimientos_create(): void
     {
         $user = User::factory()->create();
-        $cargadorRole = \App\Models\Role::create(['name' => 'cargador', 'label' => 'Cargador']);
+        $cargadorRole = \App\Models\Role::create(['name' => 'panel-carga', 'label' => 'Operador de Carga']);
         $user->roles()->attach($cargadorRole);
 
         $response = $this->post('/login', [
@@ -86,7 +86,7 @@ class AuthenticationTest extends TestCase
     public function test_consultor_users_redirect_to_personas_index(): void
     {
         $user = User::factory()->create();
-        $consultorRole = \App\Models\Role::create(['name' => 'consultor', 'label' => 'Consultor']);
+        $consultorRole = \App\Models\Role::create(['name' => 'panel-consulta', 'label' => 'Visor de Consultas']);
         $user->roles()->attach($consultorRole);
 
         $response = $this->post('/login', [
