@@ -38,7 +38,8 @@ Route::get('/', function () {
         return redirect()->route('personas.index');
     }
 
-    return redirect()->route('login');
+    // Fallback seguro: redirigir a ruta genérica si no tiene roles reconocidos
+    return redirect()->route('dashboard');
 })->name('home');
 
 

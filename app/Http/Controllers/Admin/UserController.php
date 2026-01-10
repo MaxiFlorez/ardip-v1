@@ -49,7 +49,7 @@ class UserController extends Controller
         // Registrar auditoría
         ActivityLog::log(
             'view_users_list',
-            Auth::user()->name . ' visualizó la lista de usuarios',
+            (Auth::user()?->name ?? 'Usuario desconocido') . ' visualizó la lista de usuarios',
             ['severity' => 'info']
         );
 
@@ -88,7 +88,7 @@ class UserController extends Controller
         // Registrar auditoría CRÍTICA
         ActivityLog::log(
             'user_created',
-            Auth::user()->name . " creó el usuario: {$user->name} ({$user->email})",
+            (Auth::user()?->name ?? 'Usuario desconocido') . " creó el usuario: {$user->name} ({$user->email})",
             [
                 'model_type' => User::class,
                 'model_id' => $user->id,
@@ -124,7 +124,7 @@ class UserController extends Controller
         // Registrar que se visualizó el perfil
         ActivityLog::log(
             'view_user_profile',
-            Auth::user()->name . " visualizó el perfil de {$user->name}",
+            (Auth::user()?->name ?? 'Usuario desconocido') . " visualizó el perfil de {$user->name}",
             [
                 'model_type' => User::class,
                 'model_id' => $user->id,
@@ -198,7 +198,7 @@ class UserController extends Controller
         // Registrar auditoría CRÍTICA
         ActivityLog::log(
             'user_updated',
-            Auth::user()->name . " actualizó el usuario: {$user->name}",
+            (Auth::user()?->name ?? 'Usuario desconocido') . " actualizó el usuario: {$user->name}",
             [
                 'model_type' => User::class,
                 'model_id' => $user->id,
@@ -242,7 +242,7 @@ class UserController extends Controller
         // Registrar auditoría CRÍTICA antes de eliminar
         ActivityLog::log(
             'user_deleted',
-            Auth::user()->name . " eliminó el usuario: {$userName} ({$userEmail})",
+            (Auth::user()?->name ?? 'Usuario desconocido') . " eliminó el usuario: {$userName} ({$userEmail})",
             [
                 'model_type' => User::class,
                 'model_id' => $userId,
@@ -281,7 +281,7 @@ class UserController extends Controller
         // Registrar que se consultó el historial
         ActivityLog::log(
             'view_user_history',
-            Auth::user()->name . " consultó el historial de actividad de {$user->name}",
+            (Auth::user()?->name ?? 'Usuario desconocido') . " consultó el historial de actividad de {$user->name}",
             [
                 'model_type' => User::class,
                 'model_id' => $user->id,

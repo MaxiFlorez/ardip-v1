@@ -67,16 +67,23 @@ class DocumentoController extends Controller
      */
     public function download(Documento $documento)
     {
-        // 1. Verificar si el archivo físico existe
+        // 1. Validar acceso: solo panel-carga o el usuario que subió el documento
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        if (!$user->can('panel-carga') && $documento->user_id !== $user->id) {
+            abort(403, 'No tienes permiso para descargar este documento.');
+        }
+
+        // 2. Verificar si el archivo físico existe
         if (!Storage::disk('public')->exists($documento->archivo_path)) {
             return back()->with('error', 'El archivo físico no se encuentra en el servidor.');
         }
 
-        // 2. Generar un nombre limpio para la descarga (Ej: acta-allanamiento.pdf)
+        // 3. Generar un nombre limpio para la descarga (Ej: acta-allanamiento.pdf)
         $extension = pathinfo($documento->archivo_path, PATHINFO_EXTENSION);
         $nombreDescarga = Str::slug($documento->titulo) . '.' . $extension;
 
-        // 3. Forzar descarga
+        // 4. Forzar descarga
         $filePath = Storage::disk('public')->path($documento->archivo_path);
         return response()->download($filePath, $nombreDescarga);
     }

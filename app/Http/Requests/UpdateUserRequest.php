@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Role;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -23,12 +25,17 @@ class UpdateUserRequest extends FormRequest
     {
         $userId = $this->route('user')->id; // ID del usuario en la ruta
 
+        // Si el usuario NO es super_admin, no puede asignar rol super_admin
+        $allowedRoles = $this->user()?->isSuperAdmin()
+            ? Role::pluck('id')->toArray()
+            : Role::whereNotIn('name', ['super_admin'])->pluck('id')->toArray();
+
         return [
             'jerarquia' => ['nullable', 'string', 'max:100'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $userId],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required', 'exists:roles,id'],
+            'role_id' => ['required', Rule::in($allowedRoles)],
             'brigada_id' => ['nullable', 'exists:brigadas,id'],
             'active' => ['nullable', 'boolean'],
         ];

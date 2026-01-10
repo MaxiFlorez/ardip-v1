@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use App\Http\Requests\StorePersonaRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class PersonaController extends Controller
 {

@@ -14,6 +14,7 @@ use App\Models\Ufi; // Importar el nuevo modelo
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProcedimientoController extends Controller
 {
@@ -86,6 +87,15 @@ class ProcedimientoController extends Controller
      */
     public function show(Procedimiento $procedimiento)
     {
+        // Validar acceso por brigada (solo para roles no-admin)
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        if (!$user->hasAnyRole(['super_admin', 'admin'])) {
+            if ($procedimiento->brigada_id !== $user->brigada_id) {
+                abort(403, 'No tienes acceso a procedimientos de otras brigadas.');
+            }
+        }
+
         $procedimiento->load(['personas', 'domicilios', 'usuario', 'brigada', 'ufi']); // <-- ufi añadido
 
         $personasDisponibles = Persona::orderBy('apellidos')->get();
@@ -136,19 +146,22 @@ class ProcedimientoController extends Controller
     {
         $validated = $request->validated();
 
-        // Prepara los datos del pivote para la relación
-        $pivot = [
-            'situacion_procesal' => $validated['situacion_procesal'],
-            'pedido_captura' => $request->boolean('pedido_captura'),
-            'observaciones' => $validated['observaciones'] ?? null,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ];
+        // Usar transacción para garantizar consistencia
+        DB::transaction(function () use ($procedimiento, $validated, $request) {
+            // Prepara los datos del pivote para la relación
+            $pivot = [
+                'situacion_procesal' => $validated['situacion_procesal'],
+                'pedido_captura' => $request->boolean('pedido_captura'),
+                'observaciones' => $validated['observaciones'] ?? null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
 
-        // Vincula la persona al procedimiento con los datos del pivote
-        $procedimiento->personas()->syncWithoutDetaching([
-            $validated['persona_id'] => $pivot,
-        ]);
+            // Vincula la persona al procedimiento con los datos del pivote
+            $procedimiento->personas()->syncWithoutDetaching([
+                $validated['persona_id'] => $pivot,
+            ]);
+        });
 
         return redirect()
             ->route('procedimientos.show', $procedimiento)
@@ -162,12 +175,15 @@ class ProcedimientoController extends Controller
     {
         $validated = $request->validated();
 
-        $procedimiento->domicilios()->syncWithoutDetaching([
-            $validated['domicilio_id'] => [
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        // Usar transacción para garantizar consistencia
+        DB::transaction(function () use ($procedimiento, $validated) {
+            $procedimiento->domicilios()->syncWithoutDetaching([
+                $validated['domicilio_id'] => [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+        });
 
         return redirect()
             ->route('procedimientos.show', $procedimiento)
