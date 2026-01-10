@@ -11,14 +11,23 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered(): void
+    /**
+     * DESACTIVADO: Sistema cerrado - el registro público está deshabilitado.
+     * Solo los administradores pueden crear usuarios mediante Admin/UserController.
+     */
+    public function test_registration_is_disabled_404(): void
     {
         $response = $this->get('/register');
 
-        $response->assertStatus(200);
+        // Ruta de registro retorna 404 porque está comentada en routes/auth.php
+        $response->assertStatus(404);
     }
 
-    public function test_new_users_can_register(): void
+    /**
+     * DESACTIVADO: Sistema cerrado.
+     * Las pruebas de registro POST también fallarían ahora.
+     */
+    public function test_new_users_cannot_register_system_closed(): void
     {
         $response = $this->post('/register', [
             'name' => 'Test User',
@@ -27,20 +36,10 @@ class RegistrationTest extends TestCase
             'password_confirmation' => 'password',
         ]);
 
-        $this->assertAuthenticated();
-        // Obtener el usuario recién creado
-        $user = User::where('email', 'test@example.com')->first();
-
-        // Asignar rol consultor por defecto
-        $consultorRole = Role::firstOrCreate(
-            ['name' => 'panel-consulta'],
-            ['label' => 'Visor de Consultas']
-        );
-        $user->roles()->syncWithoutDetaching([$consultorRole->id]);
-        $user->load('roles');
-        $this->assertTrue($user->hasRole('panel-consulta'));
-
-        // Los usuarios sin rol van a personas (después de registro)
-        $response->assertRedirect(route('personas.index', absolute: false));
+        // POST a /register también retorna 404
+        $response->assertStatus(404);
+        
+        // Confirmar que el usuario NO fue creado
+        $this->assertNull(User::where('email', 'test@example.com')->first());
     }
 }

@@ -5,6 +5,12 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <!-- Aviso de Sistema Cerrado -->
+        <div class="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
+            <p class="text-sm text-yellow-800 font-medium">⚠️ Sistema Cerrado - Solo Personal Autorizado</p>
+            <p class="text-xs text-yellow-700 mt-1">El acceso a este sistema está restringido. Contacter al administrador para solicitar una cuenta.</p>
+        </div>
+
         <!-- Email Address -->
         <div>
             <x-input-label for="email" value="Correo Electrónico" />
