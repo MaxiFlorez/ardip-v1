@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Persona;
 use App\Http\Requests\StorePersonaRequest;
+use App\Traits\HandlesFileUploads;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class PersonaController extends Controller
 {
+    use HandlesFileUploads;
     public function __construct()
     {
         $this->middleware('can:panel-carga')->only(['create', 'store', 'edit', 'update', 'destroy']);
@@ -69,10 +70,9 @@ class PersonaController extends Controller
     {
         $validated = $request->validated();
 
-        // Procesar foto si existe (storage/app/public/fotos_personas)
+        // Procesar foto si existe usando el trait
         if ($request->hasFile('foto')) {
-            $path = $request->file('foto')->store('fotos_personas', 'public');
-            $validated['foto'] = $path;
+            $validated['foto'] = $this->uploadFile($request->file('foto'), 'fotos_personas');
         }
 
         // Alias del request (se procesan por separado para no persistir en personas)
@@ -137,16 +137,13 @@ class PersonaController extends Controller
             'observaciones' => 'nullable|string',
         ]);
 
-        // Manejar la foto si existe
+        // Manejar la foto si existe usando el trait
         if ($request->hasFile('foto')) {
-            // Eliminar foto anterior si existe (comprobando existencia en el disco)
-            if ($persona->foto) {
-                if (Storage::disk('public')->exists($persona->foto)) {
-                    Storage::disk('public')->delete($persona->foto);
-                }
-            }
-            $path = $request->file('foto')->store('fotos_personas', 'public');
-            $validated['foto'] = $path;
+            $validated['foto'] = $this->updateFile(
+                $request->file('foto'),
+                $persona->foto,
+                'fotos_personas'
+            );
         }
 
         // Alias del request (se procesan por separado)
@@ -176,12 +173,8 @@ class PersonaController extends Controller
      */
     public function destroy(Persona $persona)
     {
-        // Eliminar foto si existe
-        if ($persona->foto) {
-            if (Storage::disk('public')->exists($persona->foto)) {
-                Storage::disk('public')->delete($persona->foto);
-            }
-        }
+        // Eliminar foto si existe usando el trait
+        $this->deleteFile($persona->foto);
 
         // Eliminar persona
         $persona->delete();
