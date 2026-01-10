@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Documento;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreDocumentoRequest;
+use App\Traits\HandlesFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DocumentoController extends Controller
 {
+    use HandlesFileUploads;
     public function __construct()
     {
         $this->middleware('can:panel-carga')->only(['create', 'store', 'destroy']);
@@ -36,19 +38,13 @@ class DocumentoController extends Controller
     /**
      * Almacena el archivo y registra el documento
      */
-    public function store(Request $request)
+    public function store(StoreDocumentoRequest $request)
     {
-        $validated = $request->validate([
-            'titulo' => 'required|string|max:255',
-            // Validación por MIME type real, no solo extensión
-            'archivo' => 'required|file|mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document|max:20480',
-            'descripcion' => 'nullable|string',
-        ]);
-
+        $validated = $request->validated();
         $file = $request->file('archivo');
-        
-        // Guardar en storage/app/public/biblioteca
-        $path = $file->store('biblioteca', 'public');
+
+        // Guardar archivo usando el trait
+        $path = $this->uploadFile($file, 'biblioteca');
 
         $documento = Documento::create([
             'titulo' => $validated['titulo'],
@@ -93,10 +89,8 @@ class DocumentoController extends Controller
      */
     public function destroy(Documento $documento)
     {
-        // Borrar el archivo físico si existe
-        if (Storage::disk('public')->exists($documento->archivo_path)) {
-            Storage::disk('public')->delete($documento->archivo_path);
-        }
+        // Borrar archivo físico usando el trait
+        $this->deleteFile($documento->archivo_path);
 
         // Borrar el registro de la base de datos
         $documento->delete();
