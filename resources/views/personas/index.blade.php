@@ -162,21 +162,3 @@
         </div>
     </div>
 </x-app-layout>
-```
-
----
-
-## ✅ Guarda el archivo
-
-Después de crear este archivo:
-
-1. Guarda el archivo como `index.blade.php`
-2. Verifica que esté en `resources/views/personas/`
-
----
-
-## 🧪 Probar la vista
-
-Abre tu navegador y ve a:
-```
-http://localhost:8000/personas

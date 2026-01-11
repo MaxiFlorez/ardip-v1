@@ -41,7 +41,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                             <a href="{{ route('documentos.download', $doc) }}" class="inline-flex items-center px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">Descargar</a>
 
-                                            @can('panel-carga')
+                                            @can('operativo-escritura')
                                                 <form action="{{ route('documentos.destroy', $doc) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Confirma que desea eliminar este documento?');">
                                                     @csrf
                                                     @method('DELETE')

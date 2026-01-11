@@ -5,7 +5,7 @@
                 {{ __('Búsqueda de Procedimientos') }}
             </h2>
 
-            @can('panel-carga')
+            @can('operativo-escritura')
                 <a href="{{ route('procedimientos.create') }}">
                     <x-primary-button>
                         <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -155,7 +155,7 @@
                                                         Ver
                                                     </a>
 
-                                                    @can('panel-carga')
+                                                    @can('operativo-escritura')
                                                         <a href="{{ route('procedimientos.edit', $procedimiento) }}" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 dark:text-amber-100 dark:bg-amber-900/40 dark:border-amber-700">
                                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h2m2 0h2m-6 4h6m-6 4h6m-8 4h8m-8 0H7a2 2 0 01-2-2V7a2 2 0 012-2h4m-2 6h2" />

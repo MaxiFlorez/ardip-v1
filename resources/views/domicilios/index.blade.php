@@ -27,7 +27,7 @@
                 <div class="p-4 md:p-6 text-gray-900">
 
                     <div class="flex justify-end mb-4">
-                        @can('panel-carga')
+                        @can('operativo-escritura')
                             <a href="{{ route('domicilios.create') }}">
                                 <x-primary-button>
                                     <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -80,11 +80,11 @@
                                         <td class="px-6 py-4 text-sm font-medium space-x-4">
                                             <a href="{{ route('domicilios.show', $domicilio) }}" class="text-indigo-600 hover:text-indigo-900 transition duration-150">Ver</a>
 
-                                            @can('panel-carga')
+                                            @can('operativo-escritura')
                                                 <a href="{{ route('domicilios.edit', $domicilio) }}" class="text-blue-600 hover:text-blue-900 transition duration-150">Editar</a>
                                             @endcan
 
-                                            @can('panel-carga')
+                                            @can('operativo-escritura')
                                                 <form action="{{ route('domicilios.destroy', $domicilio) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro?');">
                                                     @csrf
                                                     @method('DELETE')
@@ -146,13 +146,13 @@
                                         Ver
                                     </a>
 
-                                    @can('panel-carga')
+                                    @can('operativo-escritura')
                                         <a href="{{ route('domicilios.edit', $domicilio) }}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded text-sm transition duration-150">
                                             Editar
                                         </a>
                                     @endcan
 
-                                    @can('panel-carga')
+                                    @can('operativo-escritura')
                                         <form action="{{ route('domicilios.destroy', $domicilio) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Estás seguro?');">
                                             @csrf
                                             @method('DELETE')
