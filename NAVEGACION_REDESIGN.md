@@ -12,16 +12,19 @@
 Se realizó un completo rediseño de la barra de navegación principal con enfoque en:
 
 ✅ **Experiencia de Usuario (UX)**
+
 - Navegación intuitiva con iconos visuales
 - Estructura clara de secciones (Operativo vs Admin)
 - Color-coding para diferenciación rápida
 
 ✅ **Diseño Visual (UI)**
+
 - Heroicons SVG inline (no bibliotecas externas)
 - Responsive design con mobile-first approach
 - Dark mode completo y consistente
 
 ✅ **Seguridad**
+
 - Gates correctamente aplicados
 - `@can('admin-dashboard')` para Dashboard
 - `@can('acceso-operativo')` para módulos operativos
@@ -44,6 +47,7 @@ Se realizó un completo rediseño de la barra de navegación principal con enfoq
 | **UFIs** | `super-admin` | super_admin | 🏛️ |
 
 **Implementación:**
+
 ```blade
 @can('admin-dashboard')
     <!-- Solo admin -->
@@ -63,6 +67,7 @@ Se realizó un completo rediseño de la barra de navegación principal con enfoq
 ### **2. Diseño Visual**
 
 #### **Desktop (md y superior)**
+
 - Navegación horizontal pegada
 - Iconos + texto para cada enlace
 - Dropdown de perfil a la derecha
@@ -70,6 +75,7 @@ Se realizó un completo rediseño de la barra de navegación principal con enfoq
 - Max-width contenedor (7xl)
 
 #### **Mobile**
+
 - Hamburguesa animada (menu ↔ close)
 - Menú vertical desplegable
 - Card de perfil con avatar
@@ -77,6 +83,7 @@ Se realizó un completo rediseño de la barra de navegación principal con enfoq
 - Cierre automático al navegar
 
 #### **Dark Mode**
+
 - `dark:bg-gray-800` para navegar
 - `dark:bg-gray-700` para hover
 - `dark:text-gray-300` para texto
@@ -105,6 +112,7 @@ UFIs        → Cyan     (🏛️) #06B6D4
 ```
 
 **Estados:**
+
 - **Active:** Background color + darker text
 - **Hover:** Light background + darker text
 - **Inactive:** Gray text + light hover
@@ -187,6 +195,7 @@ Tablet/Desktop (md+):
 ### **Desktop**
 
 ✅ **Navigation Bar**
+
 - Logo clickeable hacia home
 - 7 enlaces con iconos SVG inline
 - Color-coding por sección
@@ -194,6 +203,7 @@ Tablet/Desktop (md+):
 - Separadores visuales
 
 ✅ **Dropdown de Perfil**
+
 - Nombre de usuario
 - Icono dropdown animado
 - Opciones: Perfil, Cerrar Sesión
@@ -202,17 +212,20 @@ Tablet/Desktop (md+):
 ### **Mobile**
 
 ✅ **Hamburguesa Animada**
+
 - Ícono hamburguesa/close
 - Transición suave de 200ms
 - Posición sticky
 
 ✅ **Menú Desplegable**
+
 - Full-width items
 - Padding táctil
 - Color-coded igual a desktop
 - Cierre al navegar
 
 ✅ **Perfil Card**
+
 - Avatar con inicial del usuario
 - Nombre y email
 - Links a Perfil y Logout
@@ -221,6 +234,7 @@ Tablet/Desktop (md+):
 ### **Dark Mode**
 
 ✅ **Soporte Completo**
+
 - Todos los elementos tienen clases dark:
 - Colores actualizados para cada estado
 - Contraste apropiado (WCAG)
@@ -275,6 +289,7 @@ Tablet/Desktop (md+):
 | 🚪 | Logout | Cerrar Sesión |
 
 **Beneficios:**
+
 - Carga rápida (inline, no requests)
 - Escalable (SVG)
 - Personalizable (stroke-width, viewBox)
@@ -415,10 +430,10 @@ git commit -m "refactor: redesign navigation.blade.php..."
 
 ## 📚 REFERENCIAS
 
-- **Heroicons:** https://heroicons.com/
-- **Tailwind CSS:** https://tailwindcss.com/
-- **Alpine.js:** https://alpinejs.dev/
-- **WCAG Accessibility:** https://www.w3.org/WAI/WCAG21/quickref/
+- **Heroicons:** <https://heroicons.com/>
+- **Tailwind CSS:** <https://tailwindcss.com/>
+- **Alpine.js:** <https://alpinejs.dev/>
+- **WCAG Accessibility:** <https://www.w3.org/WAI/WCAG21/quickref/>
 
 ---
 
