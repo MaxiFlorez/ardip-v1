@@ -21,14 +21,31 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Gates simples y directos basados en roles
+        // ============================================================================
+        // GATES DE ROLES FUNDAMENTALES
+        // ============================================================================
+        
         Gate::define('super-admin', fn(User $user) => $user->hasRole('super_admin'));
         Gate::define('admin', fn(User $user) => $user->hasRole('admin'));
         
-        // admin-supervisor: admin que no es super_admin puro (tiene dashboard)
+        // ============================================================================
+        // GATES DE ACCESO A DASHBOARDS
+        // ============================================================================
+        
+        // admin-dashboard: SOLO para el rol 'admin' (exluye super_admin)
+        // El dashboard es un panel específico para admins operativos, NO para super_admin puro
+        Gate::define('admin-dashboard', fn(User $user) => 
+            $user->hasRole('admin')
+        );
+        
+        // admin-supervisor: admin que no es super_admin puro (usado en navegación)
         Gate::define('admin-supervisor', fn(User $user) => 
             $user->hasRole('admin') && (!$user->hasRole('super_admin') || $user->roles()->count() > 1)
         );
+        
+        // ============================================================================
+        // GATES DE ROLES OPERATIVOS
+        // ============================================================================
         
         Gate::define('panel-carga', fn(User $user) => $user->hasRole('panel-carga'));
         
@@ -36,6 +53,10 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('panel-consulta', fn(User $user) => 
             $user->hasRole('panel-consulta') || $user->hasRole('panel-carga')
         );
+        
+        // ============================================================================
+        // GATES DE ACCESO A MÓDULOS
+        // ============================================================================
         
         // acceso-operativo: Lectura en módulos operativos (admin, panel-carga, panel-consulta)
         Gate::define('acceso-operativo', fn(User $user) => 
