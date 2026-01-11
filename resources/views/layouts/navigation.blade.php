@@ -12,13 +12,11 @@
 
                 <!-- Navigation Links - Desktop -->
                 <div class="hidden md:flex md:space-x-1">
-                    {{-- Dashboard: Solo admin (excluido super_admin puro) --}}
-                    @can('admin')
-                        @if(!Auth::user()->isSuperAdmin() || Auth::user()->roles()->count() > 1)
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
-                            </x-nav-link>
-                        @endif
+                    {{-- Dashboard: Solo admin supervisor (excluido super_admin puro) --}}
+                    @can('admin-supervisor')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
                     @endcan
 
                     {{-- Procedimientos: Solo operativo (excluido super_admin puro) --}}
@@ -111,13 +109,11 @@
     <!-- Responsive Navigation Menu - Mobile -->
     <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden bg-white border-t border-gray-100 transition-all duration-300 ease-in-out" x-show="open" @click.away="open = false">
         <div class="px-2 pt-2 pb-3 space-y-1">
-            {{-- Dashboard: Solo admin (excluido super_admin puro) --}}
-            @can('admin')
-                @if(!Auth::user()->isSuperAdmin() || Auth::user()->roles()->count() > 1)
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-responsive-nav-link>
-                @endif
+            {{-- Dashboard: Solo admin supervisor (excluido super_admin puro) --}}
+            @can('admin-supervisor')
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
             @endcan
 
             {{-- Procedimientos: Solo operativo (excluido super_admin puro) --}}

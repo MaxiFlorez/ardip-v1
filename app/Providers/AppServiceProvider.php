@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('super-admin', fn(User $user) => $user->hasRole('super_admin'));
         Gate::define('admin', fn(User $user) => $user->hasRole('admin'));
         
+        // admin-supervisor: admin que no es super_admin puro (tiene dashboard)
+        Gate::define('admin-supervisor', fn(User $user) => 
+            $user->hasRole('admin') && (!$user->hasRole('super_admin') || $user->roles()->count() > 1)
+        );
+        
         Gate::define('panel-carga', fn(User $user) => $user->hasRole('panel-carga'));
         
         // panel-consulta puede ver lo que ven los cargadores (panel-carga)
