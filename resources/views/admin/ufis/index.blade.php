@@ -65,16 +65,18 @@
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                                <a href="{{ route('admin.ufis.edit', $ufi) }}" class="text-primary-600 hover:text-primary-900">
-                                                    ✏️ Editar
-                                                </a>
-                                                <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar la UFI {{ $ufi->nombre }}?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="text-danger-600 hover:text-danger-900">
-                                                        🗑️ Eliminar
-                                                    </button>
-                                                </form>
+                                                @can('super-admin')
+                                                    <a href="{{ route('admin.ufis.edit', $ufi) }}" class="text-primary-600 hover:text-primary-900">
+                                                        ✏️ Editar
+                                                    </a>
+                                                    <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar la UFI {{ $ufi->nombre }}?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="text-danger-600 hover:text-danger-900">
+                                                            🗑️ Eliminar
+                                                        </button>
+                                                    </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
@@ -96,16 +98,18 @@
                                         </span>
                                     </div>
                                     <div class="flex space-x-2 mt-3">
-                                        <a href="{{ route('admin.ufis.edit', $ufi) }}" class="flex-1 bg-primary-500 hover:bg-primary-700 text-white text-center py-2 px-3 rounded text-sm">
-                                            ✏️ Editar
-                                        </a>
-                                        <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Eliminar {{ $ufi->nombre }}?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="w-full bg-danger-500 hover:bg-danger-700 text-white py-2 px-3 rounded text-sm">
-                                                🗑️ Eliminar
-                                            </button>
-                                        </form>
+                                        @can('super-admin')
+                                            <a href="{{ route('admin.ufis.edit', $ufi) }}" class="flex-1 bg-primary-500 hover:bg-primary-700 text-white text-center py-2 px-3 rounded text-sm">
+                                                ✏️ Editar
+                                            </a>
+                                            <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Eliminar {{ $ufi->nombre }}?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="w-full bg-danger-500 hover:bg-danger-700 text-white py-2 px-3 rounded text-sm">
+                                                    🗑️ Eliminar
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </div>
                             @endforeach
