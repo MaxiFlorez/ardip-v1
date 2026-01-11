@@ -70,12 +70,14 @@ Gate::define('super-admin', fn(User $user) => $user->hasRole('super_admin'));
 **Propósito:** Control supremo del sistema  
 **Rol:** `super_admin`  
 **Acceso a:**
+
 - Panel de Gestión de Usuarios
 - Gestión de Brigadas
 - Gestión de UFIs
 - Configuración del Sistema
 
 **Uso en Vistas:**
+
 ```blade
 @can('super-admin')
     <a href="{{ route('admin.users.index') }}">Gestión Usuarios</a>
@@ -83,6 +85,7 @@ Gate::define('super-admin', fn(User $user) => $user->hasRole('super_admin'));
 ```
 
 **Exclusiones:**
+
 - ❌ NO accede al Dashboard operativo
 - ❌ NO puede crear/editar procedimientos
 - ❌ NO puede ver búsqueda de procedimientos
@@ -118,11 +121,13 @@ Gate::define('admin-dashboard', fn(User $user) =>
 **Lógica:** Retorna `true` SI el usuario tiene rol `admin`
 
 **Exclusiones Explícitas:**
+
 - ❌ `super_admin` NO tiene acceso (ni siquiera si tiene rol mixto)
 - ❌ `panel-carga` NO tiene acceso
 - ❌ `panel-consulta` NO tiene acceso
 
 **Uso en Vistas:**
+
 ```blade
 {{-- En resources/views/layouts/navigation.blade.php --}}
 @can('admin-dashboard')
@@ -133,6 +138,7 @@ Gate::define('admin-dashboard', fn(User $user) =>
 ```
 
 **Uso en Rutas:**
+
 ```php
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware('can:admin-dashboard')
@@ -140,6 +146,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 ```
 
 **Dashboard Proporciona:**
+
 - Estadísticas operativas (total procedimientos, personas, documentos)
 - Gráficos de procedimientos por UFI
 - Últimos procedimientos cargados
@@ -158,7 +165,8 @@ Gate::define('admin-supervisor', fn(User $user) =>
 
 **Propósito:** Control flexible para navegación  
 **Rol:** `admin` (sin ser super_admin puro O siendo super_admin con otro rol)  
-**Lógica:** 
+**Lógica:**
+
 - `true` si usuario es admin Y (NO es super_admin O tiene múltiples roles)
 - Permite acceso si admin tiene rol mixto (admin + super_admin)
 
@@ -188,6 +196,7 @@ Gate::define('panel-carga', fn(User $user) => $user->hasRole('panel-carga'));
 **Propósito:** Acceso a operarios que cargan datos  
 **Rol:** `panel-carga`  
 **Permisos:**
+
 - ✅ Ver procedimientos
 - ✅ Crear procedimientos
 - ✅ Editar procedimientos (propios)
@@ -201,12 +210,14 @@ Gate::define('panel-carga', fn(User $user) => $user->hasRole('panel-carga'));
 - ✅ Eliminar documentos
 
 **Restricciones:**
+
 - ❌ NO puede acceder a gestión de usuarios
 - ❌ NO puede acceder a gestión de brigadas
 - ❌ NO puede acceder a gestión de UFIs
 - ❌ NO puede acceder al Dashboard
 
 **Uso en Vistas:**
+
 ```blade
 @can('operativo-escritura')  {{-- En lugar de panel-carga --}}
     <button>Crear Procedimiento</button>
@@ -228,12 +239,14 @@ Gate::define('panel-consulta', fn(User $user) =>
 **Lógica:** Permite a consultores Y a cargadores (cargadores pueden consultar)
 
 **Permisos:**
+
 - ✅ Ver procedimientos
 - ✅ Ver personas
 - ✅ Ver documentos
 - ❌ No crear/editar/eliminar
 
 **Restricciones:**
+
 - ❌ NO puede acceder a gestión administrativa
 - ❌ NO puede acceder al Dashboard
 
@@ -258,6 +271,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 **Permisos:** VER procedimientos, personas, documentos
 
 **Uso en Vistas (Index/Show):**
+
 ```blade
 @can('acceso-operativo')
     <x-nav-link href="{{ route('procedimientos.index') }}">
@@ -267,6 +281,7 @@ Gate::define('acceso-operativo', fn(User $user) =>
 ```
 
 **Uso en Rutas (Lectura):**
+
 ```php
 Route::middleware('can:acceso-operativo')->group(function () {
     Route::get('/procedimientos', [ProcedimientoController::class, 'index']);
@@ -289,11 +304,13 @@ Gate::define('operativo-escritura', fn(User $user) =>
 **Permisos:** Crear, editar, eliminar procedimientos, personas, documentos
 
 **Exclusiones Explícitas:**
+
 - ❌ `admin` NO puede crear/editar/eliminar (read-only)
 - ❌ `panel-consulta` NO puede escribir
 - ❌ `super_admin` NO puede escribir
 
 **Uso en Vistas (Botones CRUD):**
+
 ```blade
 @can('operativo-escritura')
     <a href="{{ route('procedimientos.create') }}">Crear</a>
@@ -303,6 +320,7 @@ Gate::define('operativo-escritura', fn(User $user) =>
 ```
 
 **Uso en Controladores (Form Requests):**
+
 ```php
 public function authorize(): bool
 {
@@ -311,6 +329,7 @@ public function authorize(): bool
 ```
 
 **Uso en Rutas (Escritura):**
+
 ```php
 Route::middleware('can:operativo-escritura')->group(function () {
     Route::post('/procedimientos', [ProcedimientoController::class, 'store']);
@@ -451,11 +470,13 @@ public function show(Procedimiento $procedimiento)
 El sistema implementa **Defense-in-Depth** con múltiples capas:
 
 ### **Capa 1: Rutas (Middleware)**
+
 ```php
 Route::middleware('can:operativo-escritura')->post('/procedimientos', ...);
 ```
 
 ### **Capa 2: Form Requests**
+
 ```php
 public function authorize(): bool
 {
@@ -464,6 +485,7 @@ public function authorize(): bool
 ```
 
 ### **Capa 3: Vistas Blade**
+
 ```blade
 @can('operativo-escritura')
     <button>Crear</button>
@@ -471,6 +493,7 @@ public function authorize(): bool
 ```
 
 ### **Capa 4: Controladores**
+
 ```php
 if (!auth()->user()->can('operativo-escritura')) {
     abort(403, 'No autorizado');
@@ -522,7 +545,7 @@ if (!auth()->user()->can('operativo-escritura')) {
 ## 🔗 REFERENCIAS
 
 - **Archivo Principal:** `app/Providers/AppServiceProvider.php`
-- **Documentación Laravel:** https://laravel.com/docs/authorization
+- **Documentación Laravel:** <https://laravel.com/docs/authorization>
 - **Vistas Protegidas:** `resources/views/layouts/navigation.blade.php`
 - **Rutas Protegidas:** `routes/web.php`
 
