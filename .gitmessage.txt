@@ -1,0 +1,21 @@
+# Plantilla de mensajes de commit (ES)
+# Formato recomendado:
+# <tipo>(<área>): <resumen en español>
+#
+# Tipos comunes:
+# feat    - Nueva funcionalidad
+# fix     - Corrección de bug
+# docs    - Documentación
+# style   - Formato/estilo (sin cambios de lógica)
+# refactor- Refactorización (sin cambios de comportamiento)
+# test    - Tests
+# chore   - Tareas varias (deps, scripts)
+#
+# Ejemplo:
+# feat(autenticación): redirección dinámica por rol tras login
+#
+# Detalles opcionales (líneas siguientes):
+# - Qué cambia y por qué
+# - Impacto en seguridad/UX
+# - Rutas/archivos afectados
+#
