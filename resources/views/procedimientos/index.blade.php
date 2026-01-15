@@ -1,18 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl md:text-2xl text-gray-900 dark:text-gray-200 leading-tight">
-                {{ __('Búsqueda de Procedimientos') }}
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <h2 class="font-semibold text-xl md:text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                📋 Búsqueda de Procedimientos
             </h2>
 
             @can('operativo-escritura')
-                <a href="{{ route('procedimientos.create') }}">
-                    <x-primary-button>
-                        <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                        </svg>
-                        {{ __('Nuevo Procedimiento') }}
-                    </x-primary-button>
+                <a href="{{ route('procedimientos.create') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    ➕ Nuevo Procedimiento
                 </a>
             @endcan
         </div>
@@ -79,15 +74,13 @@
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-end mt-6 space-x-4">
-                            <a href="{{ route('procedimientos.index') }}">
-                                <x-secondary-button type="button">
-                                    Limpiar
-                                </x-secondary-button>
+                        <div class="flex items-center gap-2 flex-wrap mt-6">
+                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition duration-150 text-sm font-medium">
+                                🔍 Buscar
+                            </button>
+                            <a href="{{ route('procedimientos.index') }}" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition duration-150 text-sm">
+                                Limpiar
                             </a>
-                            <x-primary-button>
-                                {{ __('Buscar') }}
-                            </x-primary-button>
                         </div>
                     </form>
 

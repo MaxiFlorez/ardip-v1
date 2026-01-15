@@ -1,20 +1,20 @@
 <x-app-layout>
+    <x-slot name="header">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <h2 class="font-semibold text-xl md:text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                👤 Gestión de Personas
+            </h2>
+
+            @can('operativo-escritura')
+                <a href="{{ route('personas.create') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    ➕ Nueva Persona
+                </a>
+            @endcan
+        </div>
+    </x-slot>
+
     <div class="py-6 md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <x-section-header title="Gestión de Personas">
-                <x-slot name="actions">
-                    @can('operativo-escritura')
-                        <a href="{{ route('personas.create') }}">
-                            <x-primary-button>
-                                <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                                </svg>
-                                Nueva Persona
-                            </x-primary-button>
-                        </a>
-                    @endcan
-                </x-slot>
-            </x-section-header>
 
             <form method="GET" action="{{ route('personas.index') }}" class="mb-6">
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 md:p-6 space-y-4">
@@ -42,22 +42,19 @@
                         </div>
                     </div>
                     <div class="flex flex-col md:flex-row gap-2">
-                        <x-primary-button type="submit">
-                            <svg class="w-4 h-4 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                            Buscar
-                        </x-primary-button>
-                        <a href="{{ route('personas.index') }}">
-                            <x-secondary-button type="button">Limpiar filtros</x-secondary-button>
+                        <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition duration-150 text-sm font-medium">
+                            🔍 Buscar
+                        </button>
+                        <a href="{{ route('personas.index') }}" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition duration-150 text-sm text-center">
+                            Limpiar
                         </a>
                     </div>
                 </div>
             </form>
 
             @if (session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-sm">
-                    {{ session('success') }}
+                <div class="bg-success-50 border-l-4 border-success-500 p-4 rounded-md dark:bg-success-900/20 dark:border-success-700 mb-6" role="alert">
+                    <p class="text-success-700 dark:text-success-300 text-sm md:text-base">✅ {{ session('success') }}</p>
                 </div>
             @endif
 
