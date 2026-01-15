@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Agregar Nueva Persona') }}
-        </h2>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <h2 class="font-semibold text-xl md:text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Agregar Nueva Persona') }}
+            </h2>
+        </div>
     </x-slot>
 
     <div class="py-12">
