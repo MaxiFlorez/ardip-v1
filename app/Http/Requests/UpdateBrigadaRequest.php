@@ -9,8 +9,10 @@ class UpdateBrigadaRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // Gestión de brigadas accesible para 'admin'
-        return $this->user()?->can('admin') ?? false;
+        // Gestión de brigadas accesible para admin y super_admin (defensa en profundidad)
+        $user = $this->user();
+
+        return $user?->can('admin') || $user?->can('super-admin');
     }
 
     public function rules(): array
