@@ -30,6 +30,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
+
+        // Redirección dinámica basada en el rol del usuario
         if ($user->hasRole('super_admin')) {
             return redirect()->route('admin.users.index');
         }
@@ -46,7 +48,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('personas.index');
         }
 
-        return redirect()->route('login');
+        // Fallback por defecto para usuarios sin roles específicos
+        return redirect()->route('procedimientos.index');
     }
 
     /**
