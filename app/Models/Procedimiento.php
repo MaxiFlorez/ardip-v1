@@ -103,6 +103,11 @@ class Procedimiento extends Model implements Auditable
     {
         return $this->belongsTo(Ufi::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
     
     public function personas()
     {

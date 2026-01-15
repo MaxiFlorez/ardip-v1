@@ -96,7 +96,7 @@ class ProcedimientoController extends Controller
             }
         }
 
-        $procedimiento->load(['personas', 'domicilios', 'usuario', 'brigada', 'ufi']); // <-- ufi añadido
+        $procedimiento->load(['personas', 'domicilios', 'user', 'brigada', 'ufi']);
 
         $personasDisponibles = Persona::orderBy('apellidos')->get();
         $domiciliosDisponibles = Domicilio::orderBy('calle')->get();
@@ -195,7 +195,7 @@ class ProcedimientoController extends Controller
      */
     public function generarPdf(Procedimiento $procedimiento)
     {
-        $procedimiento->load(['personas', 'domicilios', 'brigada', 'usuario', 'ufi']); // <-- ufi añadido
+        $procedimiento->load(['personas', 'domicilios', 'brigada', 'user', 'ufi']);
 
         $pdf = Pdf::loadView('procedimientos.pdf', [
             'procedimiento' => $procedimiento,

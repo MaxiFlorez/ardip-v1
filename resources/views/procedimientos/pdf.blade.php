@@ -36,7 +36,7 @@
                 <th>Brigada</th>
                 <td>{{ $procedimiento->brigada->nombre ?? 'N/D' }}</td>
                 <th>Responsable</th>
-                <td>{{ $procedimiento->usuario->name ?? 'N/D' }}</td>
+                <td>{{ $procedimiento->user->name ?? 'N/D' }}</td>
             </tr>
             <tr>
                 <th>Carátula</th>
