@@ -79,7 +79,7 @@ class ProcedimientoController extends Controller
 
         return redirect()
             ->route('procedimientos.show', $procedimiento)
-            ->with('success', 'Procedimiento creado correctamente.');
+            ->with('success', 'Procedimiento creado exitosamente. Ahora agregue personas y domicilios.');
     }
 
     /**
