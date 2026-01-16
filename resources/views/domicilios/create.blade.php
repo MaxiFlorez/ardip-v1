@@ -29,6 +29,18 @@
 
                     <form action="{{ route('domicilios.store') }}" method="POST">
                         @csrf
+                        
+                        {{-- Input hidden para procedimiento_id si viene del hub --}}
+                        @if(isset($procedimientoId) && $procedimientoId)
+                            <input type="hidden" name="procedimiento_id" value="{{ $procedimientoId }}">
+                            
+                            <div class="mb-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-2">🔗</span>
+                                    <span class="font-semibold text-blue-800 dark:text-blue-200">Se vinculará automáticamente al Procedimiento</span>
+                                </div>
+                            </div>
+                        @endif
 
                         <!-- Sección: Mapa Interactivo -->
                         <div class="border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">

@@ -59,9 +59,10 @@ class PersonaController extends Controller
     /**
      * Muestra el formulario para crear una nueva persona
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('personas.create');
+        $procedimientoId = $request->query('procedimiento_id');
+        return view('personas.create', compact('procedimientoId'));
     }
 
     /**
@@ -92,10 +93,25 @@ class PersonaController extends Controller
             }
         }
 
-        // Redirigir al detalle con mensaje de éxito
+        // Lógica de retorno inteligente
+        if ($request->filled('procedimiento_id')) {
+            $procedimientoId = $request->input('procedimiento_id');
+            
+            // Vincular automáticamente a la tabla pivote
+            $persona->procedimientos()->attach($procedimientoId, [
+                'situacion_procesal' => $request->input('situacion_procesal', 'notificado'),
+                'observaciones' => $request->input('observaciones_vinculo')
+            ]);
+            
+            return redirect()
+                ->route('procedimientos.show', $procedimientoId)
+                ->with('success', '✅ Persona creada y vinculada al procedimiento correctamente.');
+        }
+
+        // Comportamiento normal
         return redirect()
             ->route('personas.show', $persona)
-            ->with('success', '✅ Persona creada correctamente con foto.');
+            ->with('success', '✅ Persona creada correctamente.');
     }
 
     /**

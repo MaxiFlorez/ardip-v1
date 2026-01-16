@@ -27,9 +27,10 @@ class DomicilioController extends Controller
     /**
      * Formulario de creación
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('domicilios.create');
+        $procedimientoId = $request->query('procedimiento_id');
+        return view('domicilios.create', compact('procedimientoId'));
     }
 
     /**
@@ -39,8 +40,21 @@ class DomicilioController extends Controller
     {
         $validated = $request->validated();
 
-        Domicilio::create($validated);
+        $domicilio = Domicilio::create($validated);
 
+        // Lógica de retorno inteligente
+        if ($request->filled('procedimiento_id')) {
+            $procedimientoId = $request->input('procedimiento_id');
+            
+            // Vincular automáticamente a la tabla pivote
+            $domicilio->procedimientos()->attach($procedimientoId);
+            
+            return redirect()
+                ->route('procedimientos.show', $procedimientoId)
+                ->with('success', '✅ Domicilio creado y vinculado al procedimiento correctamente.');
+        }
+
+        // Comportamiento normal
         return redirect()->route('domicilios.index')
                          ->with('success', 'Domicilio agregado exitosamente.');
     }

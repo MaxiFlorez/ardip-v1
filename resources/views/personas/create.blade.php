@@ -15,6 +15,35 @@
                     {{-- IMPORTANTE: Agregar enctype="multipart/form-data" para archivos --}}
                     <form action="{{ route('personas.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        
+                        {{-- Input hidden para procedimiento_id si viene del hub --}}
+                        @if(isset($procedimientoId) && $procedimientoId)
+                            <input type="hidden" name="procedimiento_id" value="{{ $procedimientoId }}">
+                            
+                            {{-- Campos adicionales para vinculación --}}
+                            <div class="mb-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-2">🔗</span>
+                                    <span class="font-semibold text-blue-800 dark:text-blue-200">Se vinculará automáticamente al Procedimiento</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="situacion_procesal" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Situación Procesal *</label>
+                                        <select name="situacion_procesal" id="situacion_procesal" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm" required>
+                                            <option value="detenido">Detenido</option>
+                                            <option value="notificado" selected>Notificado</option>
+                                            <option value="no_hallado">No Hallado</option>
+                                            <option value="contravencion">Contravención</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="observaciones_vinculo" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Observaciones del Vínculo</label>
+                                        <input type="text" name="observaciones_vinculo" id="observaciones_vinculo" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm" placeholder="Opcional">
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- DNI -->
                             <div class="mb-4">
