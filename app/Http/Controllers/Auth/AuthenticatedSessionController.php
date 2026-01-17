@@ -26,30 +26,13 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
+        /** @var \App\Models\User $user */
         $user = $request->user();
 
-        // Redirección dinámica basada en el rol del usuario
-        if ($user->hasRole('super_admin')) {
-            return redirect()->route('admin.users.index');
-        }
-
-        if ($user->hasRole('admin')) {
-            return redirect()->route('dashboard');
-        }
-
-        if ($user->hasRole('panel-carga')) {
-            return redirect()->route('procedimientos.index');
-        }
-
-        if ($user->hasRole('panel-consulta')) {
-            return redirect()->route('personas.index');
-        }
-
-        // Fallback por defecto para usuarios sin roles específicos
-        return redirect()->route('procedimientos.index');
+        // Respeta intended y usa la nueva lógica centralizada
+        return redirect()->intended(route($user->getHomeRoute()));
     }
 
     /**

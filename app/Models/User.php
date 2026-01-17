@@ -131,7 +131,32 @@ class User extends Authenticatable
     }
 
     /**
-     * Ruta por defecto según el rol del usuario
+     * NUEVO: Ruta de inicio centralizada según el rol del usuario.
+     * Reglas de negocio:
+     * - super_admin -> admin.users.index
+     * - admin -> dashboard
+     * - panel-carga o panel-consulta -> procedimientos.index
+     * - Fallback -> procedimientos.index
+     */
+    public function getHomeRoute(): string
+    {
+        if ($this->hasRole('super_admin')) {
+            return 'admin.users.index';
+        }
+
+        if ($this->hasRole('admin')) {
+            return 'dashboard';
+        }
+
+        if ($this->hasAnyRole(['panel-carga', 'panel-consulta'])) {
+            return 'procedimientos.index';
+        }
+
+        return 'procedimientos.index';
+    }
+
+    /**
+     * (Compat) Ruta previa; se mantiene temporalmente por si hay referencias legacy.
      */
     public function getDefaultRoute(): string
     {

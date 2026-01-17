@@ -11,8 +11,10 @@ use Illuminate\Http\Request;
 class PersonaController extends Controller
 {
     use HandlesFileUploads;
+
     public function __construct()
     {
+        // Limpieza: no verificaciones manuales, confiar en gates/middleware
         $this->middleware('can:operativo-escritura')->only(['create', 'store', 'edit', 'update', 'destroy']);
         $this->middleware('can:acceso-operativo')->only(['index', 'show']);
     }
@@ -65,26 +67,19 @@ class PersonaController extends Controller
         return view('personas.create', compact('procedimientoId'));
     }
 
-    /**
-     * Guarda una nueva persona en la base de datos
-     */
     public function store(StorePersonaRequest $request)
     {
         $validated = $request->validated();
 
-        // Procesar foto si existe usando el trait
         if ($request->hasFile('foto')) {
             $validated['foto'] = $this->uploadFile($request->file('foto'), 'fotos_personas');
         }
 
-        // Alias del request (se procesan por separado para no persistir en personas)
         $aliasInput = $request->input('alias', []);
         unset($validated['alias']);
 
-        // Crear la persona
         $persona = Persona::create($validated);
 
-        // Guardar alias
         if (!empty($aliasInput) && is_array($aliasInput)) {
             foreach ($aliasInput as $alias) {
                 if (!empty(trim((string) $alias))) {
@@ -93,22 +88,20 @@ class PersonaController extends Controller
             }
         }
 
-        // Lógica de retorno inteligente
+        // Hub de Procedimientos: retorno inteligente y vinculación opcional
         if ($request->filled('procedimiento_id')) {
             $procedimientoId = $request->input('procedimiento_id');
-            
-            // Vincular automáticamente a la tabla pivote
+
             $persona->procedimientos()->attach($procedimientoId, [
                 'situacion_procesal' => $request->input('situacion_procesal', 'notificado'),
                 'observaciones' => $request->input('observaciones_vinculo')
             ]);
-            
+
             return redirect()
                 ->route('procedimientos.show', $procedimientoId)
                 ->with('success', '✅ Persona creada y vinculada al procedimiento correctamente.');
         }
 
-        // Comportamiento normal
         return redirect()
             ->route('personas.show', $persona)
             ->with('success', '✅ Persona creada correctamente.');
@@ -133,14 +126,10 @@ class PersonaController extends Controller
         return view('personas.edit', compact('persona'));
     }
 
-    /**
-     * Actualiza los datos de una persona en la base de datos
-     */
     public function update(UpdatePersonaRequest $request, Persona $persona)
     {
         $validated = $request->validated();
 
-        // Manejar la foto si existe usando el trait
         if ($request->hasFile('foto')) {
             $validated['foto'] = $this->updateFile(
                 $request->file('foto'),
@@ -149,14 +138,11 @@ class PersonaController extends Controller
             );
         }
 
-        // Alias del request (se procesan por separado)
         $aliasInput = $request->input('alias', []);
         unset($validated['alias']);
 
-        // Actualizar la persona
         $persona->update($validated);
 
-        // Sincronizar alias (eliminar y recrear)
         if (is_array($aliasInput)) {
             $persona->aliases()->delete();
             foreach ($aliasInput as $alias) {
@@ -166,7 +152,13 @@ class PersonaController extends Controller
             }
         }
 
-        // Redirigir con mensaje de éxito
+        // Mantener retorno al Hub si viene con procedimiento_id
+        if ($request->filled('procedimiento_id')) {
+            return redirect()
+                ->route('procedimientos.show', $request->input('procedimiento_id'))
+                ->with('success', '✅ Persona actualizada y se mantuvo el contexto del procedimiento.');
+        }
+
         return redirect()->route('personas.show', $persona)
             ->with('success', '✅ Persona actualizada correctamente.');
     }
