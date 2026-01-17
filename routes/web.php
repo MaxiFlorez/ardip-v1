@@ -45,7 +45,7 @@ Route::get('/', function () {
 
 // Rutas protegidas
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('can:admin')->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('can:admin-dashboard')->name('dashboard');
     Route::get('/dashboard-consultor', fn() => view('dashboard-consultor'))->middleware('can:panel-consulta')->name('dashboard.consultor');
 
     // Perfil

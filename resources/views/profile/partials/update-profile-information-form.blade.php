@@ -1,70 +1,72 @@
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Información del Perfil') }}
-        </h2>
+<form method="post" action="{{ route('profile.update') }}" class="space-y-4">
+    @csrf
+    @method('patch')
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Actualice la información de perfil y dirección de correo electrónico de su cuenta.") }}
-        </p>
-    </header>
+    <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Nombre Completo
+        </label>
+        <input 
+            id="name" 
+            name="name" 
+            type="text" 
+            class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" 
+            value="{{ old('name', $user->name) }}" 
+            required 
+            autofocus 
+        />
+        @error('name')
+            <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
+        @enderror
+    </div>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
-        @csrf
-    </form>
+    <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Correo Electrónico
+        </label>
+        <input 
+            id="email" 
+            name="email" 
+            type="email" 
+            class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" 
+            value="{{ old('email', $user->email) }}" 
+            required 
+        />
+        @error('email')
+            <p class="mt-1 text-sm text-danger-600 dark:text-danger-400">{{ $message }}</p>
+        @enderror
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-        @csrf
-        @method('patch')
-
-        <div>
-            <x-input-label for="jerarquia" :value="__('Jerarquía')" />
-            <x-text-input id="jerarquia" name="jerarquia" type="text" class="mt-1 block w-full" :value="old('jerarquia', $user->jerarquia)" placeholder="Ej: Inspector, Oficial, Cabo, etc." autocomplete="organization-title" />
-            <x-input-error class="mt-2" :messages="$errors->get('jerarquia')" />
-        </div>
-
-        <div>
-            <x-input-label for="name" :value="__('Nombre')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
-
-        <div>
-            <x-input-label for="email" :value="__('Correo Electrónico')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
-
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                <div>
-                    <p class="text-sm mt-2 text-gray-800">
-                        {{ __('Su dirección de correo electrónico no está verificada.') }}
-
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ __('Haga clic aquí para reenviar el correo de verificación.') }}
-                        </button>
-                    </p>
-
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
-                            {{ __('Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.') }}
-                        </p>
-                    @endif
-                </div>
+        @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            <div class="mt-2 p-3 bg-warning-50 dark:bg-warning-900/30 border-l-4 border-warning-500 rounded">
+                <p class="text-sm text-warning-800 dark:text-warning-200">
+                    Su dirección de correo electrónico no está verificada.
+                    <button 
+                        form="send-verification" 
+                        class="underline text-sm text-warning-700 dark:text-warning-300 hover:text-warning-900 dark:hover:text-warning-100"
+                    >
+                        Haga clic aquí para reenviar el correo de verificación.
+                    </button>
+                </p>
+            </div>
+            
+            @if (session('status') === 'verification-link-sent')
+                <p class="mt-2 text-sm text-success-600 dark:text-success-400">
+                    Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.
+                </p>
             @endif
-        </div>
+        @endif
+    </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Guardar') }}</x-primary-button>
+    <div class="flex items-center gap-3 pt-4">
+        <button 
+            type="submit" 
+            class="inline-flex items-center px-4 py-2 bg-success-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-success-700 active:bg-success-900 focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2 transition ease-in-out duration-150"
+        >
+            💾 Guardar Cambios
+        </button>
+    </div>
+</form>
 
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Guardado.') }}</p>
-            @endif
-        </div>
-    </form>
-</section>
+<form id="send-verification" method="post" action="{{ route('verification.send') }}" class="hidden">
+    @csrf
+</form>
