@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Persona;
 use App\Http\Requests\StorePersonaRequest;
 use App\Http\Requests\UpdatePersonaRequest;
+use App\Models\Persona;
 use App\Traits\HandlesFileUploads;
 use Illuminate\Http\Request;
 
@@ -29,18 +29,18 @@ class PersonaController extends Controller
         // Búsqueda por nombres, apellidos o alias
         if ($request->filled('buscar')) {
             $buscar = trim((string) $request->buscar);
-            $query->where(function($q) use ($buscar) {
+            $query->where(function ($q) use ($buscar) {
                 $q->where('nombres', 'LIKE', "%{$buscar}%")
-                  ->orWhere('apellidos', 'LIKE', "%{$buscar}%")
-                  ->orWhereHas('aliases', function($qa) use ($buscar) {
-                      $qa->where('alias', 'LIKE', "%{$buscar}%");
-                  });
+                    ->orWhere('apellidos', 'LIKE', "%{$buscar}%")
+                    ->orWhereHas('aliases', function ($qa) use ($buscar) {
+                        $qa->where('alias', 'LIKE', "%{$buscar}%");
+                    });
             });
         }
 
         // Filtro por zona (departamento) a través de domicilios
         if ($request->filled('departamento')) {
-            $query->whereHas('domicilios', function($q) use ($request) {
+            $query->whereHas('domicilios', function ($q) use ($request) {
                 $q->where('departamento', $request->departamento);
             });
         }
@@ -64,6 +64,7 @@ class PersonaController extends Controller
     public function create(Request $request)
     {
         $procedimientoId = $request->query('procedimiento_id');
+
         return view('personas.create', compact('procedimientoId'));
     }
 
@@ -80,9 +81,9 @@ class PersonaController extends Controller
 
         $persona = Persona::create($validated);
 
-        if (!empty($aliasInput) && is_array($aliasInput)) {
+        if (! empty($aliasInput) && is_array($aliasInput)) {
             foreach ($aliasInput as $alias) {
-                if (!empty(trim((string) $alias))) {
+                if (! empty(trim((string) $alias))) {
                     $persona->aliases()->create(['alias' => trim((string) $alias)]);
                 }
             }
@@ -94,7 +95,7 @@ class PersonaController extends Controller
 
             $persona->procedimientos()->attach($procedimientoId, [
                 'situacion_procesal' => $request->input('situacion_procesal', 'notificado'),
-                'observaciones' => $request->input('observaciones_vinculo')
+                'observaciones' => $request->input('observaciones_vinculo'),
             ]);
 
             return redirect()
@@ -114,7 +115,7 @@ class PersonaController extends Controller
     {
         // Cargar las relaciones
         $persona->load('procedimientos');
-        
+
         return view('personas.show', compact('persona'));
     }
 
@@ -146,7 +147,7 @@ class PersonaController extends Controller
         if (is_array($aliasInput)) {
             $persona->aliases()->delete();
             foreach ($aliasInput as $alias) {
-                if (!empty(trim((string) $alias))) {
+                if (! empty(trim((string) $alias))) {
                     $persona->aliases()->create(['alias' => trim((string) $alias)]);
                 }
             }
