@@ -23,7 +23,7 @@
     </div>
 
     {{-- Vista Mobile (Cards) --}}
-    @if($mobileView)
+    @if(isset($mobileView) && $mobileView)
         <div class="md:hidden space-y-4 p-4">
             {{ $mobileView }}
         </div>
