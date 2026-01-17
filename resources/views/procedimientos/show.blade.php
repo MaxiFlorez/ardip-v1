@@ -251,30 +251,25 @@
                                         <div class="flex items-start justify-between">
                                             <div class="flex-1">
                                                 <p class="text-sm font-bold text-gray-900 dark:text-gray-100">
-                                                    {{ $domicilio->calle ?? 'Sin calle' }} {{ $domicilio->altura ?? '' }}
+                                                    {{ $domicilio->direccion_formateada }}
                                                 </p>
-                                                <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                                    @if($domicilio->barrio)
-                                                        Barrio: {{ $domicilio->barrio }}
-                                                    @endif
-                                                    @if($domicilio->localidad)
-                                                        | {{ $domicilio->localidad }}
-                                                    @endif
-                                                    @if($domicilio->provincia)
-                                                        | {{ $domicilio->provincia }}
-                                                    @endif
-                                                </p>
-                                                @if($domicilio->monoblock || $domicilio->manzana || $domicilio->lote)
-                                                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                                                        {{ $domicilio->monoblock ? "Monoblock: {$domicilio->monoblock}" : '' }}
-                                                        {{ $domicilio->manzana ? "Mz: {$domicilio->manzana}" : '' }}
-                                                        {{ $domicilio->lote ? "Lt: {$domicilio->lote}" : '' }}
+                                                @if($domicilio->pivot->observacion ?? false)
+                                                    <p class="text-xs italic text-gray-500 dark:text-gray-400 mt-1 pl-2 border-l-2 border-gray-300 dark:border-gray-600">
+                                                        💬 {{ $domicilio->pivot->observacion }}
                                                     </p>
                                                 @endif
+
                                                 @if($domicilio->latitud && $domicilio->longitud)
-                                                    <p class="text-xs text-green-600 dark:text-green-400 mt-1">
-                                                        📍 Coordenadas: {{ number_format($domicilio->latitud, 6) }}, {{ number_format($domicilio->longitud, 6) }}
-                                                    </p>
+                                                    <div class="mt-2 flex items-center gap-2">
+                                                        <p class="text-xs text-green-600 dark:text-green-400">
+                                                            {{ number_format($domicilio->latitud, 6) }}, {{ number_format($domicilio->longitud, 6) }}
+                                                        </p>
+                                                        <a href="https://maps.google.com/?q={{ $domicilio->latitud }},{{ $domicilio->longitud }}" 
+                                                           target="_blank" rel="noopener noreferrer"
+                                                           class="text-xs bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 px-2 py-1 rounded hover:bg-green-200 dark:hover:bg-green-900/60 transition duration-150">
+                                                            Ver en Mapa
+                                                        </a>
+                                                    </div>
                                                 @endif
                                             </div>
                                             <a href="{{ route('domicilios.show', $domicilio) }}" 

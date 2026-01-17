@@ -50,10 +50,7 @@
                                 @forelse ($domicilios as $domicilio)
                                     <tr class="hover:bg-gray-50 transition duration-150">
                                         <td class="px-6 py-4 text-sm font-medium text-gray-900">
-                                            @php
-                                                $direccion = trim(($domicilio->calle ?? '') . ' ' . ($domicilio->numero ?? ''));
-                                                echo $direccion ?: 'Sin calle especificada';
-                                            @endphp
+                                            {{ $domicilio->direccion_formateada }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500">
                                             @if($domicilio->barrio)
@@ -108,10 +105,7 @@
                                     <div>
                                         <p class="text-xs font-semibold text-gray-500 uppercase">Dirección</p>
                                         <p class="text-sm font-bold text-gray-900">
-                                            @php
-                                                $direccion = trim(($domicilio->calle ?? '') . ' ' . ($domicilio->numero ?? ''));
-                                                echo $direccion ?: 'Sin calle especificada';
-                                            @endphp
+                                            {{ $domicilio->direccion_formateada }}
                                         </p>
                                     </div>
                                     
