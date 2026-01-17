@@ -23,7 +23,9 @@
     </div>
 
     {{-- Vista Mobile (Cards) --}}
-    <div class="md:hidden space-y-4 p-4">
-        {{ $mobileView }}
-    </div>
+    @if($mobileView)
+        <div class="md:hidden space-y-4 p-4">
+            {{ $mobileView }}
+        </div>
+    @endif
 </div>
