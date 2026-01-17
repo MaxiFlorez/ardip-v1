@@ -81,6 +81,12 @@ class PersonaController extends Controller
         $aliasInput = $request->input('alias', []);
         unset($validated['alias']);
 
+        // Context fields (no pertenecen a la tabla personas)
+        $procedimientoId = $validated['procedimiento_id'] ?? null;
+        $situacionProcesal = $validated['situacion_procesal'] ?? null;
+        $observacionesVinculo = $validated['observaciones_vinculo'] ?? null;
+        unset($validated['procedimiento_id'], $validated['situacion_procesal'], $validated['observaciones_vinculo']);
+
         // Crear la persona
         $persona = Persona::create($validated);
 
@@ -93,14 +99,12 @@ class PersonaController extends Controller
             }
         }
 
-        // Lógica de retorno inteligente
-        if ($request->filled('procedimiento_id')) {
-            $procedimientoId = $request->input('procedimiento_id');
-            
+        // Lógica de retorno inteligente: si viene de un procedimiento, vincular y redirigir al Hub
+        if ($procedimientoId) {
             // Vincular automáticamente a la tabla pivote
             $persona->procedimientos()->attach($procedimientoId, [
-                'situacion_procesal' => $request->input('situacion_procesal', 'notificado'),
-                'observaciones' => $request->input('observaciones_vinculo')
+                'situacion_procesal' => $situacionProcesal ?? 'notificado',
+                'observaciones' => $observacionesVinculo
             ]);
             
             return redirect()
@@ -153,6 +157,10 @@ class PersonaController extends Controller
         $aliasInput = $request->input('alias', []);
         unset($validated['alias']);
 
+        // Context fields (no pertenecen a la tabla personas)
+        $procedimientoId = $validated['procedimiento_id'] ?? null;
+        unset($validated['procedimiento_id'], $validated['situacion_procesal'], $validated['observaciones_vinculo']);
+
         // Actualizar la persona
         $persona->update($validated);
 
@@ -164,6 +172,13 @@ class PersonaController extends Controller
                     $persona->aliases()->create(['alias' => trim((string) $alias)]);
                 }
             }
+        }
+
+        // Lógica de retorno inteligente: si viene de un procedimiento, redirigir al Hub
+        if ($procedimientoId) {
+            return redirect()
+                ->route('procedimientos.show', $procedimientoId)
+                ->with('success', '✅ Persona actualizada correctamente.');
         }
 
         // Redirigir con mensaje de éxito
