@@ -25,103 +25,88 @@
                 </div>
             @endif
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    @if ($ufis->isEmpty())
+            @if ($ufis->isEmpty())
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="text-center py-8">
-                            <p class="text-gray-500 text-lg">No hay UFIs registradas.</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-lg">No hay UFIs registradas.</p>
                             <a href="{{ route('admin.ufis.create') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                 ➕ Crear Primera UFI
                             </a>
                         </div>
-                    @else
-                        <!-- Vista Desktop: Tabla -->
-                        <div class="hidden md:block overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Nombre
-                                        </th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Procedimientos Asociados
-                                        </th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Acciones
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    @foreach ($ufis as $ufi)
-                                        <tr class="hover:bg-gray-50">
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm font-medium text-gray-900">
-                                                    {{ $ufi->nombre }}
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-success-100 text-success-800">
-                                                    {{ $ufi->procedimientos_count }} procedimiento(s)
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                                @can('super-admin')
-                                                    <a href="{{ route('admin.ufis.edit', $ufi) }}" class="text-primary-600 hover:text-primary-900">
-                                                        ✏️ Editar
-                                                    </a>
-                                                    <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar la UFI {{ $ufi->nombre }}?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="text-danger-600 hover:text-danger-900">
-                                                            🗑️ Eliminar
-                                                        </button>
-                                                    </form>
-                                                @endcan
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Vista Mobile: Cards -->
-                        <div class="md:hidden space-y-4">
-                            @foreach ($ufis as $ufi)
-                                <div class="bg-white border rounded-lg p-4 shadow">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div>
-                                            <h3 class="text-lg font-semibold text-gray-900">{{ $ufi->nombre }}</h3>
-                                            <p class="text-sm text-gray-500">ID: {{ $ufi->id }}</p>
-                                        </div>
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-success-100 text-success-800">
-                                            {{ $ufi->procedimientos_count }} proc.
-                                        </span>
-                                    </div>
-                                    <div class="flex space-x-2 mt-3">
-                                        @can('super-admin')
-                                            <a href="{{ route('admin.ufis.edit', $ufi) }}" class="flex-1 bg-primary-500 hover:bg-primary-700 text-white text-center py-2 px-3 rounded text-sm">
-                                                ✏️ Editar
-                                            </a>
-                                            <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Eliminar {{ $ufi->nombre }}?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="w-full bg-danger-500 hover:bg-danger-700 text-white py-2 px-3 rounded text-sm">
-                                                    🗑️ Eliminar
-                                                </button>
-                                            </form>
-                                        @endcan
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <!-- Paginación -->
-                        <div class="mt-6">
-                            {{ $ufis->links() }}
-                        </div>
-                    @endif
+                    </div>
                 </div>
-            </div>
+            @else
+                <!-- Vista Desktop: Tabla -->
+                <div class="hidden md:block">
+                    <x-tabla :headers="['Nombre', 'Procedimientos Asociados', 'Acciones']">
+                        @foreach ($ufis as $ufi)
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        {{ $ufi->nombre }}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
+                                        {{ $ufi->procedimientos_count }} procedimiento(s)
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                    @can('super-admin')
+                                        <a href="{{ route('admin.ufis.edit', $ufi) }}" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300">
+                                            ✏️ Editar
+                                        </a>
+                                        <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar la UFI {{ $ufi->nombre }}?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300">
+                                                🗑️ Eliminar
+                                            </button>
+                                        </form>
+                                    @endcan
+                                </td>
+                            </tr>
+                        @endforeach
+                    </x-tabla>
+                </div>
+
+                <!-- Vista Mobile: Cards -->
+                <div class="md:hidden space-y-4">
+                    @foreach ($ufis as $ufi)
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ $ufi->nombre }}</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">ID: {{ $ufi->id }}</p>
+                                </div>
+                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
+                                    {{ $ufi->procedimientos_count }} proc.
+                                </span>
+                            </div>
+                            <div class="flex space-x-2 mt-3">
+                                @can('super-admin')
+                                    <a href="{{ route('admin.ufis.edit', $ufi) }}" class="flex-1 bg-primary-600 hover:bg-primary-700 text-white text-center py-2 px-3 rounded text-sm">
+                                        ✏️ Editar
+                                    </a>
+                                    <form action="{{ route('admin.ufis.destroy', $ufi) }}" method="POST" class="flex-1" onsubmit="return confirm('¿Eliminar {{ $ufi->nombre }}?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="w-full bg-danger-600 hover:bg-danger-700 text-white py-2 px-3 rounded text-sm">
+                                            🗑️ Eliminar
+                                        </button>
+                                    </form>
+                                @endcan
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Paginación -->
+                <div class="bg-white dark:bg-gray-800 px-4 py-3 border-t border-gray-200 dark:border-gray-700 sm:rounded-b-lg">
+                    {{ $ufis->links() }}
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

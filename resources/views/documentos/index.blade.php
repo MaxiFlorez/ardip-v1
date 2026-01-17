@@ -23,44 +23,32 @@
                 @if($documentos->count() === 0)
                     <p class="text-gray-500 dark:text-gray-400">No hay documentos disponibles.</p>
                 @else
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead class="bg-gray-50 dark:bg-gray-900">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Título</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Descripción</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Fecha Subida</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                                @foreach($documentos as $doc)
-                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $doc->titulo }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ \Illuminate\Support\Str::limit($doc->descripcion, 80) }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $doc->created_at->format('d/m/Y H:i') }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end items-center space-x-3">
-                                                <a href="{{ route('documentos.download', $doc) }}" class="text-success-600 hover:text-success-900 dark:text-success-400 dark:hover:text-success-300 text-xl" title="Descargar">
-                                                    📥
-                                                </a>
+                    <x-tabla :headers="['Título', 'Descripción', 'Fecha Subida', 'Acciones']">
+                        @foreach($documentos as $doc)
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $doc->titulo }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ \Illuminate\Support\Str::limit($doc->descripcion, 80) }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $doc->created_at->format('d/m/Y H:i') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="flex justify-end items-center space-x-3">
+                                        <a href="{{ route('documentos.download', $doc) }}" class="text-success-600 hover:text-success-900 dark:text-success-400 dark:hover:text-success-300 text-xl" title="Descargar">
+                                            📥
+                                        </a>
 
-                                                @can('panel-carga')
-                                                    <form action="{{ route('documentos.destroy', $doc) }}" method="POST" class="inline" onsubmit="return confirm('¿Confirma que desea eliminar este documento?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300 text-xl" title="Eliminar">
-                                                            🗑️
-                                                        </button>
-                                                    </form>
-                                                @endcan
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                        @can('panel-carga')
+                                            <form action="{{ route('documentos.destroy', $doc) }}" method="POST" class="inline" onsubmit="return confirm('¿Confirma que desea eliminar este documento?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300 text-xl" title="Eliminar">
+                                                    🗑️
+                                                </button>
+                                            </form>
+                                        @endcan
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </x-tabla>
 
                     <div class="mt-4">
                         {{ $documentos->links() }}

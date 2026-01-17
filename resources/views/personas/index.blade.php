@@ -61,64 +61,50 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-4 md:p-6 text-gray-900 dark:text-gray-100">
                     @if($personas->count() > 0)
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full table-auto text-sm text-left text-gray-600 dark:text-gray-300">
-                                <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
-                                    <tr>
-                                        <th class="px-4 py-3">Foto</th>
-                                        <th class="px-4 py-3">Nombre Completo</th>
-                                        <th class="px-4 py-3">DNI</th>
-                                        <th class="px-4 py-3">Alias</th>
-                                        <th class="px-4 py-3">Edad / Nac.</th>
-                                        <th class="px-4 py-3 text-right">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    @foreach($personas as $persona)
-                                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/60 transition">
-                                            <td class="px-4 py-3">
-                                                @if($persona->foto)
-                                                    <img src="{{ asset('storage/' . $persona->foto) }}" alt="{{ $persona->nombre_completo }}" class="w-12 h-12 rounded-full object-cover border border-gray-200 dark:border-gray-600">
-                                                @else
-                                                    <div class="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-lg text-gray-500">👤</div>
-                                                @endif
-                                            </td>
-                                            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-gray-100">{{ $persona->apellido }}, {{ $persona->nombre }}</td>
-                                            <td class="px-4 py-3">{{ $persona->dni }}</td>
-                                            <td class="px-4 py-3">{{ $persona->aliases->pluck('alias')->join(', ') ?: '—' }}</td>
-                                            <td class="px-4 py-3">
-                                                @if(!empty($persona->fecha_nacimiento))
-                                                    <div class="text-gray-900 dark:text-gray-100">{{ $persona->edad }} años</div>
-                                                    <div class="text-xs text-gray-500 dark:text-gray-400">{{ 
-                                                        optional($persona->fecha_nacimiento)->format('d/m/Y') }}</div>
-                                                @else
-                                                    <span class="text-gray-500">—</span>
-                                                @endif
-                                            </td>
-                                            <td class="px-4 py-3 text-right">
-                                                <div class="flex justify-end items-center space-x-3">
-                                                    <a href="{{ route('personas.show', $persona) }}" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300 text-xl" title="Ver Detalles">
-                                                        👁️
-                                                    </a>
-                                                    @can('operativo-escritura')
-                                                        <a href="{{ route('personas.edit', $persona) }}" class="text-warning-600 hover:text-warning-900 dark:text-warning-400 dark:hover:text-warning-300 text-xl" title="Editar">
-                                                            ✏️
-                                                        </a>
-                                                        <form action="{{ route('personas.destroy', $persona) }}" method="POST" class="inline" onsubmit="return confirm('¿Confirma que desea eliminar esta persona?');">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300 text-xl" title="Eliminar">
-                                                                🗑️
-                                                            </button>
-                                                        </form>
-                                                    @endcan
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        <x-tabla :headers="['Foto', 'Nombre Completo', 'DNI', 'Alias', 'Edad / Nac.', 'Acciones']">
+                            @foreach($personas as $persona)
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
+                                    <td class="px-4 py-3">
+                                        @if($persona->foto)
+                                            <img src="{{ asset('storage/' . $persona->foto) }}" alt="{{ $persona->nombre_completo }}" class="w-12 h-12 rounded-full object-cover border border-gray-200 dark:border-gray-600">
+                                        @else
+                                            <div class="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-lg text-gray-500 dark:text-gray-400">👤</div>
+                                        @endif
+                                    </td>
+                                    <td class="px-4 py-3 font-semibold text-gray-900 dark:text-gray-100">{{ $persona->apellido }}, {{ $persona->nombre }}</td>
+                                    <td class="px-4 py-3 text-gray-900 dark:text-gray-100">{{ $persona->dni }}</td>
+                                    <td class="px-4 py-3 text-gray-900 dark:text-gray-100">{{ $persona->aliases->pluck('alias')->join(', ') ?: '—' }}</td>
+                                    <td class="px-4 py-3">
+                                        @if(!empty($persona->fecha_nacimiento))
+                                            <div class="text-gray-900 dark:text-gray-100">{{ $persona->edad }} años</div>
+                                            <div class="text-xs text-gray-500 dark:text-gray-400">{{ 
+                                                optional($persona->fecha_nacimiento)->format('d/m/Y') }}</div>
+                                        @else
+                                            <span class="text-gray-500 dark:text-gray-400">—</span>
+                                        @endif
+                                    </td>
+                                    <td class="px-4 py-3 text-right">
+                                        <div class="flex justify-end items-center space-x-3">
+                                            <a href="{{ route('personas.show', $persona) }}" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300 text-xl" title="Ver Detalles">
+                                                👁️
+                                            </a>
+                                            @can('operativo-escritura')
+                                                <a href="{{ route('personas.edit', $persona) }}" class="text-warning-600 hover:text-warning-900 dark:text-warning-400 dark:hover:text-warning-300 text-xl" title="Editar">
+                                                    ✏️
+                                                </a>
+                                                <form action="{{ route('personas.destroy', $persona) }}" method="POST" class="inline" onsubmit="return confirm('¿Confirma que desea eliminar esta persona?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300 text-xl" title="Eliminar">
+                                                        🗑️
+                                                    </button>
+                                                </form>
+                                            @endcan
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </x-tabla>
                     @else
                         <div class="text-center py-12">
                             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
