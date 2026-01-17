@@ -38,6 +38,7 @@ public function getDireccionFormateadaAttribute(): string
 ```
 
 **Ventajas:**
+
 - ✅ Lógica centralizada en un solo lugar
 - ✅ Fácil de actualizar y mantener
 - ✅ Reutilizable en todas las vistas
@@ -49,7 +50,8 @@ public function getDireccionFormateadaAttribute(): string
 
 **Cambios Realizados:**
 
-#### Antes:
+#### Antes
+
 ```blade
 <p class="text-sm font-bold text-gray-900 dark:text-gray-100">
     {{ $domicilio->calle ?? 'Sin calle' }} {{ $domicilio->altura ?? '' }}
@@ -60,7 +62,8 @@ public function getDireccionFormateadaAttribute(): string
 {{-- Párrafo para coordenadas --}}
 ```
 
-#### Después:
+#### Después
+
 ```blade
 {{-- 1. Dirección Formateada (usando accessor) --}}
 <p class="text-sm font-bold text-gray-900 dark:text-gray-100">
@@ -90,6 +93,7 @@ public function getDireccionFormateadaAttribute(): string
 ```
 
 **Mejoras:**
+
 - ✅ Menos líneas de código (consolidación)
 - ✅ Mejor legibilidad
 - ✅ Muestra observaciones del procedimiento (antes no visibles)
@@ -102,6 +106,7 @@ public function getDireccionFormateadaAttribute(): string
 **Cambios Realizados:**
 
 #### Desktop (Tabla)
+
 ```blade
 {{-- Antes: Concatenación manual --}}
 <td class="px-6 py-4 text-sm font-medium text-gray-900">
@@ -118,6 +123,7 @@ public function getDireccionFormateadaAttribute(): string
 ```
 
 #### Mobile (Cards)
+
 ```blade
 {{-- Antes: Lógica condicional compleja --}}
 <p class="text-xs font-semibold text-gray-500 uppercase">Dirección</p>
@@ -136,6 +142,7 @@ public function getDireccionFormateadaAttribute(): string
 ```
 
 **Beneficios:**
+
 - ✅ Código más limpio y legible
 - ✅ Consistencia con procedimientos/show
 - ✅ Fácil de mantener
@@ -165,7 +172,7 @@ Cambios:
 
 ## Testing & Validación
 
-### Escenarios Testeados:
+### Escenarios Testeados
 
 1. **Scenario 1: Domicilio Completo**
    - Calle: "Mitre"
@@ -201,16 +208,19 @@ Cambios:
 ## Características Nuevas
 
 ### 1. **Google Maps Integration**
+
 - Click en "Ver en Mapa" abre Google Maps con las coordenadas
 - URL: `https://maps.google.com/?q=latitud,longitud`
 - Abre en nueva pestaña (`target="_blank"`)
 
 ### 2. **Observaciones del Procedimiento**
+
 - Ahora visible en el Hub de Procedimientos
 - Muestra la observación de la tabla pivote
 - Estilo italizado y con icono 💬
 
 ### 3. **Formateo Inteligente de Direcciones**
+
 - Adapta el formato según datos disponibles
 - Nunca muestra campos vacíos
 - Mantiene legibilidad visual
@@ -239,15 +249,18 @@ Cambios:
 ## Notas Técnicas
 
 ### Accessor vs Mutator
+
 - **Accessor** (`get{Attribute}Attribute`): Se ejecuta cuando se accede al atributo
 - **Mutator** (`set{Attribute}Attribute`): Se ejecuta cuando se asigna un valor
 - En este caso usamos Accessor porque queremos calcular la dirección sobre la marcha
 
 ### Performance
+
 - El accessor se ejecuta cada vez que se accede a `$domicilio->direccion_formateada`
 - Si hay muchos domicilios, considerar caché futuro
 
 ### Compatibilidad Blade
+
 - Funciona en todos los contextos Blade (foreach, condicionales, etc.)
 - No requiere parseo adicional en vistas
 

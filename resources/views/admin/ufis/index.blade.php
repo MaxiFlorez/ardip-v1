@@ -10,23 +10,62 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Alertas -->
+    <div class="py-6 md:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {{-- Alertas --}}
             @if (session('success'))
-                <div class="mb-4 bg-success-100 border border-success-400 text-success-700 px-4 py-3 rounded relative" role="alert">
-                    <span class="block sm:inline">{{ session('success') }}</span>
+                <div class="mb-6 bg-success-50 dark:bg-success-900/30 border-l-4 border-success-500 p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-3">✅</span>
+                        <span class="text-success-800 dark:text-success-200 font-medium">{{ session('success') }}</span>
+                    </div>
                 </div>
             @endif
 
             @if (session('error'))
-                <div class="mb-4 bg-danger-100 border border-danger-400 text-danger-700 px-4 py-3 rounded relative" role="alert">
-                    <span class="block sm:inline">{{ session('error') }}</span>
+                <div class="mb-6 bg-danger-50 dark:bg-danger-900/30 border-l-4 border-danger-500 p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-3">❌</span>
+                        <span class="text-danger-800 dark:text-danger-200 font-medium">{{ session('error') }}</span>
+                    </div>
                 </div>
             @endif
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+            {{-- Barra de Filtros --}}
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                <div class="p-4 md:p-6 text-gray-900 dark:text-gray-100">
+                    <form method="GET" action="{{ route('admin.ufis.index') }}" class="flex items-center gap-2">
+                        
+                        {{-- Buscador --}}
+                        <div class="flex-1">
+                            <label for="search" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mb-1">Buscar</label>
+                            <input 
+                                type="text" 
+                                name="search" 
+                                id="search" 
+                                value="{{ request('search') }}"
+                                placeholder="Nombre de UFI..."
+                                class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 text-sm"
+                            >
+                        </div>
+
+                        {{-- Botones --}}
+                        <div class="flex items-end gap-2">
+                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition duration-150 text-sm font-medium">
+                                🔍 Filtrar
+                            </button>
+                            <a href="{{ route('admin.ufis.index') }}" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition duration-150 text-sm">
+                                Limpiar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {{-- Tabla Desktop / Cards Mobile --}}
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if ($ufis->isEmpty())
                         <div class="text-center py-8">
                             <p class="text-gray-500 text-lg">No hay UFIs registradas.</p>
