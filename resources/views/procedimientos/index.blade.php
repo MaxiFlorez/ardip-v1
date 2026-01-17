@@ -89,7 +89,7 @@
                     <div class="mt-8">
                         @if (is_null($procedimientos))
                             <div class="text-center py-10 px-4">
-                                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-gray-200">Sin búsqueda activa</h3>
@@ -97,73 +97,104 @@
                             </div>
                         @elseif ($procedimientos->isEmpty())
                              <div class="text-center py-10 px-4">
-                                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-gray-200">No se encontraron resultados</h3>
                                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Pruebe con otros criterios de búsqueda.</p>
                             </div>
                         @else
-                            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th scope="col" class="py-3 px-6">Fecha</th>
-                                            <th scope="col" class="py-3 px-6">UFI</th>
-                                            <th scope="col" class="py-3 px-6">Brigada</th>
-                                            <th scope="col" class="py-3 px-6">Legajo</th>
-                                            <th scope="col" class="py-3 px-6">Carátula</th>
-                                            <th scope="col" class="py-3 px-6 text-center">Resultado</th>
-                                            <th scope="col" class="py-3 px-6 text-right">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($procedimientos as $procedimiento)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                            <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $procedimiento->fecha_procedimiento->format('d/m/Y') }}
-                                            </td>
-                                            <td class="py-4 px-6">{{ $procedimiento->ufi->nombre ?? 'N/A' }}</td>
-                                            <td class="py-4 px-6">{{ $procedimiento->brigada->nombre ?? 'N/A' }}</td>
-                                            <td class="py-4 px-6">{{ $procedimiento->legajo_fiscal }}</td>
-                                            <td class="py-4 px-6">{{ Str::limit($procedimiento->caratula, 45) }}</td>
-                                            <td class="py-4 px-6 text-center">
-                                                @if ($procedimiento->es_positivo)
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                                        Positivo
-                                                    </span>
-                                                @else
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                                                        Negativo
-                                                    </span>
-                                                @endif
-                                            </td>
-                                            <td class="py-4 px-6 text-right">
-                                                <div class="flex justify-end items-center space-x-3">
-                                                    <a href="{{ route('procedimientos.show', $procedimiento) }}" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300 text-xl" title="Ver Detalles">
-                                                        👁️
-                                                    </a>
+                            <x-tabla :headers="['Fecha', 'UFI', 'Brigada', 'Legajo', 'Carátula', 'Resultado', 'Acciones']">
+                                @foreach ($procedimientos as $procedimiento)
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
+                                    <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $procedimiento->fecha_procedimiento->format('d/m/Y') }}
+                                    </td>
+                                    <td class="py-4 px-6 text-gray-900 dark:text-gray-100">{{ $procedimiento->ufi->nombre ?? 'N/A' }}</td>
+                                    <td class="py-4 px-6 text-gray-900 dark:text-gray-100">{{ $procedimiento->brigada->nombre ?? 'N/A' }}</td>
+                                    <td class="py-4 px-6 text-gray-900 dark:text-gray-100">{{ $procedimiento->legajo_fiscal }}</td>
+                                    <td class="py-4 px-6 text-gray-900 dark:text-gray-100">{{ Str::limit($procedimiento->caratula, 45) }}</td>
+                                    <td class="py-4 px-6 text-center">
+                                        @if ($procedimiento->es_positivo)
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
+                                                Positivo
+                                            </span>
+                                        @else
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200">
+                                                Negativo
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td class="py-4 px-6 text-right">
+                                        <div class="flex justify-end items-center space-x-3">
+                                            <a href="{{ route('procedimientos.show', $procedimiento) }}" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300" title="Ver Detalles">
+                                                👁️
+                                            </a>
 
-                                                    @can('operativo-escritura')
-                                                        <a href="{{ route('procedimientos.edit', $procedimiento) }}" class="text-warning-600 hover:text-warning-900 dark:text-warning-400 dark:hover:text-warning-300 text-xl" title="Editar">
-                                                            ✏️
-                                                        </a>
+                                            @can('operativo-escritura')
+                                                <a href="{{ route('procedimientos.edit', $procedimiento) }}" class="text-warning-600 hover:text-warning-900 dark:text-warning-400 dark:hover:text-warning-300" title="Editar">
+                                                    ✏️
+                                                </a>
 
-                                                        <form method="POST" action="{{ route('procedimientos.destroy', $procedimiento) }}" class="inline" onsubmit="return confirm('¿Confirma que desea eliminar este procedimiento? Esta acción no se puede deshacer.');">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300 text-xl" title="Eliminar">
-                                                                🗑️
-                                                            </button>
-                                                        </form>
-                                                    @endcan
+                                                <form method="POST" action="{{ route('procedimientos.destroy', $procedimiento) }}" class="inline" onsubmit="return confirm('¿Confirma que desea eliminar este procedimiento? Esta acción no se puede deshacer.');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-danger-600 hover:text-danger-900 dark:text-danger-400 dark:hover:text-danger-300" title="Eliminar">
+                                                        🗑️
+                                                    </button>
+                                                </form>
+                                            @endcan
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                                <x-slot name="mobileView">
+                                    @foreach ($procedimientos as $procedimiento)
+                                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                                            <div class="mb-3 space-y-2">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ $procedimiento->legajo_fiscal }}</h3>
+                                                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $procedimiento->fecha_procedimiento->format('d/m/Y') }}</p>
+                                                    </div>
+                                                    @if ($procedimiento->es_positivo)
+                                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200">
+                                                            Positivo
+                                                        </span>
+                                                    @else
+                                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200">
+                                                            Negativo
+                                                        </span>
+                                                    @endif
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                                <p class="text-sm text-gray-700 dark:text-gray-300">{{ Str::limit($procedimiento->caratula, 60) }}</p>
+                                                <div class="text-xs text-gray-500 dark:text-gray-400">
+                                                    <span>UFI: {{ $procedimiento->ufi->nombre ?? 'N/A' }}</span> • 
+                                                    <span>Brigada: {{ $procedimiento->brigada->nombre ?? 'N/A' }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex gap-2 flex-wrap">
+                                                <a href="{{ route('procedimientos.show', $procedimiento) }}" class="flex-1 text-center px-3 py-2 bg-primary-600 text-white text-xs rounded hover:bg-primary-700 transition">
+                                                    👁️ Ver
+                                                </a>
+                                                @can('operativo-escritura')
+                                                    <a href="{{ route('procedimientos.edit', $procedimiento) }}" class="flex-1 text-center px-3 py-2 bg-warning-600 text-white text-xs rounded hover:bg-warning-700 transition">
+                                                        ✏️ Editar
+                                                    </a>
+                                                    <form method="POST" action="{{ route('procedimientos.destroy', $procedimiento) }}" class="flex-1" onsubmit="return confirm('¿Confirma que desea eliminar este procedimiento?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="w-full px-3 py-2 bg-danger-600 text-white text-xs rounded hover:bg-danger-700 transition">
+                                                            🗑️ Eliminar
+                                                        </button>
+                                                    </form>
+                                                @endcan
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </x-slot>
+                            </x-tabla>
 
                             @if ($procedimientos->hasPages())
                                 <div class="mt-6">
