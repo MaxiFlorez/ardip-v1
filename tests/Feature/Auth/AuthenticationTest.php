@@ -23,7 +23,7 @@ class AuthenticationTest extends TestCase
             'email_verified_at' => now(),
         ]);
 
-        // Rol por defecto: panel-consulta (redirección a personas.index)
+        // Rol por defecto: panel-consulta (redirección a procedimientos.index)
         $consultorRole = \App\Models\Role::create(['name' => 'panel-consulta', 'label' => 'Visor de Consultas']);
         $user->roles()->attach($consultorRole);
 
@@ -33,7 +33,7 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('personas.index', absolute: false));
+        $response->assertRedirect(route('procedimientos.index', absolute: false));
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
@@ -88,7 +88,7 @@ class AuthenticationTest extends TestCase
         $response->assertRedirect(route('procedimientos.index', absolute: false));
     }
 
-    public function test_consultor_users_redirect_to_personas_index(): void
+    public function test_consultor_users_redirect_to_procedimientos_index(): void
     {
         $user = User::factory()->create(['email_verified_at' => now()]);
         $consultorRole = \App\Models\Role::create(['name' => 'panel-consulta', 'label' => 'Visor de Consultas']);
@@ -100,6 +100,6 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('personas.index', absolute: false));
+        $response->assertRedirect(route('procedimientos.index', absolute: false));
     }
 }

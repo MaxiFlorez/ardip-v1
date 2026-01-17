@@ -131,7 +131,28 @@ class User extends Authenticatable
     }
 
     /**
+     * Get home route name based on user role
+     */
+    public function getHomeRoute(): string
+    {
+        if ($this->hasRole('super_admin')) {
+            return 'admin.users.index';
+        }
+
+        if ($this->hasRole('admin')) {
+            return 'dashboard';
+        }
+
+        if ($this->hasAnyRole(['panel-carga', 'panel-consulta'])) {
+            return 'procedimientos.index';
+        }
+
+        return 'procedimientos.index';
+    }
+
+    /**
      * Ruta por defecto según el rol del usuario
+     * @deprecated Use getHomeRoute() instead
      */
     public function getDefaultRoute(): string
     {

@@ -22,24 +22,7 @@ Route::get('/', function () {
     /** @var \App\Models\User $user */
     $user = Auth::user();
 
-    if ($user->hasRole('super_admin')) {
-        return redirect()->route('admin.users.index');
-    }
-
-    if ($user->hasRole('admin')) {
-        return redirect()->route('dashboard');
-    }
-
-    if ($user->hasRole('panel-carga')) {
-        return redirect()->route('procedimientos.index');
-    }
-
-    if ($user->hasRole('panel-consulta')) {
-        return redirect()->route('personas.index');
-    }
-
-    // Fallback seguro: redirigir a ruta genérica si no tiene roles reconocidos
-    return redirect()->route('dashboard');
+    return redirect()->route($user->getHomeRoute());
 })->name('home');
 
 

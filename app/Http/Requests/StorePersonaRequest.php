@@ -20,17 +20,20 @@ class StorePersonaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dni' => 'required|string|max:8|unique:personas,dni',
-            'nombres' => 'required|string|max:100',
-            'apellidos' => 'required|string|max:100',
-            'fecha_nacimiento' => 'required|date|before:today',
-            'genero' => 'required|in:masculino,femenino,otro',
-            'alias' => 'nullable|array',
-            'alias.*' => 'nullable|string|max:100',
-            'nacionalidad' => 'nullable|string|max:50',
-            'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'observaciones' => 'nullable|string',
+            'dni' => ['nullable', 'string', 'max:8', 'unique:personas,dni'],
+            'nombres' => ['nullable', 'string', 'max:100'],
+            'apellidos' => ['nullable', 'string', 'max:100'],
+            'fecha_nacimiento' => ['nullable', 'date', 'before:today'],
+            'genero' => ['nullable', 'in:masculino,femenino,otro'],
+            'alias' => ['nullable', 'array'],
+            'alias.*' => ['nullable', 'string', 'max:100'],
+            'nacionalidad' => ['nullable', 'string', 'max:50'],
+            'estado_civil' => ['nullable', 'in:soltero,casado,divorciado,viudo,concubinato'],
+            'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'observaciones' => ['nullable', 'string'],
+            'procedimiento_id' => ['nullable', 'integer', 'exists:procedimientos,id'],
+            'situacion_procesal' => ['nullable', 'string'],
+            'observaciones_vinculo' => ['nullable', 'string'],
         ];
     }
 

@@ -16,17 +16,20 @@ class UpdatePersonaRequest extends FormRequest
         $persona = $this->route('persona');
 
         return [
-            'dni' => 'required|string|max:8|unique:personas,dni,' . ($persona?->id ?? 'NULL'),
-            'nombres' => 'required|string|max:100',
-            'apellidos' => 'required|string|max:100',
-            'fecha_nacimiento' => 'required|date|before:today',
-            'genero' => 'required|in:masculino,femenino,otro',
-            'alias' => 'nullable|array',
-            'alias.*' => 'nullable|string|max:100',
-            'nacionalidad' => 'nullable|string|max:50',
-            'estado_civil' => 'nullable|in:soltero,casado,divorciado,viudo,concubinato',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'observaciones' => 'nullable|string',
+            'dni' => ['sometimes', 'nullable', 'string', 'max:8', 'unique:personas,dni,' . ($persona?->id ?? 'NULL')],
+            'nombres' => ['sometimes', 'nullable', 'string', 'max:100'],
+            'apellidos' => ['sometimes', 'nullable', 'string', 'max:100'],
+            'fecha_nacimiento' => ['sometimes', 'nullable', 'date', 'before:today'],
+            'genero' => ['sometimes', 'nullable', 'in:masculino,femenino,otro'],
+            'alias' => ['sometimes', 'nullable', 'array'],
+            'alias.*' => ['nullable', 'string', 'max:100'],
+            'nacionalidad' => ['sometimes', 'nullable', 'string', 'max:50'],
+            'estado_civil' => ['sometimes', 'nullable', 'in:soltero,casado,divorciado,viudo,concubinato'],
+            'foto' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'observaciones' => ['sometimes', 'nullable', 'string'],
+            'procedimiento_id' => ['sometimes', 'nullable', 'integer', 'exists:procedimientos,id'],
+            'situacion_procesal' => ['sometimes', 'nullable', 'string'],
+            'observaciones_vinculo' => ['sometimes', 'nullable', 'string'],
         ];
     }
 
