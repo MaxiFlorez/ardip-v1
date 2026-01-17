@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -23,6 +23,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read Notifiable|null $notifications
  * @property-read Collection|Role[] $roles
  * @property-read Collection|ActivityLog[] $activityLogs
+ *
  * @method bool hasRole(string $roleName)
  * @method bool hasAnyRole(array $roles)
  * @method bool isSuperAdmin()
@@ -131,7 +132,35 @@ class User extends Authenticatable
     }
 
     /**
-     * Ruta por defecto según el rol del usuario
+     * NUEVO: Ruta de inicio centralizada según el rol del usuario.
+     * Reglas de negocio:
+     * - super_admin -> admin.users.index
+     * - admin -> dashboard
+     * - panel-carga o panel-consulta -> procedimientos.index
+     * - Fallback -> procedimientos.index
+     */
+    public function getHomeRoute(): string
+    {
+        if ($this->hasRole('super_admin')) {
+            return 'admin.users.index';
+        }
+
+        if ($this->hasRole('admin')) {
+            return 'dashboard';
+        }
+
+        if ($this->hasAnyRole(['panel-carga', 'panel-consulta'])) {
+            return 'procedimientos.index';
+        }
+
+        return 'procedimientos.index';
+    }
+
+    /**
+     * (Compat) Ruta previa; se mantiene temporalmente por si hay referencias legacy.
+     * NOTA: Este método tiene comportamiento inconsistente con getHomeRoute() y NO debe usarse
+     * en nuevas implementaciones. Solo se mantiene por compatibilidad con código existente.
+     * Use getHomeRoute() en su lugar.
      */
     public function getDefaultRoute(): string
     {

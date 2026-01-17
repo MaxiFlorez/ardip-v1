@@ -1,52 +1,34 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\ProcedimientoController;
-use App\Http\Controllers\DomicilioController;
-use App\Http\Controllers\DocumentoController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BrigadaController;
 use App\Http\Controllers\Admin\UfiController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\DomicilioController;
+use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\ProcedimientoController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Gate;
 
-// Redirección inicial según el rol del usuario
+// Redirección inicial centralizada según el rol del usuario
 Route::get('/', function () {
-    if (!Auth::check()) {
+    if (! Auth::check()) {
         return redirect()->route('login');
     }
 
     /** @var \App\Models\User $user */
     $user = Auth::user();
 
-    if ($user->hasRole('super_admin')) {
-        return redirect()->route('admin.users.index');
-    }
-
-    if ($user->hasRole('admin')) {
-        return redirect()->route('dashboard');
-    }
-
-    if ($user->hasRole('panel-carga')) {
-        return redirect()->route('procedimientos.index');
-    }
-
-    if ($user->hasRole('panel-consulta')) {
-        return redirect()->route('personas.index');
-    }
-
-    // Fallback seguro: redirigir a ruta genérica si no tiene roles reconocidos
-    return redirect()->route('dashboard');
+    // Usar la nueva lógica centralizada
+    return redirect()->route($user->getHomeRoute());
 })->name('home');
-
 
 // Rutas protegidas
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('can:admin')->name('dashboard');
-    Route::get('/dashboard-consultor', fn() => view('dashboard-consultor'))->middleware('can:panel-consulta')->name('dashboard.consultor');
+    Route::get('/dashboard-consultor', fn () => view('dashboard-consultor'))->middleware('can:panel-consulta')->name('dashboard.consultor');
 
     // Perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
