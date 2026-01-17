@@ -27,7 +27,7 @@ class UpdatePersonaRequest extends FormRequest
             'estado_civil' => ['sometimes', 'nullable', 'in:soltero,casado,divorciado,viudo,concubinato'],
             'foto' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'observaciones' => ['sometimes', 'nullable', 'string'],
-            'procedimiento_id' => ['sometimes', 'nullable'],
+            'procedimiento_id' => ['sometimes', 'nullable', 'integer', 'exists:procedimientos,id'],
             'situacion_procesal' => ['sometimes', 'nullable', 'string'],
             'observaciones_vinculo' => ['sometimes', 'nullable', 'string'],
         ];

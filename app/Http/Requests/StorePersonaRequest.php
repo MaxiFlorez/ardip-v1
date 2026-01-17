@@ -31,7 +31,7 @@ class StorePersonaRequest extends FormRequest
             'estado_civil' => ['nullable', 'in:soltero,casado,divorciado,viudo,concubinato'],
             'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'observaciones' => ['nullable', 'string'],
-            'procedimiento_id' => ['nullable'],
+            'procedimiento_id' => ['nullable', 'integer', 'exists:procedimientos,id'],
             'situacion_procesal' => ['nullable', 'string'],
             'observaciones_vinculo' => ['nullable', 'string'],
         ];
