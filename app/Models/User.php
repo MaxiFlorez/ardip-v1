@@ -158,6 +158,9 @@ class User extends Authenticatable
 
     /**
      * (Compat) Ruta previa; se mantiene temporalmente por si hay referencias legacy.
+     * NOTA: Este método tiene comportamiento inconsistente con getHomeRoute() y NO debe usarse
+     * en nuevas implementaciones. Solo se mantiene por compatibilidad con código existente.
+     * Use getHomeRoute() en su lugar.
      */
     public function getDefaultRoute(): string
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePersonaRequest extends FormRequest
 {
@@ -19,7 +20,7 @@ class UpdatePersonaRequest extends FormRequest
         $persona = $this->route('persona');
 
         return [
-            'dni' => ['sometimes', 'nullable', 'string', 'max:8', 'unique:personas,dni,'.($persona?->id ?? 'NULL')],
+            'dni' => ['sometimes', 'nullable', 'string', 'max:8', Rule::unique('personas', 'dni')->ignore($persona?->id)],
             'nombres' => ['sometimes', 'nullable', 'string', 'max:100'],
             'apellidos' => ['sometimes', 'nullable', 'string', 'max:100'],
             'fecha_nacimiento' => ['sometimes', 'nullable', 'date', 'before:today'],

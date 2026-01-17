@@ -16,6 +16,9 @@ class StorePersonaRequest extends FormRequest
 
     /**
      * RESTRICCIÓN CRÍTICA: reglas flexibles sin 'required'.
+     * NOTA: Los campos críticos (dni, nombres, apellidos) son nullable para permitir
+     * flexibilidad en el flujo del Hub de Procedimientos. La validación de completitud
+     * se debe manejar a nivel de aplicación según el contexto de uso.
      */
     public function rules(): array
     {
