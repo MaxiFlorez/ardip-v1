@@ -33,23 +33,23 @@ class AuthenticatedSessionController extends Controller
 
         // Redirección dinámica basada en el rol del usuario
         if ($user->hasRole('super_admin')) {
-            return redirect()->route('admin.users.index');
+            return redirect()->intended(route('admin.users.index'));
         }
 
         if ($user->hasRole('admin')) {
-            return redirect()->route('dashboard');
+            return redirect()->intended(route('dashboard'));
         }
 
         if ($user->hasRole('panel-carga')) {
-            return redirect()->route('procedimientos.index');
+            return redirect()->intended(route('procedimientos.index'));
         }
 
         if ($user->hasRole('panel-consulta')) {
-            return redirect()->route('personas.index');
+            return redirect()->intended(route('personas.index'));
         }
 
-        // Fallback por defecto para usuarios sin roles específicos
-        return redirect()->route('procedimientos.index');
+        // Fallback: Si no tiene rol reconocido, ir a home
+        return redirect()->intended(route('home'));
     }
 
     /**

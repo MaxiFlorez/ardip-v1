@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('persona_id')->constrained('personas')->onDelete('cascade');
             $table->foreignId('domicilio_id')->constrained('domicilios')->onDelete('cascade');
             $table->boolean('es_habitual')->default(false);
-            $table->text('observaciones')->nullable();
+            $table->text('observacion')->nullable();
             $table->date('desde')->nullable();
             $table->date('hasta')->nullable();
             $table->timestamps();

@@ -30,15 +30,59 @@
                     <form action="{{ route('domicilios.store') }}" method="POST">
                         @csrf
                         
+                        {{-- Input hidden para persona_id si viene de persona.show --}}
+                        @if(isset($personaId) && $personaId)
+                            <input type="hidden" name="persona_id" value="{{ $personaId }}">
+                        @endif
+
                         {{-- Input hidden para procedimiento_id si viene del hub --}}
                         @if(isset($procedimientoId) && $procedimientoId)
                             <input type="hidden" name="procedimiento_id" value="{{ $procedimientoId }}">
                             
-                            <div class="mb-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
+                            <div class="mb-6 bg-primary-50 dark:bg-primary-900/30 border-l-4 border-primary-500 p-4 rounded">
                                 <div class="flex items-center">
                                     <span class="text-2xl mr-2">🔗</span>
-                                    <span class="font-semibold text-blue-800 dark:text-blue-200">Se vinculará automáticamente al Procedimiento</span>
+                                    <span class="font-semibold text-primary-800 dark:text-primary-200">Se vinculará automáticamente al Procedimiento</span>
                                 </div>
+                            </div>
+                        @endif
+
+                        {{-- Input hidden para observación si viene desde persona --}}
+                        @if(isset($personaId) && $personaId)
+                            <div class="mb-6 bg-success-50 dark:bg-success-900/30 border-l-4 border-success-500 p-4 rounded">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-2">👤</span>
+                                    <span class="font-semibold text-success-800 dark:text-success-200">Nuevo domicilio para persona</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6 border-b border-gray-200 dark:border-gray-700 pb-6">
+                                <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100 mb-2">
+                                    📝 Observación
+                                </h3>
+                                <textarea 
+                                    name="observacion" 
+                                    id="observacion"
+                                    rows="3"
+                                    placeholder="Ej: Domicilio laboral, domicilio de referencia, etc."
+                                    class="w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600">{{ old('observacion') }}</textarea>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    Información adicional sobre este domicilio
+                                </p>
+                            </div>
+
+                            <div class="mb-6 flex items-center gap-2">
+                                <input 
+                                    type="checkbox" 
+                                    name="es_habitual" 
+                                    id="es_habitual" 
+                                    value="1"
+                                    {{ old('es_habitual') ? 'checked' : '' }}
+                                    class="rounded border-gray-300 text-primary-600 shadow-sm focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600"
+                                >
+                                <label for="es_habitual" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    ✓ Marcar como domicilio habitual
+                                </label>
                             </div>
                         @endif
 
@@ -161,10 +205,10 @@
 
                         <!-- Botones -->
                         <div class="flex justify-end space-x-3 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                            <a href="{{ route('domicilios.index') }}">
-                                <x-secondary-button type="button">
-                                    Cancelar
-                                </x-secondary-button>
+                            <a href="{{ url()->previous() }}">
+                                <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                    ❌ Cancelar
+                                </button>
                             </a>
                             <x-primary-button type="submit">
                                 💾 Guardar Domicilio

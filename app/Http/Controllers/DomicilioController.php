@@ -20,7 +20,7 @@ class DomicilioController extends Controller
      */
     public function index()
     {
-        $domicilios = Domicilio::orderBy('departamento')->orderBy('calle')->paginate(15);
+        $domicilios = Domicilio::orderBy('calle')->paginate(15);
         return view('domicilios.index', compact('domicilios'));
     }
 
@@ -30,19 +30,39 @@ class DomicilioController extends Controller
     public function create(Request $request)
     {
         $procedimientoId = $request->query('procedimiento_id');
-        return view('domicilios.create', compact('procedimientoId'));
+        $personaId = $request->query('persona_id');
+        return view('domicilios.create', compact('procedimientoId', 'personaId'));
     }
 
     /**
      * Guarda un nuevo domicilio
+     * 
+     * IMPORTANTE: Siempre crea un nuevo registro (no reutiliza IDs)
      */
     public function store(StoreDomicilioRequest $request)
     {
         $validated = $request->validated();
 
+        // Crear siempre un nuevo domicilio (evita conflictos al editar)
         $domicilio = Domicilio::create($validated);
 
-        // Lógica de retorno inteligente
+        // Si se vincula a una persona
+        if ($request->filled('persona_id')) {
+            $personaId = $request->input('persona_id');
+            $observacion = $request->input('observacion', null);
+            
+            // Vincular a la persona con observación
+            $domicilio->personas()->attach($personaId, [
+                'observacion' => $observacion,
+                'es_habitual' => $request->input('es_habitual', false)
+            ]);
+            
+            return redirect()
+                ->route('personas.show', $personaId)
+                ->with('success', '✅ Domicilio creado y vinculado a la persona correctamente.');
+        }
+
+        // Si se vincula a un procedimiento
         if ($request->filled('procedimiento_id')) {
             $procedimientoId = $request->input('procedimiento_id');
             
@@ -54,17 +74,17 @@ class DomicilioController extends Controller
                 ->with('success', '✅ Domicilio creado y vinculado al procedimiento correctamente.');
         }
 
-        // Comportamiento normal
+        // Comportamiento por defecto
         return redirect()->route('domicilios.index')
-                         ->with('success', 'Domicilio agregado exitosamente.');
+                         ->with('success', '✅ Domicilio agregado exitosamente.');
     }
 
     /**
-     * Muestra un domicilio (carga relaciones si aplica)
+     * Muestra un domicilio con sus relaciones
      */
     public function show(Domicilio $domicilio)
     {
-        $domicilio->load('procedimientos');
+        $domicilio->load('personas', 'procedimientos');
         return view('domicilios.show', compact('domicilio'));
     }
 
@@ -86,7 +106,7 @@ class DomicilioController extends Controller
         $domicilio->update($validated);
 
         return redirect()->route('domicilios.index')
-                         ->with('success', 'Domicilio actualizado exitosamente.');
+                         ->with('success', '✅ Domicilio actualizado exitosamente.');
     }
 
     /**
@@ -97,6 +117,6 @@ class DomicilioController extends Controller
         $domicilio->delete();
 
         return redirect()->route('domicilios.index')
-                         ->with('success', 'Domicilio eliminado exitosamente.');
+                         ->with('success', '✅ Domicilio eliminado exitosamente.');
     }
 }
